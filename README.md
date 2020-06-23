@@ -1,7 +1,7 @@
 # HackTJ2021
-This is a project to develop an autonomous robot that maps its surroundings. The robot hardware consists of two ultrasonic sensors mounted on a frame with two continuous rotation servos. Separate encoders are attached to the robot. The encoders are not directly attached to the wheels, so they can provide independent data.
+This is a project to develop an autonomous robot that maps its surroundings. The robot hardware consists of two ultrasonic sensors mounted on a frame with two continuous rotation servos. Separate encoders are attached to the robot. The encoders are not directly attached to the wheels, so they can provide independent data. 
 
-The project consists of two parts: the robot and the groundstation. The robot colelcts raw data using its sensors (two ultrasonic distance sensors and two encoders) and sends the information to the groundstation via bluetooth. The groundstation (a laptop) will process the information and calculate the location of the robot at any given moment, as well as a map of the room.
+The project consists of two parts: the robot and the groundstation. The robot colelcts raw data using its sensors (two ultrasonic distance sensors, two encoders, and a gyroscope) and sends the information to the groundstation via bluetooth. The groundstation (a laptop) will process the information and calculate the location of the robot at any given moment, as well as a map of the room.
 
 As the robot learns more about the room, the goal is to use previous information to reinforce future information. For example, if we know that the robot is in a corner, we can combine the distance sensor data and the encoder data to update the map with more accurate information.
 
@@ -9,14 +9,4 @@ The robot will be programmed in Arduino, and the groundstation will be programme
 
  - The Team: Jack Blair, Akash Pamal, and Rahel Selemon
 
-Fore more information:
-
-In repl, there is another project named HackTJ 7.0 Java. It contains information and code that we previously developed when we were planning to complete the project in Java. Feel free to reference that code for help.
-
-libraries.txt contains information about libraries that we could use, and provides links to those libraries
-
-parts.txt contains hardware specifications about the parts that we are using
-
-ground_station is a folder that contains the code that will run on the groundstation. The code will be in Python, so it can be run and error-checked on the repl ide.
-
-arduino is a folder that contains the code that will be run on the Arduino. This project is in python, not the Arduino programming language, so the arduino files cannot be compiled or error-checked on this platform. Because of this, we develop the code separately on the Arduino IDE or online IDE, and copy and paste the code into text files in the arduino folder.
+Arduino is a folder that contains the code that will be run on the Arduino. This project is in python, not the Arduino programming language, so the arduino files cannot be compiled or error-checked on this platform. Because of this, we develop the code separately on the Arduino IDE or online IDE, and copy and paste the code into text files in the arduino folder.
