@@ -2,7 +2,12 @@ from .Communicator import Communicator
 from .WallMap import WallMap
 from ui.BotDisplay import BotDisplay
 import time
+from math import pi
 class GroundStation:
+  ENCODER_COUNTS_PER_REVOLUTION = 20
+  WHEEL_RADIUS = 5
+  WHEEL_CIRCUMFERENCE = math.pi * WHEEL_RADIUS ** 2
+  WHEEL_INCHES_PER_COUNT = WHEEL_CIRCUMFERENCE / ENCODER_COUNTS_PER_REVOLUTION
   def __init__(self):
       self.left_encoder_counts = 0
       self.right_encoder_counts = 0
