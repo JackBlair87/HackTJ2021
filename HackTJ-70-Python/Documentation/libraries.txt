@@ -1,0 +1,15 @@
+pyserial
+  https://pypi.org/project/pyserial/
+  serial port access, not related to arduino
+  infromation from stackoverflow - https://stackoverflow.com/questions/36503170/python-communication-to-arduino-via-bluetooth
+
+PyPlotter
+  for graphics
+  https://pythonhosted.org/JyPlotter/node9.html
+
+pygame
+  for graphics
+  https://www.pygame.org/news
+
+graphics.py
+  also for graphics

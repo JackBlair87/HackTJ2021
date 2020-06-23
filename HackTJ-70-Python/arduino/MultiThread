@@ -1,0 +1,94 @@
+//Arduino class
+#include <TimedAction.h> //MultiThreading Library
+#include <Servo.h> //Servo Library
+#include <MPU9250.h> //Gyro Library
+#include <Ultrasonic.h> //Distance Sensor Library
+
+#define ledPin 13
+Ultrasonic ultrasonicF(12, 11, 40000UL);
+Ultrasonic ultrasonicR(10, 9, 40000UL);
+Servo lServo, rServo;
+//set up Encoders
+//set up gyro
+//Bluetooth module
+
+TimedAction servoCheck  = TimedAction(50, updateDrive());
+TimedAction commsCheck = TimedAction(500, checkComms());
+
+//Global Variables ------------------------------
+int state = 1;
+      //0, Forward; 1, Stop; 2, Reverse; 3, Turn Left; 4, Turn Right; Other, LED on 
+double distForward[3];
+double distRight[3];
+int totalTravelR = 0;
+int totalTravelL = 0;
+
+int lastPos = 0;
+boolean emergencybreak = false;
+//-----------------------------------------------
+
+void setup(){
+  lServo.attach(8);
+  rServo.attach(7);
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop(){
+  checkComms();
+  servoCheck.check();
+  commsCheck.check();
+}
+
+void updateDrive() {
+  //acsess public field state
+switch (state) {
+  case 0:
+    lServo.write(180);
+      rServo.write(180);
+    break;
+  case 1:
+    lServo.write(90);
+      rServo.write(90);
+    break;
+    case 2:
+      lServo.write(0);
+      rServo.write(0);
+    break;
+  case 3:
+    lServo.write(0);
+      rServo.write(180);
+    break;
+    case 4:
+    lServo.write(180);
+      rServo.write(0);
+    break;
+  default:
+   digitalWrite(ledPin, HIGH);
+    break;
+}
+
+void checkComms(){
+    //if emergencybreak is false, then update
+}
+
+void refreshVariables(){
+  double f = ultrasonicF.read(INC);
+  double r = ultrasonicR.read(INC);
+  distForward[lastPos] = f;
+  distRight[lastPos] = r;
+  lastPos++;
+  if(lastPos == 3)
+    lastPos = 0;
+
+if(f == 0.5 || r == 0.5 ){      //may change
+  state = 1; //stops
+  emergencybreak = true;
+}
+
+//Encoders
+if(state == 0 || state == 2){ //only forward or reverse
+    //if encoders are on different state, update total movement 
+}
+
+
+}

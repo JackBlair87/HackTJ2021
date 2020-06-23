@@ -1,0 +1,12 @@
+Arduino Uno - CPU and main controller
+
+HC-05 - bluetooth module
+^^ HC-06??
+
+
+Cylewet 5Pcs KY-040 Rotary Encoder Module with 15×16.5 mm with Knob Cap for Arduino (Pack of 5) CYT1062 - https://www.amazon.com/Cylewet-Encoder-15%C3%9716-5-Arduino-CYT1062/dp/B06XQTHDRR/ref=as_li_ss_tl?s=electronics&ie=UTF8&qid=1519833881&sr=1-3&keywords=Rotary+Encoder&linkCode=sl1&tag=howto045-20&linkId=8342c1bffd186172203db659d13e7449
+
+
+
+Continuous rotation servos - used to power the wheels
+^model?
