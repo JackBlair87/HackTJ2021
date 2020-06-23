@@ -7,11 +7,11 @@ class Communicator:
     self.port = port
     self.baud = baud
     
-  def start_test(self):
-    print("Start")
-    bluetooth=serial.Serial(port, 9600)#Start communications with the bluetooth unit
-    print("Connected")
+#State -1 to 4, Distance Sensor Front Double, Distance Sensor Right Double, Left Encoder Value Int, Right Encoder Value Int, Total Angle Double
+  def recieve_info(self):
+    bluetooth=serial.Serial(self.port, self.baud) #Start communications with the bluetooth unit
     bluetooth.flushInput() #This gives the bluetooth a little kick
+    
     for i in range(500): #send 5 groups of data to the bluetooth
 	    print("Ping")
 	    bluetooth.write(b"BOOP "+str.encode(str(i)))#These need to be bytes not unicode, plus a number
