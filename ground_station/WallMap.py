@@ -20,8 +20,8 @@ class WallMap:
     #ensure that the map is a square
     self.add_rows(r - len(self.map))
     self.add_columns(c - len(self.map[0]))
-
     self.map[r][c] += 1
+    
   def add_rows(self, row_count):
     if row_count < 0:
       return False
@@ -30,16 +30,19 @@ class WallMap:
       self.map.append([0 for x in range(len(self.map[0]))])
     self.map.reverse()
     return True
+  
   def add_columns_right(self, col_count):
     if col_count < 0:
       return False
     for row in self.map:
       row.append(WallMap.UNEXPLORED)
+      
   def add_columns_left(self, col_count):
     if col_count < 0:
       return False
     for row in self.map:
       row.insert(0, WallMap.UNEXPLORED)
+      
   def print_map(self):
     for row in self.map:
       print(row)

@@ -3,11 +3,13 @@ from .WallMap import WallMap
 from ui.BotDisplay import BotDisplay
 import time
 from math import pi
+
 class GroundStation:
   ENCODER_COUNTS_PER_REVOLUTION = 20
   WHEEL_RADIUS = 5
   WHEEL_CIRCUMFERENCE = math.pi * WHEEL_RADIUS ** 2
   WHEEL_INCHES_PER_COUNT = WHEEL_CIRCUMFERENCE / ENCODER_COUNTS_PER_REVOLUTION
+  
   def __init__(self):
       self.left_encoder_counts = 0
       self.right_encoder_counts = 0
@@ -18,6 +20,7 @@ class GroundStation:
       self.wall_map = WallMap()
       self.ui = BotDisplay()
       self.state = "normal_stop"
+      
   def main(self):
     while(self.explore):
       new_data = self.communicator.get_data()
@@ -40,12 +43,21 @@ class GroundStation:
     todo: figure out a way to calculate the state based 
     """
 
-      """
-      self.right_distance = r_distance
-      self.front_distance = f_distance
-      self.left_encoder_counts = l_encoderCounts
-      self.right_encoder_counts = r_encoderCounts
-      self.emergency_stopped = e_stopped
-      """
     #todo: figure out the next step based on the current location and new data
 
+
+#Apply transfromation to robot location
+#Plot 2 point 
+#Add arraylist of every data packet recieved
+
+#called everytime a new data packet arrives
+def update_robot_location(self, deltaAngle, deltaRencoder, deltaLeftencoder):
+  #do math and update robot location to best estimate
+  
+#called everytime a new data pscket arrives
+def add_point
+
+#after a certain ammount of time--
+#def calculateWallSegmentBased on Points
+
+#def delete extraniious points -- calculate 

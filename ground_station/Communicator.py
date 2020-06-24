@@ -1,19 +1,43 @@
-#/dev/tty.HC-05-DevB
 import serial
 import time
+from .InfoPacket import InfoPacket
 
 class Communicator:
   def __init__(self, port = "/dev/tty.HC-05-DevB", baud = 9600):
     self.port = port
     self.baud = baud
-    bluetooth=serial.Serial(self.port, self.baud) #Start communications with the bluetooth unit
-    bluetooth.flushInput() #This gives the bluetooth a little kick
+    self.bluetooth = None
+    self.initiate_bluetooth()
+    
+    self.previousState = 0
+    
+  def initiate_bluetooth(self):
+    self.bluetooth = serial.Serial(self.port, self.baud) #Start communications with the bluetooth unit
+    self.bluetooth.flushInput() #This gives the bluetooth a little kick
     
 #State -1 to 4, Distance Sensor Front Double, Distance Sensor Right Double, Left Encoder Value Int, Right Encoder Value Int, Total Angle Double
   def recieve_info(self):
-    print("Ping")
-    bluetooth.write(b"BOOP "+str.encode(str(i)))#These need to be bytes not unicode, plus a number
-    input_data=bluetooth.readline() #This reads the incoming data
-    print(input_data.decode())#These are bytes coming in so a decode is needed
-    time.sleep(0.1) #A pause between bursts
-    bluetooth.close() #Otherwise the connection will remain open until a timeout which ties up the /dev/thingamabob
+    input_data = self.bluetooth.readline().decode() #This reads the incoming data
+    newdata = input_data.split(",")
+    print(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4])
+    if(self.previousState != 0 and newdata[0] == 0):
+      info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], True)
+    else:
+      info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], False)
+    return info
+  
+  def transmit_info(self, state = 0):
+    self.previousState = state
+    self.bluetooth.write(str.encode(str(state))) #These need to be bytes not unicode, plus a number
+    
+  def deactivate_bluetooth(self):
+    self.bluetooth.close()
+    
+    
+#Ideal Use
+c = Communicator()
+c.initiate_bluetooth()
+while(True):
+  c.transmit_info(robot.state)
+  robot.addInfo(c.recieve_info())
+c.deactivate_bluetooth()
