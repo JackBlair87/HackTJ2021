@@ -1,25 +1,18 @@
-from .Communicator import Communicator
-from .WallMap import WallMap
 from ui.BotDisplay import BotDisplay
+from .Robot import Robot
 import time
-from math import pi
 
+class Mode(enum.Enum): 
+    stop = 0
+    explore = 1
+    sweep = 2
+    manual = 3
+    emergency_stop = 4
+    
 class GroundStation:
-  ENCODER_COUNTS_PER_REVOLUTION = 20
-  WHEEL_RADIUS = 5
-  WHEEL_CIRCUMFERENCE = math.pi * WHEEL_RADIUS ** 2
-  WHEEL_INCHES_PER_COUNT = WHEEL_CIRCUMFERENCE / ENCODER_COUNTS_PER_REVOLUTION
-  
   def __init__(self):
-      self.left_encoder_counts = 0
-      self.right_encoder_counts = 0
-      self.coordinates = (0, 0)
-      self.angle = 0
-      self.explore = True
-      self.communicator = Communicator()
       self.wall_map = WallMap()
       self.ui = BotDisplay()
-      self.state = "normal_stop"
       
   def main(self):
     while(self.explore):
@@ -48,13 +41,9 @@ class GroundStation:
 
 #Apply transfromation to robot location
 #Plot 2 point 
-#Add arraylist of every data packet recieved
 
 #called everytime a new data packet arrives
-def update_robot_location(self, deltaAngle, deltaRencoder, deltaLeftencoder):
-  #do math and update robot location to best estimate
-  
-#called everytime a new data pscket arrives
+
 def add_point
 
 #after a certain ammount of time--

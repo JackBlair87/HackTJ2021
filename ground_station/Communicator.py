@@ -19,11 +19,11 @@ class Communicator:
   def recieve_info(self):
     input_data = self.bluetooth.readline().decode() #This reads the incoming data
     newdata = input_data.split(",")
-    print(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4])
+    print(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5])
     if(self.previousState != 0 and newdata[0] == 0):
-      info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], True)
+      info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], True)
     else:
-      info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], False)
+      info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], False)
     return info
   
   def transmit_info(self, state = 0):
@@ -35,9 +35,9 @@ class Communicator:
     
     
 #Ideal Use
-c = Communicator()
-c.initiate_bluetooth()
-while(True):
-  c.transmit_info(robot.state)
-  robot.addInfo(c.recieve_info())
-c.deactivate_bluetooth()
+#c = Communicator()
+#c.initiate_bluetooth()
+#while(True):
+  #c.transmit_info(robot.state)
+  #robot.addInfo(c.recieve_info())
+#c.deactivate_bluetooth()
