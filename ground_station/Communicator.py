@@ -19,11 +19,11 @@ class Communicator:
   def recieve_info(self):
     input_data = self.bluetooth.readline().decode() #This reads the incoming data
     newdata = input_data.split(",")
-    print(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5])
+    print(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6])
     if(self.previousState != 0 and newdata[0] == 0):
-      info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], True)
+      info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], True)
     else:
-      info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], False)
+      info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], False)
     return info
   
   def transmit_info(self, state = 0):

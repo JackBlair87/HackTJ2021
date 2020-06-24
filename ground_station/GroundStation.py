@@ -15,7 +15,12 @@ class GroundStation:
       self.ui = BotDisplay()
       
   def main(self):
-    while(self.explore):
+    while(True):
+      
+      
+      
+      
+      
       new_data = self.communicator.get_data()
       if new_data is None:
         time.sleep(.1)#delay for .1 seconds to let the program catch up
