@@ -19,9 +19,9 @@ class State(enum.Enum):
     
 class GroundStation:
   def __init__(self):
-      self.wall_map = WallMap()
+      #self.wall_map = WallMap()
       self.ui = BotDisplay()
-      self.mode = Mode.manual
+      self.mode = Mode.stop
       
   def main(self):
     while(True):
@@ -41,7 +41,7 @@ class GroundStation:
       else:
         self.communicator.set_state(instruction)
         self.ui.set_state(instruction)
-      """
+      
   
 
 
