@@ -18,7 +18,7 @@ SCREEN_WIDTH = 1440 #Must be divisible by SQUARE_SIZE
 SCREEN_HEIGHT = 800 #Must be divisible by SQUARE_SIZE
 FPS = 60 #Standard Smooth FPS
 running = True
-COMPASS = pg.image.load('Compass.png')
+COMPASS = pg.image.load('/Users/jackblair/Desktop/Code/HackTJ2021/HackTJ2021/ground_station/ui/Compass.png')
 
 def quitProgram(): #Quits Pygame and Python
   pg.quit()
@@ -77,6 +77,11 @@ def createButton(text, x, y, w, h, ic, ac, action = None): #Normal button that p
       pg.draw.rect(screen, ic,(x,y,w,h))
   writeText(screen, "arial", 50, text, (x+(w/2)), (y+(h/2)), WHITE)
   
+def draw_compass(x, y, angle = 90.0):
+  screen.blit(COMPASS, (x, y))
+  pg.draw.line(screen, PINK, (x+72, y+72), (x+72 + (65*m.cos(m.radians(angle))), y+72 + (65*m.sin(m.radians(angle)))), 6)
+      
+  
 def mainScreen():
   while running:
       RUNNING = backgroundInputCheck(pg.event.get())
@@ -84,9 +89,7 @@ def mainScreen():
       screen.fill(BLACK) #Paint the whole screen black
       
       pg.draw.rect(screen, DBLACK, (0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/11))
-      pg.draw.ellipse(screen, DBLACK, (SCREEN_WIDTH-150, SCREEN_HEIGHT-150, 100, 100))
-      screen.blit(COMPASS, (SCREEN_WIDTH-194, SCREEN_HEIGHT-194))
-      
+      draw_compass(SCREEN_WIDTH-175, SCREEN_HEIGHT-175, 90.0)
       #writeText(screen, 'hermann', 75, "CONNECTED", 150, 50, DBLUE)
       
       clock.tick(60)
