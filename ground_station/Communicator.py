@@ -1,4 +1,4 @@
-import pyserial
+import serial
 import time
 from InfoPacket import InfoPacket
 

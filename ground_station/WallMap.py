@@ -46,3 +46,4 @@ class WallMap:
   def print_map(self):
     for row in self.map:
       print(row)
+  

@@ -2,6 +2,7 @@ import pygame as pygame
 import random 
 import numpy as np
 import math
+import time
 from GroundStation import Mode, State
 from Communicator import Communicator
 
@@ -35,32 +36,51 @@ largeFont = pygame.font.Font("./ground_station/assets/OpenSans-Regular.ttf", 40)
 running = True
 mode = Mode.manual
 state = State.stop
-
+new_state = State.stop
+start_time = int(round(time.time() * 1000))
+last_communication_time = 0
+print("Start Time" + str(start_time))
 
 #objects that we need
 communicator = Communicator()
+communicator.initiate_bluetooth()
+
+all_buttons = []
 
 def main():
+  global last_communication_time, running, state, new_state
   while running:
     #check to see if the user wants to quit the game
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
           quitProgram()
-        elif event.type == pg.KEYDOWN:
-          if event.key == pg.K_ESCAPE:
+        elif event.type == pygame.KEYDOWN:
+          if event.key == pygame.K_ESCAPE:
             quitProgram()
     
+    # print(last_communication_time, get_time())
+    
     screen.fill(BLACK)
-    pg.draw.rect(screen, DBLACK, (0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/11))
+    pygame.draw.rect(screen, DBLACK, (0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/11))
     draw_compass(SCREEN_WIDTH-175, SCREEN_HEIGHT-175)
 
     if mode == Mode.manual:
-      state = state_from_key_press()
-      print(State.all_states[state])
+      new_state = state_from_key_press()
+      # print(State.all_states[state])
 
-    communicator.transmit_info()
-    pygame.display.flip()
+    current_time = get_time()
+    if current_time - last_communication_time > 100:
+      if new_state != state:
+        print("New state:", new_state)
+        #robot.addInfo(c.recieve_info())
+        state = new_state
+        last_communication_time = current_time
+        communicator.transmit_info(new_state)
+        print("Communication happened", current_time)
+        # print(get_time())
       
+    pygame.display.flip()
+  quitProgram()
   
 def create_button_from_text(text, x, y, width, height):
   """
@@ -69,36 +89,66 @@ def create_button_from_text(text, x, y, width, height):
   width and height refer to the width and height of the button, where 0 represents no width or height,
   and 1 represent a button that will fill up the screen (same width and height as the screen)
   """
-  new_button = pg.Rect((SCREEN_WIDTH * x), (SCREEN_HEIGHT * x), SCREEN_WIDTH * width, SCREEN_HEIGHT * height)
+  new_button = pygame.Rect((SCREEN_WIDTH * x), (SCREEN_HEIGHT * x), SCREEN_WIDTH * width, SCREEN_HEIGHT * height)
   playX = mediumFont.render(text, True, DBLUE)
   playXRect = playX.get_rect()
   playXRect.center = new_button.center
-  pg.draw.rect(screen, white, new_button)
+  pygame.draw.rect(screen, WHITE, new_button)
   screen.blit(playX, playXRect)
+  all_buttons.add(new_button)
   return new_button
+
+def get_button_pressed():
+  """
+  Returns the button pressed. If no button is pressed, it will return None
+  If multiple buttons are pressed, it will return a list of all pressed buttons.
+  The only way that I can think of where this would happen is if buttons overlapped.
+  """
+  click, _, _ = pygame.mouse.get_pressed()
+  if click == 1:
+      mouse = pygame.mouse.get_pos()
+      clicked_buttons = []
+      for i in all_buttons:
+        if button.collidepoint(mouse):
+          clicked_buttons.add(button)
+  if len(clicked_buttons) == 0:
+    return 0
+  elif len(clicked_buttons == 1):
+    return clicked_buttons[0]
+  else:
+    return clicked_buttons
 
 def state_from_key_press():
   keys = pygame.key.get_pressed()
   if keys[pygame.K_LEFT]:
+    print("left pressed")
     return State.turn_left
   elif keys[pygame.K_RIGHT]:
+    print("right pressed")
     return State.turn_right
   elif keys[pygame.K_UP]:
+    print("up pressed")
     return State.forward
   elif keys[pygame.K_DOWN]:
+    print("down pressed")
     return State.reverse
   else:
+    print("no arrow key pressed")
     return State.stop
+
 def draw_compass(x, y, angle = 90.0):
   screen.blit(COMPASS, (x, y))
   pygame.draw.line(screen, PINK, (x+72, y+72), (x+72 + (65*math.cos(math.radians(angle-90))), y+72 + (65*math.sin(math.radians(angle-90)))), 8)
 
+def get_time():
+  return int(round(time.time() * 1000)) - start_time
+
 def quitProgram(): #Quits Pygame and Python
+  print("Stopping all tasks and quitting program")
+  communicator.transmit_info(State.stop)
   pygame.quit()
   quit()
   communicator.deactivate_bluetooth()
-  #todo: quit bluetooth comms
-
 
 main()
 

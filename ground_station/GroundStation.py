@@ -25,6 +25,7 @@ class GroundStation:
       self.mode = Mode.stop
       
   def main(self):
+    #to be deleted method
     while(True):
       new_data = self.communicator.get_data()
       if new_data is None:
@@ -39,9 +40,6 @@ class GroundStation:
         self.communicator.set_state(instruction)
         self.ui.set_state(instruction)
       
-  
-
-
   def manual_drive(self):
     if new_state != self.state: #if the state is the same as before, no change is necessary
       self.robot.set_state(new_state)
@@ -51,6 +49,7 @@ class GroundStation:
     """
     todo: figure out a way to calculate the state based 
     """
+    #robot.
 
     #todo: figure out the next step based on the current location and new data
   

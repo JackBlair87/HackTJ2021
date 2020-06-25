@@ -8,14 +8,15 @@ from math import pi
 
 class Robot:
     ENCODER_COUNTS_PER_REVOLUTION = 20
-    WHEEL_RADIUS = 5
+    WHEEL_RADIUS = 5 #in cm
     WHEEL_CIRCUMFERENCE = pi * WHEEL_RADIUS ** 2
-    WHEEL_INCHES_PER_COUNT = WHEEL_CIRCUMFERENCE / ENCODER_COUNTS_PER_REVOLUTION
+    WHEEL_CM_PER_COUNT = WHEEL_CIRCUMFERENCE / ENCODER_COUNTS_PER_REVOLUTION
   
     def __init__(self, x = 0.0, y = 0.0, angle = pi/2):
         self.left_encoder_counts = 0
         self.right_encoder_counts = 0
-        self.coordinates = (x, y)
+        self.xcoord = x
+        self.ycoord = y
         self.angle = angle
         self.dataPackets = []
         self.communicator = Communicator()
@@ -35,7 +36,20 @@ class Robot:
             differenceL = self.dataPackets[-1].left_encoder_counts - self.dataPackets[-2].left_encoder_counts
             if(self.dataPackets[-1].state != State.stop, State.forward, State.reverse): #Or the difference between last angle if rotation
                 deltaAngle = self.dataPackets[-1].rotation - self.dataPackets[-2].rotation
-                
+    def sweep():
+    #while front is clear and wall to right
+    #   move forward
+    #while front is clear and wall to 
+    #   move forward
+
+    def if_front_clear():
+        
+
         
     
+
+                
+        
+       
             
+#self.state = State.forward
