@@ -2,6 +2,7 @@ from .Communicator import Communicator
 from .InfoPacket import InfoPacket
 from .WallMap import WallMap
 from .GroundStation import Mode
+from .GroundStation import State
 
 from math import pi
 
@@ -14,15 +15,16 @@ class Robot:
     def __init__(self, x = 0.0, y = 0.0, angle = pi/2):
         self.left_encoder_counts = 0
         self.right_encoder_counts = 0
-        self.coordinates = [x, y]
+        self.coordinates = (x, y)
         self.angle = angle
         self.dataPackets = []
         self.communicator = Communicator()
         self.communicator.initiate_bluetooth()
-        self.mode = Mode.stop
+        self.state = State.stop
         
-    def add_data(self, InfoPacket):
-        self.dataPackets.append(InfoPacket)
+    def add_data(self, infoPacket):
+        self.dataPackets.append(infoPacket)
+        self.update_location()
         
     def deactivate_robot(self):
         self.communicator.deactivate_bluetooth()
@@ -31,8 +33,9 @@ class Robot:
         if(self.dataPackets[-1] != None and self.dataPackets[-2] != None): #If there are two data packets
             differenceR = self.dataPackets[-1].right_encoder_counts - self.dataPackets[-2].right_encoder_counts #Find the difference between last transmittion
             differenceL = self.dataPackets[-1].left_encoder_counts - self.dataPackets[-2].left_encoder_counts
-            if(self.dataPackets[-1].state != 0, 1, 2): #Or the difference between last angle if rotation
+            if(self.dataPackets[-1].state != State.stop, State.forward, State.reverse): #Or the difference between last angle if rotation
                 deltaAngle = self.dataPackets[-1].rotation - self.dataPackets[-2].rotation
                 
+        
     
             

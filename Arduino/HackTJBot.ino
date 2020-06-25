@@ -1,4 +1,3 @@
-//Arduino
 #include <TimedAction.h> //MultiThreading Library
 #include <RobotServos.h> //Servo Library
 #include <MPU9250.h> //Gyro Library
@@ -7,17 +6,21 @@
 #include <SoftwareSerial.h> //Bluetooth Library
 
 #define ledPin 13
-RobotServos servos(8, 7);
-//DistanceEstimator dF(12, 11);
+#define BUFFER_SIZE 64 //This will prevent buffer overruns.
+char inData[BUFFER_SIZE];//This is a character buffer where the data sent by the python script will go.
+char inChar=-1;//Initialie the first character as nothing
+int i=0;//Arduinos are not the most capable chips in the world so I just create the looping variable once
+
+RobotServos servos(6, 5);
+DistanceEstimator dF(8, 7);
 DistanceEstimator dR(10, 9);
+SoftwareSerial serial_connection(11, 12); //Create a serial connection with TX and RX on these pins
 RotaryEncoder rightEncoder(A2, A3);
 RotaryEncoder leftEncoder(A0, A1);
-//set up gyro A4 A5
-SoftwareSerial serial_connection(10, 11); //Create a serial connection with TX and RX on these pins
+MPU9250 mpu;
 
 //Global Variables ------------------------------
-int state = 1;
-      //0, Stop; 1, Forward; 2, Reverse; 3, Turn Left; 4, Turn Right; Other, LED on 
+int state = 0; //0, Stop; 1, Forward; 2, Reverse; 3, Turn Left; 4, Turn Right; Other, LED on 
 int totalTravelR = 0;
 int totalTravelL = 0;
 int changeTravelR = 0; //Difference since last transmission
@@ -28,49 +31,55 @@ int stopValLeft = 0;
 int servoTolerance = 2; //number of encoder step shifts when stopped
 
 double stoppingBenchmark = 2; //cm
+int baudRate = 9600;
+int commsInterval = 500;
 //-----------------------------------------------
 
 void setup(){
   pinMode(ledPin, OUTPUT);
-  Serial.begin(57600);
+  Serial.begin(baudRate); //Initialize communications to the serial monitor in the Arduino IDE
+  serial_connection.begin(baudRate); //Initialize communications with the bluetooth module
+  Wire.begin();
+  delay(2000);
+   mpu.setup();
 }
 
-void checkComms(){
+void transmitData(){
+  //Recieve
+  byte byte_count=serial_connection.available();//This gets the number of bytes that were sent by the python script
+  if(byte_count) //If there are any bytes then deal with them
+  {
+    Serial.println("Incoming Data");//Signal to the monitor that something is happening
+    int first_bytes=byte_count;//initialize the number of bytes that we might handle. 
+    int remaining_bytes=0;//Initialize the bytes that we may have to burn off to prevent a buffer overrun
+    if(first_bytes>=BUFFER_SIZE-1)//If the incoming byte count is more than our buffer...
+    {
+      remaining_bytes=byte_count-(BUFFER_SIZE-1);//Reduce the bytes that we plan on handleing to below the buffer size
+    }
+    for(i=0;i<first_bytes;i++)//Handle the number of incoming bytes
+    {
+      inChar=serial_connection.read();//Read one byte
+      inData[i]=inChar;//Put it into a character string(array)
+    }
+    inData[i]='\0';//This ends the character array with a null character. This signals the end of a string
+    
+    for(i=0;i<remaining_bytes;i++)//This burns off any remaining bytes that the buffer can't handle.
+    {
+      inChar=serial_connection.read();
+    }
+    
+    Serial.println(inData);//Print to the monitor what was detected
+  }
+  
   //send
- Serial.print("Data Packet: ");
-    Serial.print("(State)");
-    Serial.print(state);
-    Serial.print(", ");
-    Serial.print("(Change L)");
-    Serial.print(changeTravelL);
-    Serial.print(", ");
-    Serial.print("(Change R)");
-    Serial.print(totalTravelR);
-    Serial.print(", ");
-    //Serial.print("(Distance F)");
-    //Serial.print(dF.getAverage());
-    //Serial.print(", ");
-    Serial.print("(Distance R)");
-    Serial.print(dR.getAverage());
-    Serial.println(", ");
-
-//recieve
+  serial_connection.println(String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(totalTravelL) + "," + String(totalTravelR) + "," + String(13.324));
+    //Example --> 12330,0,12.0,34.0,-48,-39,20.342
   //set state to new state
   //set servo state to new state
 
-    
     //Serial.print(totalTravelL);
     //Serial.print(", ");
     //Serial.println(totalTravelR);
-    
-    changeTravelR = 0;
-    changeTravelL = 0;
-
-    //Give back State
-    //Give back encoder distances --> total moved and change
-    //Give back distance readings
-    //Give back angle readings
-    
 }
 
 void encoderCheck(){
@@ -95,6 +104,7 @@ void encoderCheck(){
 }
 
 void refreshVariables(){
+  mpu.update();
   encoderCheck();
   dR.record();
   
@@ -114,9 +124,10 @@ void refreshVariables(){
   servos.setState(state);
 }
 
-TimedAction commsCheck = TimedAction(500, checkComms);
-//------------------------------------------------------------------------Actual Code----------------------------------------------------------------
+
+TimedAction transmit = TimedAction(commsInterval, transmitData);
+
 void loop(){
   refreshVariables();
-  commsCheck.check();
+  transmit.check();
 }
