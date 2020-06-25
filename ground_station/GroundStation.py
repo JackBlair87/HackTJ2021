@@ -1,22 +1,23 @@
-from ui.BotDisplay import BotDisplay
-from .Robot import Robot
 import time
 
-class Mode(enum.Enum): 
+class Mode(): 
   stop = 0
   explore = 1
   sweep = 2
   manual = 3
   emergency_stop = 4
+  #a list for easier debugging
+  all_modes = ['stop', 'explore', 'sweep', 'manual', 'emergency_stop']
     
-class State(enum.Enum):
+class State():
   stop = 0
   forward = 1
   reverse = 2
   turn_left = 3
   turn_right = 4
   error = -1
-    
+  all_states = ['stop', 'forward', 'reverse', 'turn_left', 'turn_right', 'error']
+  
 class GroundStation:
   def __init__(self):
       #self.wall_map = WallMap()
@@ -25,10 +26,6 @@ class GroundStation:
       
   def main(self):
     while(True):
-      
-      
-    
-      
       new_data = self.communicator.get_data()
       if new_data is None:
         time.sleep(.1)#delay for .1 seconds to let the program catch up
@@ -46,13 +43,8 @@ class GroundStation:
 
 
   def manual_drive(self):
-    new_state = self.ui.get_state()
-    if new_state = self.state: #if the state is the same as before, no change is necessary
-      continue
-    self.robot.set_state(new_state)
-    
-      
-      
+    if new_state != self.state: #if the state is the same as before, no change is necessary
+      self.robot.set_state(new_state)
     
   def calculate_instruction(self):
     pass
