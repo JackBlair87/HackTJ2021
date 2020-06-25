@@ -71,6 +71,7 @@ def main():
     create_button_from_text("Explore", .89, .1 + mode_button_y_diff * 1, .1, mode_button_height, mediumFont, DBLUE, WHITE)
     create_button_from_text("Sweep", .89, .1 + mode_button_y_diff * 2, .1, mode_button_height, mediumFont, DBLUE, WHITE)
     create_button_from_text("Manual", .89, .1 + mode_button_y_diff * 3, .1, mode_button_height, mediumFont, DBLUE, WHITE)
+    draw_text("Mode: " + Mode.all_modes[mode], .91, .035)
     draw_compass(SCREEN_WIDTH-175, SCREEN_HEIGHT-175)
 
 
@@ -84,7 +85,7 @@ def main():
       button_text = temp[1]
       if current_time - last_button_press_time > 250:
         last_button_press_time = current_time
-        mode = Mode.all_modes.index(button_text.lower())
+        mode = Mode.all_modes.index(button_text)
         print("Mode changed to:", Mode.all_modes[mode])
       
 
@@ -133,6 +134,11 @@ def get_button_pressed():
     for button, text in all_buttons:
       if button.collidepoint(mouse):
         return button, text
+def draw_text(text, x, y, font_object=mediumFont, text_color=WHITE):
+  title = font_object.render(text, True, text_color)
+  titleRect = title.get_rect()
+  titleRect.center = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  screen.blit(title, titleRect)
 
 def state_from_key_press():
   keys = pygame.key.get_pressed()
