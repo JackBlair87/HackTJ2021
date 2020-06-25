@@ -1,6 +1,6 @@
-import serial
+import pyserial
 import time
-from .InfoPacket import InfoPacket
+from InfoPacket import InfoPacket
 
 class Communicator:
   def __init__(self, port = "/dev/tty.HC-05-DevB", baud = 9600):
@@ -13,7 +13,7 @@ class Communicator:
     self.bluetooth = serial.Serial(self.port, self.baud) #Start communications with the bluetooth unit
     self.bluetooth.flushInput() #This gives the bluetooth a little kick
     
-#State -1 to 4, Distance Sensor Front Double, Distance Sensor Right Double, Left Encoder Value Int, Right Encoder Value Int, Total Angle Double
+#Timestamp 12321, State -1 to 4, Distance Sensor Front Double, Distance Sensor Right Double, Left Encoder Value Int, Right Encoder Value Int, Total Angle Double
   def recieve_info(self, old_state = 0):
     input_data = self.bluetooth.readline().decode() #This reads the incoming data
     #incoming data is separated with commas and represents these values in order: Millis, state, front distance, right distance, left encoder total, right encoder total, angle total
