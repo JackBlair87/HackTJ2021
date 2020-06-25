@@ -5,6 +5,7 @@ import math as m
 
 #Colors
 BLACK = (30, 30, 30)
+DBLACK = (10, 10, 10)
 WHITE = (167, 167, 167)
 GREEN = (75, 192, 168)
 DBLUE = (0, 116, 194)
@@ -17,13 +18,15 @@ SCREEN_WIDTH = 1440 #Must be divisible by SQUARE_SIZE
 SCREEN_HEIGHT = 800 #Must be divisible by SQUARE_SIZE
 FPS = 60 #Standard Smooth FPS
 running = True
+COMPASS = pg.image.load('Compass.png')
 
 def quitProgram(): #Quits Pygame and Python
   pg.quit()
   quit()
 
 def backgroundInputCheck(eventList): #Constantly checks for quits and enters
-  #For the buttons to close, minimize, and maximize the window
+  #For the buttons to close the window
+  
   for event in eventList:
           if event.type == pg.QUIT:
               quitProgram()
@@ -64,7 +67,6 @@ def button_press(msg, x, y, w, h, ic, ac): #Button that loops through options, l
   return False
   
 def createButton(text, x, y, w, h, ic, ac, action = None): #Normal button that preforms an action
-  global PLAYER, PLAYER_CONTROLLED
   mouse = pg.mouse.get_pos()
   click = pg.mouse.get_pressed()
   if x+w > mouse[0] > x and y+h > mouse[1] > y:
@@ -80,7 +82,13 @@ def mainScreen():
       RUNNING = backgroundInputCheck(pg.event.get())
       
       screen.fill(BLACK) #Paint the whole screen black
-
+      
+      pg.draw.rect(screen, DBLACK, (0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/11))
+      pg.draw.ellipse(screen, DBLACK, (SCREEN_WIDTH-150, SCREEN_HEIGHT-150, 100, 100))
+      screen.blit(COMPASS, (SCREEN_WIDTH-194, SCREEN_HEIGHT-194))
+      
+      #writeText(screen, 'hermann', 75, "CONNECTED", 150, 50, DBLUE)
+      
       clock.tick(60)
       pg.display.flip()
 
