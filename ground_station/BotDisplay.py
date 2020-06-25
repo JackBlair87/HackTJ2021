@@ -3,7 +3,9 @@ import random
 import numpy as np
 import math as m
 
-#Colors and fonts
+#import Groundstation
+
+#Colors
 BLACK = (30, 30, 30)
 DBLACK = (10, 10, 10)
 WHITE = (167, 167, 167)
@@ -27,16 +29,36 @@ def quitProgram(): #Quits Pygame and Python
   pg.quit()
   quit()
 
-def backgroundInputCheck(eventList): #Constantly checks for quits and enters
+def manual_input_check(eventList): #Constantly checks for quits and enters
   #For the buttons to close the window
-  
+  for event in eventList:
+          if event.type == pg.QUIT:
+              quitProgram()
+              return 0
+          elif event.type == pg.KEYDOWN:
+              if event.key == pg.K_ESCAPE:
+                  quitProgram()
+                  return 0
+              elif event.key == pg.K_w:
+                  return 1
+              elif event.key == pg.K_a:
+                  return 3
+              elif event.key == pg.K_s:
+                  return 2
+              elif event.key == pg.K_d:
+                  return 4
+              else:
+                  return 0
+                
+def background_input_check(eventList): #Constantly checks for quits and enters
+  #For the buttons to close the window
   for event in eventList:
           if event.type == pg.QUIT:
               quitProgram()
           elif event.type == pg.KEYDOWN:
               if event.key == pg.K_ESCAPE:
                   quitProgram()
-
+                  
 def writeText(screen, font, size, text, x, y, color):
   smallText = pg.font.SysFont(font, size)
   textSurf = smallText.render(text, True, color)
@@ -103,16 +125,18 @@ def draw_compass(x, y, angle = 90.0):
   
 def mainScreen():
   while running:
-      RUNNING = backgroundInputCheck(pg.event.get())
+    if(): #If state is manual
+      newState = manual_input_check(pg.event.get())
+      #change ground station state to newState
       
-      screen.fill(BLACK) #Paint the whole screen black
+    screen.fill(BLACK) #Paint the whole screen black
       
-      pg.draw.rect(screen, DBLACK, (0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/11))
-      draw_compass(SCREEN_WIDTH-175, SCREEN_HEIGHT-175)
-      #writeText(screen, 'hermann', 75, "CONNECTED", 150, 50, DBLUE)
+    pg.draw.rect(screen, DBLACK, (0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/11))
+    draw_compass(SCREEN_WIDTH-175, SCREEN_HEIGHT-175)
+    #writeText(screen, 'hermann', 75, "CONNECTED", 150, 50, DBLUE)
       
-      clock.tick(60)
-      pg.display.flip()
+    clock.tick(60)
+    pg.display.flip()
 
 pg.init()
 screen = pg.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
