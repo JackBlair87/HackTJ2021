@@ -79,7 +79,7 @@ def createButton(text, x, y, w, h, ic, ac, action = None): #Normal button that p
   
 def draw_compass(x, y, angle = 90.0):
   screen.blit(COMPASS, (x, y))
-  pg.draw.line(screen, PINK, (x+72, y+72), (x+72 + (65*m.cos(m.radians(angle))), y+72 + (65*m.sin(m.radians(angle)))), 8)
+  pg.draw.line(screen, PINK, (x+72, y+72), (x+72 + (65*m.cos(-m.radians(angle))), y+72 + (65*m.sin(-m.radians(angle)))), 8)
       
   
 def mainScreen():
