@@ -9,6 +9,14 @@ class Mode(enum.Enum):
     manual = 3
     emergency_stop = 4
     
+class State(enum.Enum):
+  stop = 0
+  forward = 1
+  reverse = 2
+  turn_left = 3
+  turn_right = 4
+  error = -1
+    
 class GroundStation:
   def __init__(self):
       self.wall_map = WallMap()

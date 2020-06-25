@@ -1,5 +1,5 @@
 class InfoPacket:
-  def __init__(self, state = 0, f_distance = 0, r_distance = 0, l_encoderCounts = 0, r_encoderCounts = 0, angle = 0, e_stopped = False):
+  def __init__(self, informationstate = None, f_distance = None, r_distance = None, l_encoderCounts = None, r_encoderCounts = None, angle = None, e_stopped = True):
     self.state = state
     self.right_distance = r_distance
     self.front_distance = f_distance
