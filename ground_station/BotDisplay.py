@@ -67,10 +67,10 @@ def main():
     pygame.draw.rect(screen, DBLACK, (0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/11))#top black bar
     mode_button_height = .1
     mode_button_y_diff = mode_button_height+.01
-    create_button_from_text("Stop", .89, .1 + mode_button_y_diff * 0, .1, mode_button_height, mediumFont, DBLUE, WHITE)
-    create_button_from_text("Explore", .89, .1 + mode_button_y_diff * 1, .1, mode_button_height, mediumFont, DBLUE, WHITE)
-    create_button_from_text("Sweep", .89, .1 + mode_button_y_diff * 2, .1, mode_button_height, mediumFont, DBLUE, WHITE)
-    create_button_from_text("Manual", .89, .1 + mode_button_y_diff * 3, .1, mode_button_height, mediumFont, DBLUE, WHITE)
+    create_button_from_text("Stop", .89, .1 + mode_button_y_diff * 0, .1, mode_button_height, mediumFont, BLACK, DBLUE)
+    create_button_from_text("Explore", .89, .1 + mode_button_y_diff * 1, .1, mode_button_height, mediumFont, BLACK, DBLUE)
+    create_button_from_text("Sweep", .89, .1 + mode_button_y_diff * 2, .1, mode_button_height, mediumFont, BLACK, DBLUE)
+    create_button_from_text("Manual", .89, .1 + mode_button_y_diff * 3, .1, mode_button_height, mediumFont, BLACK, DBLUE)
     draw_text("Mode: " + Mode.all_modes[mode], .91, .035)
     draw_compass(SCREEN_WIDTH-175, SCREEN_HEIGHT-175)
 
