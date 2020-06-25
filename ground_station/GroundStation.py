@@ -3,11 +3,11 @@ from .Robot import Robot
 import time
 
 class Mode(enum.Enum): 
-    stop = 0
-    explore = 1
-    sweep = 2
-    manual = 3
-    emergency_stop = 4
+  stop = 0
+  explore = 1
+  sweep = 2
+  manual = 3
+  emergency_stop = 4
     
 class State(enum.Enum):
   stop = 0
@@ -21,8 +21,15 @@ class GroundStation:
   def __init__(self):
       self.wall_map = WallMap()
       self.ui = BotDisplay()
+      self.mode = Mode.manual
       
   def main(self):
+    while True:
+      if self.mode = Mode.manual:
+        self.manual_drive()
+        time.sleep(.1)
+    #Todo: implement other modes
+    """
     while(self.explore):
       new_data = self.communicator.get_data()
       if new_data is None:
@@ -36,8 +43,19 @@ class GroundStation:
       else:
         self.communicator.set_state(instruction)
         self.ui.set_state(instruction)
+      """
   
 
+
+  def manual_drive(self):
+    new_state = self.ui.get_state()
+    if new_state = self.state: #if the state is the same as before, no change is necessary
+      continue
+    self.robot.set_state(new_state)
+    
+      
+      
+    
   def calculate_instruction(self):
     pass
     """
@@ -45,6 +63,7 @@ class GroundStation:
     """
 
     #todo: figure out the next step based on the current location and new data
+  
 
 
 #Apply transfromation to robot location
@@ -52,7 +71,7 @@ class GroundStation:
 
 #called everytime a new data packet arrives
 
-def add_point
+# def add_point
 
 #after a certain ammount of time--
 #def calculateWallSegmentBased on Points

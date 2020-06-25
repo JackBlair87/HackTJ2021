@@ -20,7 +20,6 @@ class Robot:
         self.dataPackets = []
         self.communicator = Communicator()
         self.communicator.initiate_bluetooth()
-        self.mode = Mode.stop
         self.state = State.stop
         
     def add_data(self, infoPacket):
