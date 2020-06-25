@@ -3,7 +3,7 @@ import random
 import numpy as np
 import math as m
 
-#Colors
+#Colors and fonts
 BLACK = (30, 30, 30)
 DBLACK = (10, 10, 10)
 WHITE = (167, 167, 167)
@@ -13,12 +13,15 @@ TAN = (184, 130, 109)
 BLUE = (85, 154, 212)
 PINK = (197, 134, 192)
 
+mediumFont = pygame.font.Font("OpenSans-Regular.ttf", 28)
+largeFont = pygame.font.Font("OpenSans-Regular.ttf", 40)
+
 #Main Settings
 SCREEN_WIDTH = 1440 
 SCREEN_HEIGHT = 800 
 FPS = 60 #Standard Smooth FPS
 running = True
-COMPASS = pg.image.load('/Users/jackblair/Desktop/Code/HackTJ2021/HackTJ2021/ground_station/ui/Compass.png')
+COMPASS = pg.image.load('./ground_station/ui/Compass.png')
 
 def quitProgram(): #Quits Pygame and Python
   pg.quit()
@@ -76,6 +79,22 @@ def createButton(text, x, y, w, h, ic, ac, action = None): #Normal button that p
   else:
       pg.draw.rect(screen, ic,(x,y,w,h))
   writeText(screen, "arial", 50, text, (x+(w/2)), (y+(h/2)), WHITE)
+
+def create_button_from_text(text, x, y, width, height):
+  """
+  x and y refer to the coordinate point of the top left of the button, where (0,0) is the top-left
+  corner and (1,1) is the bottom right corner
+  width and height refer to the width and height of the button, where 0 represents no width or height,
+  and 1 represent a button that will fill up the screen (same width and height as the screen)
+  """
+  new_button = pygame.Rect((SCREEN_WIDTH * x), (SCREEN_HEIGHT * x), SCREEN_WIDTH * width, SCREEN_HEIGHT * height)
+  playX = mediumFont.render(text, True, DBLUE)
+  playXRect = playX.get_rect()
+  playXRect.center = new_button.center
+  pygame.draw.rect(screen, white, new_button)
+  screen.blit(playX, playXRect)
+  return new_button
+
   
 def draw_compass(x, y, angle = 90.0):
   screen.blit(COMPASS, (x, y))
