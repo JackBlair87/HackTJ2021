@@ -18,8 +18,7 @@ class GroundStation:
     while(True):
       
       
-      
-      
+    
       
       new_data = self.communicator.get_data()
       if new_data is None:
