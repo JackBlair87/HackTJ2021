@@ -14,8 +14,8 @@ BLUE = (85, 154, 212)
 PINK = (197, 134, 192)
 
 #Main Settings
-SCREEN_WIDTH = 1440 #Must be divisible by SQUARE_SIZE
-SCREEN_HEIGHT = 800 #Must be divisible by SQUARE_SIZE
+SCREEN_WIDTH = 1440 
+SCREEN_HEIGHT = 800 
 FPS = 60 #Standard Smooth FPS
 running = True
 COMPASS = pg.image.load('/Users/jackblair/Desktop/Code/HackTJ2021/HackTJ2021/ground_station/ui/Compass.png')
@@ -79,7 +79,7 @@ def createButton(text, x, y, w, h, ic, ac, action = None): #Normal button that p
   
 def draw_compass(x, y, angle = 90.0):
   screen.blit(COMPASS, (x, y))
-  pg.draw.line(screen, PINK, (x+72, y+72), (x+72 + (65*m.cos(m.radians(angle))), y+72 + (65*m.sin(m.radians(angle)))), 6)
+  pg.draw.line(screen, PINK, (x+72, y+72), (x+72 + (65*m.cos(m.radians(angle))), y+72 + (65*m.sin(m.radians(angle)))), 8)
       
   
 def mainScreen():
@@ -89,7 +89,7 @@ def mainScreen():
       screen.fill(BLACK) #Paint the whole screen black
       
       pg.draw.rect(screen, DBLACK, (0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/11))
-      draw_compass(SCREEN_WIDTH-175, SCREEN_HEIGHT-175, 90.0)
+      draw_compass(SCREEN_WIDTH-175, SCREEN_HEIGHT-175)
       #writeText(screen, 'hermann', 75, "CONNECTED", 150, 50, DBLUE)
       
       clock.tick(60)
