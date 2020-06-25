@@ -15,8 +15,8 @@ TAN = (184, 130, 109)
 BLUE = (85, 154, 212)
 PINK = (197, 134, 192)
 
-mediumFont = pygame.font.Font("OpenSans-Regular.ttf", 28)
-largeFont = pygame.font.Font("OpenSans-Regular.ttf", 40)
+mediumFont = pg.font.Font("OpenSans-Regular.ttf", 28)
+largeFont = pg.font.Font("OpenSans-Regular.ttf", 40)
 
 #Main Settings
 SCREEN_WIDTH = 1440 
