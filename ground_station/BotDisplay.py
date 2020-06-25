@@ -13,8 +13,8 @@ TAN = (184, 130, 109)
 BLUE = (85, 154, 212)
 PINK = (197, 134, 192)
 
-mediumFont = pygame.font.Font("OpenSans-Regular.ttf", 28)
-largeFont = pygame.font.Font("OpenSans-Regular.ttf", 40)
+mediumFont = pg.font.Font("OpenSans-Regular.ttf", 28)
+largeFont = pg.font.Font("OpenSans-Regular.ttf", 40)
 
 #Main Settings
 SCREEN_WIDTH = 1440 
@@ -87,11 +87,11 @@ def create_button_from_text(text, x, y, width, height):
   width and height refer to the width and height of the button, where 0 represents no width or height,
   and 1 represent a button that will fill up the screen (same width and height as the screen)
   """
-  new_button = pygame.Rect((SCREEN_WIDTH * x), (SCREEN_HEIGHT * x), SCREEN_WIDTH * width, SCREEN_HEIGHT * height)
+  new_button = pg.Rect((SCREEN_WIDTH * x), (SCREEN_HEIGHT * x), SCREEN_WIDTH * width, SCREEN_HEIGHT * height)
   playX = mediumFont.render(text, True, DBLUE)
   playXRect = playX.get_rect()
   playXRect.center = new_button.center
-  pygame.draw.rect(screen, white, new_button)
+  pg.draw.rect(screen, white, new_button)
   screen.blit(playX, playXRect)
   return new_button
 
