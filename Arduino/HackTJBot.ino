@@ -20,9 +20,8 @@ RotaryEncoder leftEncoder(A0, A1);
 MPU9250 mpu;
 
 //Global Variables ------------------------------
-int state = 0;
-      //0, Stop; 1, Forward; 2, Reverse; 3, Turn Left; 4, Turn Right; Other, LED on 
-int totalTravelR = 143;
+int state = 0; //0, Stop; 1, Forward; 2, Reverse; 3, Turn Left; 4, Turn Right; Other, LED on 
+int totalTravelR = 0;
 int totalTravelL = 0;
 int changeTravelR = 0; //Difference since last transmission
 int changeTravelL = 0;
@@ -46,9 +45,9 @@ void setup(){
 }
 
 void transmitData(){
-  //recieve
+  //Recieve
   byte byte_count=serial_connection.available();//This gets the number of bytes that were sent by the python script
-  if(byte_count)//If there are any bytes then deal with them
+  if(byte_count) //If there are any bytes then deal with them
   {
     Serial.println("Incoming Data");//Signal to the monitor that something is happening
     int first_bytes=byte_count;//initialize the number of bytes that we might handle. 
@@ -74,7 +73,7 @@ void transmitData(){
   
   //send
   serial_connection.println(String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(totalTravelL) + "," + String(totalTravelR) + "," + String(13.324));
-
+    //Example --> 12330,0,12.0,34.0,-48,-39,20.342
   //set state to new state
   //set servo state to new state
 
@@ -89,7 +88,7 @@ void encoderCheck(){
 
   int differenceR = rightEncoder.getPosition() - totalTravelR; //Larger int is positive change
   int differenceL = leftEncoder.getPosition() - totalTravelL;
-  //totalTravelR = rightEncoder.getPosition();
+  totalTravelR = rightEncoder.getPosition();
   totalTravelL = leftEncoder.getPosition();
   changeTravelR += differenceR;
   changeTravelL += differenceL;
