@@ -42,8 +42,7 @@ last_communication_time = 0
 print("Start Time" + str(start_time))
 
 #objects that we need
-communicator = Communicator()
-communicator.initiate_bluetooth()
+communicator = Communicator(None, None, False)
 
 all_buttons = []
 
@@ -62,21 +61,22 @@ def main():
     
     screen.fill(BLACK)
     pygame.draw.rect(screen, DBLACK, (0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/11))
-    draw_compass(SCREEN_WIDTH-175, SCREEN_HEIGHT-175)
+    #draw_compass(SCREEN_WIDTH-175, SCREEN_HEIGHT-175)
 
     if mode == Mode.manual:
       new_state = state_from_key_press()
+    elif mode == Mode.stop:
+      new_state = State.stop
       # print(State.all_states[state])
 
     current_time = get_time()
     if current_time - last_communication_time > 100:
       if new_state != state:
-        print("New state:", new_state)
+        #print("New state: ", all_states[new_state], ", ", current_time / 1000, " seconds", sep = "")
         #robot.addInfo(c.recieve_info())
         state = new_state
         last_communication_time = current_time
         communicator.transmit_info(new_state)
-        print("Communication happened", current_time)
         # print(get_time())
       
     pygame.display.flip()
@@ -121,24 +121,24 @@ def get_button_pressed():
 def state_from_key_press():
   keys = pygame.key.get_pressed()
   if keys[pygame.K_LEFT]:
-    print("left pressed")
+    #print("left pressed")
     return State.turn_left
   elif keys[pygame.K_RIGHT]:
-    print("right pressed")
+    #print("right pressed")
     return State.turn_right
   elif keys[pygame.K_UP]:
-    print("up pressed")
+    #print("up pressed")
     return State.forward
   elif keys[pygame.K_DOWN]:
-    print("down pressed")
+    #print("down pressed")
     return State.reverse
   else:
-    print("no arrow key pressed")
+    #print("no arrow key pressed")
     return State.stop
 
 def draw_compass(x, y, angle = 90.0):
   screen.blit(COMPASS, (x, y))
-  pygame.draw.line(screen, PINK, (x+72, y+72), (x+72 + (65*math.cos(math.radians(angle-90))), y+72 + (65*math.sin(math.radians(angle-90)))), 8)
+  pygame.draw.line(screen, GREEN, (x+72, y+72), (x+72 + (65*math.cos(math.radians(angle-90))), y+72 + (65*math.sin(math.radians(angle-90)))), 8)
 
 def get_time():
   return int(round(time.time() * 1000)) - start_time
