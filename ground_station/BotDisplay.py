@@ -37,6 +37,7 @@ running = True
 mode = Mode.manual
 state = State.stop
 new_state = State.stop
+current_action = 'Initializing Ground Station'
 
 #time information for communications
 start_time = int(round(time.time() * 1000))
@@ -52,7 +53,7 @@ communicator.initiate_bluetooth()
 all_buttons = []
 
 def main():
-  global last_communication_time, running, state, new_state, last_button_press_time, mode
+  global last_communication_time, running, state, new_state, last_button_press_time, mode, current_action
   while running:
     #check to see if the user wants to quit the game
     for event in pygame.event.get():
@@ -62,16 +63,21 @@ def main():
           if event.key == pygame.K_ESCAPE:
             quitProgram()
     
+
+    top_row_y = .037
     #painting screen components
     screen.fill(BLACK)
     pygame.draw.rect(screen, DBLACK, (0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/11))#top black bar
     mode_button_height = .1
     mode_button_y_diff = mode_button_height+.01
-    create_button_from_text("Stop", .89, .1 + mode_button_y_diff * 0, .1, mode_button_height, mediumFont, BLACK, DBLUE)
-    create_button_from_text("Explore", .89, .1 + mode_button_y_diff * 1, .1, mode_button_height, mediumFont, BLACK, DBLUE)
-    create_button_from_text("Sweep", .89, .1 + mode_button_y_diff * 2, .1, mode_button_height, mediumFont, BLACK, DBLUE)
-    create_button_from_text("Manual", .89, .1 + mode_button_y_diff * 3, .1, mode_button_height, mediumFont, BLACK, DBLUE)
-    draw_text("Mode: " + Mode.all_modes[mode], .91, .035)
+    create_button_from_text("Stop", .89, .1 + mode_button_y_diff * 0, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
+    create_button_from_text("Explore", .89, .1 + mode_button_y_diff * 1, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
+    create_button_from_text("Sweep", .89, .1 + mode_button_y_diff * 2, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
+    create_button_from_text("Manual", .89, .1 + mode_button_y_diff * 3, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
+    
+    draw_text("Mode: " + Mode.all_modes[mode], .91, top_row_y,)
+    draw_text("State: " + State.all_states[state], .75, top_row_y)
+    draw_text(current_action, .01, top_row_y, basis_point='midleft')
     draw_compass(SCREEN_WIDTH-175, SCREEN_HEIGHT-175)
 
 
@@ -86,7 +92,7 @@ def main():
       if current_time - last_button_press_time > 250:
         last_button_press_time = current_time
         mode = Mode.all_modes.index(button_text)
-        print("Mode changed to:", Mode.all_modes[mode])
+        log_action("Mode changed to: " + Mode.all_modes[mode])
       
 
 
@@ -97,11 +103,10 @@ def main():
     #send new state
     current_time = get_time()
     if current_time - last_communication_time > 100 and new_state != state:
-      print("New state:", new_state)
       state = new_state
       last_communication_time = current_time
       communicator.transmit_info(new_state)
-      print("Communication happened", current_time)
+      log_action("State changed to: " + State.all_states[new_state] + ", transmission at: " + str(current_time))
       
     pygame.display.flip()
   quitProgram()
@@ -134,28 +139,40 @@ def get_button_pressed():
     for button, text in all_buttons:
       if button.collidepoint(mouse):
         return button, text
-def draw_text(text, x, y, font_object=mediumFont, text_color=WHITE):
+def draw_text(text, x, y, font_object=mediumFont, text_color=WHITE, basis_point = 'center'):
   title = font_object.render(text, True, text_color)
   titleRect = title.get_rect()
-  titleRect.center = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  if basis_point == 'center':
+    titleRect.center = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  elif basis_point == 'topleft':
+    titleRect.topleft = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  elif basis_point == 'topright':
+    titleRect.topright = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  elif basis_point == 'bottomleft':
+    titleRect.bottomleft = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  elif basis_point == 'bottomright':
+    titleRect.bottomright = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  elif basis_point == 'midleft':
+    titleRect.midleft = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  elif basis_point == 'midright':
+    titleRect.midright = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  elif basis_point == 'midtop':
+    titleRect.midtop = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  elif basis_point == 'midbottom':
+    titleRect.midbottom = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
   screen.blit(title, titleRect)
 
 def state_from_key_press():
   keys = pygame.key.get_pressed()
   if keys[pygame.K_LEFT]:
-    # print("left pressed")
     return State.turn_left
   elif keys[pygame.K_RIGHT]:
-    # print("right pressed")
     return State.turn_right
   elif keys[pygame.K_UP]:
-    # print("up pressed")
     return State.forward
   elif keys[pygame.K_DOWN]:
-    # print("down pressed")
     return State.reverse
   else:
-    # print("no arrow key pressed")
     return State.stop
 
 def draw_compass(x, y, angle = 90.0):
@@ -171,6 +188,11 @@ def quitProgram(): #Quits Pygame and Python
   pygame.quit()
   quit()
   communicator.deactivate_bluetooth()
+
+def log_action(action):
+  global current_action
+  print(action)
+  current_action = action
 
 main()
 
