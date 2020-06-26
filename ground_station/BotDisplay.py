@@ -79,7 +79,7 @@ def main():
     create_button_from_text("Sweep", .89, .1 + mode_button_y_diff * 2, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
     create_button_from_text("Manual", .89, .1 + mode_button_y_diff * 3, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
     
-    draw_text("Mode: " + Mode.all_modes[mode], .91, top_row_y,)
+    mode_label = draw_text("Mode: " + Mode.all_modes[mode], .91, top_row_y,)
     draw_text("State: " + State.all_states[state], .75, top_row_y)
     draw_text(current_action, .01, top_row_y, basis_point='midleft')
     draw_compass(SCREEN_WIDTH-175, SCREEN_HEIGHT-175)
@@ -165,6 +165,7 @@ def draw_text(text, x, y, font_object=mediumFont, text_color=WHITE, basis_point 
   elif basis_point == 'midbottom':
     titleRect.midbottom = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
   screen.blit(title, titleRect)
+  return titleRect
 
 def state_from_key_press():
   keys = pygame.key.get_pressed()
