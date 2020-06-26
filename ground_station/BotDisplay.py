@@ -24,7 +24,7 @@ FPS = 60 #Standard Smooth FPS
 
 # pygame initialization
 pygame.init()
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)
 pygame.display.set_caption("GroundStation")
 
 clock = pygame.time.Clock()
@@ -54,6 +54,7 @@ all_buttons = []
 
 def main():
   global last_communication_time, running, state, new_state, last_button_press_time, mode, current_action
+  global screen, SCREEN_WIDTH, SCREEN_HEIGHT
   while running:
     #check to see if the user wants to quit the game
     for event in pygame.event.get():
@@ -62,8 +63,11 @@ def main():
         elif event.type == pygame.KEYDOWN:
           if event.key == pygame.K_ESCAPE:
             quitProgram()
+        elif event.type == pygame.VIDEORESIZE:
+          SCREEN_WIDTH, SCREEN_HEIGHT = event.size
+          screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)
     
-
+    
     top_row_y = .037
     #painting screen components
     screen.fill(BLACK)
