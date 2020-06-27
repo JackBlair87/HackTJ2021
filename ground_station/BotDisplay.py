@@ -4,7 +4,8 @@ import numpy as np
 import math
 import time
 from GroundStation import Mode, State
-from Communicator import Communicator
+#from Communicator import Communicator
+from Robot import Robot
 
 #Colors
 BLACK = (30, 30, 30)
@@ -17,43 +18,42 @@ BLUE = (85, 154, 212)
 PINK = (197, 134, 192)
 
 #Window
-SCREEN_WIDTH = 1440 
-SCREEN_HEIGHT = 800 
+DEFAULT_SCREEN_WIDTH = 1440 
+DEFAULT_SCREEN_HEIGHT = 800 
 FPS = 60 #Standard Smooth FPS
 
 
 # pygame initialization
 pygame.init()
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)
+screen = pygame.display.set_mode((DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT), pygame.RESIZABLE)
 pygame.display.set_caption("GroundStation")
 
 clock = pygame.time.Clock()
 COMPASS = pygame.image.load('./ground_station/assets/Compass.png')
+ROBOT = pygame.image.load('./ground_station/assets/Robot.png')
 mediumFont = pygame.font.Font("./ground_station/assets/OpenSans-Regular.ttf", 28)
 largeFont = pygame.font.Font("./ground_station/assets/OpenSans-Regular.ttf", 40)
 
 #information about the robot
 running = True
 mode = Mode.manual
-state = State.stop
-new_state = State.stop
 current_action = 'Initializing Ground Station'
 
 #time information for communications
 start_time = int(round(time.time() * 1000))
 last_communication_time = 0
 last_button_press_time = 0
-print("Start Time" + str(start_time))
+#print("Start Time" + str(start_time))
 
 #objects that we need
-communicator = Communicator(None, None, False)
+robot = Robot()
 
 #dictionary won't work because pygame.Rect is unhashable
 all_buttons = []
 
 def main():
-  global last_communication_time, running, state, new_state, last_button_press_time, mode, current_action
-  global screen, SCREEN_WIDTH, SCREEN_HEIGHT
+  global last_communication_time, running, robot, last_button_press_time, mode, current_action
+  global screen, DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT
   while running:
     #check to see if the user wants to quit the game
     for event in pygame.event.get():
@@ -63,14 +63,14 @@ def main():
           if event.key == pygame.K_ESCAPE:
             quitProgram()
         elif event.type == pygame.VIDEORESIZE:
-          SCREEN_WIDTH, SCREEN_HEIGHT = event.size
-          screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)
+          DEFAULT_SCREEN_WIDTH, SCREEN_HEIGHT = event.size
+          screen = pygame.display.set_mode((DEFAULT_SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)
     
     
     top_row_y = .037
     #painting screen components
     screen.fill(BLACK)
-    pygame.draw.rect(screen, DBLACK, (0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/11))#top black bar
+    pygame.draw.rect(screen, DBLACK, (0, 0, DEFAULT_SCREEN_WIDTH, SCREEN_HEIGHT/11))#top black bar
     mode_button_height = .1
     mode_button_y_diff = mode_button_height+.01
     create_button_from_text("Stop", .89, .1 + mode_button_y_diff * 0, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
@@ -79,9 +79,9 @@ def main():
     create_button_from_text("Manual", .89, .1 + mode_button_y_diff * 3, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
     
     mode_label = draw_text("Mode: " + Mode.all_modes[mode], .91, top_row_y,)
-    draw_text("State: " + State.all_states[state], .75, top_row_y)
+    draw_text("State: " + State.all_states[robot.state], .75, top_row_y)
     draw_text(current_action, .01, top_row_y, basis_point='midleft')
-    draw_compass(SCREEN_WIDTH-175, SCREEN_HEIGHT-175)
+    draw_compass(DEFAULT_SCREEN_WIDTH-175, SCREEN_HEIGHT-175)
 
 
     #user interaction
@@ -102,19 +102,10 @@ def main():
 
     #change state depending on the mode
     if mode == Mode.manual:
-      new_state = state_from_key_press()
-      
-      #elif mode == Mode.stop:
-      #new_state = State.stop
-      # print(State.all_states[state])
-
-    #send new state
-    current_time = get_time()
-    if current_time - last_communication_time > 100 and new_state != state:
-      state = new_state
-      last_communication_time = current_time
-      communicator.transmit_info(new_state)
-      log_action("State changed to: " + State.all_states[new_state] + ", transmission at: " + str(current_time))
+      if(get_time() - last_communication_time > 100): #What is this increment for?
+        if(robot.change_state(state_from_key_press())): #returns true if necessary
+          log_action("State changed to: " + State.all_states[robot.state] + ", transmission at: " + str(current_time))
+          last_communication_time = get_time()
       
     pygame.display.flip()
   quitProgram()
@@ -126,7 +117,7 @@ def create_button_from_text(text, x, y, width, height, font_object, text_color=W
   width and height refer to the width and height of the button, where 0 represents no width or height,
   and 1 represent a button that will fill up the screen (same width and height as the screen)
   """
-  new_button = pygame.Rect((SCREEN_WIDTH * x), (SCREEN_HEIGHT * y), SCREEN_WIDTH * width, SCREEN_HEIGHT * height)
+  new_button = pygame.Rect((DEFAULT_SCREEN_WIDTH * x), (DEFAULT_SCREEN_HEIGHT * y), DEFAULT_SCREEN_WIDTH * width, DEFAULT_SCREEN_HEIGHT * height)
   playX = mediumFont.render(text, True, text_color, background_color)
   playXRect = playX.get_rect()
   playXRect.center = new_button.center
@@ -147,27 +138,28 @@ def get_button_pressed():
     for button, text in all_buttons:
       if button.collidepoint(mouse):
         return button, text
+      
 def draw_text(text, x, y, font_object=mediumFont, text_color=WHITE, basis_point = 'center'):
   title = font_object.render(text, True, text_color)
   titleRect = title.get_rect()
   if basis_point == 'center':
-    titleRect.center = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+    titleRect.center = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
   elif basis_point == 'topleft':
-    titleRect.topleft = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+    titleRect.topleft = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
   elif basis_point == 'topright':
-    titleRect.topright = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+    titleRect.topright = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
   elif basis_point == 'bottomleft':
-    titleRect.bottomleft = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+    titleRect.bottomleft = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
   elif basis_point == 'bottomright':
-    titleRect.bottomright = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+    titleRect.bottomright = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
   elif basis_point == 'midleft':
-    titleRect.midleft = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+    titleRect.midleft = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
   elif basis_point == 'midright':
-    titleRect.midright = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+    titleRect.midright = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
   elif basis_point == 'midtop':
-    titleRect.midtop = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+    titleRect.midtop = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
   elif basis_point == 'midbottom':
-    titleRect.midbottom = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+    titleRect.midbottom = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
   screen.blit(title, titleRect)
   return titleRect
 
@@ -193,10 +185,10 @@ def get_time():
 
 def quitProgram(): #Quits Pygame and Python
   print("Stopping all tasks and quitting program")
-  communicator.transmit_info(State.stop)
+  robot.communicator.transmit_info(State.stop)
   pygame.quit()
+  robot.communicator.deactivate_bluetooth()
   quit()
-  communicator.deactivate_bluetooth()
 
 def log_action(action):
   global current_action

@@ -12,8 +12,9 @@ class Communicator:
       self.initiate_bluetooth()
     
   def initiate_bluetooth(self):
-    self.bluetooth = serial.Serial(self.port, self.baud) #Start communications with the bluetooth unit
-    self.bluetooth.flushInput() #This gives the bluetooth a little kick
+    if self.enabled:
+      self.bluetooth = serial.Serial(self.port, self.baud) #Start communications with the bluetooth unit
+      self.bluetooth.flushInput() #This gives the bluetooth a little kick
     
 #Timestamp 12321, State -1 to 4, Distance Sensor Front Double, Distance Sensor Right Double, Left Encoder Value Int, Right Encoder Value Int, Total Angle Double
   def recieve_info(self, old_state = 0):
