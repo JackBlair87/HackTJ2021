@@ -88,6 +88,7 @@ def main():
 
     #button presses
     current_time = get_time()
+    #one sec I have to glue and drill the last thing into my boat bc my dad goes to sleep early and we are going on the boat tomorrow so like 15 min 
     temp = get_button_pressed()
     if temp is not None: #if a button was pressed, continue with this section
       pressed_button = temp[0]
