@@ -24,7 +24,7 @@ FPS = 60 #Standard Smooth FPS
 
 # pygame initialization
 pygame.init()
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)
 pygame.display.set_caption("GroundStation")
 
 clock = pygame.time.Clock()
@@ -37,17 +37,23 @@ running = True
 mode = Mode.manual
 state = State.stop
 new_state = State.stop
+current_action = 'Initializing Ground Station'
+
+#time information for communications
 start_time = int(round(time.time() * 1000))
 last_communication_time = 0
+last_button_press_time = 0
 print("Start Time" + str(start_time))
 
 #objects that we need
 communicator = Communicator(None, None, False)
 
+#dictionary won't work because pygame.Rect is unhashable
 all_buttons = []
 
 def main():
-  global last_communication_time, running, state, new_state
+  global last_communication_time, running, state, new_state, last_button_press_time, mode, current_action
+  global screen, SCREEN_WIDTH, SCREEN_HEIGHT
   while running:
     #check to see if the user wants to quit the game
     for event in pygame.event.get():
@@ -56,46 +62,76 @@ def main():
         elif event.type == pygame.KEYDOWN:
           if event.key == pygame.K_ESCAPE:
             quitProgram()
+        elif event.type == pygame.VIDEORESIZE:
+          SCREEN_WIDTH, SCREEN_HEIGHT = event.size
+          screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)
     
-    # print(last_communication_time, get_time())
     
+    top_row_y = .037
+    #painting screen components
     screen.fill(BLACK)
-    pygame.draw.rect(screen, DBLACK, (0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/11))
-    #draw_compass(SCREEN_WIDTH-175, SCREEN_HEIGHT-175)
+    pygame.draw.rect(screen, DBLACK, (0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/11))#top black bar
+    mode_button_height = .1
+    mode_button_y_diff = mode_button_height+.01
+    create_button_from_text("Stop", .89, .1 + mode_button_y_diff * 0, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
+    create_button_from_text("Explore", .89, .1 + mode_button_y_diff * 1, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
+    create_button_from_text("Sweep", .89, .1 + mode_button_y_diff * 2, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
+    create_button_from_text("Manual", .89, .1 + mode_button_y_diff * 3, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
+    
+    mode_label = draw_text("Mode: " + Mode.all_modes[mode], .91, top_row_y,)
+    draw_text("State: " + State.all_states[state], .75, top_row_y)
+    draw_text(current_action, .01, top_row_y, basis_point='midleft')
+    draw_compass(SCREEN_WIDTH-175, SCREEN_HEIGHT-175)
 
+
+    #user interaction
+
+    #button presses
+    current_time = get_time()
+    temp = get_button_pressed()
+    if temp is not None: #if a button was pressed, continue with this section
+      pressed_button = temp[0]
+      button_text = temp[1]
+      if current_time - last_button_press_time > 250:
+        last_button_press_time = current_time
+        mode = Mode.all_modes.index(button_text)
+        log_action("Mode changed to: " + Mode.all_modes[mode])
+      
+
+
+    #change state depending on the mode
     if mode == Mode.manual:
       new_state = state_from_key_press()
-    elif mode == Mode.stop:
-      new_state = State.stop
+      
+      #elif mode == Mode.stop:
+      #new_state = State.stop
       # print(State.all_states[state])
 
+    #send new state
     current_time = get_time()
-    if current_time - last_communication_time > 100:
-      if new_state != state:
-        #print("New state: ", all_states[new_state], ", ", current_time / 1000, " seconds", sep = "")
-        #robot.addInfo(c.recieve_info())
-        state = new_state
-        last_communication_time = current_time
-        communicator.transmit_info(new_state)
-        # print(get_time())
+    if current_time - last_communication_time > 100 and new_state != state:
+      state = new_state
+      last_communication_time = current_time
+      communicator.transmit_info(new_state)
+      log_action("State changed to: " + State.all_states[new_state] + ", transmission at: " + str(current_time))
       
     pygame.display.flip()
   quitProgram()
   
-def create_button_from_text(text, x, y, width, height):
+def create_button_from_text(text, x, y, width, height, font_object, text_color=WHITE, background_color=BLACK):
   """
   x and y refer to the coordinate point of the top left of the button, where (0,0) is the top-left
   corner and (1,1) is the bottom right corner
   width and height refer to the width and height of the button, where 0 represents no width or height,
   and 1 represent a button that will fill up the screen (same width and height as the screen)
   """
-  new_button = pygame.Rect((SCREEN_WIDTH * x), (SCREEN_HEIGHT * x), SCREEN_WIDTH * width, SCREEN_HEIGHT * height)
-  playX = mediumFont.render(text, True, DBLUE)
+  new_button = pygame.Rect((SCREEN_WIDTH * x), (SCREEN_HEIGHT * y), SCREEN_WIDTH * width, SCREEN_HEIGHT * height)
+  playX = mediumFont.render(text, True, text_color, background_color)
   playXRect = playX.get_rect()
   playXRect.center = new_button.center
-  pygame.draw.rect(screen, WHITE, new_button)
+  pygame.draw.rect(screen, background_color, new_button)
   screen.blit(playX, playXRect)
-  all_buttons.add(new_button)
+  all_buttons.append((new_button, text))
   return new_button
 
 def get_button_pressed():
@@ -106,34 +142,45 @@ def get_button_pressed():
   """
   click, _, _ = pygame.mouse.get_pressed()
   if click == 1:
-      mouse = pygame.mouse.get_pos()
-      clicked_buttons = []
-      for i in all_buttons:
-        if button.collidepoint(mouse):
-          clicked_buttons.add(button)
-  if len(clicked_buttons) == 0:
-    return 0
-  elif len(clicked_buttons == 1):
-    return clicked_buttons[0]
-  else:
-    return clicked_buttons
+    mouse = pygame.mouse.get_pos()
+    for button, text in all_buttons:
+      if button.collidepoint(mouse):
+        return button, text
+def draw_text(text, x, y, font_object=mediumFont, text_color=WHITE, basis_point = 'center'):
+  title = font_object.render(text, True, text_color)
+  titleRect = title.get_rect()
+  if basis_point == 'center':
+    titleRect.center = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  elif basis_point == 'topleft':
+    titleRect.topleft = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  elif basis_point == 'topright':
+    titleRect.topright = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  elif basis_point == 'bottomleft':
+    titleRect.bottomleft = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  elif basis_point == 'bottomright':
+    titleRect.bottomright = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  elif basis_point == 'midleft':
+    titleRect.midleft = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  elif basis_point == 'midright':
+    titleRect.midright = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  elif basis_point == 'midtop':
+    titleRect.midtop = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  elif basis_point == 'midbottom':
+    titleRect.midbottom = (SCREEN_WIDTH * x, SCREEN_HEIGHT * y)
+  screen.blit(title, titleRect)
+  return titleRect
 
 def state_from_key_press():
   keys = pygame.key.get_pressed()
   if keys[pygame.K_LEFT]:
-    #print("left pressed")
     return State.turn_left
   elif keys[pygame.K_RIGHT]:
-    #print("right pressed")
     return State.turn_right
   elif keys[pygame.K_UP]:
-    #print("up pressed")
     return State.forward
   elif keys[pygame.K_DOWN]:
-    #print("down pressed")
     return State.reverse
   else:
-    #print("no arrow key pressed")
     return State.stop
 
 def draw_compass(x, y, angle = 90.0):
@@ -149,6 +196,11 @@ def quitProgram(): #Quits Pygame and Python
   pygame.quit()
   quit()
   communicator.deactivate_bluetooth()
+
+def log_action(action):
+  global current_action
+  print(action)
+  current_action = action
 
 main()
 

@@ -7,7 +7,7 @@ class Mode():
   manual = 3
   emergency_stop = 4
   #a list for easier debugging
-  all_modes = ['stop', 'explore', 'sweep', 'manual', 'emergency_stop']
+  all_modes = ['Stop', 'Explore', 'Sweep', 'Manual', 'Emergency_stop']
     
 class State():
   stop = 0

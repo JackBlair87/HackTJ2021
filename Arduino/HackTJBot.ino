@@ -14,10 +14,10 @@ int i=0;//Arduinos are not the most capable chips in the world so I just create 
 RobotServos servos(6, 5);
 DistanceEstimator dF(8, 7);
 DistanceEstimator dR(10, 9);
+//MPU9250 mpu;
 SoftwareSerial serial_connection(11, 12); //Create a serial connection with TX and RX on these pins
 RotaryEncoder rightEncoder(A2, A3);
 RotaryEncoder leftEncoder(A0, A1);
-MPU9250 mpu;
 
 //Global Variables ------------------------------
 int state = 0; //0, Stop; 1, Forward; 2, Reverse; 3, Turn Left; 4, Turn Right; Other, LED on 
@@ -32,16 +32,17 @@ int servoTolerance = 2; //number of encoder step shifts when stopped
 
 double stoppingBenchmark = 2; //cm
 int baudRate = 9600;
-int commsInterval = 500;
+int commsInterval = 100;
 //-----------------------------------------------
 
 void setup(){
   pinMode(ledPin, OUTPUT);
   Serial.begin(baudRate); //Initialize communications to the serial monitor in the Arduino IDE
   serial_connection.begin(baudRate); //Initialize communications with the bluetooth module
-  Wire.begin();
-  delay(2000);
-   mpu.setup();
+  //Wire.begin();
+
+  //delay(2000);
+  //mpu.setup();
 }
 
 void transmitData(){
@@ -67,12 +68,20 @@ void transmitData(){
     {
       inChar=serial_connection.read();
     }
-    
+
+    Serial.print("Num is: ");
     Serial.println(inData);//Print to the monitor what was detected
+
+    state = inData[0] - '0';
+    Serial.println(inData[0] - '0');
   }
+
+  //state = inData[0];
   
   //send
-  serial_connection.println(String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(totalTravelL) + "," + String(totalTravelR) + "," + String(13.324));
+  //serial_connection.println(String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()));
+  //Serial.println(String(millis()) + "," + String(state) + "," + String(" ") + "," + String(" ") + "," + String(totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()));
+  //Serial.println(String(mpu.getYaw()));
     //Example --> 12330,0,12.0,34.0,-48,-39,20.342
   //set state to new state
   //set servo state to new state
@@ -85,6 +94,7 @@ void transmitData(){
 void encoderCheck(){
   rightEncoder.tick();
   leftEncoder.tick();
+  
 
   int differenceR = rightEncoder.getPosition() - totalTravelR; //Larger int is positive change
   int differenceL = leftEncoder.getPosition() - totalTravelL;
@@ -104,9 +114,10 @@ void encoderCheck(){
 }
 
 void refreshVariables(){
-  mpu.update();
+  
   encoderCheck();
-  dR.record();
+  //dR.record();
+  //mpu.update();
   
   //dF.record();
 
@@ -114,12 +125,12 @@ void refreshVariables(){
     //state = 0; //stops
   //}
 
- if(dR.getAverage() <= stoppingBenchmark && dR.getAverage() != -1){      //may change
-    state = 0; //stops
-  }
-  else{
-    state = 1;
-  }
+ //if(dR.getAverage() <= stoppingBenchmark && dR.getAverage() != -1){      //may change
+    //state = 0; //stops
+  //}
+  //else{
+    //state = 1;
+  //}
   
   servos.setState(state);
 }
