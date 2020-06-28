@@ -38,11 +38,7 @@ class Robot:
         self.ycoord = y
         self.angle = angle
         self.dataPackets = []
-<<<<<<< HEAD
-        self.communicator = Communicator(None, None, False)
-=======
         self.communicator = Communicator(enabled = False)
->>>>>>> 015630ce20360c331fa028f58d5ba6cbdb232838
         self.communicator.initiate_bluetooth()
         self.state = State.stop
         
