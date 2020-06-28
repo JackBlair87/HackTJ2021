@@ -23,8 +23,6 @@ RotaryEncoder leftEncoder(A0, A1);
 int state = 0; //0, Stop; 1, Forward; 2, Reverse; 3, Turn Left; 4, Turn Right; Other, LED on 
 int totalTravelR = 0;
 int totalTravelL = 0;
-int changeTravelR = 0; //Difference since last transmission
-int changeTravelL = 0;
 
 int stopValRight = 0;
 int stopValLeft = 0;
@@ -32,7 +30,6 @@ int servoTolerance = 2; //number of encoder step shifts when stopped
 
 double stoppingBenchmark = 2; //cm
 int baudRate = 9600;
-int commsInterval = 100;
 //-----------------------------------------------
 
 void setup(){
@@ -40,17 +37,14 @@ void setup(){
   Serial.begin(baudRate); //Initialize communications to the serial monitor in the Arduino IDE
   serial_connection.begin(baudRate); //Initialize communications with the bluetooth module
   //Wire.begin();
-
   //delay(2000);
   //mpu.setup();
 }
 
-void transmitData(){
-  //Recieve
+void recieveData(){
   byte byte_count=serial_connection.available();//This gets the number of bytes that were sent by the python script
   if(byte_count) //If there are any bytes then deal with them
   {
-    Serial.println("Incoming Data");//Signal to the monitor that something is happening
     int first_bytes=byte_count;//initialize the number of bytes that we might handle. 
     int remaining_bytes=0;//Initialize the bytes that we may have to burn off to prevent a buffer overrun
     if(first_bytes>=BUFFER_SIZE-1)//If the incoming byte count is more than our buffer...
@@ -69,40 +63,29 @@ void transmitData(){
       inChar=serial_connection.read();
     }
 
-    Serial.print("Num is: ");
-    Serial.println(inData);//Print to the monitor what was detected
-
+    Serial.print("Recieved New State: ");
+    Serial.println(inData[0] - '0');//Print to the monitor what was detected
     state = inData[0] - '0';
-    Serial.println(inData[0] - '0');
+    servos.setState(state);
   }
+}
 
-  //state = inData[0];
-  
-  //send
-  //serial_connection.println(String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()));
+void transmitData(){
+  //Example --> 12330,0,12.0,34.0,-48,-39,20.342
+  //serial_connection.println(String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()));
   //Serial.println(String(millis()) + "," + String(state) + "," + String(" ") + "," + String(" ") + "," + String(totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()));
   //Serial.println(String(mpu.getYaw()));
-    //Example --> 12330,0,12.0,34.0,-48,-39,20.342
-  //set state to new state
-  //set servo state to new state
-
-    //Serial.print(totalTravelL);
-    //Serial.print(", ");
-    //Serial.println(totalTravelR);
 }
 
 void encoderCheck(){
   rightEncoder.tick();
   leftEncoder.tick();
-  
+  totalTravelR = rightEncoder.getPosition();
+  totalTravelL = leftEncoder.getPosition();
 
   int differenceR = rightEncoder.getPosition() - totalTravelR; //Larger int is positive change
   int differenceL = leftEncoder.getPosition() - totalTravelL;
-  totalTravelR = rightEncoder.getPosition();
-  totalTravelL = leftEncoder.getPosition();
-  changeTravelR += differenceR;
-  changeTravelL += differenceL;
-
+ 
 //switch one of these to less than because of opposite spinning direction
   if((differenceL > servoTolerance || differenceR > servoTolerance) && state == 0){
     state = 0; //stops
@@ -131,14 +114,14 @@ void refreshVariables(){
   //else{
     //state = 1;
   //}
-  
-  servos.setState(state);
 }
 
 
-TimedAction transmit = TimedAction(commsInterval, transmitData);
+TimedAction recieve = TimedAction(50, recieveData);
+TimedAction transmit = TimedAction(500, transmitData);
 
 void loop(){
   refreshVariables();
+  recieve.check();
   transmit.check();
 }
