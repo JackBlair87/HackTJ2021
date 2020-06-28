@@ -3,10 +3,9 @@ import random
 import numpy as np
 import math
 import time
-from GroundStation import Mode, State
 #from Communicator import Communicator
-from Robot import Robot
-
+from Robot import Robot, Mode, State
+    
 #Colors
 BLACK = (30, 30, 30)
 DBLACK = (10, 10, 10)
@@ -18,14 +17,14 @@ BLUE = (85, 154, 212)
 PINK = (197, 134, 192)
 
 #Window
-DEFAULT_SCREEN_WIDTH = 1440 
-DEFAULT_SCREEN_HEIGHT = 800 
+screen_width = 1440 
+screen_height = 800 
 FPS = 60 #Standard Smooth FPS
 
 
 # pygame initialization
 pygame.init()
-screen = pygame.display.set_mode((DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT), pygame.RESIZABLE)
+screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE)
 pygame.display.set_caption("GroundStation")
 
 clock = pygame.time.Clock()
@@ -52,8 +51,8 @@ robot = Robot()
 all_buttons = []
 
 def main():
-  global last_communication_time, running, robot, last_button_press_time, mode, current_action
-  global screen, DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT
+  # raise Exception("Into the unknowwowowowowoowowwwon")
+  global last_communication_time, running, robot, last_button_press_time, mode, current_action, screen, screen_width, screen_height
   while running:
     #check to see if the user wants to quit the game
     for event in pygame.event.get():
@@ -63,14 +62,14 @@ def main():
           if event.key == pygame.K_ESCAPE:
             quitProgram()
         elif event.type == pygame.VIDEORESIZE:
-          DEFAULT_SCREEN_WIDTH, SCREEN_HEIGHT = event.size
-          screen = pygame.display.set_mode((DEFAULT_SCREEN_WIDTH, SCREEN_HEIGHT), pygame.RESIZABLE)
+          screen_width, screen_height = event.size
+          screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE)
     
     
-    top_row_y = .037
+    top_row_y = 1/20
     #painting screen components
     screen.fill(BLACK)
-    pygame.draw.rect(screen, DBLACK, (0, 0, DEFAULT_SCREEN_WIDTH, SCREEN_HEIGHT/11))#top black bar
+    pygame.draw.rect(screen, DBLACK, (0, 0, screen_width, screen_height / 10))#top black bar
     mode_button_height = .1
     mode_button_y_diff = mode_button_height+.01
     create_button_from_text("Stop", .89, .1 + mode_button_y_diff * 0, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
@@ -78,12 +77,13 @@ def main():
     create_button_from_text("Sweep", .89, .1 + mode_button_y_diff * 2, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
     create_button_from_text("Manual", .89, .1 + mode_button_y_diff * 3, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
     
-    mode_label = draw_text("Mode: " + Mode.all_modes[mode], .91, top_row_y,)
-    draw_text("State: " + State.all_states[robot.state], .75, top_row_y)
-    draw_text(current_action, .01, top_row_y, basis_point='midleft')
-    draw_compass(DEFAULT_SCREEN_WIDTH-175, SCREEN_HEIGHT-175)
+    mode_label = draw_text("Mode: " + Mode.all_modes[mode], .91, top_row_y, text_color=PINK)
+    draw_text("State: " + State.all_states[robot.state], .75, top_row_y, text_color=PINK)
+    draw_text(current_action, .01, top_row_y, basis_point='midleft', text_color=PINK)
+    draw_compass(screen_width-175, screen_height-175)
 
 
+    draw_robot(0, .89, 1/10, 1)
     #user interaction
 
     #button presses
@@ -98,15 +98,13 @@ def main():
         mode = Mode.all_modes.index(button_text)
         log_action("Mode changed to: " + Mode.all_modes[mode])
       
-
-
     #change state depending on the mode
     if mode == Mode.manual:
       if(get_time() - last_communication_time > 100): #What is this increment for?
         if(robot.change_state(state_from_key_press())): #returns true if necessary
           log_action("State changed to: " + State.all_states[robot.state] + ", transmission at: " + str(current_time))
           last_communication_time = get_time()
-      
+    
     pygame.display.flip()
   quitProgram()
   
@@ -117,7 +115,7 @@ def create_button_from_text(text, x, y, width, height, font_object, text_color=W
   width and height refer to the width and height of the button, where 0 represents no width or height,
   and 1 represent a button that will fill up the screen (same width and height as the screen)
   """
-  new_button = pygame.Rect((DEFAULT_SCREEN_WIDTH * x), (DEFAULT_SCREEN_HEIGHT * y), DEFAULT_SCREEN_WIDTH * width, DEFAULT_SCREEN_HEIGHT * height)
+  new_button = pygame.Rect((screen_width * x), (screen_height * y), screen_width * width, screen_height * height)
   playX = mediumFont.render(text, True, text_color, background_color)
   playXRect = playX.get_rect()
   playXRect.center = new_button.center
@@ -143,23 +141,23 @@ def draw_text(text, x, y, font_object=mediumFont, text_color=WHITE, basis_point 
   title = font_object.render(text, True, text_color)
   titleRect = title.get_rect()
   if basis_point == 'center':
-    titleRect.center = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
+    titleRect.center = (screen_width * x, screen_height * y)
   elif basis_point == 'topleft':
-    titleRect.topleft = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
+    titleRect.topleft = (screen_width * x, screen_height * y)
   elif basis_point == 'topright':
-    titleRect.topright = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
+    titleRect.topright = (screen_width * x, screen_height * y)
   elif basis_point == 'bottomleft':
-    titleRect.bottomleft = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
+    titleRect.bottomleft = (screen_width * x, screen_height * y)
   elif basis_point == 'bottomright':
-    titleRect.bottomright = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
+    titleRect.bottomright = (screen_width * x, screen_height * y)
   elif basis_point == 'midleft':
-    titleRect.midleft = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
+    titleRect.midleft = (screen_width * x, screen_height * y)
   elif basis_point == 'midright':
-    titleRect.midright = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
+    titleRect.midright = (screen_width * x, screen_height * y)
   elif basis_point == 'midtop':
-    titleRect.midtop = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
+    titleRect.midtop = (screen_width * x, screen_height * y)
   elif basis_point == 'midbottom':
-    titleRect.midbottom = (DEFAULT_SCREEN_WIDTH * x, DEFAULT_SCREEN_HEIGHT * y)
+    titleRect.midbottom = (screen_width * x, screen_height * y)
   screen.blit(title, titleRect)
   return titleRect
 
@@ -195,6 +193,13 @@ def log_action(action):
   print(action)
   current_action = action
 
+def draw_robot(x_min, x_max, y_min, y_max):
+  x_min = screen_width * x_min
+  x_max = screen_width * x_max
+  y_min = screen_height * y_min
+  y_max = screen_height * y_max
+  screen.blit(ROBOT, (robot.xcoord, robot.ycoord))
+
 main()
 
 # def createButton(text, x, y, w, h, ic, ac, action = None): #Normal button that preforms an action
@@ -207,8 +212,6 @@ main()
 #   else:
 #       pg.draw.rect(screen, ic,(x,y,w,h))
 #   writeText(screen, "arial", 50, text, (x+(w/2)), (y+(h/2)), WHITE)
-
-
 
 #   def button_press(msg, x, y, w, h, ic, ac): #Button that loops through options, like in settings
 #   """
@@ -235,7 +238,6 @@ main()
 #   writeText(screen, font, 50, msg, (x+(w/2)), (y+(h/2)), WHITE)
 #   return False
 
-
 # def mainScreen():
 #   while running:
 #     if(): #If state is manual
@@ -258,7 +260,6 @@ main()
 #   textRect = textSurf.get_rect()
 #   textRect.center = (x, y)
 #   screen.blit(textSurf, textRect)
-
 
 # def manual_input_check(eventList): #Constantly checks for quits and enters
 #   #For the buttons to close the window
