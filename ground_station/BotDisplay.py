@@ -77,8 +77,8 @@ def main():
     create_button_from_text("Sweep", .89, .1 + mode_button_y_diff * 2, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
     create_button_from_text("Manual", .89, .1 + mode_button_y_diff * 3, .1, mode_button_height, mediumFont, text_color=BLACK, background_color=DBLUE)
     
-    mode_label = draw_text("Mode: " + Mode.all_modes[mode], .91, top_row_y, text_color=PINK)
-    draw_text("State: " + State.all_states[robot.state], .75, top_row_y, text_color=PINK)
+    mode_label = draw_text("Mode: " + Mode.all_modes_english[mode], .91, top_row_y, text_color=PINK)
+    draw_text("State: " + State.all_states_english[robot.state], .75, top_row_y, text_color=PINK)
     draw_text(current_action, .01, top_row_y, basis_point='midleft', text_color=PINK)
     draw_compass(screen_width-175, screen_height-175)
 
@@ -100,7 +100,7 @@ def main():
       
     #change state depending on the mode
     if mode == Mode.manual:
-      if(get_time() - last_communication_time > 100): #What is this increment for?
+      if(get_time() - last_communication_time > 150): #What is this increment for?
         if(robot.change_state(state_from_key_press())): #returns true if necessary
           log_action("State changed to: " + State.all_states[robot.state] + ", transmission at: " + str(current_time))
           last_communication_time = get_time()

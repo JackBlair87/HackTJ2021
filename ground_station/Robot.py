@@ -13,6 +13,7 @@ class Mode():
   emergency_stop = 4
   #a list for easier debugging
   all_modes = ['Stop', 'Explore', 'Sweep', 'Manual', 'Emergency_stop']
+  all_modes_english = ['Stopped', 'Exploring', 'Sweeping', 'Manual', 'Emergency Stopped']
   
 class State():
   stop = 0
@@ -22,7 +23,7 @@ class State():
   turn_right = 4
   error = -1
   all_states = ['stop', 'forward', 'reverse', 'turn_left', 'turn_right', 'error']
-
+  all_states_english = ['Stopped', 'Advancing', 'Reversing', 'Turning Left', 'Turning Right', 'Erroring']
 
 
 class Robot:
@@ -38,7 +39,7 @@ class Robot:
         self.ycoord = y
         self.angle = angle
         self.dataPackets = []
-        self.communicator = Communicator(enabled = False)
+        self.communicator = Communicator(enabled = True)
         self.communicator.initiate_bluetooth()
         self.state = State.stop
         
