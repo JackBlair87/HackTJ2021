@@ -37,15 +37,17 @@ class Robot:
         self.ycoord = y
         self.angle = angle
         self.dataPackets = []
-        self.communicator = Communicator(enabled = False)
+        self.communicator = Communicator(enabled = True)
         self.communicator.initiate_bluetooth()
         self.state = State.stop
+        self.communicator.transmit_info(self.state)
         
     def add_data(self):
         new_packet = self.communicator.recieve_info(self.state)
-        if new_packet != None
+        if new_packet != None:
             self.dataPackets.append(new_packet)
             self.update_location()
+            print(self.dataPackets[-1])
         
     def deactivate_robot(self):
         self.communicator.deactivate_bluetooth()
@@ -56,24 +58,24 @@ class Robot:
             self.communicator.transmit_info(self.state)
         
     def update_location(self):
-        if(self.dataPackets[-1] == None or self.dataPackets[-2] == None): #If there are two data packets
+        if(len(self.dataPackets) < 2): #If there are two data packets
             return False
         differenceR = self.dataPackets[-1].right_encoder_counts - self.dataPackets[-2].right_encoder_counts #Find the difference between last transmittion
         differenceL = self.dataPackets[-1].left_encoder_counts - self.dataPackets[-2].left_encoder_counts
         if(self.dataPackets[-1].state != State.stop, State.forward, State.reverse): #Or the difference between last angle if rotation
             deltaAngle = self.dataPackets[-1].rotation - self.dataPackets[-2].rotation  
         
-        calculated_state = get_state_from_encoder(differenceR, differenceL)
-        if calculated_state == State.forward:
-            # total_distance = 
-            xcoord += d*numpy.cos(deltaAngle*pi/180)
-            ycoord += d*numpy.sin(deltaAngle*pi/180)
-        elif calculated_state == State.turn_left:
-            pass
-        elif calculated_state == State.turn_right:
-            pass
-        elif calculated_state == State.reverse:
-            pass
+        # calculated_state = get_state_from_encoder(differenceR, differenceL)
+        # if calculated_state == State.forward:
+        #     # total_distance = 
+        #     xcoord += d*numpy.cos(deltaAngle*pi/180)
+        #     ycoord += d*numpy.sin(deltaAngle*pi/180)
+        # elif calculated_state == State.turn_left:
+        #     pass
+        # elif calculated_state == State.turn_right:
+        #     pass
+        # elif calculated_state == State.reverse:
+        #     pass
 
     def sweep(self):
         pass

@@ -25,7 +25,13 @@ class Communicator:
       
       #incoming data is separated with commas and represents these values in order: Millis, state, front distance, right distance, left encoder total, right encoder total, angle total
       newdata = input_data.split(",")
-      print(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6])
+      newdata[-1] = newdata[-1].strip()
+      #print(newdata)
+      if len(newdata) < 7:
+        print("New data list is less than 7;", newdata)
+        return None
+      
+      #print(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6])
       if(self.previousState != 0 and newdata[0] == 0):
         info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], True)
       else:
@@ -36,6 +42,7 @@ class Communicator:
     if self.enabled:
       self.previousState = state
       self.bluetooth.write(str.encode(str(state))) #These need to be bytes not unicode, plus a number
+      print("Changed State to", state)
     
   def deactivate_bluetooth(self):
     if self.enabled:
