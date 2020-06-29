@@ -22,7 +22,7 @@ RotaryEncoder leftEncoder(A0, A1);
 //Global Variables ------------------------------
 int state = 0; //0, Stop; 1, Forward; 2, Reverse; 3, Turn Left; 4, Turn Right; Other, LED on 
 int totalTravelR = 0;
-int totalTravelL = 0;
+int totalTravelL = 10;
 
 int stopValRight = 0;
 int stopValLeft = 0;
@@ -42,7 +42,7 @@ void setup(){
 }
 
 void recieveData(){
-  byte byte_count=serial_connection.available();//This gets the number of bytes that were sent by the python script
+  byte byte_count = serial_connection.available();//This gets the number of bytes that were sent by the python script
   if(byte_count) //If there are any bytes then deal with them
   {
     int first_bytes=byte_count;//initialize the number of bytes that we might handle. 
@@ -71,9 +71,11 @@ void recieveData(){
 }
 
 void transmitData(){
+  if(Serial.availableForWrite()){
+    serial_connection.println(String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(120.020));
+  }
   //Example --> 12330,0,12.0,34.0,-48,-39,20.342
-  //serial_connection.println(String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()));
-  //Serial.println(String(millis()) + "," + String(state) + "," + String(" ") + "," + String(" ") + "," + String(totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()));
+  //Serial.println(String(millis()) + "," + String(state) + "," + String(" ") + "," + String(" ") + "," + String(totalTravelL) + "," + String(totalTravelR) + "," + String(120.20));
   //Serial.println(String(mpu.getYaw()));
 }
 
