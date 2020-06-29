@@ -4,7 +4,6 @@ import math
 from math import pi
 import numpy
 
-
 class Mode(): 
   stop = 0
   explore = 1
@@ -25,7 +24,6 @@ class State():
   all_states = ['stop', 'forward', 'reverse', 'turn_left', 'turn_right', 'error']
   all_states_english = ['Stopped', 'Advancing', 'Reversing', 'Turning Left', 'Turning Right', 'Erroring']
 
-
 class Robot:
     ENCODER_COUNTS_PER_REVOLUTION = 20
     WHEEL_RADIUS = 5 #in cm
@@ -43,9 +41,11 @@ class Robot:
         self.communicator.initiate_bluetooth()
         self.state = State.stop
         
-    def add_data(self, infoPacket):
-        self.dataPackets.append(infoPacket)
-        self.update_location()
+    def add_data(self):
+        new_packet = self.communicator.recieve_info(self.state)
+        if new_packet != None
+            self.dataPackets.append(new_packet)
+            self.update_location()
         
     def deactivate_robot(self):
         self.communicator.deactivate_bluetooth()

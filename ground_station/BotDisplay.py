@@ -21,7 +21,6 @@ screen_width = 1440
 screen_height = 800 
 FPS = 60 #Standard Smooth FPS
 
-
 # pygame initialization
 pygame.init()
 screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE)
@@ -82,8 +81,7 @@ def main():
     draw_text(current_action, .01, top_row_y, basis_point='midleft', text_color=PINK)
     draw_compass(screen_width-175, screen_height-175)
 
-
-    draw_robot(0, .89, 1/10, 1)
+    draw_robot(x_min=0, x_max=.85, y_min=0.1, y_max=1)
     #user interaction
 
     #button presses
@@ -104,6 +102,8 @@ def main():
         if(robot.change_state(state_from_key_press())): #returns true if necessary
           log_action("State changed to: " + State.all_states[robot.state] + ", transmission at: " + str(current_time))
           last_communication_time = get_time()
+    
+    robobt.add_data()
     
     pygame.display.flip()
   quitProgram()
@@ -194,10 +194,20 @@ def log_action(action):
   current_action = action
 
 def draw_robot(x_min, x_max, y_min, y_max):
+  global ROBOT
+
+  #translates the 0-1 scale to the actual screen dimensions
   x_min = screen_width * x_min
   x_max = screen_width * x_max
   y_min = screen_height * y_min
   y_max = screen_height * y_max
+  width = x_max - x_min
+  height = y_max - y_min
+
+  # robot_width, robot_height = ROBOT.get_size()
+  # robot_height_to_width = robot_height/robot_width
+  # robot_width = int(robot_width * .5)
+  # robot_height = robot_width * robot_height_to_width
   screen.blit(ROBOT, (robot.xcoord, robot.ycoord))
 
 main()
