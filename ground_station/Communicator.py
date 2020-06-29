@@ -20,6 +20,9 @@ class Communicator:
   def recieve_info(self, old_state = 0):
     if self.enabled:
       input_data = self.bluetooth.readline().decode() #This reads the incoming data
+      if(input_data == None):
+        return None
+      
       #incoming data is separated with commas and represents these values in order: Millis, state, front distance, right distance, left encoder total, right encoder total, angle total
       newdata = input_data.split(",")
       print(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6])
