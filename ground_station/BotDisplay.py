@@ -1,10 +1,11 @@
-import pygame as pygame
+import pygame
 import random 
 import numpy as np
 import math
 import time
 #from Communicator import Communicator
 from Robot import Robot, Mode, State
+import AI
     
 #Colors
 BLACK = (30, 30, 30)
@@ -27,15 +28,16 @@ screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE
 pygame.display.set_caption("GroundStation")
 
 clock = pygame.time.Clock()
-COMPASS = pygame.image.load('./ground_station/assets/Compass.png')
 ROBOT = pygame.image.load('./ground_station/assets/Robot.png')
+COMPASS = pygame.image.load('./ground_station/assets/Compass.png')
 mediumFont = pygame.font.Font("./ground_station/assets/OpenSans-Regular.ttf", 28)
 largeFont = pygame.font.Font("./ground_station/assets/OpenSans-Regular.ttf", 40)
 
-#information about the robot
+#information about the robot and location
 running = True
 mode = Mode.manual
 current_action = 'Initializing Ground Station'
+# ai = AI()
 
 #time information for communications
 start_time = int(round(time.time() * 1000))
@@ -44,7 +46,7 @@ last_button_press_time = 0
 #print("Start Time" + str(start_time))
 
 #objects that we need
-robot = Robot()
+robot = Robot(image = ROBOT)
 
 #dictionary won't work because pygame.Rect is unhashable
 all_buttons = []
@@ -80,7 +82,8 @@ def main():
     draw_text(current_action, .01, top_row_y, basis_point='midleft', text_color=PINK)
     draw_compass(screen_width-175, screen_height-175)
 
-    draw_robot(x_min=0, x_max=.85, y_min=0.1, y_max=1)
+    #x_max is .85, y_min is .1
+    robot.draw_robot(screen=screen, x_min=0, x_max=1, y_min=0, y_max=1, screen_width=screen_width, screen_height=screen_height)
     #user interaction
 
     #button presses
@@ -192,22 +195,6 @@ def log_action(action):
   print(action)
   current_action = action
 
-def draw_robot(x_min, x_max, y_min, y_max):
-  global ROBOT
-
-  #translates the 0-1 scale to the actual screen dimensions
-  x_min = screen_width * x_min
-  x_max = screen_width * x_max
-  y_min = screen_height * y_min
-  y_max = screen_height * y_max
-  width = x_max - x_min
-  height = y_max - y_min
-
-  # robot_width, robot_height = ROBOT.get_size()
-  # robot_height_to_width = robot_height/robot_width
-  # robot_width = int(robot_width * .5)
-  # robot_height = robot_width * robot_height_to_width
-  screen.blit(ROBOT, (robot.xcoord, robot.ycoord))
 
 main()
 
