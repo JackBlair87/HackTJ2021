@@ -26,10 +26,11 @@ class State():
   all_states_english = ['Stopped', 'Advancing', 'Reversing', 'Turning Left', 'Turning Right', 'Erroring']
 
 class Robot:
-    ENCODER_COUNTS_PER_REVOLUTION = 20
-    WHEEL_RADIUS = 5 #in cm
-    WHEEL_CIRCUMFERENCE = pi * WHEEL_RADIUS ** 2
-    WHEEL_CM_PER_COUNT = WHEEL_CIRCUMFERENCE / ENCODER_COUNTS_PER_REVOLUTION
+    class WheelInfo():
+        ENCODER_COUNTS_PER_REVOLUTION = 20
+        WHEEL_RADIUS = 5 #in cm
+        WHEEL_CIRCUMFERENCE = pi * WHEEL_RADIUS ** 2
+        WHEEL_CM_PER_COUNT = WHEEL_CIRCUMFERENCE / ENCODER_COUNTS_PER_REVOLUTION
 
     def __init__(self, image, x = 0.0, y = 0.0, angle = 0):
         pygame.sprite.Sprite.__init__(self)
@@ -40,8 +41,8 @@ class Robot:
         self.xcoord = x - self.size[0]/2
         self.ycoord = y - self.size[1]/2
         self.angle = angle
-        self.dataPackets = [InfoPacket(), InfoPacket()]
-        self.communicator = Communicator(enabled = False)
+        self.dataPackets = [InfoPacket(angle=90), InfoPacket(angle=90)]
+        self.communicator = Communicator(enabled = True)
         self.communicator.initiate_bluetooth()
         self.state = State.stop
         self.communicator.transmit_info(self.state)
@@ -75,45 +76,48 @@ class Robot:
         # robot_width = int(robot_width * .5)
         # robot_height = robot_width * robot_height_to_width
         # print(self.xcoord, self.ycoord)
-        screen.blit(self.image, (self.xcoord + (width/2), self.ycoord + (height/2)))
+        screen.blit(pygame.transform.rotate(self.image, self.angle), (self.xcoord + (width/2), self.ycoord + (height/2)))
         
     def __update_location(self):
-        print("update_location")
-        delta_x, delta_y, delta_angle = calculate_delta_location_change()
-        print("delta_x, delta_y, delta_angle:", delta_x, delta_y, delta_angle)
+        delta_x, delta_y, angle = self.__calculate_delta_location_change()
+        print("delta_x, delta_y, delta_angle:", delta_x, delta_y, angle)
         self.xcoord += delta_x
         self.ycoord += delta_y
-        self.angle += delta_angle
+        self.angle = angle
 
     def __calculate_delta_location_change(self):
-        global WHEEL_CM_PER_COUNT
         differenceR = self.dataPackets[-1].right_encoder_counts - self.dataPackets[-2].right_encoder_counts #Find the difference between last transmittion
         differenceL = self.dataPackets[-1].left_encoder_counts - self.dataPackets[-2].left_encoder_counts
         difference_average = (differenceL + differenceR) / 2
         if self.dataPackets[-1].state == State.turn_left or self.dataPackets[-1].state == State.turn_right: #Or the difference between last angle if rotation
-            delta_angle = self.dataPackets[-1].rotation - self.dataPackets[-2].rotation
+            delta_x = 0
+            delta_y = 0
+            angle = self.dataPackets[-1].rotation
         elif self.dataPackets[-1].state == State.forward or self.dataPackets[-1].state == State.reverse:
-            delta_r_cm = difference_average * WHEEL_CM_PER_COUNT
-            delta_angle = self.dataPackets[-1].rotation - self.dataPackets[-2].rotation
+            delta_r_cm = difference_average * self.WheelInfo.WHEEL_CM_PER_COUNT
+            angle = self.dataPackets[-1].rotation
             
             #if it's going reverse, calculate it like it's going forward backward
             if self.dataPackets[-1].state == State.reverse:
-                delta_angle_radians + 180
+                angle + 180
             
-            delta_angle_radians = math.radians(delta_angle)
+            print("angle:", angle)
+            angle_radians = math.radians(angle)
+            print("angle_radians:", angle_radians)
 
             #if we adjusted the angle value bc we're going backward, undo that when we return delta_angle
             if self.dataPackets[-1].state == State.reverse:
-                delta_angle_radians - 180
+                angle - 180
             
             #transform the data with the angle
-            delta_x = delta_r_cm * math.cos(math.radians(delta_angle))
+            delta_x = delta_r_cm * math.cos(math.radians(angle))
+            delta_y = delta_r_cm * math.sin(math.radians(angle))
         else:
             delta_x = 0
             delta_y = 0
-            delta_angle = 0
+            angle = 0
 
-        return delta_x, delta_y, delta_angle
+        return delta_x, delta_y, angle
         
     def sweep(self):
         pass
