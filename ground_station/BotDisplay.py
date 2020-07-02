@@ -35,8 +35,7 @@ largeFont = pygame.font.Font("./ground_station/assets/OpenSans-Regular.ttf", 40)
 #information about the robot and location
 running = True
 mode = Mode.manual
-current_action = 'Initializing Ground Station'
-# ai = AI()
+current_action = 'Initializing Ground Station' #integrate with logger if possible
 
 #time information for communications
 #todo phase out time increments
@@ -81,7 +80,7 @@ def main():
     mode_label = draw_text("Mode: " + Mode.all_modes_english[mode], .91, top_row_y, text_color=PINK)
     draw_text("State: " + State.all_states_english[robot.state], .75, top_row_y, text_color=PINK)
     draw_text(current_action, .01, top_row_y, basis_point='midleft', text_color=PINK)
-    draw_compass(screen_width-175, screen_height-175)
+    draw_compass(screen_width-175, screen_height-175, robot.angle)
 
     #x_max is .85, y_min is .1
     robot.draw_robot(screen=screen, x_min=0, x_max=1, y_min=0, y_max=1, screen_width=screen_width, screen_height=screen_height)

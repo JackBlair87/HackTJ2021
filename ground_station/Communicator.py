@@ -42,11 +42,11 @@ class Communicator:
         self.logger.log("^New data list is less than 7^")
         return None
       
-      self.logger.log(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6])
       if(old_state != 0 and newdata[0] == 0):
         info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], True)
       else:
         info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], False)
+      self.logger.log(str(info))
       return info
   
   def transmit_info(self, state = 0):

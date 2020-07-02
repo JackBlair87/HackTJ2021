@@ -17,7 +17,7 @@ class Robot:
         self.ycoord = y - self.size[1]/2
         self.angle = angle
         self.dataPackets = [InfoPacket(angle=90), InfoPacket(angle=90)]
-        self.communicator = Communicator(enabled = False)
+        self.communicator = Communicator(enabled = True)
         self.communicator.initiate_bluetooth()
         self.state = State.stop
         self.communicator.transmit_info(self.state)
@@ -57,7 +57,7 @@ class Robot:
         
     def __update_location(self):
         delta_x, delta_y, angle = self.__calculate_delta_location_change()
-        self.logger.log("delta_x, delta_y, delta_angle:", delta_x, delta_y, angle)
+        #self.logger.log("delta_x, delta_y, delta_angle:", delta_x, delta_y, angle)
         self.xcoord += delta_x
         self.ycoord += delta_y
         self.angle = angle
