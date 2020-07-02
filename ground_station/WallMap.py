@@ -1,8 +1,11 @@
+from Resources import Logger
+
 class WallMap:
   UNEXPLORED = -1
   NO_OBSTACLE = 0
   OBSTACLE = 1
   def __init__(self, matrix=None):
+    self.logger = Logger("WallMap")
     if matrix is not None:
       self.map = matrix
     else:
@@ -45,5 +48,5 @@ class WallMap:
       
   def print_map(self):
     for row in self.map:
-      print(row)
+      self.logger.log(row)
   

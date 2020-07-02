@@ -43,6 +43,7 @@ current_action = 'Initializing Ground Station'
 start_time = int(round(time.time() * 1000))
 last_communication_time = 0
 last_button_press_time = 0
+logger = Logger("BotDisplay")
 #print("Start Time" + str(start_time))
 
 #objects that we need
@@ -189,7 +190,7 @@ def get_time():
 def quitProgram(): #Quits Pygame and Python
   global robot
   # Logger.log("Stopping all tasks and quitting program")
-  print("Stopping all tasks and quitting program")
+  logger.log("Stopping all tasks and quitting program")
   robot.communicator.transmit_info(State.stop)
   pygame.quit()
   robot.communicator.deactivate_bluetooth()
@@ -197,7 +198,7 @@ def quitProgram(): #Quits Pygame and Python
 
 def log_action(action):
   global current_action
-  print(action)
+  logger.log(action)
   current_action = action
 
 

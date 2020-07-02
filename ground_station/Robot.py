@@ -21,6 +21,7 @@ class Robot:
         self.communicator.initiate_bluetooth()
         self.state = State.stop
         self.communicator.transmit_info(self.state)
+        self.logger = Logger("Robot")
         # self.logger = Logger()
         
     def add_data(self):
@@ -28,7 +29,7 @@ class Robot:
         if new_packet != None:
             self.dataPackets.append(new_packet)
             self.__update_location()
-            print(self.dataPackets[-1])
+            self.logger.log(self.dataPackets[-1])
             # logger.log(new_packet)
         
     def deactivate_robot(self):
@@ -51,12 +52,12 @@ class Robot:
         # robot_height_to_width = robot_height/robot_width
         # robot_width = int(robot_width * .5)
         # robot_height = robot_width * robot_height_to_width
-        # print(self.xcoord, self.ycoord)
+        # self.logger.log(self.xcoord, self.ycoord)
         screen.blit(pygame.transform.rotate(self.image, self.angle), (self.xcoord + (width/2), self.ycoord + (height/2)))
         
     def __update_location(self):
         delta_x, delta_y, angle = self.__calculate_delta_location_change()
-        print("delta_x, delta_y, delta_angle:", delta_x, delta_y, angle)
+        self.logger.log("delta_x, delta_y, delta_angle:", delta_x, delta_y, angle)
         self.xcoord += delta_x
         self.ycoord += delta_y
         self.angle = angle
@@ -77,9 +78,9 @@ class Robot:
             if self.dataPackets[-1].state == State.reverse:
                 angle + 180
             
-            print("angle:", angle)
+            self.logger.log("angle:", angle)
             angle_radians = math.radians(angle)
-            print("angle_radians:", angle_radians)
+            self.logger.log("angle_radians:", angle_radians)
 
             #if we adjusted the angle value bc we're going backward, undo that when we return delta_angle
             if self.dataPackets[-1].state == State.reverse:
@@ -117,7 +118,7 @@ class Robot:
             raise Exception("get_state_from_encoder method()")
     
     def front_is_clear(self):
-        print("Rahel needs to work on this method BIG SMH")
+        self.logger.log("Rahel needs to work on this method BIG SMH")
         return self.dataPackets[-1].front_distance > 50
 
     def right_is_clear(self):

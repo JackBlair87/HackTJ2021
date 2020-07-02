@@ -1,7 +1,7 @@
 import serial
 import time
 import sys
-from Resources import InfoPacket
+from Resources import InfoPacket, Logger
 
 class Communicator:
   def __init__(self, port = "/dev/tty.HC-05-DevB", baud = 9600, enabled = True):
@@ -13,12 +13,13 @@ class Communicator:
     self.start_time = int(round(time.time() * 1000))
     self.last_communication_time = self.start_time
     self.next_communcation = None
+    self.logger = Logger("Communicator")
     if self.enabled:
         try:
           self.initiate_bluetooth()
         except:
-          print("Communicator: bluetooth not connected")
-          print(sys.exc_info())
+          self.logger.log("Communicator: bluetooth not connected")
+          self.logger.log(sys.exc_info())
           
   def initiate_bluetooth(self):
     if self.enabled:
@@ -36,12 +37,12 @@ class Communicator:
       #incoming data is separated with commas and represents these values in order: Millis, state, front distance, right distance, left encoder total, right encoder total, angle total
       newdata = input_data.split(",")
       newdata[-1] = newdata[-1].strip()
-      #print(newdata)
+      self.logger.logDataPacket(newdata)
       if len(newdata) < 7:
-        print("New data list is less than 7;", newdata)
+        self.logger.log("^New data list is less than 7^")
         return None
       
-      #print(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6])
+      self.logger.log(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6])
       if(old_state != 0 and newdata[0] == 0):
         info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], True)
       else:
@@ -53,7 +54,7 @@ class Communicator:
       self.previousState = state
       self.bluetooth.write(str.encode(str(state))) #These need to be bytes not unicode, plus a number
       self.bluetooth.flushInput()
-      print("Changed State to", self.next_communication)
+      self.logger.log("Changed State to", self.next_communication)
       self.next_communication = None
       self.last_communication_time = int(round(time.time() * 1000)) - self.last_communication_time > 250
     else:

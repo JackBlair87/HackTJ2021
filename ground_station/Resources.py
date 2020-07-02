@@ -1,5 +1,7 @@
 import math
 from math import pi
+import os
+from os import path
 
 class InfoPacket:
   def __init__(self, time = 0, state = 0, f_distance = 0, r_distance = 0, l_encoderCounts = 0, r_encoderCounts = 0, angle = 0, e_stopped = False):
@@ -50,17 +52,42 @@ class State():
 
 class Logger():
 
-  def __init__(self):
-    if self.outfile is not None:
-      self.outfile = "outfile3.txt"
-      with open(self.outfile, "w+") as f:
-        f.write("Beginning output: ")
-      self.log("Creating singleton object")
-    else:
-      self.log("Singleton has already been made, continuing")
+  #maybe use singleton here?
+  created = False
+  outfolder = None
+  outfile = None
+  out_data_packets = None
 
-  def log(self, text):
-    with open(self.outfile, 'a') as f:
-      f.write(str(text) + '\n')
+  def __init__(self, fromClass, outfolder="logs/outfile3"):
+    self.fromClass = fromClass
 
+    if Logger.created is True: #if a Logger has already been made, return log that and return false
+      self.log("Files have already been created, continuing")
+      return None
+    
+    Logger.outfile = outfolder + "/all_logs.txt"
+    Logger.out_data_packets = outfolder + "/info_packets.txt"
+    if not os.path.exists(outfolder):#make the folder if necessary
+      os.makedirs(outfolder)
+    with open(Logger.outfile, "w+") as f:
+      f.write("Beginning output for all logs:\n")
+    with open(Logger.out_data_packets, "w+") as f:
+      f.write("Beginning output for data packets:\n")
+    self.log("Creating logger object")
+    Logger.created = True
 
+  def log(self, text, end='\n', printToScreen=True):
+    printString = self.fromClass + ": " + str(text) + end
+    if printToScreen:
+      print(printString, end='')
+    with open(Logger.outfile, 'a') as f:
+      f.write(printString)
+  
+  def logDataPacket(self, text, end = '\n', printToScreen=True):
+    printString = self.fromClass + ": " + str(text) + end
+    if printToScreen:
+      print(printString, end='')
+    with open(Logger.outfile, 'a') as f:#writes to the main file
+      f.write(printString)
+    with open(Logger.out_data_packets, 'a') as f:#writes to data packet file
+      f.write(printString)

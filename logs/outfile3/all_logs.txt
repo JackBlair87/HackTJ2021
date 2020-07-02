@@ -1,0 +1,5 @@
+Beginning output for all logs:
+Class1: Creating logger object
+Class2: Files have already been created, continuing
+Class1: Hello
+Class2: Goodbye
