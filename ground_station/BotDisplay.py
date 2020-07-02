@@ -3,9 +3,8 @@ import random
 import numpy as np
 import math
 import time
-#from Communicator import Communicator
-from Robot import Robot, Mode, State
-import AI
+from Robot import Robot
+from Resources import Mode, State, Logger
     
 #Colors
 BLACK = (30, 30, 30)
@@ -40,6 +39,7 @@ current_action = 'Initializing Ground Station'
 # ai = AI()
 
 #time information for communications
+#todo phase out time increments
 start_time = int(round(time.time() * 1000))
 last_communication_time = 0
 last_button_press_time = 0
@@ -100,14 +100,17 @@ def main():
 
     #change state depending on the mode
     if mode == Mode.manual:
-      if(get_time() - last_communication_time > 250): #Ensures that we don't spam buttons
-        if(robot.change_state(state_from_key_press())): #returns true if necessary
-          log_action("State changed to: " + State.all_states[robot.state] + ", transmission at: " + str(current_time))
-          last_communication_time = get_time()
+      if(robot.change_state(state_from_key_press())): #returns true if necessary
+        log_action("State changed to: " + State.all_states[robot.state] + ", transmission at: " + str(current_time))
+        last_communication_time = get_time()
     
+    # if(get_time() - last_communication_time > 500):
     robot.add_data()
-    
+    #robot.communicator.transmit_info(robot.state)
+    # last_communication_time = get_time()
+  
     pygame.display.flip()
+    clock.tick(FPS)
   quitProgram()
   
 def create_button_from_text(text, x, y, width, height, font_object, text_color=WHITE, background_color=BLACK):
@@ -184,6 +187,8 @@ def get_time():
   return int(round(time.time() * 1000)) - start_time
 
 def quitProgram(): #Quits Pygame and Python
+  global robot
+  # Logger.log("Stopping all tasks and quitting program")
   print("Stopping all tasks and quitting program")
   robot.communicator.transmit_info(State.stop)
   pygame.quit()

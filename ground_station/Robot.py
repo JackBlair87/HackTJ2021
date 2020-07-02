@@ -1,37 +1,12 @@
 from Communicator import Communicator
-from InfoPacket import InfoPacket
 import math
 from math import pi
 import numpy
 import pygame
-
-class Mode(): 
-  stop = 0
-  explore = 1
-  sweep = 2
-  manual = 3
-  emergency_stop = 4
-  #a list for easier debugging
-  all_modes = ['Stop', 'Explore', 'Sweep', 'Manual', 'Emergency_stop']
-  all_modes_english = ['Stopped', 'Exploring', 'Sweeping', 'Manual', 'Emergency Stopped']
-  
-class State():
-  stop = 0
-  forward = 1
-  reverse = 2
-  turn_left = 3
-  turn_right = 4
-  error = -1
-  all_states = ['stop', 'forward', 'reverse', 'turn_left', 'turn_right', 'error']
-  all_states_english = ['Stopped', 'Advancing', 'Reversing', 'Turning Left', 'Turning Right', 'Erroring']
+import sys
+from Resources import Mode, State, InfoPacket, WheelInfo, Logger
 
 class Robot:
-    class WheelInfo():
-        ENCODER_COUNTS_PER_REVOLUTION = 20
-        WHEEL_RADIUS = 5 #in cm
-        WHEEL_CIRCUMFERENCE = pi * WHEEL_RADIUS ** 2
-        WHEEL_CM_PER_COUNT = WHEEL_CIRCUMFERENCE / ENCODER_COUNTS_PER_REVOLUTION
-
     def __init__(self, image, x = 0.0, y = 0.0, angle = 0):
         pygame.sprite.Sprite.__init__(self)
         self.image = image.convert_alpha()
@@ -42,10 +17,11 @@ class Robot:
         self.ycoord = y - self.size[1]/2
         self.angle = angle
         self.dataPackets = [InfoPacket(angle=90), InfoPacket(angle=90)]
-        self.communicator = Communicator(enabled = True)
+        self.communicator = Communicator(enabled = False)
         self.communicator.initiate_bluetooth()
         self.state = State.stop
         self.communicator.transmit_info(self.state)
+        # self.logger = Logger()
         
     def add_data(self):
         new_packet = self.communicator.recieve_info(self.state)
@@ -53,14 +29,14 @@ class Robot:
             self.dataPackets.append(new_packet)
             self.__update_location()
             print(self.dataPackets[-1])
+            # logger.log(new_packet)
         
     def deactivate_robot(self):
         self.communicator.deactivate_bluetooth()
         
     def change_state(self, new_state = State.stop):
-        if(new_state != self.state):
-            self.state = new_state
-            self.communicator.transmit_info(self.state)
+        self.state = new_state
+        self.communicator.transmit_info(self.state)
             
     def draw_robot(self, screen, x_min, x_max, y_min, y_max, screen_height = 800, screen_width = 1440):
         #translates the 0-1 scale to the actual screen dimensions
@@ -94,7 +70,7 @@ class Robot:
             delta_y = 0
             angle = self.dataPackets[-1].rotation
         elif self.dataPackets[-1].state == State.forward or self.dataPackets[-1].state == State.reverse:
-            delta_r_cm = difference_average * self.WheelInfo.WHEEL_CM_PER_COUNT
+            delta_r_cm = difference_average * WheelInfo.WHEEL_CM_PER_COUNT
             angle = self.dataPackets[-1].rotation
             
             #if it's going reverse, calculate it like it's going forward backward
@@ -126,7 +102,7 @@ class Robot:
     #while front is clear and wall to
     #move forward
 
-    def get_state_from_encoder(r, l):
+    def get_state_from_encoder(self, r, l):
         difference = r-l
         if math.abs(difference) < 2:
             if r > 0 and l > 0:
