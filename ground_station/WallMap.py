@@ -1,6 +1,12 @@
 from Resources import Logger
 
 class WallMap:
+  """
+  todo: Think about using an auxilary set to hold raw data points. Whenever possible,
+  calculate a regression and the regression lines to another set with regressions. This would mean more processing
+  upfront, but it would save a lot of memory.
+  The line regression would have the regression, as well as the start and and and coordinates.
+  """
   UNEXPLORED = -1
   NO_OBSTACLE = 0
   OBSTACLE = 1
