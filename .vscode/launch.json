@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
+            "name": "Python: BotDisplay.py",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
+            "program": "ground_station/BotDisplay.py",
             "console": "integratedTerminal"
         }
     ]

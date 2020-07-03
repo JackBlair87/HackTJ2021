@@ -2,17 +2,23 @@ import math
 from math import pi
 import os
 from os import path
+import time
 
 class InfoPacket:
+
   def __init__(self, time = 0, state = 0, f_distance = 0, r_distance = 0, l_encoderCounts = 0, r_encoderCounts = 0, angle = 0, e_stopped = False):
-    self.state = int(state)
-    self.time = float(time)/1000
-    self.right_distance = float(r_distance)
-    self.front_distance = float(f_distance)
-    self.left_encoder_counts = int(l_encoderCounts)
-    self.right_encoder_counts = int(r_encoderCounts)
-    self.rotation = float(angle)
-    self.emergency_stopped = e_stopped
+    self.logger = Logger("InfoPacket")
+    try:
+      self.state = int(state)
+      self.time = float(time)/1000
+      self.right_distance = float(r_distance)
+      self.front_distance = float(f_distance)
+      self.left_encoder_counts = int(float(l_encoderCounts))
+      self.right_encoder_counts = int(float(r_encoderCounts))
+      self.rotation = float(angle)
+      self.emergency_stopped = e_stopped
+    except:
+      self.logger.log("ERROR CREATING INFOPACKET")
     # if e_stopped.lower() == "false":
     #   self.emergency_stopped = False
     # elif e_stopped.lower() == "true":
@@ -30,7 +36,7 @@ class WheelInfo():
         WHEEL_CIRCUMFERENCE = pi * WHEEL_RADIUS ** 2
         WHEEL_CM_PER_COUNT = WHEEL_CIRCUMFERENCE / ENCODER_COUNTS_PER_REVOLUTION
 
-class Mode(): 
+class Mode():
   stop = 0
   explore = 1
   sweep = 2
@@ -57,14 +63,14 @@ class Logger():
   outfolder = None
   outfile = None
   out_data_packets = None
+  start_time = int(round(time.time() * 1000))
 
-  def __init__(self, fromClass, outfolder="logs/outfile3"):
+  def __init__(self, fromClass, outfolder="logs/outfile4"):
     self.fromClass = fromClass
-
     if Logger.created is True: #if a Logger has already been made, return log that and return false
       self.log("Files have already been created, continuing")
       return None
-    
+      self.start_time = int(round(time.time() * 1000))
     Logger.outfile = outfolder + "/all_logs.txt"
     Logger.out_data_packets = outfolder + "/info_packets.txt"
     if not os.path.exists(outfolder):#make the folder if necessary
@@ -77,17 +83,30 @@ class Logger():
     Logger.created = True
 
   def log(self, text, end='\n', printToScreen=True):
-    printString = self.fromClass + ": " + str(text) + end
+    printString = str(self.get_time()) + ":" + self.fromClass + ": " + str(text) + end
     if printToScreen:
       print(printString, end='')
     with open(Logger.outfile, 'a') as f:
       f.write(printString)
   
   def logDataPacket(self, text, end = '\n', printToScreen=True):
-    printString = self.fromClass + ": " + str(text) + end
+    printString = str(self.get_time()) + ":" + self.fromClass + ": " + str(text) + end
     if printToScreen:
       print(printString, end='')
     with open(Logger.outfile, 'a') as f:#writes to the main file
       f.write(printString)
     with open(Logger.out_data_packets, 'a') as f:#writes to data packet file
       f.write(printString)
+
+  def get_time(self):
+    return int(round(time.time() * 1000)) - self.start_time
+  
+class Colors:
+  BLACK = (30, 30, 30)
+  DBLACK = (10, 10, 10)
+  WHITE = (167, 167, 167)
+  GREEN = (75, 192, 168)
+  DBLUE = (0, 116, 194)
+  TAN = (184, 130, 109)
+  BLUE = (85, 154, 212)
+  PINK = (197, 134, 192)

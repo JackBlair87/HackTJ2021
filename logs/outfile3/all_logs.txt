@@ -1,5 +1,5 @@
 Beginning output for all logs:
-Class1: Creating logger object
-Class2: Files have already been created, continuing
-Class1: Hello
-Class2: Goodbye
+BotDisplay: Creating logger object
+Communicator: Files have already been created, continuing
+Communicator: Communicator: bluetooth not connected
+Communicator: (<class 'serial.serialutil.SerialException'>, SerialException(16, "could not open port /dev/tty.HC-05-DevB: [Errno 16] Resource busy: '/dev/tty.HC-05-DevB'"), <traceback object at 0x1092c0748>)

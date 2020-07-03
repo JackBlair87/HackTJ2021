@@ -17,7 +17,7 @@ class Robot:
         self.ycoord = y - self.size[1]/2
         self.angle = angle
         self.dataPackets = [InfoPacket(angle=90), InfoPacket(angle=90)]
-        self.communicator = Communicator(enabled = True)
+        self.communicator = Communicator(enabled = False)
         self.communicator.initiate_bluetooth()
         self.state = State.stop
         self.communicator.transmit_info(self.state)
@@ -30,7 +30,6 @@ class Robot:
             self.dataPackets.append(new_packet)
             self.__update_location()
             self.logger.log(self.dataPackets[-1])
-            # logger.log(new_packet)
         
     def deactivate_robot(self):
         self.communicator.deactivate_bluetooth()
@@ -38,22 +37,21 @@ class Robot:
     def change_state(self, new_state = State.stop):
         self.state = new_state
         self.communicator.transmit_info(self.state)
-            
-    def draw_robot(self, screen, x_min, x_max, y_min, y_max, screen_height = 800, screen_width = 1440):
-        #translates the 0-1 scale to the actual screen dimensions
-        x_min = screen_width * x_min
-        x_max = screen_width * x_max
-        y_min = screen_height * y_min
-        y_max = screen_height * y_max
+        self.logger.log("State changed to: " + State.all_states[self.state])
+    def quitProgram(self):
+        self.communicator.transmit_info(State.stop)
+        self.communicator.deactivate_bluetooth()
+
+    def draw_robot(self, screen, x_min, x_max, y_min, y_max):
+        #parameters are given as actual dimensions, not from 0 to 1
         width = x_max - x_min
         height = y_max - y_min
-
         # robot_width, robot_height = ROBOT.get_size()
         # robot_height_to_width = robot_height/robot_width
         # robot_width = int(robot_width * .5)
         # robot_height = robot_width * robot_height_to_width
         # self.logger.log(self.xcoord, self.ycoord)
-        screen.blit(pygame.transform.rotate(self.image, self.angle), (self.xcoord + (width/2), self.ycoord + (height/2)))
+        screen.blit(pygame.transform.rotate(self.image, self.angle), (self.xcoord + (width/2) + x_min, self.ycoord + (height/2) + y_min))
         
     def __update_location(self):
         delta_x, delta_y, angle = self.__calculate_delta_location_change()
@@ -78,9 +76,9 @@ class Robot:
             if self.dataPackets[-1].state == State.reverse:
                 angle + 180
             
-            self.logger.log("angle:", angle)
+            self.logger.log("angle: " + str(angle))
             angle_radians = math.radians(angle)
-            self.logger.log("angle_radians:", angle_radians)
+            self.logger.log("angle_radians: " + str(angle_radians))
 
             #if we adjusted the angle value bc we're going backward, undo that when we return delta_angle
             if self.dataPackets[-1].state == State.reverse:
@@ -92,7 +90,8 @@ class Robot:
         else:
             delta_x = 0
             delta_y = 0
-            angle = 0
+            #angle = 0
+            angle = self.dataPackets[-1].rotation #experimental
 
         return delta_x, delta_y, angle
         
@@ -123,6 +122,3 @@ class Robot:
 
     def right_is_clear(self):
         return self.dataPackets[-1].right_distance > 50
-        
-        
-#self.state = State.forward
