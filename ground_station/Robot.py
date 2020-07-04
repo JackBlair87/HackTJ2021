@@ -4,6 +4,7 @@ from math import pi
 import numpy
 import pygame
 import sys
+import time
 from Resources import Mode, State, InfoPacket, WheelInfo, Logger
 
 class Robot:
@@ -25,11 +26,13 @@ class Robot:
         # self.logger = Logger()
         
     def add_data(self):
-        new_packet = self.communicator.recieve_info(self.state)
-        if new_packet != None:
-            self.dataPackets.append(new_packet)
-            self.__update_location()
-            self.logger.log(self.dataPackets[-1])
+        while True:
+            new_packet = self.communicator.recieve_info(self.state)
+            if new_packet != None:
+                self.dataPackets.append(new_packet)
+                self.__update_location()
+                self.logger.log(self.dataPackets[-1])
+            time.sleep(0.5)
         
     def deactivate_robot(self):
         self.communicator.deactivate_bluetooth()
@@ -38,6 +41,7 @@ class Robot:
         self.state = new_state
         self.communicator.transmit_info(self.state)
         self.logger.log("State changed to: " + State.all_states[self.state])
+        
     def quitProgram(self):
         self.communicator.transmit_info(State.stop)
         self.communicator.deactivate_bluetooth()

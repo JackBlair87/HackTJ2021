@@ -5,6 +5,7 @@ import math
 import time
 from Robot import Robot
 from Resources import InfoPacket, WheelInfo, Mode, State, Logger, Colors
+import threading
 
 #Window
 screen_width = 1440 
@@ -38,6 +39,7 @@ logger = Logger("BotDisplay")
 
 def main():
   global robot, mode, screen, screen_width, screen_height
+  threading.Thread(target=robot.add_data).start()
   while True:
     
     #Check for user input on the keyboard and OSX operations
@@ -77,12 +79,13 @@ def main():
 
     if mode == Mode.manual:
       robot.change_state(state_from_key_press())
+      pass
     elif mode == Mode.explore:
       pass
     elif mode == Mode.sweep:
       pass
     
-    robot.add_data()
+    #robot.add_data()
   
     pygame.display.flip()
     clock.tick(60) #Sets the FPS as 60

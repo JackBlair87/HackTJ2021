@@ -2,6 +2,7 @@ import serial
 import time
 import sys
 from Resources import InfoPacket, Logger
+import threading
 
 class Communicator:
   def __init__(self, port = "/dev/tty.HC-05-DevB", baud = 9600, enabled = True):
@@ -10,9 +11,7 @@ class Communicator:
     self.bluetooth = None
     self.enabled = enabled
     self.connected = False
-    self.start_time = int(round(time.time() * 1000))
-    self.last_communication_time = self.start_time
-    self.next_communcation = None
+    
     self.logger = Logger("Communicator")
     if self.enabled:
         try:
@@ -23,7 +22,7 @@ class Communicator:
           
   def initiate_bluetooth(self):
     if self.enabled:
-      self.bluetooth = serial.Serial(self.port, self.baud, timeout=1) #Start communications with the bluetooth unit
+      self.bluetooth = serial.Serial(self.port, self.baud, timeout=0) #Start communications with the bluetooth unit
       self.bluetooth.flushInput() #This gives the bluetooth a little kick
       self.connected = True
     
@@ -31,35 +30,37 @@ class Communicator:
   def recieve_info(self, old_state = 0):
     if not (self.enabled and self.connected):
       return None
+    
     input_data = self.bluetooth.readline().decode() #This reads the incoming data
-    print(input_data)
     if(input_data == None):
+      #self.connected = False
       return None
     
-    #incoming data is separated with commas and represents these values in order: Millis, state, front distance, right distance, left encoder total, right encoder total, angle total
+    print("Data ----------", input_data)
+    #   #incoming data is separated with commas and represents these values in order: Millis, state, front distance, right distance, left encoder total, right encoder total, angle total
     newdata = input_data.split(",")
     newdata[-1] = newdata[-1].strip()
     self.logger.logDataPacket(input_data)
     if len(newdata) < 7:
       self.logger.log("^New data list is less than 7^")
+      #self.connected = False
       return None
     
-    if(old_state != 0 and newdata[0] == 0):
-      info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], True)
-    else:
-      info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], False)
-    return info
+    #   if(old_state != 0 and newdata[0] == 0):
+    #     info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], True)
+    #   else:
+    #     info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], False)
+    #   self.connected = True
+    #   return info
+    # else:
+    #   return None
+    
   
   def transmit_info(self, state = 0):
-    #if self.enabled and self.connected and int(round(time.time() * 1000)) - self.last_communication_time > 250 and self.next_communcation is not None:
     if self.enabled and self.connected:
       self.previousState = state
+      self.bluetooth.flushInput()
       self.bluetooth.write(str.encode(str(state))) #These need to be bytes not unicode, plus a number
-      #self.logger.log("Changed State to", self.next_communication)
-      #self.next_communication = None
-      #self.last_communication_time = int(round(time.time() * 1000)) - self.last_communication_time > 250
-    #else:
-      #self.next_communication = state
     
   def deactivate_bluetooth(self):
     if self.enabled and self.connected:
