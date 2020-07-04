@@ -6,16 +6,11 @@
 #include <SoftwareSerial.h> //Bluetooth Library
 
 #define ledPin 13
-#define BUFFER_SIZE 64 //This will prevent buffer overruns.
-char inData[BUFFER_SIZE];//This is a character buffer where the data sent by the python script will go.
-char inChar=-1;//Initialie the first character as nothing
-int i=0;//Arduinos are not the most capable chips in the world so I just create the looping variable once
-
-RobotServos servos(6, 5);
+RobotServos servos(6, 5, 5);
 DistanceEstimator dF(8, 7);
 DistanceEstimator dR(10, 9);
 //MPU9250 mpu;
-SoftwareSerial serial_connection(11, 12); //Create a serial connection with TX and RX on these pins
+SoftwareSerial groundStation(11, 12); //Create a serial connection with TX and RX on these pins
 RotaryEncoder rightEncoder(A2, A3);
 RotaryEncoder leftEncoder(A0, A1);
 
@@ -30,53 +25,51 @@ int servoTolerance = 2; //number of encoder step shifts when stopped
 
 double stoppingBenchmark = 2; //cm
 int baudRate = 9600;
+int nullCount = 0;
+boolean isConnected = false;
 //-----------------------------------------------
 
 void setup(){
   pinMode(ledPin, OUTPUT);
   Serial.begin(baudRate); //Initialize communications to the serial monitor in the Arduino IDE
-  serial_connection.begin(baudRate); //Initialize communications with the bluetooth module
+  groundStation.begin(baudRate); //Initialize communications with the bluetooth module
+  
   //Wire.begin();
   //delay(2000);
   //mpu.setup();
 }
 
 void recieveData(){
-  byte byte_count = serial_connection.available();//This gets the number of bytes that were sent by the python script
-  if(byte_count) //If there are any bytes then deal with them
-  {
-    int first_bytes=byte_count;//initialize the number of bytes that we might handle. 
-    int remaining_bytes=0;//Initialize the bytes that we may have to burn off to prevent a buffer overrun
-    if(first_bytes>=BUFFER_SIZE-1)//If the incoming byte count is more than our buffer...
-    {
-      remaining_bytes=byte_count-(BUFFER_SIZE-1);//Reduce the bytes that we plan on handleing to below the buffer size
+  if(groundStation.available()){
+    int newState = state;
+    nullCount = 0;
+    while(groundStation.available() > 0){
+      newState = groundStation.read() - '0';
     }
-    for(i=0;i<first_bytes;i++)//Handle the number of incoming bytes
-    {
-      inChar=serial_connection.read();//Read one byte
-      inData[i]=inChar;//Put it into a character string(array)
+    if(newState > -1 && newState < 5){
+      //Serial.println("Recieved New State");
+      state = newState;
+      isConnected = true;
     }
-    inData[i]='\0';//This ends the character array with a null character. This signals the end of a string
-    
-    for(i=0;i<remaining_bytes;i++)//This burns off any remaining bytes that the buffer can't handle.
-    {
-      inChar=serial_connection.read();
-    }
+  }
+  else{
+    nullCount++;
+  }
 
-    Serial.print("Recieved New State: ");
-    Serial.println(inData[0] - '0');//Print to the monitor what was detected
-    state = inData[0] - '0';
-    servos.setState(state);
+  if(nullCount > 1 && isConnected){
+    isConnected = false;
+    state = 0;
+    Serial.println("Disconnected");
   }
 }
 
 void transmitData(){
-  if(Serial.availableForWrite()){
-    serial_connection.println(String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(120.020));
+  if(isConnected){
+    groundStation.println(String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(random(0,270)));
+    //Example --> 12330,0,12.0,34.0,-48,-39,20.342
+    //Serial.println(String(millis()) + "," + String(state) + "," + String(" ") + "," + String(" ") + "," + String(totalTravelL) + "," + String(totalTravelR) + "," + String(120.20));
+    Serial.println("Transmitted Data");
   }
-  //Example --> 12330,0,12.0,34.0,-48,-39,20.342
-  //Serial.println(String(millis()) + "," + String(state) + "," + String(" ") + "," + String(" ") + "," + String(totalTravelL) + "," + String(totalTravelR) + "," + String(120.20));
-  //Serial.println(String(mpu.getYaw()));
 }
 
 void encoderCheck(){
@@ -89,17 +82,16 @@ void encoderCheck(){
   int differenceL = leftEncoder.getPosition() - totalTravelL;
  
 //switch one of these to less than because of opposite spinning direction
-  if((differenceL > servoTolerance || differenceR > servoTolerance) && state == 0){
-    state = 0; //stops
-    Serial.println("Error: Too much encoder movement while in 'Stopped' State --> increase servo tolerance");
-  }
+  //if((differenceL > servoTolerance || differenceR > servoTolerance) && state == 0){
+    //state = 0; //stops
+    //Serial.println("Error: Too much encoder movement while in 'Stopped' State --> increase servo tolerance");
+  //}
 
   //check state and encoder direction
   
 }
 
 void refreshVariables(){
-  
   encoderCheck();
   //dR.record();
   //mpu.update();
@@ -116,14 +108,18 @@ void refreshVariables(){
   //else{
     //state = 1;
   //}
+  if(servos.getState() != state){
+    servos.setState(state);
+  }
 }
 
 
-TimedAction recieve = TimedAction(50, recieveData);
+TimedAction recieve = TimedAction(100, recieveData);
 TimedAction transmit = TimedAction(500, transmitData);
 
 void loop(){
   refreshVariables();
   recieve.check();
   transmit.check();
+  Serial.println(state);
 }
