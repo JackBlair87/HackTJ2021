@@ -36,10 +36,9 @@ mode = Mode.manual
 robot = Robot(image = ROBOT)
 logger = Logger("BotDisplay")
 
-
 def main():
   global robot, mode, screen, screen_width, screen_height
-  threading.Thread(target=robot.add_data).start()
+  #threading.Thread(target=robot.add_data).start()
   while True:
     
     #Check for user input on the keyboard and OSX operations
@@ -85,7 +84,7 @@ def main():
     elif mode == Mode.sweep:
       pass
     
-    #robot.add_data()
+    robot.add_data()
   
     pygame.display.flip()
     clock.tick(60) #Sets the FPS as 60
@@ -161,7 +160,7 @@ def state_from_key_press():
 def draw_compass(x, y, angle = 90.0):
   half_image = COMPASS.get_size()[0] / 2
   screen.blit(COMPASS, (x, y)) #Draws the compass image
-  print(x, y, angle)
+  #logger.log("x, y, angle:", x, y, angle)
   pygame.draw.line(screen, Colors.GREEN, (x+half_image, y+half_image), (x+half_image + (65*math.cos(math.radians(-(angle+90)))), y+half_image + (65*math.sin(math.radians(-(angle+90))))), 8)
 
 def quitProgram(): #Quits Pygame and Python

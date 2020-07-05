@@ -27,14 +27,11 @@ class Robot:
         # self.logger = Logger()
         
     def add_data(self):
-        while True:
-            
-            new_packet = self.communicator.recieve_info(self.state)
-            if new_packet != None:
-                self.dataPackets.append(new_packet)
-                self.__update_location()
-                self.logger.log(self.dataPackets[-1])
-            time.sleep(0.55)
+        new_packet = self.communicator.recieve_info(self.state)
+        if new_packet != None:
+            self.dataPackets.append(new_packet)
+            self.__update_location()
+            self.logger.log(self.dataPackets[-1])
         
     def change_state(self, new_state = State.stop):
         self.state = new_state

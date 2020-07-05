@@ -30,14 +30,19 @@ class Communicator:
   def recieve_info(self, old_state = 0):
     if not (self.enabled and self.connected):
       return None
-    print(self.bluetooth.in_waiting)
-    input_data = self.bluetooth.readline().decode() #This reads the incoming data
+    
+    
+    if self.bluetooth.in_waiting <= 0:
+      input_data = self.bluetooth.readline().decode()
+    else:
+      input_data = None
+    
     if(input_data == None):
       #self.connected = False
       return None
     
     print("Data ----------", input_data)
-    #   #incoming data is separated with commas and represents these values in order: Millis, state, front distance, right distance, left encoder total, right encoder total, angle total
+      #   #incoming data is separated with commas and represents these values in order: Millis, state, front distance, right distance, left encoder total, right encoder total, angle total
     newdata = input_data.split(",")
     newdata[-1] = newdata[-1].strip()
     self.logger.logDataPacket(input_data)
@@ -46,16 +51,15 @@ class Communicator:
       #self.connected = False
       return None
     
-    #   if(old_state != 0 and newdata[0] == 0):
-    #     info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], True)
-    #   else:
-    #     info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], False)
-    #   self.connected = True
-    #   return info
-    # else:
-    #   return None
+    if(old_state != 0 and newdata[0] == 0):
+      info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], True)
+    else:
+      info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], False)
+      self.connected = True
+      return info
+    #else:
+      #return None
     
-  
   def transmit_info(self, state = 0):
     if self.enabled and self.connected:
       self.previousState = state

@@ -82,15 +82,21 @@ class Logger():
     self.log("Creating logger object")
     Logger.created = True
 
-  def log(self, text, end='\n', printToScreen=True):
-    printString = str(self.get_time()) + ":" + self.fromClass + ": " + str(text) + end
+  def log(self, *text, end='\n', printToScreen=True, sep=" "):
+    printString = str(self.get_time()) + ":" + self.fromClass + ": "
+    for t in text:
+      printString += str(text) + sep
+    printString += end
     if printToScreen:
       print(printString, end='')
     with open(Logger.outfile, 'a') as f:
       f.write(printString)
   
-  def logDataPacket(self, text, end = '\n', printToScreen=True):
-    printString = str(self.get_time()) + ":" + self.fromClass + ": " + str(text) + end
+  def logDataPacket(self, *text, end = '\n', printToScreen=True, sep=" "):
+    printString = str(self.get_time()) + ":" + self.fromClass + ": "
+    for t in text:
+      printString += str(text) + sep
+    printString += end
     if printToScreen:
       print(printString, end='')
     with open(Logger.outfile, 'a') as f:#writes to the main file
