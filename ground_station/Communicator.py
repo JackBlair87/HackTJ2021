@@ -22,7 +22,7 @@ class Communicator:
           
   def initiate_bluetooth(self):
     if self.enabled:
-      self.bluetooth = serial.Serial(self.port, self.baud, timeout=0) #Start communications with the bluetooth unit
+      self.bluetooth = serial.Serial(self.port, self.baud, timeout=None) #Start communications with the bluetooth unit
       self.bluetooth.flushInput() #This gives the bluetooth a little kick
       self.connected = True
     
@@ -30,7 +30,7 @@ class Communicator:
   def recieve_info(self, old_state = 0):
     if not (self.enabled and self.connected):
       return None
-    
+    print(self.bluetooth.in_waiting)
     input_data = self.bluetooth.readline().decode() #This reads the incoming data
     if(input_data == None):
       #self.connected = False
