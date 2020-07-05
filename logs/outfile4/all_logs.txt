@@ -1,7 +1,7 @@
 Beginning output for all logs:
-444:InfoPacket: ('Creating logger object',) 
-444:InfoPacket: ('Files have already been created, continuing',) 
-444:Communicator: ('Files have already been created, continuing',) 
-3205:Robot: ('Files have already been created, continuing',) 
-3205:BotDisplay: ('Files have already been created, continuing',) 
-3366:Robot: ('State changed to: stop',) 
+343:InfoPacket: ('Creating logger object',) 
+344:InfoPacket: ('Files have already been created, continuing',) 
+344:Communicator: ('Files have already been created, continuing',) 
+1802:Robot: ('Files have already been created, continuing',) 
+1803:BotDisplay: ('Files have already been created, continuing',) 
+1976:Robot: ('State changed to: stop',) 
