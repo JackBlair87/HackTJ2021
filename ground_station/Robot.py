@@ -16,8 +16,9 @@ class Robot:
         self.right_encoder_counts = 0
         self.xcoord = x - self.size[0]/2
         self.ycoord = y - self.size[1]/2
+        #^separate things above here into just the draw_robot method
         self.angle = angle
-        self.dataPackets = [InfoPacket(angle=90), InfoPacket(angle=90)]
+        self.dataPackets = [InfoPacket(angle=90), InfoPacket(angle=90)] #angles here should be changed to 0?
         self.communicator = Communicator(enabled = False)
         self.communicator.initiate_bluetooth()
         self.state = State.stop
@@ -33,9 +34,6 @@ class Robot:
                 self.__update_location()
                 self.logger.log(self.dataPackets[-1])
             time.sleep(0.5)
-        
-    def deactivate_robot(self):
-        self.communicator.deactivate_bluetooth()
         
     def change_state(self, new_state = State.stop):
         self.state = new_state
