@@ -1,3 +1,5 @@
+#to work, this class must be moved out of the "tests" folder and into the "ground_station" folder
+
 from Resources import Logger
 
 
