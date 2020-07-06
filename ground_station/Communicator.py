@@ -11,6 +11,7 @@ class Communicator:
     self.bluetooth = None
     self.enabled = enabled
     self.connected = False
+    self.data_stream = ""
     
     self.logger = Logger("Communicator")
     if self.enabled:
@@ -35,36 +36,45 @@ class Communicator:
     if(input_data == None or input_data == ""):
       return None
     
-    print("Data ----------", input_data)
-      #   #incoming data is separated with commas and represents these values in order: Millis, state, front distance, right distance, left encoder total, right encoder total, angle total
-    newdata = input_data.split(",")
-    #strip each value
-    #add the list of new values to the old list
-    #check if value isn't empty
-    #check for complete data packet
-      #remove them from the list
-      #make a new data packet
-      
-    newdata[-1] = newdata[-1].strip()
-    self.logger.logDataPacket(input_data)
-    if len(newdata) < 7:
-      self.logger.log("^New data list is less than 7^")
-      #self.connected = False
-      return None
+    self.data_stream += input_data
     
+    if self.data_stream.count(":") >= 2:
+      self.data_stream = self.data_stream.lstrip()
+      self.data_stream = self.data_stream[1:]
+      data_packet = self.data_stream[0 : self.data_stream.index(":") + 1]
+      data_packet = data_packet[:-1]
+      print(data_packet)
+      self.data_stream = self.data_stream[len(data_packet) + 1: ]
+      self.data_stream = self.data_stream.lstrip()
+      data_packet = data_packet.split(",")
+      return self.create_info_packet(data_packet, old_state)
+    #for x in len(input_data-1):
+      #create_info_packet(input_data[x], old_state)
+    #input_data = [elem.strip() for elem in input_data if elem.strip() != '']
+    
+    # self.data_stream.extend(input_data)
+    
+    # if len(self.data_stream) == 7:
+    #   data = self.create_info_packet(self.data_stream, old_state)
+    #   if data != None:
+    #     self.data_stream = []
+    #     return data
+    
+    print(self.data_stream)
+      #   #incoming data is separated with commas and represents these values in order: Millis, state, front distance, right distance, left encoder total, right encoder total, angle total
+   
+  def create_info_packet(self, newdata, old_state):
+    self.logger.logDataPacket(newdata)
     if(old_state != 0 and newdata[0] == 0):
       info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], True)
     else:
       info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], False)
       self.connected = True
       return info
-    #else:
-      #return None
-    
+      
   def transmit_info(self, state = 0):
     if self.enabled and self.connected:
       self.previousState = state
-      #self.bluetooth.flushInput()
       self.bluetooth.write(str.encode(str(state))) #These need to be bytes not unicode, plus a number
     
   def deactivate_bluetooth(self):
