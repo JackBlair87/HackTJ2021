@@ -86,7 +86,7 @@ def main():
     elif mode == Mode.stop:
       robot.change_state(State.stop)
     
-    #robot.add_data()
+    robot.add_data()
   
     pygame.display.flip()
     clock.tick(60) #Sets the FPS as 60
