@@ -31,19 +31,20 @@ class Communicator:
     if not (self.enabled and self.connected):
       return None
     
-    
-    if self.bluetooth.in_waiting <= 0:
-      input_data = self.bluetooth.readline().decode()
-    else:
-      input_data = None
-    
-    if(input_data == None):
-      #self.connected = False
+    input_data = self.bluetooth.readline().decode()
+    if(input_data == None or input_data == ""):
       return None
     
     print("Data ----------", input_data)
       #   #incoming data is separated with commas and represents these values in order: Millis, state, front distance, right distance, left encoder total, right encoder total, angle total
     newdata = input_data.split(",")
+    #strip each value
+    #add the list of new values to the old list
+    #check if value isn't empty
+    #check for complete data packet
+      #remove them from the list
+      #make a new data packet
+      
     newdata[-1] = newdata[-1].strip()
     self.logger.logDataPacket(input_data)
     if len(newdata) < 7:
