@@ -22,7 +22,7 @@ class Communicator:
           
   def initiate_bluetooth(self):
     if self.enabled:
-      self.bluetooth = serial.Serial(self.port, self.baud, timeout=None) #Start communications with the bluetooth unit
+      self.bluetooth = serial.Serial(self.port, self.baud, timeout=0) #Start communications with the bluetooth unit
       self.bluetooth.flushInput() #This gives the bluetooth a little kick
       self.connected = True
     
@@ -63,7 +63,7 @@ class Communicator:
   def transmit_info(self, state = 0):
     if self.enabled and self.connected:
       self.previousState = state
-      self.bluetooth.flushInput()
+      #self.bluetooth.flushInput()
       self.bluetooth.write(str.encode(str(state))) #These need to be bytes not unicode, plus a number
     
   def deactivate_bluetooth(self):

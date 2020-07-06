@@ -24,7 +24,6 @@ class Robot:
         self.state = State.stop
         self.communicator.transmit_info(self.state)
         self.logger = Logger("Robot")
-        # self.logger = Logger()
         
     def add_data(self):
         new_packet = self.communicator.recieve_info(self.state)
