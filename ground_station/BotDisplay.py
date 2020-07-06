@@ -5,7 +5,6 @@ import math
 import time
 from Robot import Robot
 from Resources import InfoPacket, WheelInfo, Mode, State, Logger, Colors
-import threading
 
 #Window
 screen_width = 1440 
@@ -38,7 +37,6 @@ logger = Logger("BotDisplay")
 
 def main():
   global robot, mode, screen, screen_width, screen_height
-  #threading.Thread(target=robot.add_data).start()
   while True:
     
     #Check for user input on the keyboard and OSX operations
