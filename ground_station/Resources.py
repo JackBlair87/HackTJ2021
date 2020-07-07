@@ -3,6 +3,11 @@ from math import pi
 import os
 from os import path
 import time
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
 
 class InfoPacket:
 
@@ -116,3 +121,34 @@ class Colors:
   TAN = (184, 130, 109)
   BLUE = (85, 154, 212)
   PINK = (197, 134, 192)
+
+class RegressionCalculator():
+  def __init__(self, regression=None, x_train=None, y_train=None):
+    if x_train is not None and y_train is not None:
+      self.calculate_regression(x_train, y_train)
+    else:
+      self.regression = regression
+      self.slope = None
+      self.b = None
+  
+  def calculate_regression(self, x_train, y_train):
+    x_train = [[elem] for elem in x_train]
+    y_train = [[elem] for elem in y_train]
+
+    self.regression = LinearRegression()
+    self.regression.fit(x_train, y_train)
+    self.slope = self.regression.coef_[0][0]
+    self.b = self.regression.intercept_[0]
+  
+  def calculate_distance(x, y):
+    if self.slope == 0:
+        return y - (self.slope * x + self.b)
+    perp_slope = -1 / self.slope
+    perp_b = (y - perp_slope * x)
+    intersect_x = (b - perp_b) / (perp_slope - self.slope)
+    intersect_y = intersect_x * self.slope + self.b
+    distance = math.sqrt((intersect_y-y)**2 + (intersect_x-x)**2)
+    return distance
+
+  def y_prediction(x):
+    regressor.predict(x)
