@@ -19,11 +19,12 @@ class Robot:
         #^separate things above here into just the draw_robot method
         self.angle = angle
         self.dataPackets = [InfoPacket(angle=90), InfoPacket(angle=90)] #angles here should be changed to 0?
-        self.communicator = Communicator(enabled = True)
+        self.communicator = Communicator(enabled = False)
         self.communicator.initiate_bluetooth()
         self.state = State.stop
         self.communicator.transmit_info(self.state)
         self.logger = Logger("Robot")
+        self.max_dist = 150
         
     def add_data(self):
         new_packet = self.communicator.recieve_info(self.state)
@@ -31,6 +32,7 @@ class Robot:
             self.dataPackets.append(new_packet)
             self.__update_location()
             self.logger.log(self.dataPackets[-1])
+            self.generate_points()
         
     def change_state(self, new_state = State.stop):
         self.state = new_state
@@ -45,11 +47,6 @@ class Robot:
         #parameters are given as actual dimensions, not from 0 to 1
         width = x_max - x_min
         height = y_max - y_min
-        # robot_width, robot_height = ROBOT.get_size()
-        # robot_height_to_width = robot_height/robot_width
-        # robot_width = int(robot_width * .5)
-        # robot_height = robot_width * robot_height_to_width
-        # self.logger.log(self.xcoord, self.ycoord)
         screen.blit(pygame.transform.rotate(self.image, self.angle), (self.xcoord + (width/2) + x_min, self.ycoord + (height/2) + y_min))
         
     def __update_location(self):
@@ -93,6 +90,24 @@ class Robot:
             angle = self.dataPackets[-1].rotation #experimental
 
         return delta_x, delta_y, angle
+        
+    def generate_points(self):
+        if self.dataPackets[-1] != None:
+            distForward = self.dataPackets[-1].front_distance
+            distRight = self.dataPackets[-1].right_distance
+            
+            forward = None
+            right = None
+            
+            if distForward >= 0 and distForward < self.max_dist:
+                #forward = ()
+                pass
+            
+            if(distForward < 1 or distForward > self.max_dist):
+                forward = None
+            if distRight < 1 or distRight > self.max_dist:
+                right = None
+            
         
     def sweep(self):
         pass

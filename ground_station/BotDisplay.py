@@ -5,6 +5,7 @@ import math
 import time
 from Robot import Robot
 from Resources import InfoPacket, WheelInfo, Mode, State, Logger, Colors
+from WallMap import WallMap
 
 #Window
 screen_width = 1440 
@@ -34,6 +35,7 @@ mode = Mode.manual
 #objects that we need
 robot = Robot(image = ROBOT)
 logger = Logger("BotDisplay")
+wall_map = WallMap()
 
 def main():
   global robot, mode, screen, screen_width, screen_height
@@ -71,7 +73,7 @@ def main():
     #x_max is .85, y_min is .1
     robot.angle += 1
     robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
-    
+    wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
     change_mode_from_button()
 
     if mode == Mode.manual:
