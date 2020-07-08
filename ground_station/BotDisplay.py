@@ -59,20 +59,18 @@ def main():
     
     mode_button_height = .1
     mode_button_y_diff = mode_button_height+.01
-    create_button_from_text("Stop", .89, .1 + mode_button_y_diff * 0, .1, mode_button_height, mediumFont, text_color=Colors.BLACK, background_color=Colors.DBLUE)
-    create_button_from_text("Explore", .89, .1 + mode_button_y_diff * 1, .1, mode_button_height, mediumFont, text_color=Colors.BLACK, background_color=Colors.DBLUE)
-    create_button_from_text("Sweep", .89, .1 + mode_button_y_diff * 2, .1, mode_button_height, mediumFont, text_color=Colors.BLACK, background_color=Colors.DBLUE)
-    create_button_from_text("Manual", .89, .1 + mode_button_y_diff * 3, .1, mode_button_height, mediumFont, text_color=Colors.BLACK, background_color=Colors.DBLUE)
+    mode_button_x = .89
+    create_button_from_text("Stop", mode_button_x, .1 + mode_button_y_diff * 0, .1, mode_button_height, mediumFont, text_color=Colors.BLACK, background_color=Colors.DBLUE)
+    create_button_from_text("Explore", mode_button_x, .1 + mode_button_y_diff * 1, .1, mode_button_height, mediumFont, text_color=Colors.BLACK, background_color=Colors.DBLUE)
+    create_button_from_text("Sweep", mode_button_x, .1 + mode_button_y_diff * 2, .1, mode_button_height, mediumFont, text_color=Colors.BLACK, background_color=Colors.DBLUE)
+    create_button_from_text("Manual", mode_button_x, .1 + mode_button_y_diff * 3, .1, mode_button_height, mediumFont, text_color=Colors.BLACK, background_color=Colors.DBLUE)
     
     mode_label = draw_text("Mode: " + Mode.all_modes_english[mode], .91, top_bar_y, text_color=Colors.PINK)
     draw_text("State: " + State.all_states_english[robot.state], .75, top_bar_y, text_color=Colors.PINK)
     # draw_text(current_action, .01, top_bar_y, basis_point='midleft', text_color=Colors.PINK)
     
     #Draw interactive elements
-    draw_compass(screen_width-175, screen_height-175, robot.angle)
     #x_max is .85, y_min is .1
-    robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
-    wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
     change_mode_from_button()
 
     if mode == Mode.manual:
@@ -85,8 +83,17 @@ def main():
     elif mode == Mode.stop:
       robot.change_state(State.stop)
     
-    robot.add_data()
-  
+    # new_points = robot.add_data()
+    # for point in new_points:
+    #   wall_map.add_obstacle_point(point)
+
+    wall_map.add_obstacle_point(100, 100)
+    wall_map.add_obstacle_point(50, 100)
+    wall_map.add_obstacle_point(75, 75)
+
+    robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
+    wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .02) * screen_width, y_min=(top_bar_y + .01) * screen_height, y_max=1 * screen_height)
+    draw_compass(screen_width-175, screen_height-175, robot.angle)
     pygame.display.flip()
     clock.tick(60) #Sets the FPS as 60
   quitProgram()

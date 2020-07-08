@@ -58,21 +58,28 @@ class WallMapOld:
   
 
 class Wall:
-  def __init__(self, regression=None, x_train=None, y_train=None):
-    if x_train is not None and y_train is not None:
-      self.calculate_regression(x_train, y_train)
-    else:
+  def __init__(self):
       self.regression = LinearRegression()
-      self.slope = None
+      self.slope = None #these 
       self.b = None
+      self.x_points = []
+      self.y_points = []
+    
+  def add_point(self, x, y, update_regression=False):
+    self.x_points.append([x])
+    self.y_points.append([y])
+    if update_regression:
+      self.update_regression()
   
-  def calculate_regression(self, x_train, y_train):
+  def update_regression(self, x_train, y_train):
     x_train = [[elem] for elem in x_train]
     y_train = [[elem] for elem in y_train]
-    
-    self.regression.fit(x_train, y_train)
-    self.slope = self.regression.coef_[0][0]
-    self.b = self.regression.intercept_[0]
+    self.x_points.extend(x_train)
+    self.y_points.extend(y_train)
+
+    self.regression.fit(self.x_points, self.y_points)
+    self.slope = round(self.regression.coef_[0][0], 4)
+    self.b = round(self.regression.intercept_[0], 4)
   
   def calculate_distance(x, y):
     if self.slope == 0:
@@ -99,9 +106,22 @@ class WallMap:
     self.obstacle_points = obstacle_points
     self.clear_rectangles = clear_rectangles
     self.walls = set()
+    self.x_min = 0
+    self.x_max = 1
+    self.y_min = 0
+    self.y_max = 1
   
   def add_obstacle_point(self, x, y):
-    pass
+    self.obstacle_points.add((x, y))
+    if x > self.x_max:
+      self.x_max = x + 10
+    if x < self.x_min:
+      self.x_min = x - 10
+    
+    if y > self.y_max:
+      self.y_max = y + 10
+    if y < self.y_min:
+      self.y_min = y - 10
       
   def print_map(self):
     for row in self.map:
@@ -111,5 +131,18 @@ class WallMap:
     #parameters are given as actual dimensions, not from 0 to 1
     width = x_max - x_min
     height = y_max - y_min
-    center = (x_min + width / 2, y_min + height / 2)
-    pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=50)
+    x_scale = width / (self.x_max - self.x_min)
+    y_scale = height / (self.y_max - self.y_min)
+    # if x_scale > y_scale:
+    #   x_scale = y_scale
+    # else:
+    #   y_scale = x_scale
+    print("x bounds:", x_min, x_max)
+    print("y bounds:", y_min, y_max)
+    print("self.x bounds", self.x_min, self.x_min)
+    print("self.y bounds", self.y_min, self.y_min)
+    for point in self.obstacle_points:
+      center = (point[0] * x_scale, point[1] * y_scale)
+      center = (center[0], y_max - center[1])
+      print("scaled center:", center)
+      pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=10)
