@@ -71,7 +71,6 @@ def main():
     #Draw interactive elements
     draw_compass(screen_width-175, screen_height-175, robot.angle)
     #x_max is .85, y_min is .1
-    robot.angle += 1
     robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
     wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
     change_mode_from_button()

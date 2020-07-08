@@ -39,20 +39,16 @@ class Communicator:
     self.data_stream += input_data
     
     if self.data_stream.count(":") >= 2:
+      #print(self.data_stream)
       self.data_stream = self.data_stream.lstrip()
       self.data_stream = self.data_stream[1:]
       data_packet = self.data_stream[0 : self.data_stream.index(":") + 1]
       data_packet = data_packet[:-1]
-      print(data_packet)
+      #print(data_packet)
       self.data_stream = self.data_stream[len(data_packet) + 1: ]
       self.data_stream = self.data_stream.lstrip()
       data_packet = data_packet.split(",")
       return self.create_info_packet(data_packet, old_state)
-    #for x in len(input_data-1):
-      #create_info_packet(input_data[x], old_state)
-    #input_data = [elem.strip() for elem in input_data if elem.strip() != '']
-    
-    # self.data_stream.extend(input_data)
     
     # if len(self.data_stream) == 7:
     #   data = self.create_info_packet(self.data_stream, old_state)
@@ -60,11 +56,17 @@ class Communicator:
     #     self.data_stream = []
     #     return data
     
-    print(self.data_stream)
       #   #incoming data is separated with commas and represents these values in order: Millis, state, front distance, right distance, left encoder total, right encoder total, angle total
    
-  def create_info_packet(self, newdata, old_state):
+  def create_info_packet(self, data, old_state):
+    print(data)
+    newdata = []
+    for element in data:
+      newdata.append(element.strip())
+    
+    print(newdata)
     self.logger.logDataPacket(newdata)
+    
     if(old_state != 0 and newdata[0] == 0):
       info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], True)
     else:

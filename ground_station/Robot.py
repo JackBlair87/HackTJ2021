@@ -93,21 +93,18 @@ class Robot:
         
     def generate_points(self):
         if self.dataPackets[-1] != None:
-            distForward = self.dataPackets[-1].front_distance
-            distRight = self.dataPackets[-1].right_distance
-            
+            distForward = self.dataPackets[-1].front_distance #in cm
+            distRight = self.dataPackets[-1].right_distance #in cm
             forward = None
             right = None
             
             if distForward >= 0 and distForward < self.max_dist:
-                #forward = ()
-                pass
+                forward = (distForward * math.cos(math.radians(self.angle)), distForward * math.sin(math.radians(self.angle)))
             
-            if(distForward < 1 or distForward > self.max_dist):
-                forward = None
-            if distRight < 1 or distRight > self.max_dist:
-                right = None
-            
+            if distRight >= 0 and distRight < self.max_dist:
+                right = (distRight * math.cos(math.radians(self.angle-90)), distRight * math.sin(math.radians(self.angle-90)))
+                
+            return (forward, right)
         
     def sweep(self):
         pass

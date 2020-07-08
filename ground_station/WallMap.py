@@ -57,20 +57,19 @@ class WallMapOld:
       self.logger.log(row)
   
 
-class RegressionCalculator():
+class Wall:
   def __init__(self, regression=None, x_train=None, y_train=None):
     if x_train is not None and y_train is not None:
       self.calculate_regression(x_train, y_train)
     else:
-      self.regression = regression
+      self.regression = LinearRegression()
       self.slope = None
       self.b = None
   
   def calculate_regression(self, x_train, y_train):
     x_train = [[elem] for elem in x_train]
     y_train = [[elem] for elem in y_train]
-
-    self.regression = LinearRegression()
+    
     self.regression.fit(x_train, y_train)
     self.slope = self.regression.coef_[0][0]
     self.b = self.regression.intercept_[0]
@@ -99,6 +98,7 @@ class WallMap:
     self.logger = Logger("WallMap")
     self.obstacle_points = obstacle_points
     self.clear_rectangles = clear_rectangles
+    self.walls = set()
   
   def add_obstacle_point(self, x, y):
     pass
