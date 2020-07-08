@@ -1,6 +1,7 @@
-from Resources import Logger
+from Resources import Logger, Colors
+import pygame
 
-class WallMap:
+class WallMapOld:
   """
   todo: Think about using an auxilary set to hold raw data points. Whenever possible,
   calculate a regression and the regression lines to another set with regressions. This would mean more processing
@@ -19,7 +20,6 @@ class WallMap:
                   [WallMap.UNEXPLORED, WallMap.UNEXPLORED, WallMap.UNEXPLORED],
                   [WallMap.UNEXPLORED, WallMap.UNEXPLORED, WallMap.UNEXPLORED]]
   
-
   def update_map(location, new_data):
     pass
   def add_wall(self, point, count=1):
@@ -56,3 +56,93 @@ class WallMap:
     for row in self.map:
       self.logger.log(row)
   
+
+class Wall:
+  def __init__(self):
+      self.regression = LinearRegression()
+      self.slope = None #these 
+      self.b = None
+      self.x_points = []
+      self.y_points = []
+    
+  def add_point(self, x, y, update_regression=False):
+    self.x_points.append([x])
+    self.y_points.append([y])
+    if update_regression:
+      self.update_regression()
+  
+  def update_regression(self, x_train, y_train):
+    x_train = [[elem] for elem in x_train]
+    y_train = [[elem] for elem in y_train]
+    self.x_points.extend(x_train)
+    self.y_points.extend(y_train)
+
+    self.regression.fit(self.x_points, self.y_points)
+    self.slope = round(self.regression.coef_[0][0], 4)
+    self.b = round(self.regression.intercept_[0], 4)
+  
+  def calculate_distance(x, y):
+    if self.slope == 0:
+        return y - (self.slope * x + self.b)
+    perp_slope = -1 / self.slope
+    perp_b = (y - perp_slope * x)
+    intersect_x = (b - perp_b) / (perp_slope - self.slope)
+    intersect_y = intersect_x * self.slope + self.b
+    distance = math.sqrt((intersect_y-y)**2 + (intersect_x-x)**2)
+    return distance
+
+  def y_prediction(x):
+    regressor.predict(x)
+
+class WallMap:
+  """
+  todo: Think about using an auxilary set to hold raw data points. Whenever possible,
+  calculate a regression and the regression lines to another set with regressions. This would mean more processing
+  upfront, but it would save a lot of memory.
+  The line regression would have the regression, as well as the start and and and coordinates.
+  """
+  def __init__(self, obstacle_points=set(), clear_rectangles=set()):
+    self.logger = Logger("WallMap")
+    self.obstacle_points = obstacle_points
+    self.clear_rectangles = clear_rectangles
+    self.walls = set()
+    self.x_min = 0
+    self.x_max = 1
+    self.y_min = 0
+    self.y_max = 1
+  
+  def add_obstacle_point(self, x, y):
+    self.obstacle_points.add((x, y))
+    if x > self.x_max:
+      self.x_max = x + 10
+    if x < self.x_min:
+      self.x_min = x - 10
+    
+    if y > self.y_max:
+      self.y_max = y + 10
+    if y < self.y_min:
+      self.y_min = y - 10
+      
+  def print_map(self):
+    for row in self.map:
+      self.logger.log(row)
+  
+  def draw_map(self, screen, x_min, x_max, y_min, y_max):
+    #parameters are given as actual dimensions, not from 0 to 1
+    width = x_max - x_min
+    height = y_max - y_min
+    x_scale = width / (self.x_max - self.x_min)
+    y_scale = height / (self.y_max - self.y_min)
+    # if x_scale > y_scale:
+    #   x_scale = y_scale
+    # else:
+    #   y_scale = x_scale
+    print("x bounds:", x_min, x_max)
+    print("y bounds:", y_min, y_max)
+    print("self.x bounds", self.x_min, self.x_min)
+    print("self.y bounds", self.y_min, self.y_min)
+    for point in self.obstacle_points:
+      center = (point[0] * x_scale, point[1] * y_scale)
+      center = (center[0], y_max - center[1])
+      print("scaled center:", center)
+      pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=10)
