@@ -51,7 +51,7 @@ class Wall:
       self.stop = (max_x[0], self.regression.predict([max_x])[0][0])
 
   
-  def __calculate_distance(x, y):
+  def __calculate_distance(self, x, y):
     if self.slope == 0:
         return abs(y - (self.slope * x + self.b))
     # elif self.slope == float('inf'):
@@ -63,7 +63,7 @@ class Wall:
     distance = math.sqrt((intersect_y-y)**2 + (intersect_x-x)**2)
     return distance
 
-  def nearest_point_and_distance(pnt, start, end):
+  def nearest_point_and_distance(self, pnt, start, end):
     line_vec = vector(start, end)
     pnt_vec = vector(start, pnt)
     line_len = length(line_vec)
@@ -136,7 +136,15 @@ class Wall:
     y_start *= y_scale
     y_stop *= y_scale
 
-    self.logger.log("adding point", point[0], point[1], "on screen at", x, y)
+    x_start = int(x_start)
+    x_stop = int(x_stop)
+    y_start = int(y_start)
+    y_stop = int(y_stop)
+
+
+    # self.logger.log("adding point", self.point[0], self.point[1], "on screen at", x, y)
+    print("x_start type", type(x_start))
+
     pygame.draw.line(surface=screen, color=Colors.BLUE, start_pos=(x_start, y_start), end_pos=(x_stop, y_stop), width=8)
 
 class WallMap:
@@ -199,6 +207,13 @@ class WallMap:
     y_add_num = -1 * self.y_min
     y_scale = screen_height / (self.y_max - self.y_min)
 
+    if y_scale > x_scale:
+      self.logger.log("adjusting y_scale")
+      y_scale = x_scale
+    else:
+      self.logger.log("adjusting x_scale")
+      x_scale = y_scale
+
     self.logger.log("x bounds:", x_min, x_max)
     self.logger.log("y bounds:", y_min, y_max)
     self.logger.log("self.x bounds", self.x_min, self.x_max)
@@ -216,6 +231,6 @@ class WallMap:
       self.logger.log("adding point", point[0], point[1], "on screen at", x, y)
       center = (x, y_max - y) #correct the order (x, y) to (r, c)
       pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=10)
-    for wall in self.walls:
-      self.logger.log("start, stop of wall", wall.start, wall.stop)
-      wall.draw_wall(screen=screen, x_min=x_min, x_max=x_max, y_min=y_min, y_max=y_max)
+    # for wall in self.walls:
+    #   self.logger.log("start, stop of wall", wall.start, wall.stop)
+    #   wall.draw_wall(screen=screen, x_min=x_min, x_max=x_max, y_min=y_min, y_max=y_max)

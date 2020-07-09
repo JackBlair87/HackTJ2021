@@ -84,17 +84,15 @@ def main():
       robot.change_state(State.stop)
     
     new_points = robot.add_data()
-    # if new_points is not None:
-    #   for point in new_points:
-    #     logger.log("adding points")
-    #     wall_map.add_obstacle_point(point[0], point[1])
-    #     logger.log("finished adding points")
+    if new_points is not None:
+      for point in new_points:
+        wall_map.add_obstacle_point(point[0], point[1])
 
-    wall_map.add_obstacle_point(0, 0)
-    wall_map.add_obstacle_point(-10, -10)
-    wall_map.add_obstacle_point(10, 10)
-    wall_map.add_obstacle_point(10, -10)
-    wall_map.add_obstacle_point(-10, 10)
+    # wall_map.add_obstacle_point(0, 0)
+    # wall_map.add_obstacle_point(-10, -10)
+    # wall_map.add_obstacle_point(10, 10)
+    # wall_map.add_obstacle_point(10, -10)
+    # wall_map.add_obstacle_point(-10, 10)
 
     robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
     # wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y + .01) * screen_height, y_max=1 * screen_height)
