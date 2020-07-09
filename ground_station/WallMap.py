@@ -160,31 +160,47 @@ class WallMap:
 
 
     map_width = self.x_max - self.x_min
-    p_width_map = (self.x_max - 0)
+    p_width_map = self.x_max - 0
+    n_width_map = 0 - self.x_min
     p_width_screen = width * p_width_map / map_width
-    p_width_start_screen = x_max - p_width_screen
+    n_width_screen = width * n_width_map / map_width
+    width_start_screen = x_max - p_width_screen
     p_width_scale = p_width_screen / p_width_map
     n_width_scale = p_width_screen / n_width_map
 
-    x_scale = width / (self.x_max - self.x_min)
+    map_height = self.y_max - self.y_min
+    p_height_map = self.y_max - 0
+    n_height_map = 0 - self.y_min
+    p_height_screen = height * p_height_map / map_height
+    n_height_screen = height * n_height_map / map_height
+    height_start_screen = y_max - p_height_screen
+    p_height_scale = p_height_screen / p_height_map
+    n_height_scale = p_height_screen / n_height_map
+
     # x_scale = width / (self.x_max - self.x_min)
-    y_scale = height / (self.y_max - self.y_min)
+    # y_scale = height / (self.y_max - self.y_min)
     # if x_scale > y_scale:
     #   x_scale = y_scale
     # else:
     #   y_scale = x_scale
-    print("x bounds:", x_min, x_max)
-    print("y bounds:", y_min, y_max)
-    print("self.x bounds", self.x_min, self.x_max)
-    print("self.y bounds", self.y_min, self.y_max)
+    self.logger.log("x bounds:", x_min, x_max)
+    self.logger.log("y bounds:", y_min, y_max)
+    self.logger.log("self.x bounds", self.x_min, self.x_max)
+    self.logger.log("self.y bounds", self.y_min, self.y_max)
     for point in self.obstacle_points:
       # center = (point[0] * x_scale, point[1] * y_scale)
-      x = center[0]
-      y = center[1]
+      x = point[0]
+      y = point[1]
       if x > 0:
-        x = x * p_width_scale + p_width_start_screen
+        x = x * p_width_scale + width_start_screen
       else:
-        x = x * n_width_scale + p_width_start_screen
-      center = (x, y_max - y) #correct the order (r,c) to (x, y)
+        x = x * n_width_scale + width_start_screen
+      
+      if y > 0:
+        y = y * p_height_scale + height_start_screen
+      else:
+        y = y * n_height_scale + height_start_screen
+      center = (x, y_max - y) #correct the order (x, y) to (r, c)
+      self.logger.log("adding point", point[0], point[1], "on screen at", center[0], center[1])
       # print("scaled center:", center)
       pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=10)

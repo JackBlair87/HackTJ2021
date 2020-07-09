@@ -1,17 +1,2829 @@
 Beginning output for all logs:
-567:InfoPacket: ('Creating logger object',) 
-567:InfoPacket: ('Files have already been created, continuing',) 
-567:Communicator: ('Files have already been created, continuing',) 
-3311:Robot: ('Files have already been created, continuing',) 
-3312:BotDisplay: ('Files have already been created, continuing',) 
-3312:WallMap: ('Files have already been created, continuing',) 
-3395:Robot: ('State changed to: stop',) 
-3396:Communicator: ('input_data:', ':712000,0,4,0,0,0,206:\r\n') ('input_data:', ':712000,0,4,0,0,0,206:\r\n') 
-3396:WallMap: ('adding point (0, 0',) 
-13131:Robot: ('State changed to: stop',) 
-13131:Communicator: ('input_data:', '') ('input_data:', '') 
-13147:Robot: ('State changed to: stop',) 
-13148:Communicator: ('input_data:', '') ('input_data:', '') 
-13164:Robot: ('State changed to: stop',) 
-13165:Communicator: ('input_data:', '') ('input_data:', '') 
-13181:Robot: ('State changed to: stop',) 
+603:InfoPacket: Creating logger object 
+603:InfoPacket: Files have already been created, continuing 
+603:Communicator: Files have already been created, continuing 
+603:Robot: Files have already been created, continuing 
+603:BotDisplay: Files have already been created, continuing 
+604:WallMap: Files have already been created, continuing 
+723:Robot: State changed to: stop 
+723:WallMap: adding point (0, 0 
+723:WallMap: adding point (-10, -10 
+723:WallMap: adding point (50, 100 
+723:WallMap: adding point (75, 75 
+724:WallMap: x bounds: 0 1440 
+724:WallMap: y bounds: 0 800 
+724:WallMap: self.x bounds -20 85 
+724:WallMap: self.y bounds -20 110 
+724:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+724:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+724:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+724:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+729:Robot: State changed to: stop 
+730:WallMap: adding point (0, 0 
+730:WallMap: adding point (-10, -10 
+730:WallMap: adding point (50, 100 
+730:WallMap: adding point (75, 75 
+730:WallMap: x bounds: 0 1440 
+730:WallMap: y bounds: 0 800 
+730:WallMap: self.x bounds -20 85 
+730:WallMap: self.y bounds -20 110 
+731:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+731:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+731:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+731:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+745:Robot: State changed to: stop 
+746:WallMap: adding point (0, 0 
+746:WallMap: adding point (-10, -10 
+746:WallMap: adding point (50, 100 
+746:WallMap: adding point (75, 75 
+746:WallMap: x bounds: 0 1440 
+746:WallMap: y bounds: 0 800 
+746:WallMap: self.x bounds -20 85 
+746:WallMap: self.y bounds -20 110 
+746:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+747:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+747:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+747:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+762:Robot: State changed to: stop 
+762:WallMap: adding point (0, 0 
+762:WallMap: adding point (-10, -10 
+762:WallMap: adding point (50, 100 
+762:WallMap: adding point (75, 75 
+763:WallMap: x bounds: 0 1440 
+763:WallMap: y bounds: 0 800 
+763:WallMap: self.x bounds -20 85 
+763:WallMap: self.y bounds -20 110 
+763:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+763:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+763:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+763:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+777:Robot: State changed to: stop 
+777:WallMap: adding point (0, 0 
+778:WallMap: adding point (-10, -10 
+778:WallMap: adding point (50, 100 
+778:WallMap: adding point (75, 75 
+778:WallMap: x bounds: 0 1440 
+778:WallMap: y bounds: 0 800 
+778:WallMap: self.x bounds -20 85 
+778:WallMap: self.y bounds -20 110 
+778:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+778:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+779:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+779:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+794:Robot: State changed to: stop 
+794:WallMap: adding point (0, 0 
+794:WallMap: adding point (-10, -10 
+795:WallMap: adding point (50, 100 
+795:WallMap: adding point (75, 75 
+795:WallMap: x bounds: 0 1440 
+795:WallMap: y bounds: 0 800 
+795:WallMap: self.x bounds -20 85 
+795:WallMap: self.y bounds -20 110 
+795:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+795:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+795:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+795:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+810:Robot: State changed to: stop 
+810:WallMap: adding point (0, 0 
+810:WallMap: adding point (-10, -10 
+810:WallMap: adding point (50, 100 
+810:WallMap: adding point (75, 75 
+811:WallMap: x bounds: 0 1440 
+811:WallMap: y bounds: 0 800 
+811:WallMap: self.x bounds -20 85 
+811:WallMap: self.y bounds -20 110 
+811:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+811:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+811:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+811:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+827:Robot: State changed to: stop 
+827:WallMap: adding point (0, 0 
+828:WallMap: adding point (-10, -10 
+828:WallMap: adding point (50, 100 
+828:WallMap: adding point (75, 75 
+828:WallMap: x bounds: 0 1440 
+828:WallMap: y bounds: 0 800 
+828:WallMap: self.x bounds -20 85 
+828:WallMap: self.y bounds -20 110 
+828:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+829:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+829:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+829:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+844:Robot: State changed to: stop 
+844:WallMap: adding point (0, 0 
+844:WallMap: adding point (-10, -10 
+844:WallMap: adding point (50, 100 
+844:WallMap: adding point (75, 75 
+844:WallMap: x bounds: 0 1440 
+845:WallMap: y bounds: 0 800 
+845:WallMap: self.x bounds -20 85 
+845:WallMap: self.y bounds -20 110 
+845:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+845:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+845:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+845:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+861:Robot: State changed to: stop 
+861:WallMap: adding point (0, 0 
+862:WallMap: adding point (-10, -10 
+862:WallMap: adding point (50, 100 
+862:WallMap: adding point (75, 75 
+862:WallMap: x bounds: 0 1440 
+862:WallMap: y bounds: 0 800 
+862:WallMap: self.x bounds -20 85 
+862:WallMap: self.y bounds -20 110 
+862:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+863:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+863:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+863:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+878:Robot: State changed to: stop 
+878:WallMap: adding point (0, 0 
+878:WallMap: adding point (-10, -10 
+878:WallMap: adding point (50, 100 
+878:WallMap: adding point (75, 75 
+879:WallMap: x bounds: 0 1440 
+879:WallMap: y bounds: 0 800 
+879:WallMap: self.x bounds -20 85 
+879:WallMap: self.y bounds -20 110 
+879:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+879:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+879:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+880:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+894:Robot: State changed to: stop 
+895:WallMap: adding point (0, 0 
+895:WallMap: adding point (-10, -10 
+895:WallMap: adding point (50, 100 
+895:WallMap: adding point (75, 75 
+895:WallMap: x bounds: 0 1440 
+895:WallMap: y bounds: 0 800 
+895:WallMap: self.x bounds -20 85 
+896:WallMap: self.y bounds -20 110 
+896:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+896:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+896:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+896:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+911:Robot: State changed to: stop 
+912:WallMap: adding point (0, 0 
+912:WallMap: adding point (-10, -10 
+912:WallMap: adding point (50, 100 
+912:WallMap: adding point (75, 75 
+912:WallMap: x bounds: 0 1440 
+912:WallMap: y bounds: 0 800 
+913:WallMap: self.x bounds -20 85 
+913:WallMap: self.y bounds -20 110 
+913:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+913:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+913:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+913:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+928:Robot: State changed to: stop 
+929:WallMap: adding point (0, 0 
+929:WallMap: adding point (-10, -10 
+929:WallMap: adding point (50, 100 
+929:WallMap: adding point (75, 75 
+929:WallMap: x bounds: 0 1440 
+929:WallMap: y bounds: 0 800 
+929:WallMap: self.x bounds -20 85 
+930:WallMap: self.y bounds -20 110 
+930:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+930:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+930:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+930:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+945:Robot: State changed to: stop 
+946:WallMap: adding point (0, 0 
+946:WallMap: adding point (-10, -10 
+946:WallMap: adding point (50, 100 
+946:WallMap: adding point (75, 75 
+946:WallMap: x bounds: 0 1440 
+946:WallMap: y bounds: 0 800 
+947:WallMap: self.x bounds -20 85 
+947:WallMap: self.y bounds -20 110 
+947:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+947:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+947:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+947:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+962:Robot: State changed to: stop 
+962:WallMap: adding point (0, 0 
+962:WallMap: adding point (-10, -10 
+962:WallMap: adding point (50, 100 
+963:WallMap: adding point (75, 75 
+963:WallMap: x bounds: 0 1440 
+963:WallMap: y bounds: 0 800 
+963:WallMap: self.x bounds -20 85 
+963:WallMap: self.y bounds -20 110 
+963:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+964:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+964:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+964:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+979:Robot: State changed to: stop 
+979:WallMap: adding point (0, 0 
+979:WallMap: adding point (-10, -10 
+980:WallMap: adding point (50, 100 
+980:WallMap: adding point (75, 75 
+980:WallMap: x bounds: 0 1440 
+980:WallMap: y bounds: 0 800 
+980:WallMap: self.x bounds -20 85 
+980:WallMap: self.y bounds -20 110 
+980:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+981:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+981:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+981:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+995:Robot: State changed to: stop 
+995:WallMap: adding point (0, 0 
+995:WallMap: adding point (-10, -10 
+995:WallMap: adding point (50, 100 
+996:WallMap: adding point (75, 75 
+996:WallMap: x bounds: 0 1440 
+996:WallMap: y bounds: 0 800 
+996:WallMap: self.x bounds -20 85 
+996:WallMap: self.y bounds -20 110 
+996:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+996:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+996:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+997:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1012:Robot: State changed to: stop 
+1012:WallMap: adding point (0, 0 
+1012:WallMap: adding point (-10, -10 
+1012:WallMap: adding point (50, 100 
+1012:WallMap: adding point (75, 75 
+1013:WallMap: x bounds: 0 1440 
+1013:WallMap: y bounds: 0 800 
+1013:WallMap: self.x bounds -20 85 
+1013:WallMap: self.y bounds -20 110 
+1013:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1013:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1013:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1014:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1028:Robot: State changed to: stop 
+1028:WallMap: adding point (0, 0 
+1028:WallMap: adding point (-10, -10 
+1028:WallMap: adding point (50, 100 
+1028:WallMap: adding point (75, 75 
+1029:WallMap: x bounds: 0 1440 
+1029:WallMap: y bounds: 0 800 
+1029:WallMap: self.x bounds -20 85 
+1029:WallMap: self.y bounds -20 110 
+1029:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1029:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1029:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1029:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1044:Robot: State changed to: stop 
+1045:WallMap: adding point (0, 0 
+1045:WallMap: adding point (-10, -10 
+1045:WallMap: adding point (50, 100 
+1045:WallMap: adding point (75, 75 
+1045:WallMap: x bounds: 0 1440 
+1045:WallMap: y bounds: 0 800 
+1046:WallMap: self.x bounds -20 85 
+1046:WallMap: self.y bounds -20 110 
+1046:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1046:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1046:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1046:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1061:Robot: State changed to: stop 
+1061:WallMap: adding point (0, 0 
+1062:WallMap: adding point (-10, -10 
+1062:WallMap: adding point (50, 100 
+1062:WallMap: adding point (75, 75 
+1062:WallMap: x bounds: 0 1440 
+1062:WallMap: y bounds: 0 800 
+1062:WallMap: self.x bounds -20 85 
+1062:WallMap: self.y bounds -20 110 
+1062:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1062:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1063:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1063:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1078:Robot: State changed to: stop 
+1078:WallMap: adding point (0, 0 
+1078:WallMap: adding point (-10, -10 
+1078:WallMap: adding point (50, 100 
+1078:WallMap: adding point (75, 75 
+1078:WallMap: x bounds: 0 1440 
+1079:WallMap: y bounds: 0 800 
+1079:WallMap: self.x bounds -20 85 
+1079:WallMap: self.y bounds -20 110 
+1079:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1079:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1079:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1079:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1094:Robot: State changed to: stop 
+1095:WallMap: adding point (0, 0 
+1095:WallMap: adding point (-10, -10 
+1095:WallMap: adding point (50, 100 
+1095:WallMap: adding point (75, 75 
+1095:WallMap: x bounds: 0 1440 
+1095:WallMap: y bounds: 0 800 
+1095:WallMap: self.x bounds -20 85 
+1096:WallMap: self.y bounds -20 110 
+1096:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1096:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1096:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1096:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1110:Robot: State changed to: stop 
+1110:WallMap: adding point (0, 0 
+1111:WallMap: adding point (-10, -10 
+1111:WallMap: adding point (50, 100 
+1111:WallMap: adding point (75, 75 
+1111:WallMap: x bounds: 0 1440 
+1111:WallMap: y bounds: 0 800 
+1111:WallMap: self.x bounds -20 85 
+1111:WallMap: self.y bounds -20 110 
+1112:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1112:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1112:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1112:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1127:Robot: State changed to: stop 
+1127:WallMap: adding point (0, 0 
+1127:WallMap: adding point (-10, -10 
+1127:WallMap: adding point (50, 100 
+1127:WallMap: adding point (75, 75 
+1128:WallMap: x bounds: 0 1440 
+1128:WallMap: y bounds: 0 800 
+1128:WallMap: self.x bounds -20 85 
+1128:WallMap: self.y bounds -20 110 
+1128:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1128:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1128:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1129:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1144:Robot: State changed to: stop 
+1144:WallMap: adding point (0, 0 
+1144:WallMap: adding point (-10, -10 
+1144:WallMap: adding point (50, 100 
+1145:WallMap: adding point (75, 75 
+1145:WallMap: x bounds: 0 1440 
+1145:WallMap: y bounds: 0 800 
+1145:WallMap: self.x bounds -20 85 
+1145:WallMap: self.y bounds -20 110 
+1145:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1146:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1146:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1146:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1161:Robot: State changed to: stop 
+1161:WallMap: adding point (0, 0 
+1161:WallMap: adding point (-10, -10 
+1161:WallMap: adding point (50, 100 
+1161:WallMap: adding point (75, 75 
+1161:WallMap: x bounds: 0 1440 
+1162:WallMap: y bounds: 0 800 
+1162:WallMap: self.x bounds -20 85 
+1162:WallMap: self.y bounds -20 110 
+1162:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1162:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1162:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1162:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1179:Robot: State changed to: stop 
+1179:WallMap: adding point (0, 0 
+1179:WallMap: adding point (-10, -10 
+1179:WallMap: adding point (50, 100 
+1179:WallMap: adding point (75, 75 
+1179:WallMap: x bounds: 0 1440 
+1179:WallMap: y bounds: 0 800 
+1180:WallMap: self.x bounds -20 85 
+1180:WallMap: self.y bounds -20 110 
+1180:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1180:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1180:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1180:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1195:Robot: State changed to: stop 
+1195:WallMap: adding point (0, 0 
+1195:WallMap: adding point (-10, -10 
+1195:WallMap: adding point (50, 100 
+1195:WallMap: adding point (75, 75 
+1195:WallMap: x bounds: 0 1440 
+1195:WallMap: y bounds: 0 800 
+1196:WallMap: self.x bounds -20 85 
+1196:WallMap: self.y bounds -20 110 
+1196:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1196:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1196:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1196:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1211:Robot: State changed to: stop 
+1212:WallMap: adding point (0, 0 
+1212:WallMap: adding point (-10, -10 
+1212:WallMap: adding point (50, 100 
+1212:WallMap: adding point (75, 75 
+1212:WallMap: x bounds: 0 1440 
+1212:WallMap: y bounds: 0 800 
+1212:WallMap: self.x bounds -20 85 
+1213:WallMap: self.y bounds -20 110 
+1213:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1213:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1213:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1213:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1228:Robot: State changed to: stop 
+1228:WallMap: adding point (0, 0 
+1228:WallMap: adding point (-10, -10 
+1229:WallMap: adding point (50, 100 
+1229:WallMap: adding point (75, 75 
+1229:WallMap: x bounds: 0 1440 
+1229:WallMap: y bounds: 0 800 
+1229:WallMap: self.x bounds -20 85 
+1229:WallMap: self.y bounds -20 110 
+1229:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1229:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1230:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1230:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1244:Robot: State changed to: stop 
+1245:WallMap: adding point (0, 0 
+1245:WallMap: adding point (-10, -10 
+1245:WallMap: adding point (50, 100 
+1245:WallMap: adding point (75, 75 
+1245:WallMap: x bounds: 0 1440 
+1246:WallMap: y bounds: 0 800 
+1246:WallMap: self.x bounds -20 85 
+1246:WallMap: self.y bounds -20 110 
+1246:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1246:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1246:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1246:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1261:Robot: State changed to: stop 
+1262:WallMap: adding point (0, 0 
+1262:WallMap: adding point (-10, -10 
+1262:WallMap: adding point (50, 100 
+1262:WallMap: adding point (75, 75 
+1262:WallMap: x bounds: 0 1440 
+1262:WallMap: y bounds: 0 800 
+1262:WallMap: self.x bounds -20 85 
+1263:WallMap: self.y bounds -20 110 
+1263:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1263:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1263:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1263:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1278:Robot: State changed to: stop 
+1278:WallMap: adding point (0, 0 
+1279:WallMap: adding point (-10, -10 
+1279:WallMap: adding point (50, 100 
+1279:WallMap: adding point (75, 75 
+1279:WallMap: x bounds: 0 1440 
+1279:WallMap: y bounds: 0 800 
+1279:WallMap: self.x bounds -20 85 
+1279:WallMap: self.y bounds -20 110 
+1279:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1280:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1280:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1280:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1295:Robot: State changed to: stop 
+1295:WallMap: adding point (0, 0 
+1295:WallMap: adding point (-10, -10 
+1295:WallMap: adding point (50, 100 
+1295:WallMap: adding point (75, 75 
+1295:WallMap: x bounds: 0 1440 
+1295:WallMap: y bounds: 0 800 
+1296:WallMap: self.x bounds -20 85 
+1296:WallMap: self.y bounds -20 110 
+1296:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1296:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1296:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1296:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1311:Robot: State changed to: stop 
+1312:WallMap: adding point (0, 0 
+1312:WallMap: adding point (-10, -10 
+1312:WallMap: adding point (50, 100 
+1312:WallMap: adding point (75, 75 
+1312:WallMap: x bounds: 0 1440 
+1312:WallMap: y bounds: 0 800 
+1312:WallMap: self.x bounds -20 85 
+1312:WallMap: self.y bounds -20 110 
+1313:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1313:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1313:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1313:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1327:Robot: State changed to: stop 
+1328:WallMap: adding point (0, 0 
+1328:WallMap: adding point (-10, -10 
+1328:WallMap: adding point (50, 100 
+1328:WallMap: adding point (75, 75 
+1328:WallMap: x bounds: 0 1440 
+1328:WallMap: y bounds: 0 800 
+1329:WallMap: self.x bounds -20 85 
+1329:WallMap: self.y bounds -20 110 
+1329:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1329:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1329:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1329:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1343:Robot: State changed to: stop 
+1344:WallMap: adding point (0, 0 
+1344:WallMap: adding point (-10, -10 
+1344:WallMap: adding point (50, 100 
+1344:WallMap: adding point (75, 75 
+1344:WallMap: x bounds: 0 1440 
+1344:WallMap: y bounds: 0 800 
+1345:WallMap: self.x bounds -20 85 
+1345:WallMap: self.y bounds -20 110 
+1345:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1345:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1345:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1345:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1359:Robot: State changed to: stop 
+1359:WallMap: adding point (0, 0 
+1359:WallMap: adding point (-10, -10 
+1359:WallMap: adding point (50, 100 
+1359:WallMap: adding point (75, 75 
+1359:WallMap: x bounds: 0 1440 
+1360:WallMap: y bounds: 0 800 
+1360:WallMap: self.x bounds -20 85 
+1360:WallMap: self.y bounds -20 110 
+1360:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1360:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1360:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1360:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1376:Robot: State changed to: stop 
+1377:WallMap: adding point (0, 0 
+1377:WallMap: adding point (-10, -10 
+1377:WallMap: adding point (50, 100 
+1377:WallMap: adding point (75, 75 
+1377:WallMap: x bounds: 0 1440 
+1378:WallMap: y bounds: 0 800 
+1378:WallMap: self.x bounds -20 85 
+1378:WallMap: self.y bounds -20 110 
+1378:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1378:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1378:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1379:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1392:Robot: State changed to: stop 
+1393:WallMap: adding point (0, 0 
+1393:WallMap: adding point (-10, -10 
+1393:WallMap: adding point (50, 100 
+1393:WallMap: adding point (75, 75 
+1393:WallMap: x bounds: 0 1440 
+1393:WallMap: y bounds: 0 800 
+1394:WallMap: self.x bounds -20 85 
+1394:WallMap: self.y bounds -20 110 
+1394:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1394:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1394:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1394:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1408:Robot: State changed to: stop 
+1409:WallMap: adding point (0, 0 
+1409:WallMap: adding point (-10, -10 
+1409:WallMap: adding point (50, 100 
+1409:WallMap: adding point (75, 75 
+1409:WallMap: x bounds: 0 1440 
+1409:WallMap: y bounds: 0 800 
+1410:WallMap: self.x bounds -20 85 
+1410:WallMap: self.y bounds -20 110 
+1410:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1410:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1410:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1410:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1425:Robot: State changed to: stop 
+1425:WallMap: adding point (0, 0 
+1425:WallMap: adding point (-10, -10 
+1425:WallMap: adding point (50, 100 
+1425:WallMap: adding point (75, 75 
+1426:WallMap: x bounds: 0 1440 
+1426:WallMap: y bounds: 0 800 
+1426:WallMap: self.x bounds -20 85 
+1426:WallMap: self.y bounds -20 110 
+1426:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1426:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1426:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1427:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1442:Robot: State changed to: stop 
+1442:WallMap: adding point (0, 0 
+1442:WallMap: adding point (-10, -10 
+1442:WallMap: adding point (50, 100 
+1442:WallMap: adding point (75, 75 
+1443:WallMap: x bounds: 0 1440 
+1443:WallMap: y bounds: 0 800 
+1443:WallMap: self.x bounds -20 85 
+1443:WallMap: self.y bounds -20 110 
+1443:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1443:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1443:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1444:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1458:Robot: State changed to: stop 
+1459:WallMap: adding point (0, 0 
+1459:WallMap: adding point (-10, -10 
+1459:WallMap: adding point (50, 100 
+1459:WallMap: adding point (75, 75 
+1459:WallMap: x bounds: 0 1440 
+1459:WallMap: y bounds: 0 800 
+1460:WallMap: self.x bounds -20 85 
+1460:WallMap: self.y bounds -20 110 
+1460:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1460:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1460:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1460:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1475:Robot: State changed to: stop 
+1475:WallMap: adding point (0, 0 
+1475:WallMap: adding point (-10, -10 
+1475:WallMap: adding point (50, 100 
+1476:WallMap: adding point (75, 75 
+1476:WallMap: x bounds: 0 1440 
+1476:WallMap: y bounds: 0 800 
+1476:WallMap: self.x bounds -20 85 
+1476:WallMap: self.y bounds -20 110 
+1476:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1476:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1477:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1477:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1492:Robot: State changed to: stop 
+1493:WallMap: adding point (0, 0 
+1493:WallMap: adding point (-10, -10 
+1493:WallMap: adding point (50, 100 
+1493:WallMap: adding point (75, 75 
+1493:WallMap: x bounds: 0 1440 
+1493:WallMap: y bounds: 0 800 
+1494:WallMap: self.x bounds -20 85 
+1494:WallMap: self.y bounds -20 110 
+1494:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1494:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1494:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1494:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1508:Robot: State changed to: stop 
+1509:WallMap: adding point (0, 0 
+1509:WallMap: adding point (-10, -10 
+1509:WallMap: adding point (50, 100 
+1509:WallMap: adding point (75, 75 
+1509:WallMap: x bounds: 0 1440 
+1509:WallMap: y bounds: 0 800 
+1510:WallMap: self.x bounds -20 85 
+1510:WallMap: self.y bounds -20 110 
+1510:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1510:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1510:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1510:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1524:Robot: State changed to: stop 
+1524:WallMap: adding point (0, 0 
+1524:WallMap: adding point (-10, -10 
+1524:WallMap: adding point (50, 100 
+1524:WallMap: adding point (75, 75 
+1525:WallMap: x bounds: 0 1440 
+1525:WallMap: y bounds: 0 800 
+1525:WallMap: self.x bounds -20 85 
+1525:WallMap: self.y bounds -20 110 
+1525:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1525:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1525:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1526:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1540:Robot: State changed to: stop 
+1540:WallMap: adding point (0, 0 
+1540:WallMap: adding point (-10, -10 
+1540:WallMap: adding point (50, 100 
+1540:WallMap: adding point (75, 75 
+1541:WallMap: x bounds: 0 1440 
+1541:WallMap: y bounds: 0 800 
+1541:WallMap: self.x bounds -20 85 
+1541:WallMap: self.y bounds -20 110 
+1541:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1541:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1541:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1542:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1557:Robot: State changed to: stop 
+1557:WallMap: adding point (0, 0 
+1557:WallMap: adding point (-10, -10 
+1557:WallMap: adding point (50, 100 
+1558:WallMap: adding point (75, 75 
+1558:WallMap: x bounds: 0 1440 
+1558:WallMap: y bounds: 0 800 
+1558:WallMap: self.x bounds -20 85 
+1558:WallMap: self.y bounds -20 110 
+1558:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1559:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1559:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1559:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1574:Robot: State changed to: stop 
+1574:WallMap: adding point (0, 0 
+1574:WallMap: adding point (-10, -10 
+1574:WallMap: adding point (50, 100 
+1574:WallMap: adding point (75, 75 
+1575:WallMap: x bounds: 0 1440 
+1575:WallMap: y bounds: 0 800 
+1575:WallMap: self.x bounds -20 85 
+1575:WallMap: self.y bounds -20 110 
+1575:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1575:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1576:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1576:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1590:Robot: State changed to: stop 
+1591:WallMap: adding point (0, 0 
+1591:WallMap: adding point (-10, -10 
+1591:WallMap: adding point (50, 100 
+1591:WallMap: adding point (75, 75 
+1592:WallMap: x bounds: 0 1440 
+1592:WallMap: y bounds: 0 800 
+1592:WallMap: self.x bounds -20 85 
+1592:WallMap: self.y bounds -20 110 
+1592:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1592:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1592:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1593:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1607:Robot: State changed to: stop 
+1607:WallMap: adding point (0, 0 
+1607:WallMap: adding point (-10, -10 
+1607:WallMap: adding point (50, 100 
+1608:WallMap: adding point (75, 75 
+1608:WallMap: x bounds: 0 1440 
+1608:WallMap: y bounds: 0 800 
+1608:WallMap: self.x bounds -20 85 
+1608:WallMap: self.y bounds -20 110 
+1608:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1609:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1609:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1609:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1625:Robot: State changed to: stop 
+1625:WallMap: adding point (0, 0 
+1625:WallMap: adding point (-10, -10 
+1625:WallMap: adding point (50, 100 
+1625:WallMap: adding point (75, 75 
+1626:WallMap: x bounds: 0 1440 
+1626:WallMap: y bounds: 0 800 
+1626:WallMap: self.x bounds -20 85 
+1626:WallMap: self.y bounds -20 110 
+1626:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1626:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1626:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1626:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1640:Robot: State changed to: stop 
+1640:WallMap: adding point (0, 0 
+1641:WallMap: adding point (-10, -10 
+1641:WallMap: adding point (50, 100 
+1641:WallMap: adding point (75, 75 
+1641:WallMap: x bounds: 0 1440 
+1641:WallMap: y bounds: 0 800 
+1642:WallMap: self.x bounds -20 85 
+1642:WallMap: self.y bounds -20 110 
+1642:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1642:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1642:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1642:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1657:Robot: State changed to: stop 
+1657:WallMap: adding point (0, 0 
+1657:WallMap: adding point (-10, -10 
+1658:WallMap: adding point (50, 100 
+1658:WallMap: adding point (75, 75 
+1658:WallMap: x bounds: 0 1440 
+1658:WallMap: y bounds: 0 800 
+1658:WallMap: self.x bounds -20 85 
+1658:WallMap: self.y bounds -20 110 
+1659:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1659:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1659:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1659:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1674:Robot: State changed to: stop 
+1675:WallMap: adding point (0, 0 
+1675:WallMap: adding point (-10, -10 
+1675:WallMap: adding point (50, 100 
+1675:WallMap: adding point (75, 75 
+1675:WallMap: x bounds: 0 1440 
+1675:WallMap: y bounds: 0 800 
+1676:WallMap: self.x bounds -20 85 
+1676:WallMap: self.y bounds -20 110 
+1676:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1676:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1676:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1676:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1690:Robot: State changed to: stop 
+1691:WallMap: adding point (0, 0 
+1691:WallMap: adding point (-10, -10 
+1691:WallMap: adding point (50, 100 
+1691:WallMap: adding point (75, 75 
+1691:WallMap: x bounds: 0 1440 
+1691:WallMap: y bounds: 0 800 
+1692:WallMap: self.x bounds -20 85 
+1692:WallMap: self.y bounds -20 110 
+1692:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1692:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1692:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1692:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1707:Robot: State changed to: stop 
+1708:WallMap: adding point (0, 0 
+1708:WallMap: adding point (-10, -10 
+1708:WallMap: adding point (50, 100 
+1708:WallMap: adding point (75, 75 
+1708:WallMap: x bounds: 0 1440 
+1708:WallMap: y bounds: 0 800 
+1708:WallMap: self.x bounds -20 85 
+1709:WallMap: self.y bounds -20 110 
+1709:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1709:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1709:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1709:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1724:Robot: State changed to: stop 
+1724:WallMap: adding point (0, 0 
+1724:WallMap: adding point (-10, -10 
+1724:WallMap: adding point (50, 100 
+1725:WallMap: adding point (75, 75 
+1725:WallMap: x bounds: 0 1440 
+1725:WallMap: y bounds: 0 800 
+1725:WallMap: self.x bounds -20 85 
+1725:WallMap: self.y bounds -20 110 
+1725:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1725:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1725:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1726:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1741:Robot: State changed to: stop 
+1741:WallMap: adding point (0, 0 
+1742:WallMap: adding point (-10, -10 
+1742:WallMap: adding point (50, 100 
+1742:WallMap: adding point (75, 75 
+1742:WallMap: x bounds: 0 1440 
+1742:WallMap: y bounds: 0 800 
+1742:WallMap: self.x bounds -20 85 
+1742:WallMap: self.y bounds -20 110 
+1742:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1743:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1743:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1743:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1758:Robot: State changed to: stop 
+1759:WallMap: adding point (0, 0 
+1759:WallMap: adding point (-10, -10 
+1759:WallMap: adding point (50, 100 
+1759:WallMap: adding point (75, 75 
+1759:WallMap: x bounds: 0 1440 
+1759:WallMap: y bounds: 0 800 
+1759:WallMap: self.x bounds -20 85 
+1759:WallMap: self.y bounds -20 110 
+1759:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1760:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1760:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1760:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1775:Robot: State changed to: stop 
+1775:WallMap: adding point (0, 0 
+1775:WallMap: adding point (-10, -10 
+1775:WallMap: adding point (50, 100 
+1775:WallMap: adding point (75, 75 
+1775:WallMap: x bounds: 0 1440 
+1775:WallMap: y bounds: 0 800 
+1776:WallMap: self.x bounds -20 85 
+1776:WallMap: self.y bounds -20 110 
+1776:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1776:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1776:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1776:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1791:Robot: State changed to: stop 
+1791:WallMap: adding point (0, 0 
+1791:WallMap: adding point (-10, -10 
+1792:WallMap: adding point (50, 100 
+1792:WallMap: adding point (75, 75 
+1792:WallMap: x bounds: 0 1440 
+1792:WallMap: y bounds: 0 800 
+1792:WallMap: self.x bounds -20 85 
+1792:WallMap: self.y bounds -20 110 
+1792:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1792:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1793:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1793:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1807:Robot: State changed to: stop 
+1808:WallMap: adding point (0, 0 
+1808:WallMap: adding point (-10, -10 
+1808:WallMap: adding point (50, 100 
+1808:WallMap: adding point (75, 75 
+1808:WallMap: x bounds: 0 1440 
+1808:WallMap: y bounds: 0 800 
+1808:WallMap: self.x bounds -20 85 
+1809:WallMap: self.y bounds -20 110 
+1809:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1809:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1809:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1809:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1825:Robot: State changed to: stop 
+1825:WallMap: adding point (0, 0 
+1825:WallMap: adding point (-10, -10 
+1825:WallMap: adding point (50, 100 
+1825:WallMap: adding point (75, 75 
+1825:WallMap: x bounds: 0 1440 
+1826:WallMap: y bounds: 0 800 
+1826:WallMap: self.x bounds -20 85 
+1826:WallMap: self.y bounds -20 110 
+1826:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1826:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1826:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1826:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1842:Robot: State changed to: stop 
+1842:WallMap: adding point (0, 0 
+1842:WallMap: adding point (-10, -10 
+1842:WallMap: adding point (50, 100 
+1843:WallMap: adding point (75, 75 
+1843:WallMap: x bounds: 0 1440 
+1843:WallMap: y bounds: 0 800 
+1843:WallMap: self.x bounds -20 85 
+1843:WallMap: self.y bounds -20 110 
+1843:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1843:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1843:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1844:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1858:Robot: State changed to: stop 
+1859:WallMap: adding point (0, 0 
+1859:WallMap: adding point (-10, -10 
+1859:WallMap: adding point (50, 100 
+1859:WallMap: adding point (75, 75 
+1859:WallMap: x bounds: 0 1440 
+1859:WallMap: y bounds: 0 800 
+1860:WallMap: self.x bounds -20 85 
+1860:WallMap: self.y bounds -20 110 
+1860:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1860:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1860:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1860:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1875:Robot: State changed to: stop 
+1875:WallMap: adding point (0, 0 
+1875:WallMap: adding point (-10, -10 
+1876:WallMap: adding point (50, 100 
+1876:WallMap: adding point (75, 75 
+1876:WallMap: x bounds: 0 1440 
+1876:WallMap: y bounds: 0 800 
+1876:WallMap: self.x bounds -20 85 
+1877:WallMap: self.y bounds -20 110 
+1877:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1877:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1877:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1877:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1891:Robot: State changed to: stop 
+1891:WallMap: adding point (0, 0 
+1891:WallMap: adding point (-10, -10 
+1891:WallMap: adding point (50, 100 
+1891:WallMap: adding point (75, 75 
+1892:WallMap: x bounds: 0 1440 
+1892:WallMap: y bounds: 0 800 
+1892:WallMap: self.x bounds -20 85 
+1892:WallMap: self.y bounds -20 110 
+1892:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1892:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1893:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1893:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1907:Robot: State changed to: stop 
+1907:WallMap: adding point (0, 0 
+1907:WallMap: adding point (-10, -10 
+1907:WallMap: adding point (50, 100 
+1907:WallMap: adding point (75, 75 
+1908:WallMap: x bounds: 0 1440 
+1908:WallMap: y bounds: 0 800 
+1908:WallMap: self.x bounds -20 85 
+1908:WallMap: self.y bounds -20 110 
+1908:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1908:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1908:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1908:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1923:Robot: State changed to: stop 
+1924:WallMap: adding point (0, 0 
+1924:WallMap: adding point (-10, -10 
+1924:WallMap: adding point (50, 100 
+1924:WallMap: adding point (75, 75 
+1924:WallMap: x bounds: 0 1440 
+1924:WallMap: y bounds: 0 800 
+1924:WallMap: self.x bounds -20 85 
+1924:WallMap: self.y bounds -20 110 
+1925:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1925:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1925:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1925:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1940:Robot: State changed to: stop 
+1940:WallMap: adding point (0, 0 
+1940:WallMap: adding point (-10, -10 
+1941:WallMap: adding point (50, 100 
+1941:WallMap: adding point (75, 75 
+1941:WallMap: x bounds: 0 1440 
+1941:WallMap: y bounds: 0 800 
+1941:WallMap: self.x bounds -20 85 
+1941:WallMap: self.y bounds -20 110 
+1941:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1942:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1942:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1942:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1956:Robot: State changed to: stop 
+1957:WallMap: adding point (0, 0 
+1957:WallMap: adding point (-10, -10 
+1957:WallMap: adding point (50, 100 
+1957:WallMap: adding point (75, 75 
+1957:WallMap: x bounds: 0 1440 
+1957:WallMap: y bounds: 0 800 
+1958:WallMap: self.x bounds -20 85 
+1958:WallMap: self.y bounds -20 110 
+1958:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1958:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1958:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1958:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1973:Robot: State changed to: stop 
+1974:WallMap: adding point (0, 0 
+1974:WallMap: adding point (-10, -10 
+1974:WallMap: adding point (50, 100 
+1974:WallMap: adding point (75, 75 
+1974:WallMap: x bounds: 0 1440 
+1974:WallMap: y bounds: 0 800 
+1974:WallMap: self.x bounds -20 85 
+1975:WallMap: self.y bounds -20 110 
+1975:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1975:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1975:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1975:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+1990:Robot: State changed to: stop 
+1990:WallMap: adding point (0, 0 
+1990:WallMap: adding point (-10, -10 
+1990:WallMap: adding point (50, 100 
+1990:WallMap: adding point (75, 75 
+1991:WallMap: x bounds: 0 1440 
+1991:WallMap: y bounds: 0 800 
+1991:WallMap: self.x bounds -20 85 
+1991:WallMap: self.y bounds -20 110 
+1991:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+1991:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+1991:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+1992:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2007:Robot: State changed to: stop 
+2007:WallMap: adding point (0, 0 
+2007:WallMap: adding point (-10, -10 
+2007:WallMap: adding point (50, 100 
+2007:WallMap: adding point (75, 75 
+2007:WallMap: x bounds: 0 1440 
+2008:WallMap: y bounds: 0 800 
+2008:WallMap: self.x bounds -20 85 
+2008:WallMap: self.y bounds -20 110 
+2008:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2008:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2008:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2008:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2024:Robot: State changed to: stop 
+2024:WallMap: adding point (0, 0 
+2024:WallMap: adding point (-10, -10 
+2024:WallMap: adding point (50, 100 
+2024:WallMap: adding point (75, 75 
+2024:WallMap: x bounds: 0 1440 
+2024:WallMap: y bounds: 0 800 
+2025:WallMap: self.x bounds -20 85 
+2025:WallMap: self.y bounds -20 110 
+2025:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2025:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2025:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2025:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2040:Robot: State changed to: stop 
+2041:WallMap: adding point (0, 0 
+2041:WallMap: adding point (-10, -10 
+2041:WallMap: adding point (50, 100 
+2041:WallMap: adding point (75, 75 
+2041:WallMap: x bounds: 0 1440 
+2041:WallMap: y bounds: 0 800 
+2042:WallMap: self.x bounds -20 85 
+2042:WallMap: self.y bounds -20 110 
+2042:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2042:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2042:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2042:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2057:Robot: State changed to: stop 
+2057:WallMap: adding point (0, 0 
+2057:WallMap: adding point (-10, -10 
+2057:WallMap: adding point (50, 100 
+2058:WallMap: adding point (75, 75 
+2058:WallMap: x bounds: 0 1440 
+2058:WallMap: y bounds: 0 800 
+2058:WallMap: self.x bounds -20 85 
+2058:WallMap: self.y bounds -20 110 
+2058:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2058:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2059:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2059:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2075:Robot: State changed to: stop 
+2076:WallMap: adding point (0, 0 
+2076:WallMap: adding point (-10, -10 
+2076:WallMap: adding point (50, 100 
+2076:WallMap: adding point (75, 75 
+2076:WallMap: x bounds: 0 1440 
+2076:WallMap: y bounds: 0 800 
+2076:WallMap: self.x bounds -20 85 
+2076:WallMap: self.y bounds -20 110 
+2077:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2077:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2077:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2077:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2091:Robot: State changed to: stop 
+2092:WallMap: adding point (0, 0 
+2092:WallMap: adding point (-10, -10 
+2092:WallMap: adding point (50, 100 
+2092:WallMap: adding point (75, 75 
+2092:WallMap: x bounds: 0 1440 
+2092:WallMap: y bounds: 0 800 
+2092:WallMap: self.x bounds -20 85 
+2093:WallMap: self.y bounds -20 110 
+2093:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2093:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2093:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2093:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2107:Robot: State changed to: stop 
+2108:WallMap: adding point (0, 0 
+2108:WallMap: adding point (-10, -10 
+2108:WallMap: adding point (50, 100 
+2108:WallMap: adding point (75, 75 
+2108:WallMap: x bounds: 0 1440 
+2108:WallMap: y bounds: 0 800 
+2109:WallMap: self.x bounds -20 85 
+2109:WallMap: self.y bounds -20 110 
+2109:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2109:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2109:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2109:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2125:Robot: State changed to: stop 
+2125:WallMap: adding point (0, 0 
+2125:WallMap: adding point (-10, -10 
+2125:WallMap: adding point (50, 100 
+2125:WallMap: adding point (75, 75 
+2126:WallMap: x bounds: 0 1440 
+2126:WallMap: y bounds: 0 800 
+2126:WallMap: self.x bounds -20 85 
+2126:WallMap: self.y bounds -20 110 
+2126:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2126:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2126:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2127:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2141:Robot: State changed to: stop 
+2141:WallMap: adding point (0, 0 
+2142:WallMap: adding point (-10, -10 
+2142:WallMap: adding point (50, 100 
+2142:WallMap: adding point (75, 75 
+2142:WallMap: x bounds: 0 1440 
+2142:WallMap: y bounds: 0 800 
+2142:WallMap: self.x bounds -20 85 
+2142:WallMap: self.y bounds -20 110 
+2143:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2143:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2143:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2143:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2158:Robot: State changed to: stop 
+2158:WallMap: adding point (0, 0 
+2158:WallMap: adding point (-10, -10 
+2159:WallMap: adding point (50, 100 
+2159:WallMap: adding point (75, 75 
+2159:WallMap: x bounds: 0 1440 
+2159:WallMap: y bounds: 0 800 
+2159:WallMap: self.x bounds -20 85 
+2159:WallMap: self.y bounds -20 110 
+2160:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2160:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2160:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2160:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2174:Robot: State changed to: stop 
+2175:WallMap: adding point (0, 0 
+2175:WallMap: adding point (-10, -10 
+2175:WallMap: adding point (50, 100 
+2175:WallMap: adding point (75, 75 
+2175:WallMap: x bounds: 0 1440 
+2176:WallMap: y bounds: 0 800 
+2176:WallMap: self.x bounds -20 85 
+2176:WallMap: self.y bounds -20 110 
+2176:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2176:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2176:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2176:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2191:Robot: State changed to: stop 
+2191:WallMap: adding point (0, 0 
+2191:WallMap: adding point (-10, -10 
+2192:WallMap: adding point (50, 100 
+2192:WallMap: adding point (75, 75 
+2192:WallMap: x bounds: 0 1440 
+2192:WallMap: y bounds: 0 800 
+2192:WallMap: self.x bounds -20 85 
+2192:WallMap: self.y bounds -20 110 
+2192:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2193:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2193:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2193:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2207:Robot: State changed to: stop 
+2208:WallMap: adding point (0, 0 
+2208:WallMap: adding point (-10, -10 
+2208:WallMap: adding point (50, 100 
+2208:WallMap: adding point (75, 75 
+2208:WallMap: x bounds: 0 1440 
+2208:WallMap: y bounds: 0 800 
+2209:WallMap: self.x bounds -20 85 
+2209:WallMap: self.y bounds -20 110 
+2209:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2209:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2209:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2209:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2224:Robot: State changed to: stop 
+2224:WallMap: adding point (0, 0 
+2224:WallMap: adding point (-10, -10 
+2224:WallMap: adding point (50, 100 
+2224:WallMap: adding point (75, 75 
+2224:WallMap: x bounds: 0 1440 
+2224:WallMap: y bounds: 0 800 
+2225:WallMap: self.x bounds -20 85 
+2225:WallMap: self.y bounds -20 110 
+2225:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2225:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2225:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2225:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2240:Robot: State changed to: stop 
+2240:WallMap: adding point (0, 0 
+2240:WallMap: adding point (-10, -10 
+2240:WallMap: adding point (50, 100 
+2240:WallMap: adding point (75, 75 
+2240:WallMap: x bounds: 0 1440 
+2241:WallMap: y bounds: 0 800 
+2241:WallMap: self.x bounds -20 85 
+2241:WallMap: self.y bounds -20 110 
+2241:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2241:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2241:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2241:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2256:Robot: State changed to: stop 
+2256:WallMap: adding point (0, 0 
+2256:WallMap: adding point (-10, -10 
+2256:WallMap: adding point (50, 100 
+2257:WallMap: adding point (75, 75 
+2257:WallMap: x bounds: 0 1440 
+2257:WallMap: y bounds: 0 800 
+2257:WallMap: self.x bounds -20 85 
+2257:WallMap: self.y bounds -20 110 
+2257:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2257:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2258:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2258:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2273:Robot: State changed to: stop 
+2273:WallMap: adding point (0, 0 
+2273:WallMap: adding point (-10, -10 
+2274:WallMap: adding point (50, 100 
+2274:WallMap: adding point (75, 75 
+2274:WallMap: x bounds: 0 1440 
+2274:WallMap: y bounds: 0 800 
+2274:WallMap: self.x bounds -20 85 
+2274:WallMap: self.y bounds -20 110 
+2274:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2274:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2275:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2275:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2291:Robot: State changed to: stop 
+2291:WallMap: adding point (0, 0 
+2291:WallMap: adding point (-10, -10 
+2291:WallMap: adding point (50, 100 
+2291:WallMap: adding point (75, 75 
+2291:WallMap: x bounds: 0 1440 
+2292:WallMap: y bounds: 0 800 
+2292:WallMap: self.x bounds -20 85 
+2292:WallMap: self.y bounds -20 110 
+2292:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2292:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2292:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2292:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2308:Robot: State changed to: stop 
+2308:WallMap: adding point (0, 0 
+2308:WallMap: adding point (-10, -10 
+2308:WallMap: adding point (50, 100 
+2308:WallMap: adding point (75, 75 
+2309:WallMap: x bounds: 0 1440 
+2309:WallMap: y bounds: 0 800 
+2309:WallMap: self.x bounds -20 85 
+2309:WallMap: self.y bounds -20 110 
+2309:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2309:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2309:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2309:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2325:Robot: State changed to: stop 
+2326:WallMap: adding point (0, 0 
+2326:WallMap: adding point (-10, -10 
+2326:WallMap: adding point (50, 100 
+2326:WallMap: adding point (75, 75 
+2326:WallMap: x bounds: 0 1440 
+2326:WallMap: y bounds: 0 800 
+2326:WallMap: self.x bounds -20 85 
+2327:WallMap: self.y bounds -20 110 
+2327:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2327:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2327:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2327:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2341:Robot: State changed to: stop 
+2342:WallMap: adding point (0, 0 
+2342:WallMap: adding point (-10, -10 
+2342:WallMap: adding point (50, 100 
+2342:WallMap: adding point (75, 75 
+2342:WallMap: x bounds: 0 1440 
+2343:WallMap: y bounds: 0 800 
+2343:WallMap: self.x bounds -20 85 
+2343:WallMap: self.y bounds -20 110 
+2343:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2343:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2343:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2343:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2358:Robot: State changed to: stop 
+2358:WallMap: adding point (0, 0 
+2359:WallMap: adding point (-10, -10 
+2359:WallMap: adding point (50, 100 
+2359:WallMap: adding point (75, 75 
+2359:WallMap: x bounds: 0 1440 
+2359:WallMap: y bounds: 0 800 
+2359:WallMap: self.x bounds -20 85 
+2360:WallMap: self.y bounds -20 110 
+2360:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2360:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2360:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2360:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2375:Robot: State changed to: stop 
+2375:WallMap: adding point (0, 0 
+2375:WallMap: adding point (-10, -10 
+2375:WallMap: adding point (50, 100 
+2375:WallMap: adding point (75, 75 
+2376:WallMap: x bounds: 0 1440 
+2376:WallMap: y bounds: 0 800 
+2376:WallMap: self.x bounds -20 85 
+2376:WallMap: self.y bounds -20 110 
+2376:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2376:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2376:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2377:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2392:Robot: State changed to: stop 
+2392:WallMap: adding point (0, 0 
+2392:WallMap: adding point (-10, -10 
+2392:WallMap: adding point (50, 100 
+2392:WallMap: adding point (75, 75 
+2392:WallMap: x bounds: 0 1440 
+2393:WallMap: y bounds: 0 800 
+2393:WallMap: self.x bounds -20 85 
+2393:WallMap: self.y bounds -20 110 
+2393:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2393:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2393:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2393:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2408:Robot: State changed to: stop 
+2409:WallMap: adding point (0, 0 
+2409:WallMap: adding point (-10, -10 
+2409:WallMap: adding point (50, 100 
+2409:WallMap: adding point (75, 75 
+2409:WallMap: x bounds: 0 1440 
+2409:WallMap: y bounds: 0 800 
+2410:WallMap: self.x bounds -20 85 
+2410:WallMap: self.y bounds -20 110 
+2410:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2410:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2410:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2410:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2425:Robot: State changed to: stop 
+2425:WallMap: adding point (0, 0 
+2426:WallMap: adding point (-10, -10 
+2426:WallMap: adding point (50, 100 
+2426:WallMap: adding point (75, 75 
+2426:WallMap: x bounds: 0 1440 
+2426:WallMap: y bounds: 0 800 
+2426:WallMap: self.x bounds -20 85 
+2426:WallMap: self.y bounds -20 110 
+2427:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2427:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2427:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2427:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2442:Robot: State changed to: stop 
+2442:WallMap: adding point (0, 0 
+2442:WallMap: adding point (-10, -10 
+2442:WallMap: adding point (50, 100 
+2442:WallMap: adding point (75, 75 
+2442:WallMap: x bounds: 0 1440 
+2443:WallMap: y bounds: 0 800 
+2443:WallMap: self.x bounds -20 85 
+2443:WallMap: self.y bounds -20 110 
+2443:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2443:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2443:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2443:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2459:Robot: State changed to: stop 
+2459:WallMap: adding point (0, 0 
+2459:WallMap: adding point (-10, -10 
+2459:WallMap: adding point (50, 100 
+2459:WallMap: adding point (75, 75 
+2459:WallMap: x bounds: 0 1440 
+2460:WallMap: y bounds: 0 800 
+2460:WallMap: self.x bounds -20 85 
+2460:WallMap: self.y bounds -20 110 
+2460:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2460:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2460:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2460:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2475:Robot: State changed to: stop 
+2475:WallMap: adding point (0, 0 
+2475:WallMap: adding point (-10, -10 
+2475:WallMap: adding point (50, 100 
+2476:WallMap: adding point (75, 75 
+2476:WallMap: x bounds: 0 1440 
+2476:WallMap: y bounds: 0 800 
+2476:WallMap: self.x bounds -20 85 
+2476:WallMap: self.y bounds -20 110 
+2476:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2476:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2477:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2477:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2492:Robot: State changed to: stop 
+2492:WallMap: adding point (0, 0 
+2492:WallMap: adding point (-10, -10 
+2493:WallMap: adding point (50, 100 
+2493:WallMap: adding point (75, 75 
+2493:WallMap: x bounds: 0 1440 
+2493:WallMap: y bounds: 0 800 
+2493:WallMap: self.x bounds -20 85 
+2493:WallMap: self.y bounds -20 110 
+2493:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2493:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2494:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2494:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2509:Robot: State changed to: stop 
+2509:WallMap: adding point (0, 0 
+2509:WallMap: adding point (-10, -10 
+2510:WallMap: adding point (50, 100 
+2510:WallMap: adding point (75, 75 
+2510:WallMap: x bounds: 0 1440 
+2510:WallMap: y bounds: 0 800 
+2511:WallMap: self.x bounds -20 85 
+2511:WallMap: self.y bounds -20 110 
+2511:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2511:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2511:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2511:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2525:Robot: State changed to: stop 
+2525:WallMap: adding point (0, 0 
+2525:WallMap: adding point (-10, -10 
+2525:WallMap: adding point (50, 100 
+2526:WallMap: adding point (75, 75 
+2526:WallMap: x bounds: 0 1440 
+2526:WallMap: y bounds: 0 800 
+2526:WallMap: self.x bounds -20 85 
+2526:WallMap: self.y bounds -20 110 
+2526:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2526:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2527:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2527:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2540:Robot: State changed to: stop 
+2541:WallMap: adding point (0, 0 
+2541:WallMap: adding point (-10, -10 
+2541:WallMap: adding point (50, 100 
+2541:WallMap: adding point (75, 75 
+2541:WallMap: x bounds: 0 1440 
+2541:WallMap: y bounds: 0 800 
+2541:WallMap: self.x bounds -20 85 
+2542:WallMap: self.y bounds -20 110 
+2542:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2542:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2542:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2542:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2559:Robot: State changed to: stop 
+2559:WallMap: adding point (0, 0 
+2559:WallMap: adding point (-10, -10 
+2559:WallMap: adding point (50, 100 
+2559:WallMap: adding point (75, 75 
+2559:WallMap: x bounds: 0 1440 
+2559:WallMap: y bounds: 0 800 
+2560:WallMap: self.x bounds -20 85 
+2560:WallMap: self.y bounds -20 110 
+2560:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2560:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2560:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2560:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2576:Robot: State changed to: stop 
+2577:WallMap: adding point (0, 0 
+2577:WallMap: adding point (-10, -10 
+2577:WallMap: adding point (50, 100 
+2577:WallMap: adding point (75, 75 
+2577:WallMap: x bounds: 0 1440 
+2577:WallMap: y bounds: 0 800 
+2578:WallMap: self.x bounds -20 85 
+2578:WallMap: self.y bounds -20 110 
+2578:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2578:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2578:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2578:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2591:Robot: State changed to: stop 
+2591:WallMap: adding point (0, 0 
+2591:WallMap: adding point (-10, -10 
+2592:WallMap: adding point (50, 100 
+2592:WallMap: adding point (75, 75 
+2592:WallMap: x bounds: 0 1440 
+2592:WallMap: y bounds: 0 800 
+2592:WallMap: self.x bounds -20 85 
+2592:WallMap: self.y bounds -20 110 
+2592:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2593:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2593:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2593:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2607:Robot: State changed to: stop 
+2608:WallMap: adding point (0, 0 
+2608:WallMap: adding point (-10, -10 
+2608:WallMap: adding point (50, 100 
+2608:WallMap: adding point (75, 75 
+2608:WallMap: x bounds: 0 1440 
+2608:WallMap: y bounds: 0 800 
+2608:WallMap: self.x bounds -20 85 
+2609:WallMap: self.y bounds -20 110 
+2609:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2609:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2609:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2609:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2624:Robot: State changed to: stop 
+2625:WallMap: adding point (0, 0 
+2625:WallMap: adding point (-10, -10 
+2625:WallMap: adding point (50, 100 
+2625:WallMap: adding point (75, 75 
+2625:WallMap: x bounds: 0 1440 
+2625:WallMap: y bounds: 0 800 
+2625:WallMap: self.x bounds -20 85 
+2626:WallMap: self.y bounds -20 110 
+2626:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2626:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2626:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2626:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2641:Robot: State changed to: stop 
+2642:WallMap: adding point (0, 0 
+2642:WallMap: adding point (-10, -10 
+2642:WallMap: adding point (50, 100 
+2642:WallMap: adding point (75, 75 
+2642:WallMap: x bounds: 0 1440 
+2642:WallMap: y bounds: 0 800 
+2642:WallMap: self.x bounds -20 85 
+2642:WallMap: self.y bounds -20 110 
+2643:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2643:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2643:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2643:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2657:Robot: State changed to: stop 
+2658:WallMap: adding point (0, 0 
+2658:WallMap: adding point (-10, -10 
+2658:WallMap: adding point (50, 100 
+2658:WallMap: adding point (75, 75 
+2659:WallMap: x bounds: 0 1440 
+2659:WallMap: y bounds: 0 800 
+2659:WallMap: self.x bounds -20 85 
+2659:WallMap: self.y bounds -20 110 
+2659:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2659:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2659:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2660:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2674:Robot: State changed to: stop 
+2674:WallMap: adding point (0, 0 
+2674:WallMap: adding point (-10, -10 
+2674:WallMap: adding point (50, 100 
+2675:WallMap: adding point (75, 75 
+2675:WallMap: x bounds: 0 1440 
+2675:WallMap: y bounds: 0 800 
+2675:WallMap: self.x bounds -20 85 
+2675:WallMap: self.y bounds -20 110 
+2675:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2675:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2676:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2676:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2691:Robot: State changed to: stop 
+2691:WallMap: adding point (0, 0 
+2691:WallMap: adding point (-10, -10 
+2692:WallMap: adding point (50, 100 
+2692:WallMap: adding point (75, 75 
+2692:WallMap: x bounds: 0 1440 
+2692:WallMap: y bounds: 0 800 
+2692:WallMap: self.x bounds -20 85 
+2692:WallMap: self.y bounds -20 110 
+2693:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2693:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2693:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2693:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2709:Robot: State changed to: stop 
+2709:WallMap: adding point (0, 0 
+2709:WallMap: adding point (-10, -10 
+2710:WallMap: adding point (50, 100 
+2710:WallMap: adding point (75, 75 
+2710:WallMap: x bounds: 0 1440 
+2710:WallMap: y bounds: 0 800 
+2710:WallMap: self.x bounds -20 85 
+2710:WallMap: self.y bounds -20 110 
+2711:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2711:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2711:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2711:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2730:Robot: State changed to: stop 
+2731:WallMap: adding point (0, 0 
+2731:WallMap: adding point (-10, -10 
+2731:WallMap: adding point (50, 100 
+2731:WallMap: adding point (75, 75 
+2731:WallMap: x bounds: 0 1440 
+2732:WallMap: y bounds: 0 800 
+2732:WallMap: self.x bounds -20 85 
+2732:WallMap: self.y bounds -20 110 
+2732:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2732:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2732:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2732:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2745:Robot: State changed to: stop 
+2745:WallMap: adding point (0, 0 
+2746:WallMap: adding point (-10, -10 
+2746:WallMap: adding point (50, 100 
+2746:WallMap: adding point (75, 75 
+2746:WallMap: x bounds: 0 1440 
+2746:WallMap: y bounds: 0 800 
+2746:WallMap: self.x bounds -20 85 
+2746:WallMap: self.y bounds -20 110 
+2746:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2747:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2747:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2747:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2757:Robot: State changed to: stop 
+2757:WallMap: adding point (0, 0 
+2758:WallMap: adding point (-10, -10 
+2758:WallMap: adding point (50, 100 
+2758:WallMap: adding point (75, 75 
+2758:WallMap: x bounds: 0 1440 
+2758:WallMap: y bounds: 0 800 
+2758:WallMap: self.x bounds -20 85 
+2758:WallMap: self.y bounds -20 110 
+2758:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2759:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2759:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2759:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2774:Robot: State changed to: stop 
+2774:WallMap: adding point (0, 0 
+2775:WallMap: adding point (-10, -10 
+2775:WallMap: adding point (50, 100 
+2775:WallMap: adding point (75, 75 
+2775:WallMap: x bounds: 0 1440 
+2775:WallMap: y bounds: 0 800 
+2775:WallMap: self.x bounds -20 85 
+2775:WallMap: self.y bounds -20 110 
+2775:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2776:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2776:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2776:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2790:Robot: State changed to: stop 
+2790:WallMap: adding point (0, 0 
+2791:WallMap: adding point (-10, -10 
+2791:WallMap: adding point (50, 100 
+2791:WallMap: adding point (75, 75 
+2791:WallMap: x bounds: 0 1440 
+2791:WallMap: y bounds: 0 800 
+2791:WallMap: self.x bounds -20 85 
+2791:WallMap: self.y bounds -20 110 
+2791:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2792:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2792:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2792:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2806:Robot: State changed to: stop 
+2806:WallMap: adding point (0, 0 
+2806:WallMap: adding point (-10, -10 
+2807:WallMap: adding point (50, 100 
+2807:WallMap: adding point (75, 75 
+2807:WallMap: x bounds: 0 1440 
+2807:WallMap: y bounds: 0 800 
+2807:WallMap: self.x bounds -20 85 
+2807:WallMap: self.y bounds -20 110 
+2807:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2807:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2807:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2808:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2822:Robot: State changed to: stop 
+2823:WallMap: adding point (0, 0 
+2823:WallMap: adding point (-10, -10 
+2823:WallMap: adding point (50, 100 
+2823:WallMap: adding point (75, 75 
+2823:WallMap: x bounds: 0 1440 
+2823:WallMap: y bounds: 0 800 
+2823:WallMap: self.x bounds -20 85 
+2823:WallMap: self.y bounds -20 110 
+2824:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2824:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2824:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2824:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2839:Robot: State changed to: stop 
+2839:WallMap: adding point (0, 0 
+2839:WallMap: adding point (-10, -10 
+2840:WallMap: adding point (50, 100 
+2840:WallMap: adding point (75, 75 
+2840:WallMap: x bounds: 0 1440 
+2840:WallMap: y bounds: 0 800 
+2840:WallMap: self.x bounds -20 85 
+2840:WallMap: self.y bounds -20 110 
+2840:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2841:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2841:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2841:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2856:Robot: State changed to: stop 
+2856:WallMap: adding point (0, 0 
+2856:WallMap: adding point (-10, -10 
+2857:WallMap: adding point (50, 100 
+2857:WallMap: adding point (75, 75 
+2857:WallMap: x bounds: 0 1440 
+2857:WallMap: y bounds: 0 800 
+2857:WallMap: self.x bounds -20 85 
+2857:WallMap: self.y bounds -20 110 
+2857:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2857:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2857:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2858:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2873:Robot: State changed to: stop 
+2873:WallMap: adding point (0, 0 
+2873:WallMap: adding point (-10, -10 
+2873:WallMap: adding point (50, 100 
+2874:WallMap: adding point (75, 75 
+2874:WallMap: x bounds: 0 1440 
+2874:WallMap: y bounds: 0 800 
+2874:WallMap: self.x bounds -20 85 
+2874:WallMap: self.y bounds -20 110 
+2874:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2874:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2875:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2875:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2890:Robot: State changed to: stop 
+2890:WallMap: adding point (0, 0 
+2890:WallMap: adding point (-10, -10 
+2890:WallMap: adding point (50, 100 
+2890:WallMap: adding point (75, 75 
+2890:WallMap: x bounds: 0 1440 
+2891:WallMap: y bounds: 0 800 
+2891:WallMap: self.x bounds -20 85 
+2891:WallMap: self.y bounds -20 110 
+2891:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2891:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2891:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2891:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2907:Robot: State changed to: stop 
+2907:WallMap: adding point (0, 0 
+2907:WallMap: adding point (-10, -10 
+2907:WallMap: adding point (50, 100 
+2907:WallMap: adding point (75, 75 
+2907:WallMap: x bounds: 0 1440 
+2907:WallMap: y bounds: 0 800 
+2908:WallMap: self.x bounds -20 85 
+2908:WallMap: self.y bounds -20 110 
+2908:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2908:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2908:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2908:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2924:Robot: State changed to: stop 
+2924:WallMap: adding point (0, 0 
+2924:WallMap: adding point (-10, -10 
+2924:WallMap: adding point (50, 100 
+2925:WallMap: adding point (75, 75 
+2925:WallMap: x bounds: 0 1440 
+2925:WallMap: y bounds: 0 800 
+2925:WallMap: self.x bounds -20 85 
+2925:WallMap: self.y bounds -20 110 
+2925:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2926:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2926:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2926:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2940:Robot: State changed to: stop 
+2941:WallMap: adding point (0, 0 
+2941:WallMap: adding point (-10, -10 
+2941:WallMap: adding point (50, 100 
+2941:WallMap: adding point (75, 75 
+2941:WallMap: x bounds: 0 1440 
+2941:WallMap: y bounds: 0 800 
+2942:WallMap: self.x bounds -20 85 
+2942:WallMap: self.y bounds -20 110 
+2942:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2942:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2942:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2942:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2958:Robot: State changed to: stop 
+2958:WallMap: adding point (0, 0 
+2958:WallMap: adding point (-10, -10 
+2958:WallMap: adding point (50, 100 
+2958:WallMap: adding point (75, 75 
+2958:WallMap: x bounds: 0 1440 
+2959:WallMap: y bounds: 0 800 
+2959:WallMap: self.x bounds -20 85 
+2959:WallMap: self.y bounds -20 110 
+2959:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2959:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2959:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2959:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2975:Robot: State changed to: stop 
+2975:WallMap: adding point (0, 0 
+2975:WallMap: adding point (-10, -10 
+2975:WallMap: adding point (50, 100 
+2975:WallMap: adding point (75, 75 
+2976:WallMap: x bounds: 0 1440 
+2976:WallMap: y bounds: 0 800 
+2976:WallMap: self.x bounds -20 85 
+2976:WallMap: self.y bounds -20 110 
+2976:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2976:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2976:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2976:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+2992:Robot: State changed to: stop 
+2992:WallMap: adding point (0, 0 
+2992:WallMap: adding point (-10, -10 
+2992:WallMap: adding point (50, 100 
+2992:WallMap: adding point (75, 75 
+2993:WallMap: x bounds: 0 1440 
+2993:WallMap: y bounds: 0 800 
+2993:WallMap: self.x bounds -20 85 
+2993:WallMap: self.y bounds -20 110 
+2993:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+2993:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+2993:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+2993:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3008:Robot: State changed to: stop 
+3008:WallMap: adding point (0, 0 
+3008:WallMap: adding point (-10, -10 
+3008:WallMap: adding point (50, 100 
+3008:WallMap: adding point (75, 75 
+3009:WallMap: x bounds: 0 1440 
+3009:WallMap: y bounds: 0 800 
+3009:WallMap: self.x bounds -20 85 
+3009:WallMap: self.y bounds -20 110 
+3009:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3009:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3009:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3009:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3024:Robot: State changed to: stop 
+3024:WallMap: adding point (0, 0 
+3025:WallMap: adding point (-10, -10 
+3025:WallMap: adding point (50, 100 
+3025:WallMap: adding point (75, 75 
+3025:WallMap: x bounds: 0 1440 
+3025:WallMap: y bounds: 0 800 
+3025:WallMap: self.x bounds -20 85 
+3025:WallMap: self.y bounds -20 110 
+3026:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3026:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3026:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3026:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3040:Robot: State changed to: stop 
+3041:WallMap: adding point (0, 0 
+3041:WallMap: adding point (-10, -10 
+3041:WallMap: adding point (50, 100 
+3041:WallMap: adding point (75, 75 
+3041:WallMap: x bounds: 0 1440 
+3041:WallMap: y bounds: 0 800 
+3042:WallMap: self.x bounds -20 85 
+3042:WallMap: self.y bounds -20 110 
+3042:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3042:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3042:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3042:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3058:Robot: State changed to: stop 
+3059:WallMap: adding point (0, 0 
+3059:WallMap: adding point (-10, -10 
+3059:WallMap: adding point (50, 100 
+3059:WallMap: adding point (75, 75 
+3059:WallMap: x bounds: 0 1440 
+3059:WallMap: y bounds: 0 800 
+3059:WallMap: self.x bounds -20 85 
+3060:WallMap: self.y bounds -20 110 
+3060:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3060:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3060:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3060:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3075:Robot: State changed to: stop 
+3075:WallMap: adding point (0, 0 
+3075:WallMap: adding point (-10, -10 
+3075:WallMap: adding point (50, 100 
+3076:WallMap: adding point (75, 75 
+3076:WallMap: x bounds: 0 1440 
+3076:WallMap: y bounds: 0 800 
+3076:WallMap: self.x bounds -20 85 
+3076:WallMap: self.y bounds -20 110 
+3076:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3076:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3076:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3077:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3091:Robot: State changed to: stop 
+3091:WallMap: adding point (0, 0 
+3092:WallMap: adding point (-10, -10 
+3092:WallMap: adding point (50, 100 
+3092:WallMap: adding point (75, 75 
+3092:WallMap: x bounds: 0 1440 
+3092:WallMap: y bounds: 0 800 
+3092:WallMap: self.x bounds -20 85 
+3092:WallMap: self.y bounds -20 110 
+3093:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3093:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3093:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3093:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3109:Robot: State changed to: stop 
+3109:WallMap: adding point (0, 0 
+3109:WallMap: adding point (-10, -10 
+3109:WallMap: adding point (50, 100 
+3109:WallMap: adding point (75, 75 
+3110:WallMap: x bounds: 0 1440 
+3110:WallMap: y bounds: 0 800 
+3110:WallMap: self.x bounds -20 85 
+3110:WallMap: self.y bounds -20 110 
+3110:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3110:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3110:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3111:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3125:Robot: State changed to: stop 
+3125:WallMap: adding point (0, 0 
+3125:WallMap: adding point (-10, -10 
+3125:WallMap: adding point (50, 100 
+3126:WallMap: adding point (75, 75 
+3126:WallMap: x bounds: 0 1440 
+3126:WallMap: y bounds: 0 800 
+3126:WallMap: self.x bounds -20 85 
+3126:WallMap: self.y bounds -20 110 
+3126:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3126:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3127:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3127:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3142:Robot: State changed to: stop 
+3142:WallMap: adding point (0, 0 
+3142:WallMap: adding point (-10, -10 
+3142:WallMap: adding point (50, 100 
+3143:WallMap: adding point (75, 75 
+3143:WallMap: x bounds: 0 1440 
+3143:WallMap: y bounds: 0 800 
+3143:WallMap: self.x bounds -20 85 
+3143:WallMap: self.y bounds -20 110 
+3143:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3143:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3143:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3144:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3159:Robot: State changed to: stop 
+3159:WallMap: adding point (0, 0 
+3159:WallMap: adding point (-10, -10 
+3159:WallMap: adding point (50, 100 
+3159:WallMap: adding point (75, 75 
+3160:WallMap: x bounds: 0 1440 
+3160:WallMap: y bounds: 0 800 
+3160:WallMap: self.x bounds -20 85 
+3160:WallMap: self.y bounds -20 110 
+3160:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3160:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3160:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3160:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3176:Robot: State changed to: stop 
+3176:WallMap: adding point (0, 0 
+3176:WallMap: adding point (-10, -10 
+3176:WallMap: adding point (50, 100 
+3176:WallMap: adding point (75, 75 
+3176:WallMap: x bounds: 0 1440 
+3176:WallMap: y bounds: 0 800 
+3177:WallMap: self.x bounds -20 85 
+3177:WallMap: self.y bounds -20 110 
+3177:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3177:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3177:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3177:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3192:Robot: State changed to: stop 
+3192:WallMap: adding point (0, 0 
+3192:WallMap: adding point (-10, -10 
+3192:WallMap: adding point (50, 100 
+3193:WallMap: adding point (75, 75 
+3193:WallMap: x bounds: 0 1440 
+3193:WallMap: y bounds: 0 800 
+3193:WallMap: self.x bounds -20 85 
+3193:WallMap: self.y bounds -20 110 
+3193:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3193:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3193:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3194:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3208:Robot: State changed to: stop 
+3208:WallMap: adding point (0, 0 
+3208:WallMap: adding point (-10, -10 
+3209:WallMap: adding point (50, 100 
+3209:WallMap: adding point (75, 75 
+3209:WallMap: x bounds: 0 1440 
+3209:WallMap: y bounds: 0 800 
+3209:WallMap: self.x bounds -20 85 
+3209:WallMap: self.y bounds -20 110 
+3210:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3210:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3210:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3210:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3224:Robot: State changed to: stop 
+3225:WallMap: adding point (0, 0 
+3225:WallMap: adding point (-10, -10 
+3225:WallMap: adding point (50, 100 
+3225:WallMap: adding point (75, 75 
+3225:WallMap: x bounds: 0 1440 
+3225:WallMap: y bounds: 0 800 
+3225:WallMap: self.x bounds -20 85 
+3225:WallMap: self.y bounds -20 110 
+3226:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3226:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3226:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3226:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3241:Robot: State changed to: stop 
+3242:WallMap: adding point (0, 0 
+3242:WallMap: adding point (-10, -10 
+3242:WallMap: adding point (50, 100 
+3242:WallMap: adding point (75, 75 
+3242:WallMap: x bounds: 0 1440 
+3242:WallMap: y bounds: 0 800 
+3243:WallMap: self.x bounds -20 85 
+3243:WallMap: self.y bounds -20 110 
+3243:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3243:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3243:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3243:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3257:Robot: State changed to: stop 
+3258:WallMap: adding point (0, 0 
+3258:WallMap: adding point (-10, -10 
+3258:WallMap: adding point (50, 100 
+3258:WallMap: adding point (75, 75 
+3258:WallMap: x bounds: 0 1440 
+3258:WallMap: y bounds: 0 800 
+3258:WallMap: self.x bounds -20 85 
+3259:WallMap: self.y bounds -20 110 
+3259:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3259:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3259:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3259:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3274:Robot: State changed to: stop 
+3274:WallMap: adding point (0, 0 
+3274:WallMap: adding point (-10, -10 
+3274:WallMap: adding point (50, 100 
+3274:WallMap: adding point (75, 75 
+3274:WallMap: x bounds: 0 1440 
+3274:WallMap: y bounds: 0 800 
+3275:WallMap: self.x bounds -20 85 
+3275:WallMap: self.y bounds -20 110 
+3275:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3275:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3275:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3275:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3291:Robot: State changed to: stop 
+3291:WallMap: adding point (0, 0 
+3291:WallMap: adding point (-10, -10 
+3291:WallMap: adding point (50, 100 
+3291:WallMap: adding point (75, 75 
+3292:WallMap: x bounds: 0 1440 
+3292:WallMap: y bounds: 0 800 
+3292:WallMap: self.x bounds -20 85 
+3292:WallMap: self.y bounds -20 110 
+3292:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3292:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3292:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3292:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3308:Robot: State changed to: stop 
+3309:WallMap: adding point (0, 0 
+3309:WallMap: adding point (-10, -10 
+3309:WallMap: adding point (50, 100 
+3309:WallMap: adding point (75, 75 
+3309:WallMap: x bounds: 0 1440 
+3309:WallMap: y bounds: 0 800 
+3309:WallMap: self.x bounds -20 85 
+3309:WallMap: self.y bounds -20 110 
+3310:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3310:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3310:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3310:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3324:Robot: State changed to: stop 
+3325:WallMap: adding point (0, 0 
+3325:WallMap: adding point (-10, -10 
+3325:WallMap: adding point (50, 100 
+3325:WallMap: adding point (75, 75 
+3325:WallMap: x bounds: 0 1440 
+3325:WallMap: y bounds: 0 800 
+3325:WallMap: self.x bounds -20 85 
+3326:WallMap: self.y bounds -20 110 
+3326:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3326:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3326:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3326:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3340:Robot: State changed to: stop 
+3340:WallMap: adding point (0, 0 
+3340:WallMap: adding point (-10, -10 
+3340:WallMap: adding point (50, 100 
+3340:WallMap: adding point (75, 75 
+3340:WallMap: x bounds: 0 1440 
+3341:WallMap: y bounds: 0 800 
+3341:WallMap: self.x bounds -20 85 
+3341:WallMap: self.y bounds -20 110 
+3341:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3341:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3341:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3341:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3356:Robot: State changed to: stop 
+3356:WallMap: adding point (0, 0 
+3356:WallMap: adding point (-10, -10 
+3356:WallMap: adding point (50, 100 
+3356:WallMap: adding point (75, 75 
+3356:WallMap: x bounds: 0 1440 
+3356:WallMap: y bounds: 0 800 
+3357:WallMap: self.x bounds -20 85 
+3357:WallMap: self.y bounds -20 110 
+3357:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3357:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3357:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3357:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3372:Robot: State changed to: stop 
+3372:WallMap: adding point (0, 0 
+3372:WallMap: adding point (-10, -10 
+3372:WallMap: adding point (50, 100 
+3372:WallMap: adding point (75, 75 
+3372:WallMap: x bounds: 0 1440 
+3372:WallMap: y bounds: 0 800 
+3373:WallMap: self.x bounds -20 85 
+3373:WallMap: self.y bounds -20 110 
+3373:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3373:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3373:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3373:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3387:Robot: State changed to: stop 
+3387:WallMap: adding point (0, 0 
+3387:WallMap: adding point (-10, -10 
+3388:WallMap: adding point (50, 100 
+3388:WallMap: adding point (75, 75 
+3388:WallMap: x bounds: 0 1440 
+3388:WallMap: y bounds: 0 800 
+3388:WallMap: self.x bounds -20 85 
+3388:WallMap: self.y bounds -20 110 
+3388:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3389:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3389:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3389:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3403:Robot: State changed to: stop 
+3403:WallMap: adding point (0, 0 
+3403:WallMap: adding point (-10, -10 
+3403:WallMap: adding point (50, 100 
+3403:WallMap: adding point (75, 75 
+3404:WallMap: x bounds: 0 1440 
+3404:WallMap: y bounds: 0 800 
+3404:WallMap: self.x bounds -20 85 
+3404:WallMap: self.y bounds -20 110 
+3404:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3404:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3404:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3404:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3419:Robot: State changed to: stop 
+3420:WallMap: adding point (0, 0 
+3420:WallMap: adding point (-10, -10 
+3420:WallMap: adding point (50, 100 
+3420:WallMap: adding point (75, 75 
+3420:WallMap: x bounds: 0 1440 
+3420:WallMap: y bounds: 0 800 
+3420:WallMap: self.x bounds -20 85 
+3420:WallMap: self.y bounds -20 110 
+3421:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3421:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3421:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3421:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3436:Robot: State changed to: stop 
+3436:WallMap: adding point (0, 0 
+3436:WallMap: adding point (-10, -10 
+3436:WallMap: adding point (50, 100 
+3436:WallMap: adding point (75, 75 
+3437:WallMap: x bounds: 0 1440 
+3437:WallMap: y bounds: 0 800 
+3437:WallMap: self.x bounds -20 85 
+3437:WallMap: self.y bounds -20 110 
+3437:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3437:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3437:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3437:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3453:Robot: State changed to: stop 
+3453:WallMap: adding point (0, 0 
+3453:WallMap: adding point (-10, -10 
+3453:WallMap: adding point (50, 100 
+3454:WallMap: adding point (75, 75 
+3454:WallMap: x bounds: 0 1440 
+3454:WallMap: y bounds: 0 800 
+3454:WallMap: self.x bounds -20 85 
+3454:WallMap: self.y bounds -20 110 
+3454:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3454:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3454:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3455:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3470:Robot: State changed to: stop 
+3470:WallMap: adding point (0, 0 
+3470:WallMap: adding point (-10, -10 
+3470:WallMap: adding point (50, 100 
+3470:WallMap: adding point (75, 75 
+3471:WallMap: x bounds: 0 1440 
+3471:WallMap: y bounds: 0 800 
+3471:WallMap: self.x bounds -20 85 
+3471:WallMap: self.y bounds -20 110 
+3471:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3471:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3471:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3472:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3486:Robot: State changed to: stop 
+3486:WallMap: adding point (0, 0 
+3486:WallMap: adding point (-10, -10 
+3486:WallMap: adding point (50, 100 
+3487:WallMap: adding point (75, 75 
+3487:WallMap: x bounds: 0 1440 
+3487:WallMap: y bounds: 0 800 
+3487:WallMap: self.x bounds -20 85 
+3487:WallMap: self.y bounds -20 110 
+3487:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3488:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3488:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3488:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3503:Robot: State changed to: stop 
+3503:WallMap: adding point (0, 0 
+3503:WallMap: adding point (-10, -10 
+3504:WallMap: adding point (50, 100 
+3504:WallMap: adding point (75, 75 
+3504:WallMap: x bounds: 0 1440 
+3504:WallMap: y bounds: 0 800 
+3504:WallMap: self.x bounds -20 85 
+3504:WallMap: self.y bounds -20 110 
+3504:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3504:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3504:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3505:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3521:Robot: State changed to: stop 
+3521:WallMap: adding point (0, 0 
+3521:WallMap: adding point (-10, -10 
+3521:WallMap: adding point (50, 100 
+3521:WallMap: adding point (75, 75 
+3521:WallMap: x bounds: 0 1440 
+3522:WallMap: y bounds: 0 800 
+3522:WallMap: self.x bounds -20 85 
+3522:WallMap: self.y bounds -20 110 
+3522:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3522:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3522:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3522:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3537:Robot: State changed to: stop 
+3537:WallMap: adding point (0, 0 
+3537:WallMap: adding point (-10, -10 
+3537:WallMap: adding point (50, 100 
+3537:WallMap: adding point (75, 75 
+3537:WallMap: x bounds: 0 1440 
+3537:WallMap: y bounds: 0 800 
+3538:WallMap: self.x bounds -20 85 
+3538:WallMap: self.y bounds -20 110 
+3538:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3538:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3538:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3538:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3552:Robot: State changed to: stop 
+3553:WallMap: adding point (0, 0 
+3553:WallMap: adding point (-10, -10 
+3553:WallMap: adding point (50, 100 
+3553:WallMap: adding point (75, 75 
+3553:WallMap: x bounds: 0 1440 
+3553:WallMap: y bounds: 0 800 
+3554:WallMap: self.x bounds -20 85 
+3554:WallMap: self.y bounds -20 110 
+3554:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3554:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3554:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3554:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3569:Robot: State changed to: stop 
+3570:WallMap: adding point (0, 0 
+3570:WallMap: adding point (-10, -10 
+3570:WallMap: adding point (50, 100 
+3570:WallMap: adding point (75, 75 
+3570:WallMap: x bounds: 0 1440 
+3570:WallMap: y bounds: 0 800 
+3570:WallMap: self.x bounds -20 85 
+3570:WallMap: self.y bounds -20 110 
+3571:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3571:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3571:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3571:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3585:Robot: State changed to: stop 
+3585:WallMap: adding point (0, 0 
+3585:WallMap: adding point (-10, -10 
+3585:WallMap: adding point (50, 100 
+3586:WallMap: adding point (75, 75 
+3586:WallMap: x bounds: 0 1440 
+3586:WallMap: y bounds: 0 800 
+3586:WallMap: self.x bounds -20 85 
+3586:WallMap: self.y bounds -20 110 
+3586:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3586:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3587:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3587:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3602:Robot: State changed to: stop 
+3602:WallMap: adding point (0, 0 
+3602:WallMap: adding point (-10, -10 
+3603:WallMap: adding point (50, 100 
+3603:WallMap: adding point (75, 75 
+3603:WallMap: x bounds: 0 1440 
+3603:WallMap: y bounds: 0 800 
+3603:WallMap: self.x bounds -20 85 
+3603:WallMap: self.y bounds -20 110 
+3603:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3603:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3604:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3604:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3617:Robot: State changed to: stop 
+3617:WallMap: adding point (0, 0 
+3617:WallMap: adding point (-10, -10 
+3617:WallMap: adding point (50, 100 
+3617:WallMap: adding point (75, 75 
+3617:WallMap: x bounds: 0 1440 
+3618:WallMap: y bounds: 0 800 
+3618:WallMap: self.x bounds -20 85 
+3618:WallMap: self.y bounds -20 110 
+3618:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3618:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3618:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3618:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3633:Robot: State changed to: stop 
+3634:WallMap: adding point (0, 0 
+3634:WallMap: adding point (-10, -10 
+3634:WallMap: adding point (50, 100 
+3634:WallMap: adding point (75, 75 
+3634:WallMap: x bounds: 0 1440 
+3634:WallMap: y bounds: 0 800 
+3635:WallMap: self.x bounds -20 85 
+3635:WallMap: self.y bounds -20 110 
+3635:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3635:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3635:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3635:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3649:Robot: State changed to: stop 
+3649:WallMap: adding point (0, 0 
+3649:WallMap: adding point (-10, -10 
+3650:WallMap: adding point (50, 100 
+3650:WallMap: adding point (75, 75 
+3650:WallMap: x bounds: 0 1440 
+3650:WallMap: y bounds: 0 800 
+3650:WallMap: self.x bounds -20 85 
+3650:WallMap: self.y bounds -20 110 
+3650:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3650:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3651:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3651:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3665:Robot: State changed to: stop 
+3665:WallMap: adding point (0, 0 
+3665:WallMap: adding point (-10, -10 
+3665:WallMap: adding point (50, 100 
+3666:WallMap: adding point (75, 75 
+3666:WallMap: x bounds: 0 1440 
+3666:WallMap: y bounds: 0 800 
+3666:WallMap: self.x bounds -20 85 
+3666:WallMap: self.y bounds -20 110 
+3666:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3667:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3667:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3667:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3682:Robot: State changed to: stop 
+3682:WallMap: adding point (0, 0 
+3682:WallMap: adding point (-10, -10 
+3683:WallMap: adding point (50, 100 
+3683:WallMap: adding point (75, 75 
+3683:WallMap: x bounds: 0 1440 
+3683:WallMap: y bounds: 0 800 
+3683:WallMap: self.x bounds -20 85 
+3683:WallMap: self.y bounds -20 110 
+3683:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3683:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3683:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3684:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3698:Robot: State changed to: stop 
+3698:WallMap: adding point (0, 0 
+3698:WallMap: adding point (-10, -10 
+3698:WallMap: adding point (50, 100 
+3699:WallMap: adding point (75, 75 
+3699:WallMap: x bounds: 0 1440 
+3699:WallMap: y bounds: 0 800 
+3699:WallMap: self.x bounds -20 85 
+3699:WallMap: self.y bounds -20 110 
+3699:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3699:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3700:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3700:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3714:Robot: State changed to: stop 
+3714:WallMap: adding point (0, 0 
+3714:WallMap: adding point (-10, -10 
+3714:WallMap: adding point (50, 100 
+3714:WallMap: adding point (75, 75 
+3715:WallMap: x bounds: 0 1440 
+3715:WallMap: y bounds: 0 800 
+3715:WallMap: self.x bounds -20 85 
+3715:WallMap: self.y bounds -20 110 
+3715:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3715:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3715:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3715:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3731:Robot: State changed to: stop 
+3731:WallMap: adding point (0, 0 
+3731:WallMap: adding point (-10, -10 
+3731:WallMap: adding point (50, 100 
+3731:WallMap: adding point (75, 75 
+3731:WallMap: x bounds: 0 1440 
+3732:WallMap: y bounds: 0 800 
+3732:WallMap: self.x bounds -20 85 
+3732:WallMap: self.y bounds -20 110 
+3732:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3732:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3732:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3732:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3746:Robot: State changed to: stop 
+3746:WallMap: adding point (0, 0 
+3747:WallMap: adding point (-10, -10 
+3747:WallMap: adding point (50, 100 
+3747:WallMap: adding point (75, 75 
+3747:WallMap: x bounds: 0 1440 
+3747:WallMap: y bounds: 0 800 
+3747:WallMap: self.x bounds -20 85 
+3748:WallMap: self.y bounds -20 110 
+3748:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3748:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3748:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3748:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3762:Robot: State changed to: stop 
+3763:WallMap: adding point (0, 0 
+3763:WallMap: adding point (-10, -10 
+3763:WallMap: adding point (50, 100 
+3763:WallMap: adding point (75, 75 
+3763:WallMap: x bounds: 0 1440 
+3763:WallMap: y bounds: 0 800 
+3763:WallMap: self.x bounds -20 85 
+3763:WallMap: self.y bounds -20 110 
+3764:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3764:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3764:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3764:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3778:Robot: State changed to: stop 
+3779:WallMap: adding point (0, 0 
+3779:WallMap: adding point (-10, -10 
+3779:WallMap: adding point (50, 100 
+3779:WallMap: adding point (75, 75 
+3779:WallMap: x bounds: 0 1440 
+3779:WallMap: y bounds: 0 800 
+3779:WallMap: self.x bounds -20 85 
+3780:WallMap: self.y bounds -20 110 
+3780:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3780:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3780:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3780:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3795:Robot: State changed to: stop 
+3795:WallMap: adding point (0, 0 
+3795:WallMap: adding point (-10, -10 
+3795:WallMap: adding point (50, 100 
+3795:WallMap: adding point (75, 75 
+3796:WallMap: x bounds: 0 1440 
+3796:WallMap: y bounds: 0 800 
+3796:WallMap: self.x bounds -20 85 
+3796:WallMap: self.y bounds -20 110 
+3796:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3796:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3796:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3797:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3813:Robot: State changed to: stop 
+3813:WallMap: adding point (0, 0 
+3813:WallMap: adding point (-10, -10 
+3813:WallMap: adding point (50, 100 
+3813:WallMap: adding point (75, 75 
+3814:WallMap: x bounds: 0 1440 
+3814:WallMap: y bounds: 0 800 
+3814:WallMap: self.x bounds -20 85 
+3814:WallMap: self.y bounds -20 110 
+3814:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3814:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3814:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3814:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3828:Robot: State changed to: stop 
+3828:WallMap: adding point (0, 0 
+3828:WallMap: adding point (-10, -10 
+3828:WallMap: adding point (50, 100 
+3829:WallMap: adding point (75, 75 
+3829:WallMap: x bounds: 0 1440 
+3829:WallMap: y bounds: 0 800 
+3829:WallMap: self.x bounds -20 85 
+3829:WallMap: self.y bounds -20 110 
+3829:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3829:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3829:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3830:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3846:Robot: State changed to: stop 
+3847:WallMap: adding point (0, 0 
+3847:WallMap: adding point (-10, -10 
+3847:WallMap: adding point (50, 100 
+3847:WallMap: adding point (75, 75 
+3847:WallMap: x bounds: 0 1440 
+3847:WallMap: y bounds: 0 800 
+3847:WallMap: self.x bounds -20 85 
+3847:WallMap: self.y bounds -20 110 
+3848:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3848:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3848:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3848:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3863:Robot: State changed to: stop 
+3863:WallMap: adding point (0, 0 
+3863:WallMap: adding point (-10, -10 
+3863:WallMap: adding point (50, 100 
+3864:WallMap: adding point (75, 75 
+3864:WallMap: x bounds: 0 1440 
+3864:WallMap: y bounds: 0 800 
+3864:WallMap: self.x bounds -20 85 
+3864:WallMap: self.y bounds -20 110 
+3864:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3864:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3865:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3865:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3878:Robot: State changed to: stop 
+3879:WallMap: adding point (0, 0 
+3879:WallMap: adding point (-10, -10 
+3879:WallMap: adding point (50, 100 
+3879:WallMap: adding point (75, 75 
+3879:WallMap: x bounds: 0 1440 
+3879:WallMap: y bounds: 0 800 
+3880:WallMap: self.x bounds -20 85 
+3880:WallMap: self.y bounds -20 110 
+3880:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3880:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3880:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3880:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3897:Robot: State changed to: stop 
+3897:WallMap: adding point (0, 0 
+3897:WallMap: adding point (-10, -10 
+3897:WallMap: adding point (50, 100 
+3897:WallMap: adding point (75, 75 
+3898:WallMap: x bounds: 0 1440 
+3898:WallMap: y bounds: 0 800 
+3898:WallMap: self.x bounds -20 85 
+3898:WallMap: self.y bounds -20 110 
+3898:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3898:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3898:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3898:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3912:Robot: State changed to: stop 
+3912:WallMap: adding point (0, 0 
+3912:WallMap: adding point (-10, -10 
+3913:WallMap: adding point (50, 100 
+3913:WallMap: adding point (75, 75 
+3913:WallMap: x bounds: 0 1440 
+3913:WallMap: y bounds: 0 800 
+3913:WallMap: self.x bounds -20 85 
+3913:WallMap: self.y bounds -20 110 
+3913:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3914:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3914:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3914:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3929:Robot: State changed to: stop 
+3929:WallMap: adding point (0, 0 
+3929:WallMap: adding point (-10, -10 
+3929:WallMap: adding point (50, 100 
+3929:WallMap: adding point (75, 75 
+3930:WallMap: x bounds: 0 1440 
+3930:WallMap: y bounds: 0 800 
+3930:WallMap: self.x bounds -20 85 
+3930:WallMap: self.y bounds -20 110 
+3930:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3930:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3931:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3931:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3945:Robot: State changed to: stop 
+3945:WallMap: adding point (0, 0 
+3945:WallMap: adding point (-10, -10 
+3945:WallMap: adding point (50, 100 
+3945:WallMap: adding point (75, 75 
+3946:WallMap: x bounds: 0 1440 
+3946:WallMap: y bounds: 0 800 
+3946:WallMap: self.x bounds -20 85 
+3946:WallMap: self.y bounds -20 110 
+3946:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3946:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3946:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3947:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3963:Robot: State changed to: stop 
+3963:WallMap: adding point (0, 0 
+3963:WallMap: adding point (-10, -10 
+3964:WallMap: adding point (50, 100 
+3964:WallMap: adding point (75, 75 
+3964:WallMap: x bounds: 0 1440 
+3964:WallMap: y bounds: 0 800 
+3964:WallMap: self.x bounds -20 85 
+3964:WallMap: self.y bounds -20 110 
+3964:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3965:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3965:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3965:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3977:Robot: State changed to: stop 
+3978:WallMap: adding point (0, 0 
+3978:WallMap: adding point (-10, -10 
+3978:WallMap: adding point (50, 100 
+3978:WallMap: adding point (75, 75 
+3978:WallMap: x bounds: 0 1440 
+3978:WallMap: y bounds: 0 800 
+3979:WallMap: self.x bounds -20 85 
+3979:WallMap: self.y bounds -20 110 
+3979:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3979:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3979:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3979:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+3995:Robot: State changed to: stop 
+3995:WallMap: adding point (0, 0 
+3996:WallMap: adding point (-10, -10 
+3996:WallMap: adding point (50, 100 
+3996:WallMap: adding point (75, 75 
+3996:WallMap: x bounds: 0 1440 
+3996:WallMap: y bounds: 0 800 
+3996:WallMap: self.x bounds -20 85 
+3996:WallMap: self.y bounds -20 110 
+3997:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+3997:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+3997:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+3997:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4014:Robot: State changed to: stop 
+4014:WallMap: adding point (0, 0 
+4014:WallMap: adding point (-10, -10 
+4014:WallMap: adding point (50, 100 
+4014:WallMap: adding point (75, 75 
+4015:WallMap: x bounds: 0 1440 
+4015:WallMap: y bounds: 0 800 
+4015:WallMap: self.x bounds -20 85 
+4015:WallMap: self.y bounds -20 110 
+4015:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4015:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4015:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4016:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4027:Robot: State changed to: stop 
+4027:WallMap: adding point (0, 0 
+4028:WallMap: adding point (-10, -10 
+4028:WallMap: adding point (50, 100 
+4028:WallMap: adding point (75, 75 
+4028:WallMap: x bounds: 0 1440 
+4028:WallMap: y bounds: 0 800 
+4028:WallMap: self.x bounds -20 85 
+4028:WallMap: self.y bounds -20 110 
+4028:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4028:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4029:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4029:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4043:Robot: State changed to: stop 
+4044:WallMap: adding point (0, 0 
+4044:WallMap: adding point (-10, -10 
+4044:WallMap: adding point (50, 100 
+4044:WallMap: adding point (75, 75 
+4044:WallMap: x bounds: 0 1440 
+4044:WallMap: y bounds: 0 800 
+4044:WallMap: self.x bounds -20 85 
+4045:WallMap: self.y bounds -20 110 
+4045:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4045:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4045:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4045:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4062:Robot: State changed to: stop 
+4063:WallMap: adding point (0, 0 
+4063:WallMap: adding point (-10, -10 
+4063:WallMap: adding point (50, 100 
+4063:WallMap: adding point (75, 75 
+4063:WallMap: x bounds: 0 1440 
+4063:WallMap: y bounds: 0 800 
+4063:WallMap: self.x bounds -20 85 
+4063:WallMap: self.y bounds -20 110 
+4064:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4064:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4064:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4064:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4076:Robot: State changed to: stop 
+4076:WallMap: adding point (0, 0 
+4076:WallMap: adding point (-10, -10 
+4076:WallMap: adding point (50, 100 
+4076:WallMap: adding point (75, 75 
+4077:WallMap: x bounds: 0 1440 
+4077:WallMap: y bounds: 0 800 
+4077:WallMap: self.x bounds -20 85 
+4077:WallMap: self.y bounds -20 110 
+4077:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4077:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4077:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4077:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4092:Robot: State changed to: stop 
+4092:WallMap: adding point (0, 0 
+4092:WallMap: adding point (-10, -10 
+4092:WallMap: adding point (50, 100 
+4093:WallMap: adding point (75, 75 
+4093:WallMap: x bounds: 0 1440 
+4093:WallMap: y bounds: 0 800 
+4093:WallMap: self.x bounds -20 85 
+4093:WallMap: self.y bounds -20 110 
+4093:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4093:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4093:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4094:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4107:Robot: State changed to: stop 
+4107:WallMap: adding point (0, 0 
+4107:WallMap: adding point (-10, -10 
+4107:WallMap: adding point (50, 100 
+4107:WallMap: adding point (75, 75 
+4108:WallMap: x bounds: 0 1440 
+4108:WallMap: y bounds: 0 800 
+4108:WallMap: self.x bounds -20 85 
+4108:WallMap: self.y bounds -20 110 
+4108:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4108:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4108:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4108:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4124:Robot: State changed to: stop 
+4124:WallMap: adding point (0, 0 
+4124:WallMap: adding point (-10, -10 
+4124:WallMap: adding point (50, 100 
+4124:WallMap: adding point (75, 75 
+4124:WallMap: x bounds: 0 1440 
+4125:WallMap: y bounds: 0 800 
+4125:WallMap: self.x bounds -20 85 
+4125:WallMap: self.y bounds -20 110 
+4125:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4125:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4125:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4125:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4141:Robot: State changed to: stop 
+4141:WallMap: adding point (0, 0 
+4141:WallMap: adding point (-10, -10 
+4141:WallMap: adding point (50, 100 
+4141:WallMap: adding point (75, 75 
+4142:WallMap: x bounds: 0 1440 
+4142:WallMap: y bounds: 0 800 
+4142:WallMap: self.x bounds -20 85 
+4142:WallMap: self.y bounds -20 110 
+4142:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4142:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4142:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4142:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4157:Robot: State changed to: stop 
+4158:WallMap: adding point (0, 0 
+4158:WallMap: adding point (-10, -10 
+4158:WallMap: adding point (50, 100 
+4158:WallMap: adding point (75, 75 
+4158:WallMap: x bounds: 0 1440 
+4158:WallMap: y bounds: 0 800 
+4158:WallMap: self.x bounds -20 85 
+4159:WallMap: self.y bounds -20 110 
+4159:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4159:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4159:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4159:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4174:Robot: State changed to: stop 
+4174:WallMap: adding point (0, 0 
+4174:WallMap: adding point (-10, -10 
+4174:WallMap: adding point (50, 100 
+4175:WallMap: adding point (75, 75 
+4175:WallMap: x bounds: 0 1440 
+4175:WallMap: y bounds: 0 800 
+4175:WallMap: self.x bounds -20 85 
+4175:WallMap: self.y bounds -20 110 
+4175:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4175:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4176:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4176:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4191:Robot: State changed to: stop 
+4191:WallMap: adding point (0, 0 
+4191:WallMap: adding point (-10, -10 
+4191:WallMap: adding point (50, 100 
+4191:WallMap: adding point (75, 75 
+4192:WallMap: x bounds: 0 1440 
+4192:WallMap: y bounds: 0 800 
+4192:WallMap: self.x bounds -20 85 
+4192:WallMap: self.y bounds -20 110 
+4192:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4192:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4192:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4192:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4208:Robot: State changed to: stop 
+4208:WallMap: adding point (0, 0 
+4208:WallMap: adding point (-10, -10 
+4208:WallMap: adding point (50, 100 
+4208:WallMap: adding point (75, 75 
+4209:WallMap: x bounds: 0 1440 
+4209:WallMap: y bounds: 0 800 
+4209:WallMap: self.x bounds -20 85 
+4209:WallMap: self.y bounds -20 110 
+4209:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4209:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4209:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4209:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4223:Robot: State changed to: stop 
+4223:WallMap: adding point (0, 0 
+4223:WallMap: adding point (-10, -10 
+4224:WallMap: adding point (50, 100 
+4224:WallMap: adding point (75, 75 
+4224:WallMap: x bounds: 0 1440 
+4224:WallMap: y bounds: 0 800 
+4224:WallMap: self.x bounds -20 85 
+4224:WallMap: self.y bounds -20 110 
+4224:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4225:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4225:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4225:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4239:Robot: State changed to: stop 
+4239:WallMap: adding point (0, 0 
+4239:WallMap: adding point (-10, -10 
+4239:WallMap: adding point (50, 100 
+4239:WallMap: adding point (75, 75 
+4240:WallMap: x bounds: 0 1440 
+4240:WallMap: y bounds: 0 800 
+4240:WallMap: self.x bounds -20 85 
+4240:WallMap: self.y bounds -20 110 
+4240:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4240:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4240:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4240:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4255:Robot: State changed to: stop 
+4255:WallMap: adding point (0, 0 
+4255:WallMap: adding point (-10, -10 
+4255:WallMap: adding point (50, 100 
+4255:WallMap: adding point (75, 75 
+4256:WallMap: x bounds: 0 1440 
+4256:WallMap: y bounds: 0 800 
+4256:WallMap: self.x bounds -20 85 
+4256:WallMap: self.y bounds -20 110 
+4256:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4256:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4256:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4256:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4272:Robot: State changed to: stop 
+4272:WallMap: adding point (0, 0 
+4272:WallMap: adding point (-10, -10 
+4272:WallMap: adding point (50, 100 
+4273:WallMap: adding point (75, 75 
+4273:WallMap: x bounds: 0 1440 
+4273:WallMap: y bounds: 0 800 
+4273:WallMap: self.x bounds -20 85 
+4273:WallMap: self.y bounds -20 110 
+4273:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4273:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4273:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4274:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4289:Robot: State changed to: stop 
+4289:WallMap: adding point (0, 0 
+4289:WallMap: adding point (-10, -10 
+4289:WallMap: adding point (50, 100 
+4289:WallMap: adding point (75, 75 
+4290:WallMap: x bounds: 0 1440 
+4290:WallMap: y bounds: 0 800 
+4290:WallMap: self.x bounds -20 85 
+4290:WallMap: self.y bounds -20 110 
+4290:WallMap: adding point 50 100 on screen at 960.0 61.53846153846155 
+4290:WallMap: adding point -10 -10 on screen at -308.57142857142867 1015.3846153846154 
+4290:WallMap: adding point 75 75 on screen at 1302.857142857143 215.38461538461547 
+4290:WallMap: adding point 0 0 on screen at 274.2857142857142 676.9230769230769 
+4385:BotDisplay: Stopping all tasks and quitting program 

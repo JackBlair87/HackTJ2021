@@ -90,7 +90,7 @@ class Logger():
   def log(self, *text, end='\n', printToScreen=True, sep=" "):
     printString = str(self.get_time()) + ":" + self.fromClass + ": "
     for t in text:
-      printString += str(text) + sep
+      printString += str(t) + sep
     printString += end
     if printToScreen:
       print(printString, end='')
