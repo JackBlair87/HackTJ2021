@@ -92,11 +92,12 @@ def main():
 
     wall_map.add_obstacle_point(0, 0)
     wall_map.add_obstacle_point(-10, -10)
-    wall_map.add_obstacle_point(50, 100)
-    wall_map.add_obstacle_point(75, 75)
+    wall_map.add_obstacle_point(10, 10)
+    wall_map.add_obstacle_point(10, -10)
+    wall_map.add_obstacle_point(-10, 10)
 
     robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
-    # wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .02) * screen_width, y_min=(top_bar_y + .01) * screen_height, y_max=1 * screen_height)
+    # wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y + .01) * screen_height, y_max=1 * screen_height)
     wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
     draw_compass(screen_width-175, screen_height-175, robot.angle)
     pygame.display.flip()
