@@ -1,60 +1,12 @@
 from Resources import Logger, Colors
 import pygame
-
-class WallMapOld:
-  """
-  todo: Think about using an auxilary set to hold raw data points. Whenever possible,
-  calculate a regression and the regression lines to another set with regressions. This would mean more processing
-  upfront, but it would save a lot of memory.
-  The line regression would have the regression, as well as the start and and and coordinates.
-  """
-  UNEXPLORED = -1
-  NO_OBSTACLE = 0
-  OBSTACLE = 1
-  def __init__(self, matrix=None):
-    self.logger = Logger("WallMap")
-    if matrix is not None:
-      self.map = matrix
-    else:
-      self.map = [[WallMap.UNEXPLORED, WallMap.UNEXPLORED, WallMap.UNEXPLORED],
-                  [WallMap.UNEXPLORED, WallMap.UNEXPLORED, WallMap.UNEXPLORED],
-                  [WallMap.UNEXPLORED, WallMap.UNEXPLORED, WallMap.UNEXPLORED]]
-  
-  def update_map(location, new_data):
-    pass
-  def add_wall(self, point, count=1):
-    r = point[0]
-    c = point[1]
-
-    #ensure that the map is a square
-    self.add_rows(r - len(self.map))
-    self.add_columns(c - len(self.map[0]))
-    self.map[r][c] += 1
-    
-  def add_rows(self, row_count):
-    if row_count < 0:
-      return False
-    self.map.reverse()
-    for i in range(row_count):
-      self.map.append([0 for x in range(len(self.map[0]))])
-    self.map.reverse()
-    return True
-  
-  def add_columns_right(self, col_count):
-    if col_count < 0:
-      return False
-    for row in self.map:
-      row.append(WallMap.UNEXPLORED)
-      
-  def add_columns_left(self, col_count):
-    if col_count < 0:
-      return False
-    for row in self.map:
-      row.insert(0, WallMap.UNEXPLORED)
-      
-  def print_map(self):
-    for row in self.map:
-      self.logger.log(row)
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import os
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+import math
   
 class Wall:
   def __init__(self):
@@ -63,10 +15,9 @@ class Wall:
     self.b = None
     self.x_points = []
     self.y_points = []
-    self.min_x = float('inf')
-    self.max_x = -float('inf')
-    self.min_y = float('inf')
-    self.max_y = -float('inf')
+    self.min = (-float('inf'), -float('inf'))
+    self.max = (float('inf'), float('inf'))
+    self.logger = Logger("Wall")
 
     
   def add_point(self, x, y, update_regression=False):
@@ -75,7 +26,7 @@ class Wall:
     if update_regression:
       self.update_regression()
   
-  def update_regression(self, x_train, y_train):
+  def update_regression(self, x_train=[], y_train=[]):
     x_train = [[elem] for elem in x_train]
     y_train = [[elem] for elem in y_train]
     self.x_points.extend(x_train)
@@ -83,28 +34,24 @@ class Wall:
 
     self.regression.fit(self.x_points, self.y_points)
     slope = round(self.regression.coef_[0][0], 4)
-    new_x_min = min(x_train)
-    new_x_max = max(x_train)
-    new_y_min = min(y_train)
-    new_y_max = max(y_train)
+
     if slope > 100:
       self.slope = float('inf')
       self.b = None
-      if new_y_max > self.max_y:
-        self.max_y = new_y_max
-      if new_y_min < self.min_y:
-        self.min_y = new_y_min
+
+      average_x = sum(self.x_points) / len(self.x_points)
+      self.min = (average_x, min(self.y_points))
+      self.max = (average_x, max(self.y_points))
     else:
       self.slope = slope
       self.b = round(self.regression.intercept_[0], 4)
-      if new_x_max > self.max_x:
-        self.max_x = new_x_max
-      if new_x_min < self.min_x:
-        self.min_x = new_x_min
-  
+      min_x = min(self.x_points)
+      max_x = max(self.x_points)
+      self.start = (min_x[0], self.regression.predict([min_x])[0][0])
+      self.stop = (max_x[0], self.regression.predict([max_x])[0][0])
 
   
-  def calculate_distance(x, y):
+  def __calculate_distance(x, y):
     if self.slope == 0:
         return abs(y - (self.slope * x + self.b))
     # elif self.slope == float('inf'):
@@ -116,8 +63,81 @@ class Wall:
     distance = math.sqrt((intersect_y-y)**2 + (intersect_x-x)**2)
     return distance
 
-  def y_prediction(x):
-    regressor.predict(x)
+  def nearest_point_and_distance(pnt, start, end):
+    line_vec = vector(start, end)
+    pnt_vec = vector(start, pnt)
+    line_len = length(line_vec)
+    line_unitvec = unit(line_vec)
+    pnt_vec_scaled = scale(pnt_vec, 1.0/line_len)
+    t = dot(line_unitvec, pnt_vec_scaled)    
+    if t < 0.0:
+        t = 0.0
+    elif t > 1.0:
+        t = 1.0
+    nearest = scale(line_vec, t)
+    dist = distance(nearest, pnt_vec)
+    nearest = add(nearest, start)
+    return (dist, nearest)
+  
+  def dot(v,w):
+    x,y,z = v
+    X,Y,Z = w
+    return x*X + y*Y + z*Z
+
+  def length(v):
+      x,y,z = v
+      return math.sqrt(x*x + y*y + z*z)
+
+  def vector(b,e):
+      x,y,z = b
+      X,Y,Z = e
+      return (X-x, Y-y, Z-z)
+
+  def unit(v):
+      x,y,z = v
+      mag = length(v)
+      return (x/mag, y/mag, z/mag)
+
+  def distance(p0,p1):
+      return length(vector(p0,p1))
+
+  def scale(v,sc):
+      x,y,z = v
+      return (x * sc, y * sc, z * sc)
+
+  def add(v,w):
+      x,y,z = v
+      X,Y,Z = w
+      return (x+X, y+Y, z+Z)
+
+  def draw_wall(self, screen, x_min, x_max, y_min, y_max):
+    screen_width = x_max - x_min
+    screen_height = y_max - y_min
+
+    x_add_num = -1 * self.min[0]
+    x_scale = screen_width / (self.max[0] - self.min[0])
+
+    y_add_num = -1 * self.min[1]
+    y_scale = screen_height / (self.max[1] - self.min[1])
+
+    x_start = self.min[0]
+    y_start = self.min[1]
+    
+    x_stop = self.max[0]
+    y_stop = self.max[1]
+
+    x_start += x_add_num
+    x_stop += x_add_num
+    x_start *= x_scale
+    x_stop *= x_scale
+
+    y_start += y_add_num
+    y_stop += y_add_num
+    y_start *= y_scale
+    y_stop *= y_scale
+
+    self.logger.log("adding point", point[0], point[1], "on screen at", x, y)
+    pygame.draw.line(surface=screen, color=Colors.BLUE, start_pos=(x_start, y_start), end_pos=(x_stop, y_stop), width=8)
 
 class WallMap:
   """
@@ -135,6 +155,12 @@ class WallMap:
     self.x_max = 10
     self.y_min = -10
     self.y_max = 10
+
+    test_wall = Wall()
+    test_wall.add_point(0, 0)
+    test_wall.add_point(10, 10, update_regression=True)
+    self.walls.add(test_wall)
+    # self.count_since_last_refresh = 0
   
   def add_obstacle_point(self, x, y):
     self.logger.log("adding point (" + str(x) + ', ' + str(y))
@@ -148,59 +174,48 @@ class WallMap:
       self.y_max = y + 10
     if y < self.y_min + 10:
       self.y_min = y - 10
+    
+    # if self.count_since_last_refresh > 10:
+      self.refresh_walls()
+    #   self.count_since_last_refresh = 0
+    # else:
+    #   self.count_since_last_refresh += 1
       
+  def refresh_walls(self):
+    pass
+
   def print_map(self):
     for row in self.map:
       self.logger.log(row)
   
   def draw_map(self, screen, x_min, x_max, y_min, y_max):
     #parameters are given as actual dimensions, not from 0 to 1
-    width = x_max - x_min
-    height = y_max - y_min
+    screen_width = x_max - x_min
+    screen_height = y_max - y_min
 
+    x_add_num = -1 * self.x_min
+    x_scale = screen_width / (self.x_max - self.x_min)
 
-    map_width = self.x_max - self.x_min
-    p_width_map = self.x_max - 0
-    n_width_map = 0 - self.x_min
-    p_width_screen = width * p_width_map / map_width
-    n_width_screen = width * n_width_map / map_width
-    width_start_screen = x_max - p_width_screen
-    p_width_scale = p_width_screen / p_width_map
-    n_width_scale = p_width_screen / n_width_map
+    y_add_num = -1 * self.y_min
+    y_scale = screen_height / (self.y_max - self.y_min)
 
-    map_height = self.y_max - self.y_min
-    p_height_map = self.y_max - 0
-    n_height_map = 0 - self.y_min
-    p_height_screen = height * p_height_map / map_height
-    n_height_screen = height * n_height_map / map_height
-    height_start_screen = y_max - p_height_screen
-    p_height_scale = p_height_screen / p_height_map
-    n_height_scale = p_height_screen / n_height_map
-
-    # x_scale = width / (self.x_max - self.x_min)
-    # y_scale = height / (self.y_max - self.y_min)
-    # if x_scale > y_scale:
-    #   x_scale = y_scale
-    # else:
-    #   y_scale = x_scale
     self.logger.log("x bounds:", x_min, x_max)
     self.logger.log("y bounds:", y_min, y_max)
     self.logger.log("self.x bounds", self.x_min, self.x_max)
     self.logger.log("self.y bounds", self.y_min, self.y_max)
     for point in self.obstacle_points:
-      # center = (point[0] * x_scale, point[1] * y_scale)
       x = point[0]
       y = point[1]
-      if x > 0:
-        x = x * p_width_scale + width_start_screen
-      else:
-        x = x * n_width_scale + width_start_screen
-      
-      if y > 0:
-        y = y * p_height_scale + height_start_screen
-      else:
-        y = y * n_height_scale + height_start_screen
+
+      x += x_add_num
+      x *= x_scale
+
+      y += y_add_num
+      y *= y_scale
+
+      self.logger.log("adding point", point[0], point[1], "on screen at", x, y)
       center = (x, y_max - y) #correct the order (x, y) to (r, c)
-      self.logger.log("adding point", point[0], point[1], "on screen at", center[0], center[1])
-      # print("scaled center:", center)
       pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=10)
+    for wall in self.walls:
+      self.logger.log("start, stop of wall", wall.start, wall.stop)
+      wall.draw_wall(screen=screen, x_min=x_min, x_max=x_max, y_min=y_min, y_max=y_max)
