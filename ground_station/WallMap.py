@@ -17,6 +17,7 @@ class Wall:
     self.y_points = []
     self.min = (-float('inf'), -float('inf'))
     self.max = (float('inf'), float('inf'))
+    self.logger = Logger("Wall")
 
     
   def add_point(self, x, y, update_regression=False):
@@ -113,17 +114,17 @@ class Wall:
     screen_width = x_max - x_min
     screen_height = y_max - y_min
 
-    x_add_num = -1 * self.x_start[0]
-    x_scale = screen_width / (self.x_max - self.x_min)
+    x_add_num = -1 * self.min[0]
+    x_scale = screen_width / (self.max[0] - self.min[0])
 
-    y_add_num = -1 * self.y_min
-    y_scale = screen_height / (self.y_max - self.y_min)
+    y_add_num = -1 * self.min[1]
+    y_scale = screen_height / (self.max[1] - self.min[1])
 
-    x_start = self.start[0]
-    y_start = self.start[1]
+    x_start = self.min[0]
+    y_start = self.min[1]
     
-    x_stop = self.stop[0]
-    y_stop = self.stop[1]
+    x_stop = self.max[0]
+    y_stop = self.max[1]
 
     x_start += x_add_num
     x_stop += x_add_num

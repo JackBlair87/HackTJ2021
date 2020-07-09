@@ -1,23 +1,24 @@
 Beginning output for all logs:
-627:InfoPacket: Creating logger object 
-627:InfoPacket: Files have already been created, continuing 
-627:Communicator: Files have already been created, continuing 
-627:Robot: Files have already been created, continuing 
-627:BotDisplay: Files have already been created, continuing 
-627:WallMap: Files have already been created, continuing 
-720:Robot: State changed to: stop 
-720:WallMap: adding point (0, 0 
-721:WallMap: adding point (-10, -10 
-721:WallMap: adding point (10, 10 
-721:WallMap: adding point (10, -10 
-721:WallMap: adding point (-10, 10 
-721:WallMap: x bounds: 0 1440 
-721:WallMap: y bounds: 0 800 
-721:WallMap: self.x bounds -20 20 
-722:WallMap: self.y bounds -20 20 
-722:WallMap: adding point -10 10 on screen at 360.0 600.0 
-722:WallMap: adding point 0 0 on screen at 720.0 400.0 
-722:WallMap: adding point -10 -10 on screen at 360.0 200.0 
-722:WallMap: adding point 10 10 on screen at 1080.0 600.0 
-722:WallMap: adding point 10 -10 on screen at 1080.0 200.0 
-722:WallMap: start, stop of wall (0, 0.0) (10, 10.0) 
+1592:InfoPacket: Creating logger object 
+1592:InfoPacket: Files have already been created, continuing 
+1592:Communicator: Files have already been created, continuing 
+1592:Robot: Files have already been created, continuing 
+1593:BotDisplay: Files have already been created, continuing 
+1593:WallMap: Files have already been created, continuing 
+1593:Wall: Files have already been created, continuing 
+1663:Robot: State changed to: stop 
+1663:WallMap: adding point (0, 0 
+1663:WallMap: adding point (-10, -10 
+1663:WallMap: adding point (10, 10 
+1663:WallMap: adding point (10, -10 
+1663:WallMap: adding point (-10, 10 
+1664:WallMap: x bounds: 0 1440 
+1664:WallMap: y bounds: 0 800 
+1664:WallMap: self.x bounds -20 20 
+1664:WallMap: self.y bounds -20 20 
+1664:WallMap: adding point -10 10 on screen at 360.0 600.0 
+1664:WallMap: adding point 0 0 on screen at 720.0 400.0 
+1664:WallMap: adding point -10 -10 on screen at 360.0 200.0 
+1665:WallMap: adding point 10 10 on screen at 1080.0 600.0 
+1665:WallMap: adding point 10 -10 on screen at 1080.0 200.0 
+1665:WallMap: start, stop of wall (0, 0.0) (10, 10.0) 
