@@ -99,6 +99,7 @@ class Logger():
   
   def logDataPacket(self, *text, end = '\n', printToScreen=True, sep=" "):
     printString = str(self.get_time()) + ":" + self.fromClass + ": "
+    print("input from logDataPacket", text)
     for t in text:
       printString += str(text) + sep
     printString += end

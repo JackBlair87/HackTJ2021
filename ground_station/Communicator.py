@@ -33,18 +33,19 @@ class Communicator:
       return None
     
     input_data = self.bluetooth.readline().decode()
+    self.logger.log('input_data:', input_data)
     if(input_data == None or input_data == ""):
       return None
     
     self.data_stream += input_data
     
-    if self.data_stream.count(":") >= 2:
-      #print(self.data_stream)
+    if self.data_stream.count(":") >= 16:
+      print(self.data_stream)
       self.data_stream = self.data_stream.lstrip()
       self.data_stream = self.data_stream[1:]
       data_packet = self.data_stream[0 : self.data_stream.index(":") + 1]
       data_packet = data_packet[:-1]
-      #print(data_packet)
+      print(data_packet)
       self.data_stream = self.data_stream[len(data_packet) + 1: ]
       self.data_stream = self.data_stream.lstrip()
       data_packet = data_packet.split(",")
