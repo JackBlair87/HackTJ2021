@@ -171,7 +171,7 @@ class WallMap:
     # self.count_since_last_refresh = 0
   
   def add_obstacle_point(self, x, y):
-    self.logger.log("adding point (" + str(x) + ', ' + str(y))
+    # self.logger.log("adding point (" + str(x) + ', ' + str(y))
     self.obstacle_points.add((x, y))
     if x > self.x_max - 10:
       self.x_max = x + 10
@@ -201,19 +201,25 @@ class WallMap:
     screen_width = x_max - x_min
     screen_height = y_max - y_min
 
-    x_add_num = -1 * self.x_min
-    x_scale = screen_width / (self.x_max - self.x_min)
+    map_width = self.x_max - self.x_min
+    map_height = self.y_max - self.y_min
 
+    x_add_num = -1 * self.x_min
+    x_scale = screen_width / map_width
+
+    
     y_add_num = -1 * self.y_min
-    y_scale = screen_height / (self.y_max - self.y_min)
+    y_scale = screen_height / map_height
 
     if y_scale > x_scale:
       self.logger.log("adjusting y_scale")
       y_scale = x_scale
     else:
       self.logger.log("adjusting x_scale")
+      # scale_ratio = (x_scale - y_scale) / 2
+      # x_add_num += map_width * (scale_ratio)
       x_scale = y_scale
-
+    
     self.logger.log("x bounds:", x_min, x_max)
     self.logger.log("y bounds:", y_min, y_max)
     self.logger.log("self.x bounds", self.x_min, self.x_max)
