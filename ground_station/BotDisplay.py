@@ -88,11 +88,13 @@ def main():
       for point in new_points:
         wall_map.add_obstacle_point(point[0], point[1])
 
-    angle = random.uniform(0, 2 * math.pi)
-    x = 5 * math.cos(angle)
-    y = 5 * math.sin(angle)
-    wall_map.add_obstacle_point(x, y)
-    wall_map.add_obstacle_point(0, 0)
+    # angle = random.uniform(0, 2 * math.pi)
+    # x = 5 * math.cos(angle)
+    # y = 5 * math.sin(angle)
+    # wall_map.add_obstacle_point(x, y)
+
+    
+    # wall_map.add_obstacle_point(0, 0)
     # wall_map.add_obstacle_point(-10, -10)
     # wall_map.add_obstacle_point(10, 10)
     # wall_map.add_obstacle_point(10, -10)
