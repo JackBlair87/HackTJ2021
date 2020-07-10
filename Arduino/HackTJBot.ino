@@ -66,7 +66,7 @@ void recieveData(){
 void transmitData(){
   if(isConnected){
     //groundStation.println(":" + String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()) + ":");
-    groundStation.println(":" + String(millis()) + "," + String(state) + "," + String(random(0.00, 10.00)) + "," + String(random(0.00, 10.00)) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(random(0.00, 360.00)) + ":");
+    groundStation.println(":" + String(millis()) + "," + String(state) + "," + String(10.00) + "," + String(10.00) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(random(0.00, 360.00)) + ":");
     //Example --> :12330,0,12.07,34.04,-48,-39,20.342:
     //Serial.println(":" + String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()) + ":");
     Serial.println("Transmitted Data");
