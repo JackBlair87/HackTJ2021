@@ -19,7 +19,7 @@ class Robot:
         #^separate things above here into just the draw_robot method
         self.angle = angle
         self.dataPackets = [InfoPacket(angle=90), InfoPacket(angle=90)] #angles here should be changed to 0?
-        self.communicator = Communicator(enabled = False)
+        self.communicator = Communicator(enabled = True)
         self.communicator.initiate_bluetooth()
         self.state = State.stop
         self.communicator.transmit_info(self.state)

@@ -39,7 +39,21 @@ class Communicator:
     
     self.data_stream += input_data
     
-    if self.data_stream.count(":") >= 16:
+    if self.data_stream == "":
+      return None
+    
+    if self.data_stream[0] != ":":
+      self.logger.log("we molested som data")
+      self.logger.log("data before:", self.data_stream)
+      self.data_stream = self.data_stream[self.data_stream.index(":") + 1:]
+      self.logger.log("data after:", self.data_stream)
+    
+    if len(self.data_stream) >= 2 and self.data_stream[0] == ":" and self.data_stream[1] == ":":
+      self.logger.log("we molested some colons")
+      self.data_stream = self.data_stream[1:]
+    
+    
+    if self.data_stream.count(":") >= 6:
       print(self.data_stream)
       self.data_stream = self.data_stream.lstrip()
       self.data_stream = self.data_stream[1:]

@@ -164,10 +164,10 @@ class WallMap:
     self.y_min = -10
     self.y_max = 10
 
-    test_wall = Wall()
-    test_wall.add_point(0, 0)
-    test_wall.add_point(10, 10, update_regression=True)
-    self.walls.add(test_wall)
+    # test_wall = Wall()
+    # test_wall.add_point(0, 0)
+    # test_wall.add_point(10, 10, update_regression=True)
+    # self.walls.add(test_wall)
     # self.count_since_last_refresh = 0
   
   def add_obstacle_point(self, x, y):
@@ -198,6 +198,7 @@ class WallMap:
   
   def draw_map(self, screen, x_min, x_max, y_min, y_max):
     #parameters are given as actual dimensions, not from 0 to 1
+    print("draw_map called with", x_min, x_max, y_min, y_max)
     screen_width = x_max - x_min
     screen_height = y_max - y_min
     # screen_ratio = screen_width / screen_height
@@ -219,15 +220,15 @@ class WallMap:
       y_scale = x_scale
     else:
       self.logger.log("adjusting x_scale")
-      # scale_ratio = (x_scale - y_scale) / 2
+      #scale_ratio = (x_scale - y_scale) / 2
       x_screen_adjustment = (screen_width - screen_height) / 2
       y_screen_adjustment = 0
       x_scale = y_scale
     
-    self.logger.log("x bounds:", x_min, x_max)
-    self.logger.log("y bounds:", y_min, y_max)
-    self.logger.log("self.x bounds", self.x_min, self.x_max)
-    self.logger.log("self.y bounds", self.y_min, self.y_max)
+    #self.logger.log("x bounds:", x_min, x_max)
+    #self.logger.log("y bounds:", y_min, y_max)
+    #self.logger.log("self.x bounds", self.x_min, self.x_max)
+    #self.logger.log("self.y bounds", self.y_min, self.y_max)
     for point in self.obstacle_points:
       x = point[0]
       y = point[1]
@@ -240,8 +241,9 @@ class WallMap:
       y *= y_scale
       y += y_screen_adjustment
 
-      self.logger.log("adding point", point[0], point[1], "on screen at", x, y)
+      # self.logger.log("adding point", point[0], point[1], "on r,c  at", x, y)
       center = (x, y_max - y) #correct the order (x, y) to (r, c)
+      self.logger.log("adding point", point[0], point[1], "on x, y  at", x, y)
       pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=10)
     # for wall in self.walls:
     #   self.logger.log("start, stop of wall", wall.start, wall.stop)

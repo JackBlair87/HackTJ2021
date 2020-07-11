@@ -10,7 +10,7 @@ RGBLamp led;
 RobotServos servos(7, 6, 5);
 DistanceEstimator dF(9, 8);
 DistanceEstimator dR(11, 10);
-//MPU9250 mpu;
+MPU9250 mpu;
 SoftwareSerial groundStation(12, 13); //Create a serial connection with TX and RX on these pins
 RotaryEncoder rightEncoder(A2, A3);
 RotaryEncoder leftEncoder(A0, A1);
@@ -30,9 +30,9 @@ void setup(){
   Serial.begin(baudRate); //Initialize communications to the serial monitor in the Arduino IDE
   groundStation.begin(baudRate); //Initialize communications with the bluetooth module
  
-  //Wire.begin();
+  Wire.begin();
   delay(2000);
-  //mpu.setup();
+  mpu.setup();
   
   led.begin(COMMON_ANODE, 5, 4, 3);
   led.blink(Color::Red);
@@ -65,11 +65,11 @@ void recieveData(){
 
 void transmitData(){
   if(isConnected){
-    //groundStation.println(":" + String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()) + ":");
-    groundStation.println(":" + String(millis()) + "," + String(state) + "," + String(10.00) + "," + String(10.00) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(random(0.00, 360.00)) + ":");
+    groundStation.println(":" + String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()) + ":");
+    //groundStation.println(":" + String(millis()) + "," + String(state) + "," + String(10.00) + "," + String(10.00) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(random(0.00, 360.00)) + ":");
     //Example --> :12330,0,12.07,34.04,-48,-39,20.342:
-    //Serial.println(":" + String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()) + ":");
-    Serial.println("Transmitted Data");
+    Serial.println(":" + String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()) + ":");
+    //Serial.println("Transmitted Data");
   }
 }
 
@@ -80,7 +80,7 @@ void refreshVariables(){
   totalTravelL = leftEncoder.getPosition();
   //dF.record();
   //dR.record();
-  //mpu.update();
+  mpu.update();
   
   if((dF.getAverage() <= stoppingBenchmark && dF.getAverage() > 0) || (dR.getAverage() <= stoppingBenchmark && dR.getAverage() > 0)){      //may change
     state = 0; //stops
@@ -92,7 +92,7 @@ void refreshVariables(){
 }
 
 TimedAction recieve = TimedAction(100, recieveData);
-TimedAction transmit = TimedAction(500, transmitData);
+TimedAction transmit = TimedAction(10, transmitData);
 
 void loop(){
   refreshVariables();
