@@ -7,9 +7,10 @@ import os
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 import math
-  
-class Wall:
-  def __init__(self):
+from shapely.geometry import Polygon
+
+class WallOld:
+  def __init__(self, points):
     self.regression = LinearRegression()
     self.slope = None #these 
     self.b = None
@@ -17,7 +18,11 @@ class Wall:
     self.y_points = []
     self.min = (-float('inf'), -float('inf'))
     self.max = (float('inf'), float('inf'))
-    self.logger = Logger("Wall")
+    self.logger = Logger("WallOld")
+    if points is not None:
+      for point in points:
+        self.add_point(point[0], point[1])
+      self.update_regression()
 
     
   def add_point(self, x, y, update_regression=False):
@@ -147,6 +152,43 @@ class Wall:
 
     pygame.draw.line(surface=screen, color=Colors.BLUE, start_pos=(x_start, y_start), end_pos=(x_stop, y_stop), width=8)
 
+
+class Wall:
+  def __init__(self, points):
+    # self.shape = Polygon(points)
+    self.points = points
+    self.logger = Logger("Wall")
+
+    
+  def add_point(self, x, y):
+    self.points.append( (x, y) )
+
+  def calculate_distance(self, x, y):
+    polygon = Polygon(self.points)
+    return polygon.distance(Point(x, y))
+
+  def draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
+    screen_points = []
+    for point in self.points:
+      x = point[0]
+      y = point[1]
+
+      x += x_add_num
+      x *= x_scale
+      x += x_screen_adjustment
+
+      y += y_add_num
+      y *= y_scale
+      y += y_screen_adjustment
+
+      # self.logger.log("adding point", point[0], point[1], "on r,c  at", x, y)
+      screen_points.append( (x, y_max - y) ) #correct the order (x, y) to (r, c)
+    self.logger.log("going to draw wall now, len(self.points) - 1 is ", len(self.points) - 1)
+    if len(self.points) > 2:
+      self.logger.log("Adding wall at ", screen_points)
+      pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=10)
+    # pygame.draw.line(surface=screen, color=Colors.BLUE, start_pos=(x_start, y_start), end_pos=(x_stop, y_stop), width=8)
+
 class WallMap:
   """
   todo: Think about using an auxilary set to hold raw data points. Whenever possible,
@@ -184,13 +226,14 @@ class WallMap:
       self.y_min = y - 10
     
     # if self.count_since_last_refresh > 10:
-      self.refresh_walls()
+    self.refresh_walls()
     #   self.count_since_last_refresh = 0
     # else:
     #   self.count_since_last_refresh += 1
       
   def refresh_walls(self):
-    pass
+    self.walls.add(Wall(self.obstacle_points))
+      # self.obstacle_points.pop(point)
 
   def print_map(self):
     for row in self.map:
@@ -213,16 +256,17 @@ class WallMap:
     y_add_num = -1 * self.y_min
     y_scale = screen_height / map_height
 
+    x_screen_adjustment = 0
+    y_screen_adjustment = 0
+
     if y_scale > x_scale:
       self.logger.log("adjusting y_scale")
       y_screen_adjustment = (screen_height - screen_width) / 2
-      x_screen_adjustment = 0
       y_scale = x_scale
     else:
       self.logger.log("adjusting x_scale")
       #scale_ratio = (x_scale - y_scale) / 2
       x_screen_adjustment = (screen_width - screen_height) / 2
-      y_screen_adjustment = 0
       x_scale = y_scale
     
     #self.logger.log("x bounds:", x_min, x_max)
@@ -243,8 +287,9 @@ class WallMap:
 
       # self.logger.log("adding point", point[0], point[1], "on r,c  at", x, y)
       center = (x, y_max - y) #correct the order (x, y) to (r, c)
-      self.logger.log("adding point", point[0], point[1], "on x, y  at", x, y)
+      # self.logger.log("adding point", point[0], point[1], "on x, y  at", x, y)
       pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=10)
-    # for wall in self.walls:
-    #   self.logger.log("start, stop of wall", wall.start, wall.stop)
-    #   wall.draw_wall(screen=screen, x_min=x_min, x_max=x_max, y_min=y_min, y_max=y_max)
+    for wall in self.walls:
+      # self.logger.log("start, stop of wall", wall.start, wall.stop)
+      # wall.draw_wall(screen=screen, x_min=x_min, x_max=x_max, y_min=y_min, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
+      wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
