@@ -103,20 +103,33 @@ class WallMap:
         self.walls.add(Wall(point))
         continue
 
-      min_distance = float('inf')
-      wall_to_add = None
+      # min_distance = float('inf')
+      # wall_to_add = None
+      # for wall in self.walls:
+      #   distance = wall.calculate_distance(point)
+      #   if distance < min_distance:
+      #     min_distance = distance
+      #     wall_to_add = wall
+      # if min_distance < 5: #if it is close enough to another wall, add it to that wall
+      #   wall_to_add.add_point(point)
+      # else: #otherwise make a new wall with this point
+      #   self.walls.add(Wall(point))
+      walls_to_add = []
       for wall in self.walls:
         distance = wall.calculate_distance(point)
-        if distance < min_distance:
-          min_distance = distance
-          wall_to_add = wall
-      if min_distance < 5: #if it is close enough to another wall, add it to that wall
-        wall_to_add.add_point(point)
+        if distance < 5:
+          walls_to_add.append(wall)
+      if len(walls_to_add) == 1: #if it is close enough to another wall, add it to that wall
+        walls_to_add[0].add_point(point)
       else: #otherwise make a new wall with this point
-        self.walls.add(Wall(point))
+        total_points = []
+        
+        for adding_wall in walls_to_add: #combine walls if necessary
+          total_points.extend(adding_wall.points)
+          self.walls.discard(adding_wall)
+        self.walls.add(Wall(total_points))
     self.obstacle_points = set()
 
-    # self.walls.add(Wall(self.obstacle_points))
 
   def print_map(self):
     for row in self.map:
