@@ -239,9 +239,9 @@ class WallMap:
     for row in self.map:
       self.logger.log(row)
   
-  def draw_map(self, screen, x_min, x_max, y_min, y_max):
+  def draw_map_stable(self, screen, x_min, x_max, y_min, y_max):
     #parameters are given as actual dimensions, not from 0 to 1
-    print("draw_map called with", x_min, x_max, y_min, y_max)
+    print("draw_map_stable called with", x_min, x_max, y_min, y_max)
     screen_width = x_max - x_min
     screen_height = y_max - y_min
     # screen_ratio = screen_width / screen_height
@@ -268,6 +268,75 @@ class WallMap:
       #scale_ratio = (x_scale - y_scale) / 2
       x_screen_adjustment = (screen_width - screen_height) / 2
       x_scale = y_scale
+    
+    #self.logger.log("x bounds:", x_min, x_max)
+    #self.logger.log("y bounds:", y_min, y_max)
+    #self.logger.log("self.x bounds", self.x_min, self.x_max)
+    #self.logger.log("self.y bounds", self.y_min, self.y_max)
+    for point in self.obstacle_points:
+      x = point[0]
+      y = point[1]
+
+      x += x_add_num
+      x *= x_scale
+      x += x_screen_adjustment
+
+      y += y_add_num
+      y *= y_scale
+      y += y_screen_adjustment
+
+      # self.logger.log("adding point", point[0], point[1], "on r,c  at", x, y)
+      center = (x, y_max - y) #correct the order (x, y) to (r, c)
+      # self.logger.log("adding point", point[0], point[1], "on x, y  at", x, y)
+      pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=10)
+    for wall in self.walls:
+      # self.logger.log("start, stop of wall", wall.start, wall.stop)
+      # wall.draw_wall(screen=screen, x_min=x_min, x_max=x_max, y_min=y_min, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
+      wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
+
+
+  def draw_map(self, screen, x_min, x_max, y_min, y_max):
+    #parameters are given as actual dimensions, not from 0 to 1
+    print("draw_map called with", x_min, x_max, y_min, y_max)
+    screen_width = x_max - x_min
+    screen_height = y_max - y_min
+
+    map_width = self.x_max - self.x_min
+    map_height = self.y_max - self.y_min
+
+    x_add_num = -1 * self.x_min
+    x_scale = screen_width / map_width
+
+    y_add_num = -1 * self.y_min
+    y_scale = screen_height / map_height
+
+    x_screen_adjustment = 0
+    y_screen_adjustment = 0
+
+    map_ratio = map_height / map_width
+    screen_ratio = screen_height / screen_width
+
+    if map_ratio > screen_ratio:
+      self.logger.log("map_ratio > screen_ratio")
+      ratio_difference = map_ratio - screen_ratio
+      ratio_difference /= 2
+      y_screen_adjustment += ratio_difference * y_scale
+    elif map_ratio > screen_ratio:
+      self.logger.log("screen_ratio > map_ratio")
+      ratio_difference = screen_ratio - map_ratio
+      ratio_difference /= 2
+      x_screen_adjustment += ratio_difference * x_scale
+      
+
+    # if y_scale > x_scale:
+    #   self.logger.log("adjusting y_scale")
+    #   y_screen_adjustment = (screen_height - screen_width) / 2
+    #   y_scale = x_scale
+    # else:
+    #   self.logger.log("adjusting x_scale")
+    #   #scale_ratio = (x_scale - y_scale) / 2
+    #   x_screen_adjustment = (screen_width - screen_height) / 2
+    #   x_scale = y_scale
     
     #self.logger.log("x bounds:", x_min, x_max)
     #self.logger.log("y bounds:", y_min, y_max)

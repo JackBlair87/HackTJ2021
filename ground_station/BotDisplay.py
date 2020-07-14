@@ -92,14 +92,13 @@ def main():
     # x = 5 * math.cos(angle)
     # y = 5 * math.sin(angle)
     # wall_map.add_obstacle_point(x, y)
-    # wall_map.add_obstacle_point(0, 0)
-    # wall_map.add_obstacle_point(10, 10)
-    # wall_map.add_obstacle_point(10, 0)
-
-
     wall_map.add_obstacle_point(0, 0)
     wall_map.add_obstacle_point(10, 10)
     wall_map.add_obstacle_point(50, 0)
+
+    # wall_map.add_obstacle_point(0, 0)
+    # wall_map.add_obstacle_point(10, 10)
+    # wall_map.add_obstacle_point(50, 0)
     # wall_map.add_obstacle_point(50, 10)
     # wall_map.add_obstacle_point(100, 10)
 
