@@ -54,7 +54,6 @@ class Wall:
 
       # self.logger.log("adding point", point[0], point[1], "on r,c  at", x, y)
       screen_points.append( (x, y_max - y) ) #correct the order (x, y) to (r, c)
-    self.logger.log("going to draw wall now, len(self.points) - 1 is ", len(self.points) - 1)
     if len(self.points) > 2:
       self.logger.log("Adding wall at ", screen_points)
       pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=10)

@@ -97,14 +97,14 @@ def main():
     # wall_map.add_obstacle_point(0, 0)
     # wall_map.add_obstacle_point(10, 10)
     # wall_map.add_obstacle_point(50, 0)
-
     if int(round(time.time() * 1000)) - previous_time >= 1:
       previous_time = int(round(time.time() * 1000))
-      wall_map.add_obstacle_point(random.randint(0, 50), random.randint(0, 50))
+      wall_map.add_obstacle_point(random.randint(0, 100), random.randint(0, 100))
       
-    robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
-    # wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y + .01) * screen_height, y_max=1 * screen_height)
-    wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
+    # robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
+    # wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
+    robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y + .01) * screen_height, y_max=1 * screen_height)
+    wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y + .01) * screen_height, y_max=1 * screen_height)
     draw_compass(screen_width-175, screen_height-175, robot.angle)
     pygame.display.flip()
     clock.tick(60) #Sets the FPS as 60
@@ -181,7 +181,7 @@ def draw_compass(x, y, angle = 90.0):
   half_image = COMPASS.get_size()[0] / 2
   screen.blit(COMPASS, (x, y)) #Draws the compass image
   #logger.log("x, y, angle:", x, y, angle)
-  pygame.draw.line(screen, Colors.GREEN, (x+half_image, y+half_image), (x+half_image + (65*math.cos(math.radians(-(angle+90)))), y+half_image + (65*math.sin(math.radians(-(angle+90))))), 8)
+  pygame.draw.line(screen, Colors.GREEN, (x+half_image, y+half_image), (x+half_image + (65*math.cos(math.radians(-(angle+90)))), y+half_image + (65*math.sin(math.radians(-(angle+90))))), width=2)
 
 def quitProgram(): #Quits Pygame and Python
   global robot
