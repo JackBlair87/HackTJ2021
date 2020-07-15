@@ -56,7 +56,7 @@ class Wall:
       screen_points.append( (x, y_max - y) ) #correct the order (x, y) to (r, c)
     if len(self.points) > 2:
       self.logger.log("Adding wall at ", screen_points)
-      pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=10)
+      pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)
     # pygame.draw.line(surface=screen, color=Colors.BLUE, start_pos=(x_start, y_start), end_pos=(x_stop, y_stop), width=8)
 
 class WallMap:
@@ -183,7 +183,7 @@ class WallMap:
         y += y_screen_adjustment
 
         center = (x, y_max - y) #correct the order (x, y) to (r, c)
-        pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=10)
+        pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=5)
     # for point in self.obstacle_points:
     #   x = point[0]
     #   y = point[1]

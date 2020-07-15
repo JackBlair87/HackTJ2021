@@ -97,14 +97,14 @@ def main():
     # wall_map.add_obstacle_point(0, 0)
     # wall_map.add_obstacle_point(10, 10)
     # wall_map.add_obstacle_point(50, 0)
-    if int(round(time.time() * 1000)) - previous_time >= 1:
+    if int(round(time.time() * 1000)) - previous_time >= 0:
       previous_time = int(round(time.time() * 1000))
       wall_map.add_obstacle_point(random.randint(0, 100), random.randint(0, 100))
       
     # robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
     # wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
-    robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y + .01) * screen_height, y_max=1 * screen_height)
-    wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y + .01) * screen_height, y_max=1 * screen_height)
+    robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y * 2 + .01) * screen_height, y_max=1 * screen_height)
+    wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y * 2 + .01) * screen_height, y_max=1 * screen_height)
     draw_compass(screen_width-175, screen_height-175, robot.angle)
     pygame.display.flip()
     clock.tick(60) #Sets the FPS as 60
