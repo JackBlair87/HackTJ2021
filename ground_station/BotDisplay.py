@@ -44,7 +44,7 @@ def main():
   global robot, mode, screen, screen_width, screen_height
   start_time = int(round(time.time() * 1000))
   previous_time = start_time
-  for i in range(1000):
+  while True:
     #Check for user input on the keyboard and OSX operations
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -101,7 +101,7 @@ def main():
     # wall_map.add_obstacle_point(50, 0)
     if int(round(time.time() * 1000)) - previous_time >= 0:
       previous_time = int(round(time.time() * 1000))
-      wall_map.add_obstacle_point(random.randint(1 * -i, 1 * i), random.randint(1 * -i, 1 * i))
+      wall_map.add_obstacle_point(random.randint(-100, 100), random.randint(-100, 100))
       
     # robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
     # wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)

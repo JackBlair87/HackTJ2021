@@ -1,9 +1,6 @@
 """
 Any new changes should be done in WallMapCython.pyx
 """
-
-
-
 from Resources import Logger, Colors
 import pygame
 # import matplotlib.pyplot as plt
