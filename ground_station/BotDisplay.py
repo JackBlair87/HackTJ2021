@@ -4,7 +4,10 @@ import math
 import time
 from Robot import Robot
 from Resources import InfoPacket, WheelInfo, Mode, State, Logger, Colors
-from WallMapCython import WallMap
+from WallMap import WallMap
+# from WallMapCython import WallMap
+# from cythonized_files.WallMapCython import WallMap
+# from WallMapCython import WallMap
 # from WallMap import WallMap
 
 #Window
@@ -41,8 +44,7 @@ def main():
   global robot, mode, screen, screen_width, screen_height
   start_time = int(round(time.time() * 1000))
   previous_time = start_time
-  while True:
-    
+  for i in range(1000):
     #Check for user input on the keyboard and OSX operations
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -99,7 +101,7 @@ def main():
     # wall_map.add_obstacle_point(50, 0)
     if int(round(time.time() * 1000)) - previous_time >= 0:
       previous_time = int(round(time.time() * 1000))
-      wall_map.add_obstacle_point(random.randint(0, 300), random.randint(0, 300))
+      wall_map.add_obstacle_point(random.randint(1 * -i, 1 * i), random.randint(1 * -i, 1 * i))
       
     # robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
     # wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
@@ -108,6 +110,7 @@ def main():
     draw_compass(screen_width-175, screen_height-175, robot.angle)
     pygame.display.flip()
     clock.tick(60) #Sets the FPS as 60
+  print("Total time taken:", int(round(time.time() * 1000)) - start_time)
   quitProgram()
   
 def create_button_from_text(text, x, y, width, height, font_object, text_color=Colors.WHITE, background_color=Colors.BLACK):

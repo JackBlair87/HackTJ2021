@@ -1,3 +1,9 @@
+"""
+Any new changes should be done in WallMapCython.pyx
+"""
+
+
+
 from Resources import Logger, Colors
 import pygame
 # import matplotlib.pyplot as plt
@@ -120,7 +126,6 @@ class WallMap:
         walls_to_add[0].add_point(point)
       else: #otherwise make a new wall with this point
         total_points = []
-        
         for adding_wall in walls_to_add: #combine walls if necessary
           total_points.extend(adding_wall.points)
           self.walls.discard(adding_wall)

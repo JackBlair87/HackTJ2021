@@ -5,7 +5,7 @@
     "distutils": {
         "name": "CythonTest",
         "sources": [
-            "ground_station/tests/CythonTest.pyx"
+            "/Users/akashpamal/Documents/TJHSST/Grade 10/HackTJ2021/ground_station/tests/CythonTest.pyx"
         ]
     },
     "module_name": "CythonTest"
@@ -1040,9 +1040,8 @@ static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_print[] = "print";
-static const char __pyx_k_Hello_World[] = "Hello World";
+static const char __pyx_k_water_bottle[] = "water bottle";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static PyObject *__pyx_kp_s_Hello_World;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_end;
 static PyObject *__pyx_n_s_file;
@@ -1050,6 +1049,7 @@ static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_test;
+static PyObject *__pyx_kp_s_water_bottle;
 /* Late includes */
 
 static PyMethodDef __pyx_methods[] = {
@@ -1098,7 +1098,6 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
-  {&__pyx_kp_s_Hello_World, __pyx_k_Hello_World, sizeof(__pyx_k_Hello_World), 0, 0, 1, 0},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_end, __pyx_k_end, sizeof(__pyx_k_end), 0, 0, 1, 1},
   {&__pyx_n_s_file, __pyx_k_file, sizeof(__pyx_k_file), 0, 0, 1, 1},
@@ -1106,6 +1105,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
+  {&__pyx_kp_s_water_bottle, __pyx_k_water_bottle, sizeof(__pyx_k_water_bottle), 0, 0, 1, 0},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
@@ -1393,9 +1393,9 @@ if (!__Pyx_RefNanny) {
   #endif
 
   /* "CythonTest.pyx":1
- * print("Hello World")             # <<<<<<<<<<<<<<
+ * print("water bottle")             # <<<<<<<<<<<<<<
  */
-  if (__Pyx_PrintOne(0, __pyx_kp_s_Hello_World) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_kp_s_water_bottle) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)

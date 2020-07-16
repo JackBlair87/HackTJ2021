@@ -112,6 +112,7 @@ class WallMap:
       # else: #otherwise make a new wall with this point
       #   self.walls.add(Wall(point))
       walls_to_add = []
+      cdef float distance
       for wall in self.walls:
         distance = wall.calculate_distance(point)
         if distance < 5:
@@ -120,11 +121,10 @@ class WallMap:
         walls_to_add[0].add_point(point)
       else: #otherwise make a new wall with this point
         total_points = []
-        
-        for adding_wall in walls_to_add: #combine walls if necessary
-          total_points.extend(adding_wall.points)
-          self.walls.discard(adding_wall)
-        self.walls.add(Wall(total_points))
+      for adding_wall in walls_to_add: #combine walls if necessary
+        total_points.extend(adding_wall.points)
+        self.walls.discard(adding_wall)
+      self.walls.add(Wall(total_points))
     self.obstacle_points = set()
 
 
