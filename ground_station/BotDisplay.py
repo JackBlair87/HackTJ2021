@@ -1,11 +1,11 @@
 import pygame
 import random
-import numpy as np
 import math
 import time
 from Robot import Robot
 from Resources import InfoPacket, WheelInfo, Mode, State, Logger, Colors
-from WallMap import WallMap
+from WallMapCython import WallMap
+# from WallMap import WallMap
 
 #Window
 screen_width = 1440 
@@ -99,7 +99,7 @@ def main():
     # wall_map.add_obstacle_point(50, 0)
     if int(round(time.time() * 1000)) - previous_time >= 0:
       previous_time = int(round(time.time() * 1000))
-      wall_map.add_obstacle_point(random.randint(0, 100), random.randint(0, 100))
+      wall_map.add_obstacle_point(random.randint(0, 300), random.randint(0, 300))
       
     # robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
     # wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)

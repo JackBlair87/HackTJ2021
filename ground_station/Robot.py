@@ -1,7 +1,6 @@
 from Communicator import Communicator
 import math
 from math import pi
-import numpy
 import pygame
 import sys
 import time
