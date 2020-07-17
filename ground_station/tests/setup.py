@@ -10,3 +10,5 @@ setup(
 
 # python3 ./ground_station/setup.py build_ext --inplace
 # python3 ./ground_station/tests/setup.py build_ext --inplace
+
+# cythonize -a -i ground_station/WallMapCython.pyx

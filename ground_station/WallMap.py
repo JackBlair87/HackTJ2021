@@ -1,6 +1,3 @@
-"""
-Any new changes should be done in WallMapCython.pyx
-"""
 from Resources import Logger, Colors
 import pygame
 # import matplotlib.pyplot as plt
@@ -66,7 +63,7 @@ class Wall:
             min_distance = distance
       return min_distance
 
-  def draw_wall_stable(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
+  def draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
     screen_points = []
     for point in self.points:
       x = point[0]
@@ -85,7 +82,7 @@ class Wall:
       self.logger.log("Adding wall at ", screen_points)
       pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)
   
-  def draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
+  def draw_wall_prerelease(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
     # ok so this draws it kinda like the stl thing you were talking about but there's a lil problem
     # if the wall is curved outward (like if we were in a circular room) it'll combine the points
     # and turn it into a filled in circle, rather than a circular outline
@@ -114,9 +111,6 @@ class Wall:
         y2 *= y_scale
         y2 += y_screen_adjustment
         pygame.draw.line(screen, Colors.RED, start_pos=(x1, y1), end_pos=(x2, y2), width=2)
-    # if len(self.points) > 2:
-    #   self.logger.log("Adding wall at ", screen_points)
-    #   pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)
 
 class WallMap:
   def __init__(self, obstacle_points=set(), clear_rectangles=set()):
@@ -155,17 +149,6 @@ class WallMap:
         self.walls.add(Wall(point))
         continue
 
-      # min_distance = float('inf')
-      # wall_to_add = None
-      # for wall in self.walls:
-      #   distance = wall.calculate_distance(point)
-      #   if distance < min_distance:
-      #     min_distance = distance
-      #     wall_to_add = wall
-      # if min_distance < 5: #if it is close enough to another wall, add it to that wall
-      #   wall_to_add.add_point(point)
-      # else: #otherwise make a new wall with this point
-      #   self.walls.add(Wall(point))
       walls_to_add = []
       for wall in self.walls:
         distance = wall.calculate_distance(point)
@@ -180,12 +163,6 @@ class WallMap:
           self.walls.discard(adding_wall)
         self.walls.add(Wall(total_points))
     self.obstacle_points = set()
-
-
-  def print_map(self):
-    for row in self.map:
-      self.logger.log(row)
-
 
   def draw_map(self, screen, x_min, x_max, y_min, y_max):
     #parameters are given as actual dimensions, not from 0 to 1
@@ -236,17 +213,3 @@ class WallMap:
 
         center = (x, y_max - y) #correct the order (x, y) to (r, c)
         pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=5)
-    # for point in self.obstacle_points:
-    #   x = point[0]
-    #   y = point[1]
-
-    #   x += x_add_num
-    #   x *= x_scale
-    #   x += x_screen_adjustment
-
-    #   y += y_add_num
-    #   y *= y_scale
-    #   y += y_screen_adjustment
-
-    #   center = (x, y_max - y) #correct the order (x, y) to (r, c)
-      # pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=10)

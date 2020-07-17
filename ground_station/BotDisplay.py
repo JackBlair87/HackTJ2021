@@ -4,8 +4,8 @@ import math
 import time
 from Robot import Robot
 from Resources import InfoPacket, WheelInfo, Mode, State, Logger, Colors
-from WallMap import WallMap
-# from WallMapCython import WallMap
+# from WallMap import WallMap
+from WallMapCython import WallMap
 # from cythonized_files.WallMapCython import WallMap
 # from WallMapCython import WallMap
 # from WallMap import WallMap
@@ -38,7 +38,7 @@ def main():
   global robot, mode, screen, screen_width, screen_height
   start_time = int(round(time.time() * 1000))
   previous_time = start_time
-  while True:
+  for i in range(1000):
     #Check for user input on the keyboard and OSX operations
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
