@@ -36,7 +36,7 @@ class Robot:
     def change_state(self, new_state = State.stop):
         self.state = new_state
         self.communicator.transmit_info(self.state)
-        self.logger.log("State changed to: " + State.all_states[self.state])
+        # self.logger.log("State changed to: " + State.all_states[self.state])
         
     def quitProgram(self):
         self.communicator.transmit_info(State.stop)

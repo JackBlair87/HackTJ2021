@@ -13,7 +13,7 @@ from shapely.geometry import Polygon, Point, LineString
 cdef class Wall:
   cdef public list points
   cdef object logger
-  def __init__(self, points):
+  def __init__(Wall self, points):
     if type(points) is list:
       self.points = points
     else:
@@ -21,10 +21,10 @@ cdef class Wall:
     
     self.logger = Logger("Wall")
     
-  def add_point(self, point):
+  cpdef add_point(Wall self, (int, int) point):
     self.points.append(point)
 
-  def calculate_distance(self, (int, int) point):
+  cpdef calculate_distance(Wall self, (int, int) point):
     cdef int x, y
     if len(self.points) == 1:
       x = self.points[0][0]
@@ -87,7 +87,7 @@ cdef class Wall:
 
       screen_points.append( (x, y_max - y) ) #correct the order (x, y) to (r, c)
     if len(self.points) > 2:
-      self.logger.log("Adding wall at ", screen_points)
+    #   self.logger.log("Adding wall at ", screen_points)
       pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)
   
   def draw_wall_prerelease(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
@@ -179,7 +179,6 @@ cdef class WallMap:
 
   cpdef draw_map(self, screen, int x_min, int x_max, int y_min, int y_max):
     #parameters are given as actual dimensions, not from 0 to 1
-    print("draw_map called with", x_min, x_max, y_min, y_max)
     cdef int screen_width = x_max - x_min
     cdef int screen_height = y_max - y_min
 
@@ -187,24 +186,24 @@ cdef class WallMap:
     cdef int map_height = self.y_max - self.y_min
 
     cdef int x_add_num = -1 * self.x_min
-    x_scale = screen_width / map_width
+    cdef float x_scale = screen_width / map_width
 
-    y_add_num = -1 * self.y_min
-    y_scale = screen_height / map_height
+    cdef int y_add_num = -1 * self.y_min
+    cdef float y_scale = screen_height / map_height
 
-    x_screen_adjustment = 0
-    y_screen_adjustment = 0
+    cdef int x_screen_adjustment = 0
+    cdef int y_screen_adjustment = 0
 
     map_ratio = map_height / map_width
     screen_ratio = screen_height / screen_width
 
     if map_ratio > screen_ratio:
-      self.logger.log("map_ratio > screen_ratio")
+    #   self.logger.log("map_ratio > screen_ratio")
       ratio_difference = map_ratio - screen_ratio
       ratio_difference /= 2
       y_screen_adjustment += ratio_difference * y_scale
     elif map_ratio > screen_ratio:
-      self.logger.log("screen_ratio > map_ratio")
+    #   self.logger.log("screen_ratio > map_ratio")
       ratio_difference = screen_ratio - map_ratio
       ratio_difference /= 2
       x_screen_adjustment += ratio_difference * x_scale

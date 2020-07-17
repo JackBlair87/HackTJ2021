@@ -4,14 +4,14 @@ import math
 import time
 from Robot import Robot
 from Resources import InfoPacket, WheelInfo, Mode, State, Logger, Colors
-# from WallMap import WallMap
-from WallMapCython import WallMap
+from WallMap import WallMap
+# from WallMapCython import WallMap
 # from cythonized_files.WallMapCython import WallMap
 # from WallMapCython import WallMap
 # from WallMap import WallMap
 
 #Window
-screen_width = 1440 
+screen_width = 1440
 screen_height = 800
 all_buttons = []
 
@@ -103,7 +103,7 @@ def main():
     wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y * 2 + .01) * screen_height, y_max=1 * screen_height)
     draw_compass(screen_width-175, screen_height-175, robot.angle)
     pygame.display.flip()
-    clock.tick(60) #Sets the FPS as 60
+    # clock.tick(1000000000000000000) #Sets the FPS as 60
   print("Total time taken:", int(round(time.time() * 1000)) - start_time)
   quitProgram()
   

@@ -79,7 +79,7 @@ class Wall:
 
       screen_points.append( (x, y_max - y) ) #correct the order (x, y) to (r, c)
     if len(self.points) > 2:
-      self.logger.log("Adding wall at ", screen_points)
+      # self.logger.log("Adding wall at ", screen_points)
       pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)
   
   def draw_wall_prerelease(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
@@ -125,7 +125,6 @@ class WallMap:
     self.count_since_last_refresh = 0
   
   def add_obstacle_point(self, x, y):
-    # self.logger.log("adding point (" + str(x) + ', ' + str(y))
     self.obstacle_points.add((x, y))
     if x > self.x_max - 10:
       self.x_max = x + 10
@@ -166,7 +165,6 @@ class WallMap:
 
   def draw_map(self, screen, x_min, x_max, y_min, y_max):
     #parameters are given as actual dimensions, not from 0 to 1
-    print("draw_map called with", x_min, x_max, y_min, y_max)
     screen_width = x_max - x_min
     screen_height = y_max - y_min
 
@@ -186,12 +184,12 @@ class WallMap:
     screen_ratio = screen_height / screen_width
 
     if map_ratio > screen_ratio:
-      self.logger.log("map_ratio > screen_ratio")
+      # self.logger.log("map_ratio > screen_ratio")
       ratio_difference = map_ratio - screen_ratio
       ratio_difference /= 2
       y_screen_adjustment += ratio_difference * y_scale
     elif map_ratio > screen_ratio:
-      self.logger.log("screen_ratio > map_ratio")
+      # self.logger.log("screen_ratio > map_ratio")
       ratio_difference = screen_ratio - map_ratio
       ratio_difference /= 2
       x_screen_adjustment += ratio_difference * x_scale
