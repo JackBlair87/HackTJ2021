@@ -39,6 +39,32 @@ class Wall:
       polygon = Polygon(self.points)
       return polygon.distance(Point(x, y))
 
+  def calculate_distance_prerelease(self, point):
+    if len(self.points) == 1:
+      x = self.points[0][0]
+      y = self.points[0][1]
+      wall_point = Point(x, y)
+      input_point = Point(point[0], point[1])
+      return wall_point.distance(input_point)
+    elif len(self.points) == 2:
+      wall_line = LineString(self.points)
+      input_point = Point(point[0], point[1])
+      return wall_line.distance(input_point)
+    else:
+      x = point[0]
+      y = point[1]
+      min_distance = float('inf')
+      input_point = Point(point[0], point[1])
+      for point1 in self.points:
+        for point2 in self.points:
+          if point1 is point2:
+            continue
+          wall_line = LineString([point1, point2])
+          distance = wall_line.distance(input_point)
+          if distance < min_distance:
+            min_distance = distance
+      return min_distance
+
   def draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
     screen_points = []
     for point in self.points:
@@ -61,12 +87,6 @@ class Wall:
     # pygame.draw.line(surface=screen, color=Colors.BLUE, start_pos=(x_start, y_start), end_pos=(x_stop, y_stop), width=8)
 
 class WallMap:
-  """
-  todo: Think about using an auxilary set to hold raw data points. Whenever possible,
-  calculate a regression and the regression lines to another set with regressions. This would mean more processing
-  upfront, but it would save a lot of memory.
-  The line regression would have the regression, as well as the start and and and coordinates.
-  """
   def __init__(self, obstacle_points=set(), clear_rectangles=set()):
     self.logger = Logger("WallMap")
     self.obstacle_points = obstacle_points

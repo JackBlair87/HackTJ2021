@@ -29,12 +29,6 @@ largeFont = pygame.font.Font("./ground_station/assets/OpenSans-Regular.ttf", 40)
 #information about the robot and location
 mode = Mode.manual
 
-#todo phase out time increments
-# start_time = int(round(time.time() * 1000))
-# last_communication_time = 0
-# last_button_press_time = 0
-#print("Start Time" + str(start_time))
-
 #objects that we need
 robot = Robot(image = ROBOT)
 logger = Logger("BotDisplay")
@@ -101,7 +95,7 @@ def main():
     # wall_map.add_obstacle_point(50, 0)
     if int(round(time.time() * 1000)) - previous_time >= 0:
       previous_time = int(round(time.time() * 1000))
-      wall_map.add_obstacle_point(random.randint(-100, 100), random.randint(-100, 100))
+      wall_map.add_obstacle_point(random.randint(-25, 25), random.randint(-25, 25))
       
     # robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
     # wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
@@ -143,7 +137,6 @@ def get_button_pressed():
         return button, text
       
 def draw_text(text, x, y, font_object=mediumFont, text_color=Colors.WHITE, basis_point='center', background_color=Colors.BLACK):
-  #todo: implement background color
   title = font_object.render(text, True, text_color)
   titleRect = title.get_rect()
   if basis_point == 'center':
