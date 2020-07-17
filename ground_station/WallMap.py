@@ -65,7 +65,7 @@ class Wall:
             min_distance = distance
       return min_distance
 
-  def draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
+  def draw_wall_stable(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
     screen_points = []
     for point in self.points:
       x = point[0]
@@ -79,12 +79,39 @@ class Wall:
       y *= y_scale
       y += y_screen_adjustment
 
-      # self.logger.log("adding point", point[0], point[1], "on r,c  at", x, y)
       screen_points.append( (x, y_max - y) ) #correct the order (x, y) to (r, c)
     if len(self.points) > 2:
       self.logger.log("Adding wall at ", screen_points)
       pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)
-    # pygame.draw.line(surface=screen, color=Colors.BLUE, start_pos=(x_start, y_start), end_pos=(x_stop, y_stop), width=8)
+  
+  def draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
+    for point1 in self.points:
+      for point2 in self.points:
+        if point1 is point2:
+          continue
+        x1 = point1[0]
+        x1 += x_add_num
+        x1 *= x_scale
+        x1 += x_screen_adjustment
+
+        y1 = point1[1]
+        y1 += y_add_num
+        y1 *= y_scale
+        y1 += y_screen_adjustment
+
+        x2 = point2[0]
+        x2 += x_add_num
+        x2 *= x_scale
+        x2 += x_screen_adjustment
+
+        y2 = point2[1]
+        y2 += y_add_num
+        y2 *= y_scale
+        y2 += y_screen_adjustment
+        pygame.draw.line(screen, Colors.RED, start_pos=(x1, y1), end_pos=(x2, y2), width=2)
+    # if len(self.points) > 2:
+    #   self.logger.log("Adding wall at ", screen_points)
+    #   pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)
 
 class WallMap:
   def __init__(self, obstacle_points=set(), clear_rectangles=set()):
