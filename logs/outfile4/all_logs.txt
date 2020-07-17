@@ -1,1517 +1,1799 @@
 Beginning output for all logs:
-1687:InfoPacket: Creating logger object 
-1687:InfoPacket: Files have already been created, continuing 
-1687:Communicator: Files have already been created, continuing 
-1687:Robot: Files have already been created, continuing 
-1688:BotDisplay: Files have already been created, continuing 
-1688:WallMap: Files have already been created, continuing 
-1765:Robot: State changed to: stop 
-1765:WallMap: map_ratio > screen_ratio 
-1770:Robot: State changed to: stop 
-1771:Wall: Files have already been created, continuing 
-1771:Wall: Files have already been created, continuing 
-1771:WallMap: map_ratio > screen_ratio 
-1786:Robot: State changed to: stop 
-1786:WallMap: map_ratio > screen_ratio 
-1805:Robot: State changed to: stop 
-1806:Wall: Files have already been created, continuing 
-1806:WallMap: map_ratio > screen_ratio 
-1818:Robot: State changed to: stop 
-1819:WallMap: map_ratio > screen_ratio 
-1835:Robot: State changed to: stop 
-1836:Wall: Files have already been created, continuing 
-1836:WallMap: map_ratio > screen_ratio 
-1852:Robot: State changed to: stop 
-1852:WallMap: map_ratio > screen_ratio 
-1869:Robot: State changed to: stop 
-1869:Wall: Files have already been created, continuing 
-1869:WallMap: map_ratio > screen_ratio 
-1886:Robot: State changed to: stop 
-1886:WallMap: map_ratio > screen_ratio 
-1902:Robot: State changed to: stop 
-1903:Wall: Files have already been created, continuing 
-1903:WallMap: map_ratio > screen_ratio 
-1918:Robot: State changed to: stop 
-1919:WallMap: map_ratio > screen_ratio 
-1933:Robot: State changed to: stop 
-1934:Wall: Files have already been created, continuing 
-1934:WallMap: map_ratio > screen_ratio 
-1950:Robot: State changed to: stop 
-1951:WallMap: map_ratio > screen_ratio 
-1966:Robot: State changed to: stop 
-1967:Wall: Files have already been created, continuing 
-1967:WallMap: map_ratio > screen_ratio 
-1983:Robot: State changed to: stop 
-1983:WallMap: map_ratio > screen_ratio 
-2000:Robot: State changed to: stop 
-2001:Wall: Files have already been created, continuing 
-2001:WallMap: map_ratio > screen_ratio 
-2017:Robot: State changed to: stop 
-2017:WallMap: map_ratio > screen_ratio 
-2033:Robot: State changed to: stop 
-2034:Wall: Files have already been created, continuing 
-2034:WallMap: map_ratio > screen_ratio 
-2050:Robot: State changed to: stop 
-2051:WallMap: map_ratio > screen_ratio 
-2066:Robot: State changed to: stop 
-2067:Wall: Files have already been created, continuing 
-2068:WallMap: map_ratio > screen_ratio 
-2083:Robot: State changed to: stop 
-2083:WallMap: map_ratio > screen_ratio 
-2100:Robot: State changed to: stop 
-2101:Wall: Files have already been created, continuing 
-2101:WallMap: map_ratio > screen_ratio 
-2117:Robot: State changed to: stop 
-2117:WallMap: map_ratio > screen_ratio 
-2133:Robot: State changed to: stop 
-2134:Wall: Files have already been created, continuing 
-2135:WallMap: map_ratio > screen_ratio 
-2150:Robot: State changed to: stop 
-2150:WallMap: map_ratio > screen_ratio 
-2167:Robot: State changed to: stop 
-2168:WallMap: map_ratio > screen_ratio 
-2184:Robot: State changed to: stop 
-2184:WallMap: map_ratio > screen_ratio 
-2200:Robot: State changed to: stop 
-2200:Wall: Files have already been created, continuing 
-2201:WallMap: map_ratio > screen_ratio 
-2217:Robot: State changed to: stop 
-2217:WallMap: map_ratio > screen_ratio 
-2233:Robot: State changed to: stop 
-2234:Wall: Files have already been created, continuing 
-2235:WallMap: map_ratio > screen_ratio 
-2249:Robot: State changed to: stop 
-2249:WallMap: map_ratio > screen_ratio 
-2265:Robot: State changed to: stop 
-2267:WallMap: map_ratio > screen_ratio 
-2282:Robot: State changed to: stop 
-2282:WallMap: map_ratio > screen_ratio 
-2298:Robot: State changed to: stop 
-2300:Wall: Files have already been created, continuing 
-2300:WallMap: map_ratio > screen_ratio 
-2315:Robot: State changed to: stop 
-2315:WallMap: map_ratio > screen_ratio 
-2331:Robot: State changed to: stop 
-2332:Wall: Files have already been created, continuing 
-2333:Wall: Files have already been created, continuing 
-2333:WallMap: map_ratio > screen_ratio 
-2349:Robot: State changed to: stop 
-2349:WallMap: map_ratio > screen_ratio 
-2364:Robot: State changed to: stop 
-2365:Wall: Files have already been created, continuing 
-2366:Wall: Files have already been created, continuing 
-2366:WallMap: map_ratio > screen_ratio 
-2382:Robot: State changed to: stop 
-2382:WallMap: map_ratio > screen_ratio 
-2399:Robot: State changed to: stop 
-2400:Wall: Files have already been created, continuing 
-2400:WallMap: map_ratio > screen_ratio 
-2415:Robot: State changed to: stop 
-2415:WallMap: map_ratio > screen_ratio 
-2431:Robot: State changed to: stop 
-2432:Wall: Files have already been created, continuing 
-2432:WallMap: map_ratio > screen_ratio 
-2448:Robot: State changed to: stop 
-2448:WallMap: map_ratio > screen_ratio 
-2465:Robot: State changed to: stop 
-2466:Wall: Files have already been created, continuing 
-2466:WallMap: map_ratio > screen_ratio 
-2482:Robot: State changed to: stop 
-2482:WallMap: map_ratio > screen_ratio 
-2498:Robot: State changed to: stop 
-2500:Wall: Files have already been created, continuing 
-2500:WallMap: map_ratio > screen_ratio 
-2516:Robot: State changed to: stop 
-2517:WallMap: map_ratio > screen_ratio 
-2532:Robot: State changed to: stop 
-2533:Wall: Files have already been created, continuing 
-2533:WallMap: map_ratio > screen_ratio 
-2549:Robot: State changed to: stop 
-2549:WallMap: map_ratio > screen_ratio 
-2566:Robot: State changed to: stop 
-2567:Wall: Files have already been created, continuing 
-2568:Wall: Files have already been created, continuing 
-2568:WallMap: map_ratio > screen_ratio 
-2583:Robot: State changed to: stop 
-2583:WallMap: map_ratio > screen_ratio 
-2599:Robot: State changed to: stop 
-2601:Wall: Files have already been created, continuing 
-2601:WallMap: map_ratio > screen_ratio 
-2615:Robot: State changed to: stop 
-2616:WallMap: map_ratio > screen_ratio 
-2632:Robot: State changed to: stop 
-2633:Wall: Files have already been created, continuing 
-2633:WallMap: map_ratio > screen_ratio 
-2649:Robot: State changed to: stop 
-2649:WallMap: map_ratio > screen_ratio 
-2665:Robot: State changed to: stop 
-2666:Wall: Files have already been created, continuing 
-2667:Wall: Files have already been created, continuing 
-2667:WallMap: map_ratio > screen_ratio 
-2681:Robot: State changed to: stop 
-2682:WallMap: map_ratio > screen_ratio 
-2698:Robot: State changed to: stop 
-2700:WallMap: map_ratio > screen_ratio 
-2715:Robot: State changed to: stop 
-2716:WallMap: map_ratio > screen_ratio 
-2732:Robot: State changed to: stop 
-2733:Wall: Files have already been created, continuing 
-2734:WallMap: map_ratio > screen_ratio 
-2748:Robot: State changed to: stop 
-2748:WallMap: map_ratio > screen_ratio 
-2765:Robot: State changed to: stop 
-2766:Wall: Files have already been created, continuing 
-2767:Wall: Files have already been created, continuing 
-2768:WallMap: map_ratio > screen_ratio 
-2782:Robot: State changed to: stop 
-2782:WallMap: map_ratio > screen_ratio 
-2799:Robot: State changed to: stop 
-2800:Wall: Files have already been created, continuing 
-2801:WallMap: map_ratio > screen_ratio 
-2816:Robot: State changed to: stop 
-2816:WallMap: map_ratio > screen_ratio 
-2832:Robot: State changed to: stop 
-2833:Wall: Files have already been created, continuing 
-2834:WallMap: map_ratio > screen_ratio 
-2848:Robot: State changed to: stop 
-2849:WallMap: map_ratio > screen_ratio 
-2866:Robot: State changed to: stop 
-2867:Wall: Files have already been created, continuing 
-2868:WallMap: map_ratio > screen_ratio 
-2882:Robot: State changed to: stop 
-2882:WallMap: map_ratio > screen_ratio 
-2898:Robot: State changed to: stop 
-2900:Wall: Files have already been created, continuing 
-2902:WallMap: map_ratio > screen_ratio 
-2914:Robot: State changed to: stop 
-2914:WallMap: map_ratio > screen_ratio 
-2930:Robot: State changed to: stop 
-2931:Wall: Files have already been created, continuing 
-2932:Wall: Files have already been created, continuing 
-2933:WallMap: map_ratio > screen_ratio 
-2947:Robot: State changed to: stop 
-2947:WallMap: map_ratio > screen_ratio 
-2964:Robot: State changed to: stop 
-2965:Wall: Files have already been created, continuing 
-2966:WallMap: map_ratio > screen_ratio 
-2981:Robot: State changed to: stop 
-2981:WallMap: map_ratio > screen_ratio 
-2998:Robot: State changed to: stop 
-2999:Wall: Files have already been created, continuing 
-3000:WallMap: map_ratio > screen_ratio 
-3014:Robot: State changed to: stop 
-3015:WallMap: map_ratio > screen_ratio 
-3031:Robot: State changed to: stop 
-3032:Wall: Files have already been created, continuing 
-3033:WallMap: map_ratio > screen_ratio 
-3047:Robot: State changed to: stop 
-3048:WallMap: map_ratio > screen_ratio 
-3065:Robot: State changed to: stop 
-3066:Wall: Files have already been created, continuing 
-3067:WallMap: map_ratio > screen_ratio 
-3082:Robot: State changed to: stop 
-3082:WallMap: map_ratio > screen_ratio 
-3098:Robot: State changed to: stop 
-3100:Wall: Files have already been created, continuing 
-3101:WallMap: map_ratio > screen_ratio 
-3116:Robot: State changed to: stop 
-3116:WallMap: map_ratio > screen_ratio 
-3132:Robot: State changed to: stop 
-3133:Wall: Files have already been created, continuing 
-3134:WallMap: map_ratio > screen_ratio 
-3149:Robot: State changed to: stop 
-3149:WallMap: map_ratio > screen_ratio 
-3165:Robot: State changed to: stop 
-3168:Wall: Files have already been created, continuing 
-3168:WallMap: map_ratio > screen_ratio 
-3181:Robot: State changed to: stop 
-3181:WallMap: map_ratio > screen_ratio 
-3197:Robot: State changed to: stop 
-3198:Wall: Files have already been created, continuing 
-3199:Wall: Files have already been created, continuing 
-3199:WallMap: map_ratio > screen_ratio 
-3214:Robot: State changed to: stop 
-3214:WallMap: map_ratio > screen_ratio 
-3230:Robot: State changed to: stop 
-3233:Wall: Files have already been created, continuing 
-3234:WallMap: map_ratio > screen_ratio 
-3247:Robot: State changed to: stop 
-3248:WallMap: map_ratio > screen_ratio 
-3264:Robot: State changed to: stop 
-3266:Wall: Files have already been created, continuing 
-3266:WallMap: map_ratio > screen_ratio 
-3281:Robot: State changed to: stop 
-3281:WallMap: map_ratio > screen_ratio 
-3297:Robot: State changed to: stop 
-3299:Wall: Files have already been created, continuing 
-3299:WallMap: map_ratio > screen_ratio 
-3313:Robot: State changed to: stop 
-3313:WallMap: map_ratio > screen_ratio 
-3330:Robot: State changed to: stop 
-3333:Wall: Files have already been created, continuing 
-3333:WallMap: map_ratio > screen_ratio 
-3347:Robot: State changed to: stop 
-3348:WallMap: map_ratio > screen_ratio 
-3363:Robot: State changed to: stop 
-3366:WallMap: map_ratio > screen_ratio 
-3379:Robot: State changed to: stop 
-3379:WallMap: map_ratio > screen_ratio 
-3395:Robot: State changed to: stop 
-3397:WallMap: map_ratio > screen_ratio 
-3412:Robot: State changed to: stop 
-3412:WallMap: map_ratio > screen_ratio 
-3428:Robot: State changed to: stop 
-3430:Wall: Files have already been created, continuing 
-3431:WallMap: map_ratio > screen_ratio 
-3444:Robot: State changed to: stop 
-3445:WallMap: map_ratio > screen_ratio 
-3460:Robot: State changed to: stop 
-3461:Wall: Files have already been created, continuing 
-3462:Wall: Files have already been created, continuing 
-3463:WallMap: map_ratio > screen_ratio 
-3477:Robot: State changed to: stop 
-3477:WallMap: map_ratio > screen_ratio 
-3494:Robot: State changed to: stop 
-3496:Wall: Files have already been created, continuing 
-3497:WallMap: map_ratio > screen_ratio 
-3510:Robot: State changed to: stop 
-3511:WallMap: map_ratio > screen_ratio 
-3528:Robot: State changed to: stop 
-3530:Wall: Files have already been created, continuing 
-3531:Wall: Files have already been created, continuing 
-3531:WallMap: map_ratio > screen_ratio 
-3545:Robot: State changed to: stop 
-3546:WallMap: map_ratio > screen_ratio 
-3562:Robot: State changed to: stop 
-3564:Wall: Files have already been created, continuing 
-3566:Wall: Files have already been created, continuing 
-3566:WallMap: map_ratio > screen_ratio 
-3579:Robot: State changed to: stop 
-3579:WallMap: map_ratio > screen_ratio 
-3595:Robot: State changed to: stop 
-3597:Wall: Files have already been created, continuing 
-3598:WallMap: map_ratio > screen_ratio 
-3612:Robot: State changed to: stop 
-3613:WallMap: map_ratio > screen_ratio 
-3629:Robot: State changed to: stop 
-3632:Wall: Files have already been created, continuing 
-3632:WallMap: map_ratio > screen_ratio 
-3646:Robot: State changed to: stop 
-3647:WallMap: map_ratio > screen_ratio 
-3663:Robot: State changed to: stop 
-3666:Wall: Files have already been created, continuing 
-3667:WallMap: map_ratio > screen_ratio 
-3680:Robot: State changed to: stop 
-3681:WallMap: map_ratio > screen_ratio 
-3697:Robot: State changed to: stop 
-3699:Wall: Files have already been created, continuing 
-3700:Wall: Files have already been created, continuing 
-3700:WallMap: map_ratio > screen_ratio 
-3713:Robot: State changed to: stop 
-3714:WallMap: map_ratio > screen_ratio 
-3729:Robot: State changed to: stop 
-3730:Wall: Files have already been created, continuing 
-3731:WallMap: map_ratio > screen_ratio 
-3746:Robot: State changed to: stop 
-3746:WallMap: map_ratio > screen_ratio 
-3763:Robot: State changed to: stop 
-3765:Wall: Files have already been created, continuing 
-3766:Wall: Files have already been created, continuing 
-3766:WallMap: map_ratio > screen_ratio 
-3780:Robot: State changed to: stop 
-3780:WallMap: map_ratio > screen_ratio 
-3797:Robot: State changed to: stop 
-3798:Wall: Files have already been created, continuing 
-3800:WallMap: map_ratio > screen_ratio 
-3814:Robot: State changed to: stop 
-3814:WallMap: map_ratio > screen_ratio 
-3830:Robot: State changed to: stop 
-3831:Wall: Files have already been created, continuing 
+2369:InfoPacket: Creating logger object 
+2369:InfoPacket: Files have already been created, continuing 
+2369:Communicator: Files have already been created, continuing 
+2369:Robot: Files have already been created, continuing 
+2369:BotDisplay: Files have already been created, continuing 
+2369:WallMap: Files have already been created, continuing 
+2475:Robot: State changed to: stop 
+2475:WallMap: map_ratio > screen_ratio 
+2481:Robot: State changed to: stop 
+2481:Wall: Files have already been created, continuing 
+2484:Wall: Files have already been created, continuing 
+2484:WallMap: map_ratio > screen_ratio 
+2496:Robot: State changed to: stop 
+2496:WallMap: map_ratio > screen_ratio 
+2512:Robot: State changed to: stop 
+2513:Wall: Files have already been created, continuing 
+2513:WallMap: map_ratio > screen_ratio 
+2528:Robot: State changed to: stop 
+2528:WallMap: map_ratio > screen_ratio 
+2544:Robot: State changed to: stop 
+2545:Wall: Files have already been created, continuing 
+2545:WallMap: map_ratio > screen_ratio 
+2562:Robot: State changed to: stop 
+2562:WallMap: map_ratio > screen_ratio 
+2578:Robot: State changed to: stop 
+2579:Wall: Files have already been created, continuing 
+2579:WallMap: map_ratio > screen_ratio 
+2594:Robot: State changed to: stop 
+2594:WallMap: map_ratio > screen_ratio 
+2609:Robot: State changed to: stop 
+2610:Wall: Files have already been created, continuing 
+2610:WallMap: map_ratio > screen_ratio 
+2627:Robot: State changed to: stop 
+2627:WallMap: map_ratio > screen_ratio 
+2643:Robot: State changed to: stop 
+2643:Wall: Files have already been created, continuing 
+2643:WallMap: map_ratio > screen_ratio 
+2658:Robot: State changed to: stop 
+2658:WallMap: map_ratio > screen_ratio 
+2675:Robot: State changed to: stop 
+2676:Wall: Files have already been created, continuing 
+2676:WallMap: map_ratio > screen_ratio 
+2692:Robot: State changed to: stop 
+2692:WallMap: map_ratio > screen_ratio 
+2708:Robot: State changed to: stop 
+2709:Wall: Files have already been created, continuing 
+2709:WallMap: map_ratio > screen_ratio 
+2725:Robot: State changed to: stop 
+2725:WallMap: map_ratio > screen_ratio 
+2741:Robot: State changed to: stop 
+2742:Wall: Files have already been created, continuing 
+2742:WallMap: map_ratio > screen_ratio 
+2758:Robot: State changed to: stop 
+2758:WallMap: map_ratio > screen_ratio 
+2775:Robot: State changed to: stop 
+2776:Wall: Files have already been created, continuing 
+2776:WallMap: map_ratio > screen_ratio 
+2792:Robot: State changed to: stop 
+2792:WallMap: map_ratio > screen_ratio 
+2808:Robot: State changed to: stop 
+2809:Wall: Files have already been created, continuing 
+2810:WallMap: map_ratio > screen_ratio 
+2825:Robot: State changed to: stop 
+2825:WallMap: map_ratio > screen_ratio 
+2841:Robot: State changed to: stop 
+2842:Wall: Files have already been created, continuing 
+2842:WallMap: map_ratio > screen_ratio 
+2859:Robot: State changed to: stop 
+2859:WallMap: map_ratio > screen_ratio 
+2874:Robot: State changed to: stop 
+2875:Wall: Files have already been created, continuing 
+2875:WallMap: map_ratio > screen_ratio 
+2892:Robot: State changed to: stop 
+2892:WallMap: map_ratio > screen_ratio 
+2909:Robot: State changed to: stop 
+2910:Wall: Files have already been created, continuing 
+2910:WallMap: map_ratio > screen_ratio 
+2925:Robot: State changed to: stop 
+2925:WallMap: map_ratio > screen_ratio 
+2941:Robot: State changed to: stop 
+2942:Wall: Files have already been created, continuing 
+2943:WallMap: map_ratio > screen_ratio 
+2958:Robot: State changed to: stop 
+2959:WallMap: map_ratio > screen_ratio 
+2976:Robot: State changed to: stop 
+2977:Wall: Files have already been created, continuing 
+2977:WallMap: map_ratio > screen_ratio 
+2992:Robot: State changed to: stop 
+2992:WallMap: map_ratio > screen_ratio 
+3008:Robot: State changed to: stop 
+3009:Wall: Files have already been created, continuing 
+3009:WallMap: map_ratio > screen_ratio 
+3025:Robot: State changed to: stop 
+3025:WallMap: map_ratio > screen_ratio 
+3041:Robot: State changed to: stop 
+3042:Wall: Files have already been created, continuing 
+3042:WallMap: map_ratio > screen_ratio 
+3057:Robot: State changed to: stop 
+3058:WallMap: map_ratio > screen_ratio 
+3074:Robot: State changed to: stop 
+3075:WallMap: map_ratio > screen_ratio 
+3090:Robot: State changed to: stop 
+3091:WallMap: map_ratio > screen_ratio 
+3107:Robot: State changed to: stop 
+3109:Wall: Files have already been created, continuing 
+3110:WallMap: map_ratio > screen_ratio 
+3124:Robot: State changed to: stop 
+3124:WallMap: map_ratio > screen_ratio 
+3140:Robot: State changed to: stop 
+3141:Wall: Files have already been created, continuing 
+3142:Wall: Files have already been created, continuing 
+3142:WallMap: map_ratio > screen_ratio 
+3157:Robot: State changed to: stop 
+3157:WallMap: map_ratio > screen_ratio 
+3173:Robot: State changed to: stop 
+3174:WallMap: map_ratio > screen_ratio 
+3189:Robot: State changed to: stop 
+3189:WallMap: map_ratio > screen_ratio 
+3205:Robot: State changed to: stop 
+3207:Wall: Files have already been created, continuing 
+3207:WallMap: map_ratio > screen_ratio 
+3222:Robot: State changed to: stop 
+3223:WallMap: map_ratio > screen_ratio 
+3239:Robot: State changed to: stop 
+3240:Wall: Files have already been created, continuing 
+3240:WallMap: map_ratio > screen_ratio 
+3255:Robot: State changed to: stop 
+3255:WallMap: map_ratio > screen_ratio 
+3272:Robot: State changed to: stop 
+3273:Wall: Files have already been created, continuing 
+3273:WallMap: map_ratio > screen_ratio 
+3288:Robot: State changed to: stop 
+3288:WallMap: map_ratio > screen_ratio 
+3304:Robot: State changed to: stop 
+3305:Wall: Files have already been created, continuing 
+3305:WallMap: map_ratio > screen_ratio 
+3321:Robot: State changed to: stop 
+3321:WallMap: map_ratio > screen_ratio 
+3337:Robot: State changed to: stop 
+3339:Wall: Files have already been created, continuing 
+3339:WallMap: map_ratio > screen_ratio 
+3355:Robot: State changed to: stop 
+3355:WallMap: map_ratio > screen_ratio 
+3372:Robot: State changed to: stop 
+3373:Wall: Files have already been created, continuing 
+3374:WallMap: map_ratio > screen_ratio 
+3388:Robot: State changed to: stop 
+3388:WallMap: map_ratio > screen_ratio 
+3405:Robot: State changed to: stop 
+3406:Wall: Files have already been created, continuing 
+3406:WallMap: map_ratio > screen_ratio 
+3420:Robot: State changed to: stop 
+3420:WallMap: map_ratio > screen_ratio 
+3437:Robot: State changed to: stop 
+3439:Wall: Files have already been created, continuing 
+3439:WallMap: map_ratio > screen_ratio 
+3454:Robot: State changed to: stop 
+3454:WallMap: map_ratio > screen_ratio 
+3470:Robot: State changed to: stop 
+3472:Wall: Files have already been created, continuing 
+3472:WallMap: map_ratio > screen_ratio 
+3487:Robot: State changed to: stop 
+3488:WallMap: map_ratio > screen_ratio 
+3504:Robot: State changed to: stop 
+3505:Wall: Files have already been created, continuing 
+3506:WallMap: map_ratio > screen_ratio 
+3520:Robot: State changed to: stop 
+3520:WallMap: map_ratio > screen_ratio 
+3537:Robot: State changed to: stop 
+3539:Wall: Files have already been created, continuing 
+3539:WallMap: map_ratio > screen_ratio 
+3553:Robot: State changed to: stop 
+3554:WallMap: map_ratio > screen_ratio 
+3570:Robot: State changed to: stop 
+3571:Wall: Files have already been created, continuing 
+3572:WallMap: map_ratio > screen_ratio 
+3586:Robot: State changed to: stop 
+3587:WallMap: map_ratio > screen_ratio 
+3602:Robot: State changed to: stop 
+3604:Wall: Files have already been created, continuing 
+3604:WallMap: map_ratio > screen_ratio 
+3619:Robot: State changed to: stop 
+3619:WallMap: map_ratio > screen_ratio 
+3636:Robot: State changed to: stop 
+3637:Wall: Files have already been created, continuing 
+3638:WallMap: map_ratio > screen_ratio 
+3652:Robot: State changed to: stop 
+3652:WallMap: map_ratio > screen_ratio 
+3669:Robot: State changed to: stop 
+3670:Wall: Files have already been created, continuing 
+3671:WallMap: map_ratio > screen_ratio 
+3685:Robot: State changed to: stop 
+3685:WallMap: map_ratio > screen_ratio 
+3701:Robot: State changed to: stop 
+3704:Wall: Files have already been created, continuing 
+3704:WallMap: map_ratio > screen_ratio 
+3717:Robot: State changed to: stop 
+3718:WallMap: map_ratio > screen_ratio 
+3734:Robot: State changed to: stop 
+3735:Wall: Files have already been created, continuing 
+3736:Wall: Files have already been created, continuing 
+3737:WallMap: map_ratio > screen_ratio 
+3751:Robot: State changed to: stop 
+3751:WallMap: map_ratio > screen_ratio 
+3767:Robot: State changed to: stop 
+3769:Wall: Files have already been created, continuing 
+3769:WallMap: map_ratio > screen_ratio 
+3782:Robot: State changed to: stop 
+3783:WallMap: map_ratio > screen_ratio 
+3799:Robot: State changed to: stop 
+3801:WallMap: map_ratio > screen_ratio 
+3815:Robot: State changed to: stop 
+3815:WallMap: map_ratio > screen_ratio 
+3831:Robot: State changed to: stop 
+3832:Wall: Files have already been created, continuing 
+3833:Wall: Files have already been created, continuing 
 3833:WallMap: map_ratio > screen_ratio 
-3848:Robot: State changed to: stop 
-3848:WallMap: map_ratio > screen_ratio 
-3864:Robot: State changed to: stop 
-3866:Wall: Files have already been created, continuing 
-3867:WallMap: map_ratio > screen_ratio 
-3881:Robot: State changed to: stop 
-3881:WallMap: map_ratio > screen_ratio 
-3898:Robot: State changed to: stop 
-3899:Wall: Files have already been created, continuing 
-3901:WallMap: map_ratio > screen_ratio 
-3915:Robot: State changed to: stop 
-3915:WallMap: map_ratio > screen_ratio 
-3932:Robot: State changed to: stop 
-3933:Wall: Files have already been created, continuing 
-3935:Wall: Files have already been created, continuing 
-3935:WallMap: map_ratio > screen_ratio 
-3949:Robot: State changed to: stop 
-3950:WallMap: map_ratio > screen_ratio 
-3965:Robot: State changed to: stop 
-3967:Wall: Files have already been created, continuing 
-3968:Wall: Files have already been created, continuing 
-3969:WallMap: map_ratio > screen_ratio 
-3983:Robot: State changed to: stop 
-3983:WallMap: map_ratio > screen_ratio 
-3999:Robot: State changed to: stop 
-4001:Wall: Files have already been created, continuing 
-4002:WallMap: map_ratio > screen_ratio 
-4015:Robot: State changed to: stop 
-4015:WallMap: map_ratio > screen_ratio 
-4032:Robot: State changed to: stop 
-4034:Wall: Files have already been created, continuing 
-4036:WallMap: map_ratio > screen_ratio 
-4049:Robot: State changed to: stop 
-4049:WallMap: map_ratio > screen_ratio 
-4066:Robot: State changed to: stop 
-4070:Wall: Files have already been created, continuing 
-4070:WallMap: map_ratio > screen_ratio 
-4082:Robot: State changed to: stop 
-4083:WallMap: map_ratio > screen_ratio 
-4099:Robot: State changed to: stop 
-4103:Wall: Files have already been created, continuing 
-4103:WallMap: map_ratio > screen_ratio 
-4116:Robot: State changed to: stop 
-4116:WallMap: map_ratio > screen_ratio 
-4132:Robot: State changed to: stop 
-4135:WallMap: map_ratio > screen_ratio 
-4149:Robot: State changed to: stop 
-4149:WallMap: map_ratio > screen_ratio 
-4166:Robot: State changed to: stop 
-4169:WallMap: map_ratio > screen_ratio 
-4183:Robot: State changed to: stop 
-4183:WallMap: map_ratio > screen_ratio 
-4199:Robot: State changed to: stop 
-4201:Wall: Files have already been created, continuing 
-4202:WallMap: map_ratio > screen_ratio 
-4215:Robot: State changed to: stop 
-4216:WallMap: map_ratio > screen_ratio 
-4232:Robot: State changed to: stop 
-4235:WallMap: map_ratio > screen_ratio 
-4249:Robot: State changed to: stop 
-4250:WallMap: map_ratio > screen_ratio 
-4266:Robot: State changed to: stop 
-4269:Wall: Files have already been created, continuing 
-4270:WallMap: map_ratio > screen_ratio 
-4283:Robot: State changed to: stop 
-4283:WallMap: map_ratio > screen_ratio 
-4299:Robot: State changed to: stop 
-4301:Wall: Files have already been created, continuing 
-4303:Wall: Files have already been created, continuing 
-4303:WallMap: map_ratio > screen_ratio 
-4316:Robot: State changed to: stop 
-4317:WallMap: map_ratio > screen_ratio 
-4332:Robot: State changed to: stop 
-4336:WallMap: map_ratio > screen_ratio 
-4349:Robot: State changed to: stop 
-4349:WallMap: map_ratio > screen_ratio 
-4366:Robot: State changed to: stop 
-4368:Wall: Files have already been created, continuing 
-4370:WallMap: map_ratio > screen_ratio 
-4382:Robot: State changed to: stop 
-4382:WallMap: map_ratio > screen_ratio 
-4399:Robot: State changed to: stop 
-4400:Wall: Files have already been created, continuing 
-4402:Wall: Files have already been created, continuing 
-4402:WallMap: map_ratio > screen_ratio 
-4416:Robot: State changed to: stop 
-4416:WallMap: map_ratio > screen_ratio 
-4432:Robot: State changed to: stop 
-4436:Wall: Files have already been created, continuing 
-4436:WallMap: map_ratio > screen_ratio 
-4449:Robot: State changed to: stop 
-4449:WallMap: map_ratio > screen_ratio 
-4466:Robot: State changed to: stop 
-4469:Wall: Files have already been created, continuing 
-4469:WallMap: map_ratio > screen_ratio 
-4483:Robot: State changed to: stop 
-4483:WallMap: map_ratio > screen_ratio 
-4500:Robot: State changed to: stop 
-4506:Wall: Files have already been created, continuing 
-4506:WallMap: map_ratio > screen_ratio 
-4517:Robot: State changed to: stop 
-4517:WallMap: map_ratio > screen_ratio 
-4533:Robot: State changed to: stop 
-4535:Wall: Files have already been created, continuing 
-4537:WallMap: map_ratio > screen_ratio 
-4549:Robot: State changed to: stop 
-4550:WallMap: map_ratio > screen_ratio 
-4566:Robot: State changed to: stop 
-4567:Wall: Files have already been created, continuing 
-4569:Wall: Files have already been created, continuing 
-4570:WallMap: map_ratio > screen_ratio 
-4583:Robot: State changed to: stop 
-4583:WallMap: map_ratio > screen_ratio 
-4600:Robot: State changed to: stop 
-4602:Wall: Files have already been created, continuing 
-4604:Wall: Files have already been created, continuing 
-4604:WallMap: map_ratio > screen_ratio 
-4616:Robot: State changed to: stop 
-4616:WallMap: map_ratio > screen_ratio 
-4632:Robot: State changed to: stop 
-4634:Wall: Files have already been created, continuing 
-4636:WallMap: map_ratio > screen_ratio 
-4648:Robot: State changed to: stop 
-4648:WallMap: map_ratio > screen_ratio 
-4664:Robot: State changed to: stop 
-4666:Wall: Files have already been created, continuing 
-4668:WallMap: map_ratio > screen_ratio 
-4682:Robot: State changed to: stop 
-4682:WallMap: map_ratio > screen_ratio 
-4699:Robot: State changed to: stop 
-4701:Wall: Files have already been created, continuing 
-4703:Wall: Files have already been created, continuing 
-4703:WallMap: map_ratio > screen_ratio 
-4715:Robot: State changed to: stop 
-4715:WallMap: map_ratio > screen_ratio 
-4732:Robot: State changed to: stop 
-4736:Wall: Files have already been created, continuing 
-4736:WallMap: map_ratio > screen_ratio 
-4748:Robot: State changed to: stop 
-4749:WallMap: map_ratio > screen_ratio 
-4764:Robot: State changed to: stop 
-4766:Wall: Files have already been created, continuing 
-4768:WallMap: map_ratio > screen_ratio 
-4782:Robot: State changed to: stop 
-4782:WallMap: map_ratio > screen_ratio 
-4799:Robot: State changed to: stop 
-4801:Wall: Files have already been created, continuing 
-4803:WallMap: map_ratio > screen_ratio 
-4815:Robot: State changed to: stop 
-4815:WallMap: map_ratio > screen_ratio 
-4832:Robot: State changed to: stop 
-4834:Wall: Files have already been created, continuing 
-4836:Wall: Files have already been created, continuing 
-4836:WallMap: map_ratio > screen_ratio 
-4848:Robot: State changed to: stop 
-4849:WallMap: map_ratio > screen_ratio 
-4865:Robot: State changed to: stop 
-4869:Wall: Files have already been created, continuing 
-4870:WallMap: map_ratio > screen_ratio 
-4881:Robot: State changed to: stop 
-4882:WallMap: map_ratio > screen_ratio 
-4898:Robot: State changed to: stop 
-4900:Wall: Files have already been created, continuing 
-4902:WallMap: map_ratio > screen_ratio 
-4915:Robot: State changed to: stop 
-4915:WallMap: map_ratio > screen_ratio 
-4932:Robot: State changed to: stop 
-4936:WallMap: map_ratio > screen_ratio 
-4948:Robot: State changed to: stop 
-4949:WallMap: map_ratio > screen_ratio 
-4965:Robot: State changed to: stop 
-4967:Wall: Files have already been created, continuing 
-4969:WallMap: map_ratio > screen_ratio 
-4982:Robot: State changed to: stop 
-4982:WallMap: map_ratio > screen_ratio 
-4999:Robot: State changed to: stop 
-5003:WallMap: map_ratio > screen_ratio 
-5015:Robot: State changed to: stop 
-5016:WallMap: map_ratio > screen_ratio 
-5032:Robot: State changed to: stop 
-5034:Wall: Files have already been created, continuing 
-5036:Wall: Files have already been created, continuing 
-5036:WallMap: map_ratio > screen_ratio 
-5049:Robot: State changed to: stop 
-5049:WallMap: map_ratio > screen_ratio 
-5066:Robot: State changed to: stop 
-5069:Wall: Files have already been created, continuing 
-5071:Wall: Files have already been created, continuing 
+3847:Robot: State changed to: stop 
+3847:WallMap: map_ratio > screen_ratio 
+3863:Robot: State changed to: stop 
+3864:Wall: Files have already been created, continuing 
+3865:WallMap: map_ratio > screen_ratio 
+3878:Robot: State changed to: stop 
+3879:WallMap: map_ratio > screen_ratio 
+3895:Robot: State changed to: stop 
+3897:Wall: Files have already been created, continuing 
+3897:WallMap: map_ratio > screen_ratio 
+3911:Robot: State changed to: stop 
+3911:WallMap: map_ratio > screen_ratio 
+3927:Robot: State changed to: stop 
+3929:Wall: Files have already been created, continuing 
+3930:WallMap: map_ratio > screen_ratio 
+3944:Robot: State changed to: stop 
+3944:WallMap: map_ratio > screen_ratio 
+3960:Robot: State changed to: stop 
+3962:Wall: Files have already been created, continuing 
+3963:WallMap: map_ratio > screen_ratio 
+3977:Robot: State changed to: stop 
+3977:WallMap: map_ratio > screen_ratio 
+3993:Robot: State changed to: stop 
+3995:Wall: Files have already been created, continuing 
+3996:Wall: Files have already been created, continuing 
+3996:WallMap: map_ratio > screen_ratio 
+4010:Robot: State changed to: stop 
+4011:WallMap: map_ratio > screen_ratio 
+4027:Robot: State changed to: stop 
+4029:Wall: Files have already been created, continuing 
+4029:WallMap: map_ratio > screen_ratio 
+4044:Robot: State changed to: stop 
+4044:WallMap: map_ratio > screen_ratio 
+4060:Robot: State changed to: stop 
+4061:Wall: Files have already been created, continuing 
+4062:Wall: Files have already been created, continuing 
+4063:WallMap: map_ratio > screen_ratio 
+4077:Robot: State changed to: stop 
+4077:WallMap: map_ratio > screen_ratio 
+4093:Robot: State changed to: stop 
+4095:Wall: Files have already been created, continuing 
+4095:WallMap: map_ratio > screen_ratio 
+4111:Robot: State changed to: stop 
+4111:WallMap: map_ratio > screen_ratio 
+4127:Robot: State changed to: stop 
+4128:Wall: Files have already been created, continuing 
+4129:Wall: Files have already been created, continuing 
+4130:WallMap: map_ratio > screen_ratio 
+4143:Robot: State changed to: stop 
+4144:WallMap: map_ratio > screen_ratio 
+4160:Robot: State changed to: stop 
+4163:Wall: Files have already been created, continuing 
+4163:WallMap: map_ratio > screen_ratio 
+4177:Robot: State changed to: stop 
+4178:WallMap: map_ratio > screen_ratio 
+4193:Robot: State changed to: stop 
+4195:Wall: Files have already been created, continuing 
+4196:Wall: Files have already been created, continuing 
+4196:WallMap: map_ratio > screen_ratio 
+4211:Robot: State changed to: stop 
+4211:WallMap: map_ratio > screen_ratio 
+4227:Robot: State changed to: stop 
+4229:Wall: Files have already been created, continuing 
+4230:WallMap: map_ratio > screen_ratio 
+4243:Robot: State changed to: stop 
+4243:WallMap: map_ratio > screen_ratio 
+4259:Robot: State changed to: stop 
+4261:Wall: Files have already been created, continuing 
+4262:WallMap: map_ratio > screen_ratio 
+4275:Robot: State changed to: stop 
+4275:WallMap: map_ratio > screen_ratio 
+4291:Robot: State changed to: stop 
+4293:WallMap: map_ratio > screen_ratio 
+4307:Robot: State changed to: stop 
+4307:WallMap: map_ratio > screen_ratio 
+4323:Robot: State changed to: stop 
+4325:Wall: Files have already been created, continuing 
+4327:WallMap: map_ratio > screen_ratio 
+4340:Robot: State changed to: stop 
+4340:WallMap: map_ratio > screen_ratio 
+4356:Robot: State changed to: stop 
+4357:Wall: Files have already been created, continuing 
+4359:WallMap: map_ratio > screen_ratio 
+4373:Robot: State changed to: stop 
+4373:WallMap: map_ratio > screen_ratio 
+4391:Robot: State changed to: stop 
+4392:Wall: Files have already been created, continuing 
+4394:WallMap: map_ratio > screen_ratio 
+4407:Robot: State changed to: stop 
+4407:WallMap: map_ratio > screen_ratio 
+4423:Robot: State changed to: stop 
+4425:Wall: Files have already been created, continuing 
+4426:Wall: Files have already been created, continuing 
+4427:WallMap: map_ratio > screen_ratio 
+4441:Robot: State changed to: stop 
+4441:WallMap: map_ratio > screen_ratio 
+4457:Robot: State changed to: stop 
+4458:Wall: Files have already been created, continuing 
+4460:WallMap: map_ratio > screen_ratio 
+4474:Robot: State changed to: stop 
+4474:WallMap: map_ratio > screen_ratio 
+4491:Robot: State changed to: stop 
+4492:Wall: Files have already been created, continuing 
+4494:WallMap: map_ratio > screen_ratio 
+4507:Robot: State changed to: stop 
+4507:WallMap: map_ratio > screen_ratio 
+4523:Robot: State changed to: stop 
+4525:Wall: Files have already been created, continuing 
+4526:WallMap: map_ratio > screen_ratio 
+4539:Robot: State changed to: stop 
+4539:WallMap: map_ratio > screen_ratio 
+4555:Robot: State changed to: stop 
+4556:Wall: Files have already been created, continuing 
+4558:WallMap: map_ratio > screen_ratio 
+4573:Robot: State changed to: stop 
+4573:WallMap: map_ratio > screen_ratio 
+4589:Robot: State changed to: stop 
+4590:Wall: Files have already been created, continuing 
+4592:Wall: Files have already been created, continuing 
+4592:WallMap: map_ratio > screen_ratio 
+4605:Robot: State changed to: stop 
+4606:WallMap: map_ratio > screen_ratio 
+4622:Robot: State changed to: stop 
+4624:Wall: Files have already been created, continuing 
+4625:Wall: Files have already been created, continuing 
+4626:WallMap: map_ratio > screen_ratio 
+4640:Robot: State changed to: stop 
+4640:WallMap: map_ratio > screen_ratio 
+4655:Robot: State changed to: stop 
+4657:Wall: Files have already been created, continuing 
+4658:Wall: Files have already been created, continuing 
+4658:WallMap: map_ratio > screen_ratio 
+4672:Robot: State changed to: stop 
+4672:WallMap: map_ratio > screen_ratio 
+4687:Robot: State changed to: stop 
+4690:WallMap: map_ratio > screen_ratio 
+4705:Robot: State changed to: stop 
+4705:WallMap: map_ratio > screen_ratio 
+4721:Robot: State changed to: stop 
+4723:Wall: Files have already been created, continuing 
+4724:Wall: Files have already been created, continuing 
+4724:WallMap: map_ratio > screen_ratio 
+4738:Robot: State changed to: stop 
+4739:WallMap: map_ratio > screen_ratio 
+4755:Robot: State changed to: stop 
+4757:Wall: Files have already been created, continuing 
+4758:Wall: Files have already been created, continuing 
+4759:WallMap: map_ratio > screen_ratio 
+4772:Robot: State changed to: stop 
+4772:WallMap: map_ratio > screen_ratio 
+4788:Robot: State changed to: stop 
+4790:Wall: Files have already been created, continuing 
+4791:WallMap: map_ratio > screen_ratio 
+4805:Robot: State changed to: stop 
+4806:WallMap: map_ratio > screen_ratio 
+4822:Robot: State changed to: stop 
+4823:Wall: Files have already been created, continuing 
+4825:WallMap: map_ratio > screen_ratio 
+4838:Robot: State changed to: stop 
+4839:WallMap: map_ratio > screen_ratio 
+4855:Robot: State changed to: stop 
+4857:Wall: Files have already been created, continuing 
+4858:WallMap: map_ratio > screen_ratio 
+4872:Robot: State changed to: stop 
+4872:WallMap: map_ratio > screen_ratio 
+4889:Robot: State changed to: stop 
+4892:Wall: Files have already been created, continuing 
+4892:WallMap: map_ratio > screen_ratio 
+4905:Robot: State changed to: stop 
+4905:WallMap: map_ratio > screen_ratio 
+4922:Robot: State changed to: stop 
+4925:Wall: Files have already been created, continuing 
+4925:WallMap: map_ratio > screen_ratio 
+4938:Robot: State changed to: stop 
+4938:WallMap: map_ratio > screen_ratio 
+4955:Robot: State changed to: stop 
+4958:Wall: Files have already been created, continuing 
+4959:WallMap: map_ratio > screen_ratio 
+4972:Robot: State changed to: stop 
+4973:WallMap: map_ratio > screen_ratio 
+4989:Robot: State changed to: stop 
+4992:Wall: Files have already been created, continuing 
+4992:WallMap: map_ratio > screen_ratio 
+5005:Robot: State changed to: stop 
+5005:WallMap: map_ratio > screen_ratio 
+5022:Robot: State changed to: stop 
+5024:Wall: Files have already been created, continuing 
+5025:Wall: Files have already been created, continuing 
+5025:WallMap: map_ratio > screen_ratio 
+5038:Robot: State changed to: stop 
+5038:WallMap: map_ratio > screen_ratio 
+5054:Robot: State changed to: stop 
+5057:Wall: Files have already been created, continuing 
+5058:WallMap: map_ratio > screen_ratio 
+5071:Robot: State changed to: stop 
 5071:WallMap: map_ratio > screen_ratio 
-5084:Robot: State changed to: stop 
-5084:WallMap: map_ratio > screen_ratio 
-5098:Robot: State changed to: stop 
-5100:Wall: Files have already been created, continuing 
-5102:WallMap: map_ratio > screen_ratio 
-5115:Robot: State changed to: stop 
-5115:WallMap: map_ratio > screen_ratio 
-5131:Robot: State changed to: stop 
-5135:Wall: Files have already been created, continuing 
-5135:WallMap: map_ratio > screen_ratio 
-5148:Robot: State changed to: stop 
-5148:WallMap: map_ratio > screen_ratio 
-5164:Robot: State changed to: stop 
-5167:Wall: Files have already been created, continuing 
-5169:Wall: Files have already been created, continuing 
-5169:WallMap: map_ratio > screen_ratio 
-5181:Robot: State changed to: stop 
-5181:WallMap: map_ratio > screen_ratio 
-5197:Robot: State changed to: stop 
-5201:Wall: Files have already been created, continuing 
-5203:WallMap: map_ratio > screen_ratio 
-5214:Robot: State changed to: stop 
-5214:WallMap: map_ratio > screen_ratio 
-5230:Robot: State changed to: stop 
-5234:WallMap: map_ratio > screen_ratio 
-5246:Robot: State changed to: stop 
-5247:WallMap: map_ratio > screen_ratio 
-5265:Robot: State changed to: stop 
-5268:Wall: Files have already been created, continuing 
-5268:WallMap: map_ratio > screen_ratio 
-5281:Robot: State changed to: stop 
-5289:WallMap: map_ratio > screen_ratio 
-5298:Robot: State changed to: stop 
-5300:Wall: Files have already been created, continuing 
-5307:Wall: Files have already been created, continuing 
-5307:WallMap: map_ratio > screen_ratio 
-5314:Robot: State changed to: stop 
+5087:Robot: State changed to: stop 
+5090:WallMap: map_ratio > screen_ratio 
+5103:Robot: State changed to: stop 
+5104:WallMap: map_ratio > screen_ratio 
+5120:Robot: State changed to: stop 
+5122:Wall: Files have already been created, continuing 
+5123:WallMap: map_ratio > screen_ratio 
+5136:Robot: State changed to: stop 
+5137:WallMap: map_ratio > screen_ratio 
+5154:Robot: State changed to: stop 
+5157:WallMap: map_ratio > screen_ratio 
+5170:Robot: State changed to: stop 
+5170:WallMap: map_ratio > screen_ratio 
+5185:Robot: State changed to: stop 
+5189:Wall: Files have already been created, continuing 
+5189:WallMap: map_ratio > screen_ratio 
+5202:Robot: State changed to: stop 
+5202:WallMap: map_ratio > screen_ratio 
+5217:Robot: State changed to: stop 
+5219:Wall: Files have already been created, continuing 
+5221:Wall: Files have already been created, continuing 
+5221:WallMap: map_ratio > screen_ratio 
+5234:Robot: State changed to: stop 
+5235:WallMap: map_ratio > screen_ratio 
+5251:Robot: State changed to: stop 
+5254:Wall: Files have already been created, continuing 
+5254:WallMap: map_ratio > screen_ratio 
+5267:Robot: State changed to: stop 
+5267:WallMap: map_ratio > screen_ratio 
+5283:Robot: State changed to: stop 
+5286:Wall: Files have already been created, continuing 
+5287:WallMap: map_ratio > screen_ratio 
+5301:Robot: State changed to: stop 
+5301:WallMap: map_ratio > screen_ratio 
+5317:Robot: State changed to: stop 
+5318:Wall: Files have already been created, continuing 
+5320:Wall: Files have already been created, continuing 
 5320:WallMap: map_ratio > screen_ratio 
-5331:Robot: State changed to: stop 
-5335:Wall: Files have already been created, continuing 
-5337:WallMap: map_ratio > screen_ratio 
-5348:Robot: State changed to: stop 
-5348:WallMap: map_ratio > screen_ratio 
-5364:Robot: State changed to: stop 
-5366:Wall: Files have already been created, continuing 
-5368:Wall: Files have already been created, continuing 
-5369:WallMap: map_ratio > screen_ratio 
-5382:Robot: State changed to: stop 
-5382:WallMap: map_ratio > screen_ratio 
-5399:Robot: State changed to: stop 
-5404:WallMap: map_ratio > screen_ratio 
+5333:Robot: State changed to: stop 
+5333:WallMap: map_ratio > screen_ratio 
+5349:Robot: State changed to: stop 
+5350:Wall: Files have already been created, continuing 
+5352:Wall: Files have already been created, continuing 
+5352:WallMap: map_ratio > screen_ratio 
+5365:Robot: State changed to: stop 
+5365:WallMap: map_ratio > screen_ratio 
+5381:Robot: State changed to: stop 
+5385:Wall: Files have already been created, continuing 
+5385:WallMap: map_ratio > screen_ratio 
+5398:Robot: State changed to: stop 
+5399:WallMap: map_ratio > screen_ratio 
 5415:Robot: State changed to: stop 
-5416:WallMap: map_ratio > screen_ratio 
-5431:Robot: State changed to: stop 
-5433:Wall: Files have already been created, continuing 
-5441:WallMap: map_ratio > screen_ratio 
-5455:Robot: State changed to: stop 
-5456:WallMap: map_ratio > screen_ratio 
-5471:Robot: State changed to: stop 
-5475:Wall: Files have already been created, continuing 
-5476:WallMap: map_ratio > screen_ratio 
-5487:Robot: State changed to: stop 
-5487:WallMap: map_ratio > screen_ratio 
-5503:Robot: State changed to: stop 
-5505:Wall: Files have already been created, continuing 
-5507:Wall: Files have already been created, continuing 
-5507:WallMap: map_ratio > screen_ratio 
-5519:Robot: State changed to: stop 
-5519:WallMap: map_ratio > screen_ratio 
-5535:Robot: State changed to: stop 
-5538:Wall: Files have already been created, continuing 
-5538:WallMap: map_ratio > screen_ratio 
-5552:Robot: State changed to: stop 
-5552:WallMap: map_ratio > screen_ratio 
-5568:Robot: State changed to: stop 
-5570:Wall: Files have already been created, continuing 
-5572:WallMap: map_ratio > screen_ratio 
-5586:Robot: State changed to: stop 
-5586:WallMap: map_ratio > screen_ratio 
-5602:Robot: State changed to: stop 
-5606:Wall: Files have already been created, continuing 
-5606:WallMap: map_ratio > screen_ratio 
-5618:Robot: State changed to: stop 
-5618:WallMap: map_ratio > screen_ratio 
-5634:Robot: State changed to: stop 
-5636:Wall: Files have already been created, continuing 
-5638:Wall: Files have already been created, continuing 
-5638:WallMap: map_ratio > screen_ratio 
-5651:Robot: State changed to: stop 
+5419:WallMap: map_ratio > screen_ratio 
+5430:Robot: State changed to: stop 
+5431:WallMap: map_ratio > screen_ratio 
+5447:Robot: State changed to: stop 
+5449:Wall: Files have already been created, continuing 
+5451:Wall: Files have already been created, continuing 
+5451:WallMap: map_ratio > screen_ratio 
+5464:Robot: State changed to: stop 
+5464:WallMap: map_ratio > screen_ratio 
+5480:Robot: State changed to: stop 
+5484:Wall: Files have already been created, continuing 
+5484:WallMap: map_ratio > screen_ratio 
+5497:Robot: State changed to: stop 
+5497:WallMap: map_ratio > screen_ratio 
+5514:Robot: State changed to: stop 
+5517:Wall: Files have already been created, continuing 
+5517:WallMap: map_ratio > screen_ratio 
+5531:Robot: State changed to: stop 
+5531:WallMap: map_ratio > screen_ratio 
+5547:Robot: State changed to: stop 
+5550:Wall: Files have already been created, continuing 
+5551:WallMap: map_ratio > screen_ratio 
+5565:Robot: State changed to: stop 
+5565:WallMap: map_ratio > screen_ratio 
+5581:Robot: State changed to: stop 
+5584:Wall: Files have already been created, continuing 
+5584:WallMap: map_ratio > screen_ratio 
+5597:Robot: State changed to: stop 
+5597:WallMap: map_ratio > screen_ratio 
+5613:Robot: State changed to: stop 
+5615:Wall: Files have already been created, continuing 
+5617:Wall: Files have already been created, continuing 
+5617:WallMap: map_ratio > screen_ratio 
+5630:Robot: State changed to: stop 
+5631:WallMap: map_ratio > screen_ratio 
+5647:Robot: State changed to: stop 
 5651:WallMap: map_ratio > screen_ratio 
-5668:Robot: State changed to: stop 
-5671:Wall: Files have already been created, continuing 
-5672:WallMap: map_ratio > screen_ratio 
-5685:Robot: State changed to: stop 
-5685:WallMap: map_ratio > screen_ratio 
-5701:Robot: State changed to: stop 
-5705:WallMap: map_ratio > screen_ratio 
-5718:Robot: State changed to: stop 
-5718:WallMap: map_ratio > screen_ratio 
-5734:Robot: State changed to: stop 
-5736:Wall: Files have already been created, continuing 
-5738:WallMap: map_ratio > screen_ratio 
-5750:Robot: State changed to: stop 
+5662:Robot: State changed to: stop 
+5663:WallMap: map_ratio > screen_ratio 
+5679:Robot: State changed to: stop 
+5683:WallMap: map_ratio > screen_ratio 
+5696:Robot: State changed to: stop 
+5697:WallMap: map_ratio > screen_ratio 
+5712:Robot: State changed to: stop 
+5717:WallMap: map_ratio > screen_ratio 
+5729:Robot: State changed to: stop 
+5730:WallMap: map_ratio > screen_ratio 
+5746:Robot: State changed to: stop 
 5750:WallMap: map_ratio > screen_ratio 
-5766:Robot: State changed to: stop 
-5768:Wall: Files have already been created, continuing 
-5770:Wall: Files have already been created, continuing 
-5770:WallMap: map_ratio > screen_ratio 
-5782:Robot: State changed to: stop 
+5763:Robot: State changed to: stop 
+5764:WallMap: map_ratio > screen_ratio 
+5780:Robot: State changed to: stop 
 5783:WallMap: map_ratio > screen_ratio 
-5798:Robot: State changed to: stop 
-5802:Wall: Files have already been created, continuing 
-5802:WallMap: map_ratio > screen_ratio 
+5797:Robot: State changed to: stop 
+5797:WallMap: map_ratio > screen_ratio 
 5814:Robot: State changed to: stop 
-5814:WallMap: map_ratio > screen_ratio 
-5831:Robot: State changed to: stop 
-5835:WallMap: map_ratio > screen_ratio 
-5847:Robot: State changed to: stop 
-5848:WallMap: map_ratio > screen_ratio 
-5863:Robot: State changed to: stop 
-5866:Wall: Files have already been created, continuing 
-5868:Wall: Files have already been created, continuing 
-5868:WallMap: map_ratio > screen_ratio 
-5880:Robot: State changed to: stop 
-5880:WallMap: map_ratio > screen_ratio 
+5818:Wall: Files have already been created, continuing 
+5818:WallMap: map_ratio > screen_ratio 
+5830:Robot: State changed to: stop 
+5830:WallMap: map_ratio > screen_ratio 
+5846:Robot: State changed to: stop 
+5848:Wall: Files have already been created, continuing 
+5850:Wall: Files have already been created, continuing 
+5850:WallMap: map_ratio > screen_ratio 
+5864:Robot: State changed to: stop 
+5864:WallMap: map_ratio > screen_ratio 
+5881:Robot: State changed to: stop 
+5883:Wall: Files have already been created, continuing 
+5884:Wall: Files have already been created, continuing 
+5885:WallMap: map_ratio > screen_ratio 
 5897:Robot: State changed to: stop 
-5899:Wall: Files have already been created, continuing 
-5902:WallMap: map_ratio > screen_ratio 
-5913:Robot: State changed to: stop 
-5913:WallMap: map_ratio > screen_ratio 
-5929:Robot: State changed to: stop 
-5934:Wall: Files have already been created, continuing 
-5934:WallMap: map_ratio > screen_ratio 
-5946:Robot: State changed to: stop 
-5947:WallMap: map_ratio > screen_ratio 
+5897:WallMap: map_ratio > screen_ratio 
+5914:Robot: State changed to: stop 
+5918:WallMap: map_ratio > screen_ratio 
+5931:Robot: State changed to: stop 
+5931:WallMap: map_ratio > screen_ratio 
+5947:Robot: State changed to: stop 
+5951:Wall: Files have already been created, continuing 
+5951:WallMap: map_ratio > screen_ratio 
 5963:Robot: State changed to: stop 
-5968:Wall: Files have already been created, continuing 
-5969:WallMap: map_ratio > screen_ratio 
-5979:Robot: State changed to: stop 
-5980:WallMap: map_ratio > screen_ratio 
-5996:Robot: State changed to: stop 
-5999:Wall: Files have already been created, continuing 
-6001:Wall: Files have already been created, continuing 
-6001:WallMap: map_ratio > screen_ratio 
-6013:Robot: State changed to: stop 
-6014:WallMap: map_ratio > screen_ratio 
-6031:Robot: State changed to: stop 
-6034:Wall: Files have already been created, continuing 
-6036:Wall: Files have already been created, continuing 
-6036:WallMap: map_ratio > screen_ratio 
-6048:Robot: State changed to: stop 
-6048:WallMap: map_ratio > screen_ratio 
-6065:Robot: State changed to: stop 
-6068:Wall: Files have already been created, continuing 
-6071:Wall: Files have already been created, continuing 
-6071:WallMap: map_ratio > screen_ratio 
-6082:Robot: State changed to: stop 
-6082:WallMap: map_ratio > screen_ratio 
-6098:Robot: State changed to: stop 
-6103:WallMap: map_ratio > screen_ratio 
-6114:Robot: State changed to: stop 
-6115:WallMap: map_ratio > screen_ratio 
-6132:Robot: State changed to: stop 
-6136:WallMap: map_ratio > screen_ratio 
-6149:Robot: State changed to: stop 
-6149:WallMap: map_ratio > screen_ratio 
-6165:Robot: State changed to: stop 
-6170:Wall: Files have already been created, continuing 
-6170:WallMap: map_ratio > screen_ratio 
-6182:Robot: State changed to: stop 
-6183:WallMap: map_ratio > screen_ratio 
-6198:Robot: State changed to: stop 
-6201:Wall: Files have already been created, continuing 
-6203:WallMap: map_ratio > screen_ratio 
-6214:Robot: State changed to: stop 
-6214:WallMap: map_ratio > screen_ratio 
-6230:Robot: State changed to: stop 
-6235:Wall: Files have already been created, continuing 
-6235:WallMap: map_ratio > screen_ratio 
-6247:Robot: State changed to: stop 
-6247:WallMap: map_ratio > screen_ratio 
-6263:Robot: State changed to: stop 
-6268:WallMap: map_ratio > screen_ratio 
-6280:Robot: State changed to: stop 
-6280:WallMap: map_ratio > screen_ratio 
-6296:Robot: State changed to: stop 
-6299:Wall: Files have already been created, continuing 
-6301:WallMap: map_ratio > screen_ratio 
-6313:Robot: State changed to: stop 
-6313:WallMap: map_ratio > screen_ratio 
-6329:Robot: State changed to: stop 
-6334:WallMap: map_ratio > screen_ratio 
-6347:Robot: State changed to: stop 
-6348:WallMap: map_ratio > screen_ratio 
-6364:Robot: State changed to: stop 
-6366:Wall: Files have already been created, continuing 
-6368:WallMap: map_ratio > screen_ratio 
-6381:Robot: State changed to: stop 
-6382:WallMap: map_ratio > screen_ratio 
-6398:Robot: State changed to: stop 
-6400:Wall: Files have already been created, continuing 
-6403:Wall: Files have already been created, continuing 
-6403:WallMap: map_ratio > screen_ratio 
-6414:Robot: State changed to: stop 
-6415:WallMap: map_ratio > screen_ratio 
-6431:Robot: State changed to: stop 
-6435:Wall: Files have already been created, continuing 
-6436:WallMap: map_ratio > screen_ratio 
-6448:Robot: State changed to: stop 
-6448:WallMap: map_ratio > screen_ratio 
-6465:Robot: State changed to: stop 
-6469:Wall: Files have already been created, continuing 
-6469:WallMap: map_ratio > screen_ratio 
-6482:Robot: State changed to: stop 
-6482:WallMap: map_ratio > screen_ratio 
-6498:Robot: State changed to: stop 
-6501:Wall: Files have already been created, continuing 
-6503:Wall: Files have already been created, continuing 
-6503:WallMap: map_ratio > screen_ratio 
-6514:Robot: State changed to: stop 
-6514:WallMap: map_ratio > screen_ratio 
-6531:Robot: State changed to: stop 
-6535:Wall: Files have already been created, continuing 
-6536:WallMap: map_ratio > screen_ratio 
-6547:Robot: State changed to: stop 
-6547:WallMap: map_ratio > screen_ratio 
-6563:Robot: State changed to: stop 
-6568:WallMap: map_ratio > screen_ratio 
-6580:Robot: State changed to: stop 
-6581:WallMap: map_ratio > screen_ratio 
-6597:Robot: State changed to: stop 
-6599:Wall: Files have already been created, continuing 
-6601:Wall: Files have already been created, continuing 
-6602:WallMap: map_ratio > screen_ratio 
-6613:Robot: State changed to: stop 
-6614:WallMap: map_ratio > screen_ratio 
-6630:Robot: State changed to: stop 
-6633:Wall: Files have already been created, continuing 
-6635:WallMap: map_ratio > screen_ratio 
-6646:Robot: State changed to: stop 
-6646:WallMap: map_ratio > screen_ratio 
-6663:Robot: State changed to: stop 
-6666:Wall: Files have already been created, continuing 
-6668:Wall: Files have already been created, continuing 
-6669:WallMap: map_ratio > screen_ratio 
-6678:Robot: State changed to: stop 
-6679:WallMap: map_ratio > screen_ratio 
-6696:Robot: State changed to: stop 
-6698:Wall: Files have already been created, continuing 
-6701:Wall: Files have already been created, continuing 
-6701:WallMap: map_ratio > screen_ratio 
-6712:Robot: State changed to: stop 
-6712:WallMap: map_ratio > screen_ratio 
-6729:Robot: State changed to: stop 
-6731:Wall: Files have already been created, continuing 
-6734:Wall: Files have already been created, continuing 
-6734:WallMap: map_ratio > screen_ratio 
-6746:Robot: State changed to: stop 
-6746:WallMap: map_ratio > screen_ratio 
-6761:Robot: State changed to: stop 
-6767:WallMap: map_ratio > screen_ratio 
-6777:Robot: State changed to: stop 
-6778:WallMap: map_ratio > screen_ratio 
-6793:Robot: State changed to: stop 
-6796:Wall: Files have already been created, continuing 
-6798:WallMap: map_ratio > screen_ratio 
-6809:Robot: State changed to: stop 
-6810:WallMap: map_ratio > screen_ratio 
-6826:Robot: State changed to: stop 
-6829:Wall: Files have already been created, continuing 
-6831:Wall: Files have already been created, continuing 
-6831:WallMap: map_ratio > screen_ratio 
-6842:Robot: State changed to: stop 
-6843:WallMap: map_ratio > screen_ratio 
-6859:Robot: State changed to: stop 
-6863:Wall: Files have already been created, continuing 
-6864:WallMap: map_ratio > screen_ratio 
-6875:Robot: State changed to: stop 
-6875:WallMap: map_ratio > screen_ratio 
-6892:Robot: State changed to: stop 
-6895:Wall: Files have already been created, continuing 
-6897:WallMap: map_ratio > screen_ratio 
-6908:Robot: State changed to: stop 
-6909:WallMap: map_ratio > screen_ratio 
-6924:Robot: State changed to: stop 
-6927:Wall: Files have already been created, continuing 
-6929:Wall: Files have already been created, continuing 
-6929:WallMap: map_ratio > screen_ratio 
-6942:Robot: State changed to: stop 
-6942:WallMap: map_ratio > screen_ratio 
-6959:Robot: State changed to: stop 
-6964:WallMap: map_ratio > screen_ratio 
-6974:Robot: State changed to: stop 
-6975:WallMap: map_ratio > screen_ratio 
-6991:Robot: State changed to: stop 
-6993:Wall: Files have already been created, continuing 
-6996:Wall: Files have already been created, continuing 
-6996:WallMap: map_ratio > screen_ratio 
-7007:Robot: State changed to: stop 
-7007:WallMap: map_ratio > screen_ratio 
-7023:Robot: State changed to: stop 
-7026:Wall: Files have already been created, continuing 
-7028:Wall: Files have already been created, continuing 
-7028:WallMap: map_ratio > screen_ratio 
-7039:Robot: State changed to: stop 
-7039:WallMap: map_ratio > screen_ratio 
-7056:Robot: State changed to: stop 
-7058:Wall: Files have already been created, continuing 
-7060:WallMap: map_ratio > screen_ratio 
-7072:Robot: State changed to: stop 
-7072:WallMap: map_ratio > screen_ratio 
-7088:Robot: State changed to: stop 
-7093:WallMap: map_ratio > screen_ratio 
-7104:Robot: State changed to: stop 
-7104:WallMap: map_ratio > screen_ratio 
-7120:Robot: State changed to: stop 
-7126:WallMap: map_ratio > screen_ratio 
-7137:Robot: State changed to: stop 
-7137:WallMap: map_ratio > screen_ratio 
-7153:Robot: State changed to: stop 
-7157:WallMap: map_ratio > screen_ratio 
-7170:Robot: State changed to: stop 
-7170:WallMap: map_ratio > screen_ratio 
-7186:Robot: State changed to: stop 
-7190:WallMap: map_ratio > screen_ratio 
-7202:Robot: State changed to: stop 
-7202:WallMap: map_ratio > screen_ratio 
-7219:Robot: State changed to: stop 
-7221:Wall: Files have already been created, continuing 
-7224:WallMap: map_ratio > screen_ratio 
-7236:Robot: State changed to: stop 
-7236:WallMap: map_ratio > screen_ratio 
-7253:Robot: State changed to: stop 
-7258:Wall: Files have already been created, continuing 
-7258:WallMap: map_ratio > screen_ratio 
-7268:Robot: State changed to: stop 
-7269:WallMap: map_ratio > screen_ratio 
-7285:Robot: State changed to: stop 
-7288:Wall: Files have already been created, continuing 
-7290:Wall: Files have already been created, continuing 
-7290:WallMap: map_ratio > screen_ratio 
-7301:Robot: State changed to: stop 
-7302:WallMap: map_ratio > screen_ratio 
-7317:Robot: State changed to: stop 
-7320:Wall: Files have already been created, continuing 
-7322:WallMap: map_ratio > screen_ratio 
-7334:Robot: State changed to: stop 
-7334:WallMap: map_ratio > screen_ratio 
-7350:Robot: State changed to: stop 
-7352:Wall: Files have already been created, continuing 
-7355:WallMap: map_ratio > screen_ratio 
-7366:Robot: State changed to: stop 
-7367:WallMap: map_ratio > screen_ratio 
-7382:Robot: State changed to: stop 
-7385:Wall: Files have already been created, continuing 
-7387:Wall: Files have already been created, continuing 
-7388:WallMap: map_ratio > screen_ratio 
-7399:Robot: State changed to: stop 
-7399:WallMap: map_ratio > screen_ratio 
-7416:Robot: State changed to: stop 
-7421:Wall: Files have already been created, continuing 
-7421:WallMap: map_ratio > screen_ratio 
-7432:Robot: State changed to: stop 
-7433:WallMap: map_ratio > screen_ratio 
-7449:Robot: State changed to: stop 
-7452:Wall: Files have already been created, continuing 
-7454:Wall: Files have already been created, continuing 
-7455:WallMap: map_ratio > screen_ratio 
-7466:Robot: State changed to: stop 
-7466:WallMap: map_ratio > screen_ratio 
-7482:Robot: State changed to: stop 
-7487:WallMap: map_ratio > screen_ratio 
-7498:Robot: State changed to: stop 
-7499:WallMap: map_ratio > screen_ratio 
-7515:Robot: State changed to: stop 
-7519:Wall: Files have already been created, continuing 
-7520:WallMap: map_ratio > screen_ratio 
-7531:Robot: State changed to: stop 
-7531:WallMap: map_ratio > screen_ratio 
-7547:Robot: State changed to: stop 
-7551:Wall: Files have already been created, continuing 
-7553:Wall: Files have already been created, continuing 
-7553:WallMap: map_ratio > screen_ratio 
-7564:Robot: State changed to: stop 
-7565:WallMap: map_ratio > screen_ratio 
-7581:Robot: State changed to: stop 
-7585:Wall: Files have already been created, continuing 
-7587:WallMap: map_ratio > screen_ratio 
-7598:Robot: State changed to: stop 
-7598:WallMap: map_ratio > screen_ratio 
-7615:Robot: State changed to: stop 
-7617:Wall: Files have already been created, continuing 
-7620:Wall: Files have already been created, continuing 
-7620:WallMap: map_ratio > screen_ratio 
-7631:Robot: State changed to: stop 
-7631:WallMap: map_ratio > screen_ratio 
-7647:Robot: State changed to: stop 
-7650:Wall: Files have already been created, continuing 
-7652:Wall: Files have already been created, continuing 
-7652:WallMap: map_ratio > screen_ratio 
-7663:Robot: State changed to: stop 
-7663:WallMap: map_ratio > screen_ratio 
-7680:Robot: State changed to: stop 
-7683:Wall: Files have already been created, continuing 
-7686:WallMap: map_ratio > screen_ratio 
-7696:Robot: State changed to: stop 
-7696:WallMap: map_ratio > screen_ratio 
-7713:Robot: State changed to: stop 
-7715:Wall: Files have already been created, continuing 
-7718:WallMap: map_ratio > screen_ratio 
-7729:Robot: State changed to: stop 
-7729:WallMap: map_ratio > screen_ratio 
-7746:Robot: State changed to: stop 
-7750:Wall: Files have already been created, continuing 
-7753:Wall: Files have already been created, continuing 
-7753:WallMap: map_ratio > screen_ratio 
-7762:Robot: State changed to: stop 
-7763:WallMap: map_ratio > screen_ratio 
-7780:Robot: State changed to: stop 
-7785:Wall: Files have already been created, continuing 
-7786:WallMap: map_ratio > screen_ratio 
-7795:Robot: State changed to: stop 
-7796:WallMap: map_ratio > screen_ratio 
-7812:Robot: State changed to: stop 
-7815:Wall: Files have already been created, continuing 
-7817:Wall: Files have already been created, continuing 
-7818:WallMap: map_ratio > screen_ratio 
-7828:Robot: State changed to: stop 
-7829:WallMap: map_ratio > screen_ratio 
-7846:Robot: State changed to: stop 
-7848:Wall: Files have already been created, continuing 
-7851:Wall: Files have already been created, continuing 
-7851:WallMap: map_ratio > screen_ratio 
-7863:Robot: State changed to: stop 
-7863:WallMap: map_ratio > screen_ratio 
-7879:Robot: State changed to: stop 
-7882:Wall: Files have already been created, continuing 
-7884:WallMap: map_ratio > screen_ratio 
-7895:Robot: State changed to: stop 
-7895:WallMap: map_ratio > screen_ratio 
-7912:Robot: State changed to: stop 
-7917:WallMap: map_ratio > screen_ratio 
-7928:Robot: State changed to: stop 
-7928:WallMap: map_ratio > screen_ratio 
-7944:Robot: State changed to: stop 
-7947:Wall: Files have already been created, continuing 
-7949:WallMap: map_ratio > screen_ratio 
-7961:Robot: State changed to: stop 
-7961:WallMap: map_ratio > screen_ratio 
-7978:Robot: State changed to: stop 
-7980:Wall: Files have already been created, continuing 
-7982:Wall: Files have already been created, continuing 
-7982:WallMap: map_ratio > screen_ratio 
-7994:Robot: State changed to: stop 
-7994:WallMap: map_ratio > screen_ratio 
-8010:Robot: State changed to: stop 
-8013:Wall: Files have already been created, continuing 
-8015:WallMap: map_ratio > screen_ratio 
-8027:Robot: State changed to: stop 
-8028:WallMap: map_ratio > screen_ratio 
-8044:Robot: State changed to: stop 
-8047:Wall: Files have already been created, continuing 
-8049:WallMap: map_ratio > screen_ratio 
-8062:Robot: State changed to: stop 
-8062:WallMap: map_ratio > screen_ratio 
-8078:Robot: State changed to: stop 
-8080:Wall: Files have already been created, continuing 
-8082:WallMap: map_ratio > screen_ratio 
-8094:Robot: State changed to: stop 
-8095:WallMap: map_ratio > screen_ratio 
-8112:Robot: State changed to: stop 
-8117:WallMap: map_ratio > screen_ratio 
-8128:Robot: State changed to: stop 
-8129:WallMap: map_ratio > screen_ratio 
-8145:Robot: State changed to: stop 
-8149:Wall: Files have already been created, continuing 
-8151:Wall: Files have already been created, continuing 
-8152:WallMap: map_ratio > screen_ratio 
-8161:Robot: State changed to: stop 
-8161:WallMap: map_ratio > screen_ratio 
-8177:Robot: State changed to: stop 
-8179:Wall: Files have already been created, continuing 
-8182:WallMap: map_ratio > screen_ratio 
-8193:Robot: State changed to: stop 
-8193:WallMap: map_ratio > screen_ratio 
-8209:Robot: State changed to: stop 
-8214:WallMap: map_ratio > screen_ratio 
-8225:Robot: State changed to: stop 
-8225:WallMap: map_ratio > screen_ratio 
-8242:Robot: State changed to: stop 
-8246:WallMap: map_ratio > screen_ratio 
-8258:Robot: State changed to: stop 
-8259:WallMap: map_ratio > screen_ratio 
-8274:Robot: State changed to: stop 
-8278:Wall: Files have already been created, continuing 
-8278:WallMap: map_ratio > screen_ratio 
-8291:Robot: State changed to: stop 
-8291:WallMap: map_ratio > screen_ratio 
-8308:Robot: State changed to: stop 
-8313:WallMap: map_ratio > screen_ratio 
-8324:Robot: State changed to: stop 
-8324:WallMap: map_ratio > screen_ratio 
-8341:Robot: State changed to: stop 
-8343:Wall: Files have already been created, continuing 
-8345:WallMap: map_ratio > screen_ratio 
-8357:Robot: State changed to: stop 
-8357:WallMap: map_ratio > screen_ratio 
-8373:Robot: State changed to: stop 
-8377:WallMap: map_ratio > screen_ratio 
-8390:Robot: State changed to: stop 
-8390:WallMap: map_ratio > screen_ratio 
-8407:Robot: State changed to: stop 
-8412:Wall: Files have already been created, continuing 
-8412:WallMap: map_ratio > screen_ratio 
-8424:Robot: State changed to: stop 
-8425:WallMap: map_ratio > screen_ratio 
-8440:Robot: State changed to: stop 
-8443:Wall: Files have already been created, continuing 
-8445:WallMap: map_ratio > screen_ratio 
-8457:Robot: State changed to: stop 
-8458:WallMap: map_ratio > screen_ratio 
-8473:Robot: State changed to: stop 
-8476:Wall: Files have already been created, continuing 
-8478:Wall: Files have already been created, continuing 
-8478:WallMap: map_ratio > screen_ratio 
-8490:Robot: State changed to: stop 
-8490:WallMap: map_ratio > screen_ratio 
-8506:Robot: State changed to: stop 
-8508:Wall: Files have already been created, continuing 
-8510:Wall: Files have already been created, continuing 
-8510:WallMap: map_ratio > screen_ratio 
-8523:Robot: State changed to: stop 
-8524:WallMap: map_ratio > screen_ratio 
-8540:Robot: State changed to: stop 
-8545:Wall: Files have already been created, continuing 
-8545:WallMap: map_ratio > screen_ratio 
-8556:Robot: State changed to: stop 
-8557:WallMap: map_ratio > screen_ratio 
-8573:Robot: State changed to: stop 
-8577:Wall: Files have already been created, continuing 
-8577:WallMap: map_ratio > screen_ratio 
-8589:Robot: State changed to: stop 
-8590:WallMap: map_ratio > screen_ratio 
-8606:Robot: State changed to: stop 
-8608:Wall: Files have already been created, continuing 
-8611:WallMap: map_ratio > screen_ratio 
-8622:Robot: State changed to: stop 
-8623:WallMap: map_ratio > screen_ratio 
-8638:Robot: State changed to: stop 
-8642:Wall: Files have already been created, continuing 
-8642:WallMap: map_ratio > screen_ratio 
-8654:Robot: State changed to: stop 
-8655:WallMap: map_ratio > screen_ratio 
-8671:Robot: State changed to: stop 
-8675:Wall: Files have already been created, continuing 
-8675:WallMap: map_ratio > screen_ratio 
-8688:Robot: State changed to: stop 
-8688:WallMap: map_ratio > screen_ratio 
-8704:Robot: State changed to: stop 
-8708:Wall: Files have already been created, continuing 
-8709:WallMap: map_ratio > screen_ratio 
-8722:Robot: State changed to: stop 
-8722:WallMap: map_ratio > screen_ratio 
-8738:Robot: State changed to: stop 
-8740:Wall: Files have already been created, continuing 
-8742:Wall: Files have already been created, continuing 
-8743:WallMap: map_ratio > screen_ratio 
-8755:Robot: State changed to: stop 
-8755:WallMap: map_ratio > screen_ratio 
-8771:Robot: State changed to: stop 
-8775:WallMap: map_ratio > screen_ratio 
+5963:WallMap: map_ratio > screen_ratio 
+5980:Robot: State changed to: stop 
+5982:Wall: Files have already been created, continuing 
+5983:Wall: Files have already been created, continuing 
+5983:WallMap: map_ratio > screen_ratio 
+5997:Robot: State changed to: stop 
+5997:WallMap: map_ratio > screen_ratio 
+6014:Robot: State changed to: stop 
+6016:Wall: Files have already been created, continuing 
+6018:Wall: Files have already been created, continuing 
+6018:WallMap: map_ratio > screen_ratio 
+6030:Robot: State changed to: stop 
+6030:WallMap: map_ratio > screen_ratio 
+6047:Robot: State changed to: stop 
+6051:Wall: Files have already been created, continuing 
+6051:WallMap: map_ratio > screen_ratio 
+6063:Robot: State changed to: stop 
+6063:WallMap: map_ratio > screen_ratio 
+6079:Robot: State changed to: stop 
+6081:Wall: Files have already been created, continuing 
+6083:WallMap: map_ratio > screen_ratio 
+6096:Robot: State changed to: stop 
+6096:WallMap: map_ratio > screen_ratio 
+6112:Robot: State changed to: stop 
+6114:Wall: Files have already been created, continuing 
+6116:Wall: Files have already been created, continuing 
+6117:WallMap: map_ratio > screen_ratio 
+6129:Robot: State changed to: stop 
+6129:WallMap: map_ratio > screen_ratio 
+6146:Robot: State changed to: stop 
+6150:WallMap: map_ratio > screen_ratio 
+6162:Robot: State changed to: stop 
+6162:WallMap: map_ratio > screen_ratio 
+6177:Robot: State changed to: stop 
+6179:Wall: Files have already been created, continuing 
+6181:Wall: Files have already been created, continuing 
+6181:WallMap: map_ratio > screen_ratio 
+6194:Robot: State changed to: stop 
+6195:WallMap: map_ratio > screen_ratio 
+6212:Robot: State changed to: stop 
+6215:Wall: Files have already been created, continuing 
+6216:WallMap: map_ratio > screen_ratio 
+6228:Robot: State changed to: stop 
+6228:WallMap: map_ratio > screen_ratio 
+6245:Robot: State changed to: stop 
+6248:Wall: Files have already been created, continuing 
+6249:WallMap: map_ratio > screen_ratio 
+6261:Robot: State changed to: stop 
+6261:WallMap: map_ratio > screen_ratio 
+6277:Robot: State changed to: stop 
+6279:Wall: Files have already been created, continuing 
+6281:WallMap: map_ratio > screen_ratio 
+6293:Robot: State changed to: stop 
+6294:WallMap: map_ratio > screen_ratio 
+6310:Robot: State changed to: stop 
+6314:WallMap: map_ratio > screen_ratio 
+6326:Robot: State changed to: stop 
+6326:WallMap: map_ratio > screen_ratio 
+6341:Robot: State changed to: stop 
+6343:Wall: Files have already been created, continuing 
+6346:Wall: Files have already been created, continuing 
+6346:WallMap: map_ratio > screen_ratio 
+6358:Robot: State changed to: stop 
+6358:WallMap: map_ratio > screen_ratio 
+6374:Robot: State changed to: stop 
+6376:Wall: Files have already been created, continuing 
+6378:WallMap: map_ratio > screen_ratio 
+6391:Robot: State changed to: stop 
+6391:WallMap: map_ratio > screen_ratio 
+6408:Robot: State changed to: stop 
+6412:WallMap: map_ratio > screen_ratio 
+6425:Robot: State changed to: stop 
+6425:WallMap: map_ratio > screen_ratio 
+6441:Robot: State changed to: stop 
+6444:Wall: Files have already been created, continuing 
+6446:WallMap: map_ratio > screen_ratio 
+6458:Robot: State changed to: stop 
+6459:WallMap: map_ratio > screen_ratio 
+6475:Robot: State changed to: stop 
+6477:Wall: Files have already been created, continuing 
+6479:Wall: Files have already been created, continuing 
+6479:WallMap: map_ratio > screen_ratio 
+6492:Robot: State changed to: stop 
+6492:WallMap: map_ratio > screen_ratio 
+6508:Robot: State changed to: stop 
+6510:Wall: Files have already been created, continuing 
+6512:Wall: Files have already been created, continuing 
+6513:WallMap: map_ratio > screen_ratio 
+6524:Robot: State changed to: stop 
+6524:WallMap: map_ratio > screen_ratio 
+6540:Robot: State changed to: stop 
+6542:Wall: Files have already been created, continuing 
+6545:WallMap: map_ratio > screen_ratio 
+6557:Robot: State changed to: stop 
+6557:WallMap: map_ratio > screen_ratio 
+6572:Robot: State changed to: stop 
+6574:Wall: Files have already been created, continuing 
+6577:WallMap: map_ratio > screen_ratio 
+6589:Robot: State changed to: stop 
+6590:WallMap: map_ratio > screen_ratio 
+6606:Robot: State changed to: stop 
+6610:WallMap: map_ratio > screen_ratio 
+6622:Robot: State changed to: stop 
+6623:WallMap: map_ratio > screen_ratio 
+6639:Robot: State changed to: stop 
+6641:Wall: Files have already been created, continuing 
+6643:Wall: Files have already been created, continuing 
+6644:WallMap: map_ratio > screen_ratio 
+6656:Robot: State changed to: stop 
+6656:WallMap: map_ratio > screen_ratio 
+6673:Robot: State changed to: stop 
+6677:Wall: Files have already been created, continuing 
+6677:WallMap: map_ratio > screen_ratio 
+6689:Robot: State changed to: stop 
+6689:WallMap: map_ratio > screen_ratio 
+6705:Robot: State changed to: stop 
+6710:WallMap: map_ratio > screen_ratio 
+6721:Robot: State changed to: stop 
+6722:WallMap: map_ratio > screen_ratio 
+6739:Robot: State changed to: stop 
+6743:WallMap: map_ratio > screen_ratio 
+6755:Robot: State changed to: stop 
+6755:WallMap: map_ratio > screen_ratio 
+6770:Robot: State changed to: stop 
+6774:Wall: Files have already been created, continuing 
+6775:WallMap: map_ratio > screen_ratio 
+6787:Robot: State changed to: stop 
+6787:WallMap: map_ratio > screen_ratio 
+6803:Robot: State changed to: stop 
+6805:Wall: Files have already been created, continuing 
+6807:WallMap: map_ratio > screen_ratio 
+6821:Robot: State changed to: stop 
+6821:WallMap: map_ratio > screen_ratio 
+6837:Robot: State changed to: stop 
+6839:Wall: Files have already been created, continuing 
+6841:WallMap: map_ratio > screen_ratio 
+6853:Robot: State changed to: stop 
+6853:WallMap: map_ratio > screen_ratio 
+6868:Robot: State changed to: stop 
+6872:Wall: Files have already been created, continuing 
+6872:WallMap: map_ratio > screen_ratio 
+6885:Robot: State changed to: stop 
+6885:WallMap: map_ratio > screen_ratio 
+6900:Robot: State changed to: stop 
+6902:Wall: Files have already been created, continuing 
+6904:WallMap: map_ratio > screen_ratio 
+6917:Robot: State changed to: stop 
+6917:WallMap: map_ratio > screen_ratio 
+6934:Robot: State changed to: stop 
+6936:Wall: Files have already been created, continuing 
+6938:WallMap: map_ratio > screen_ratio 
+6950:Robot: State changed to: stop 
+6951:WallMap: map_ratio > screen_ratio 
+6967:Robot: State changed to: stop 
+6971:WallMap: map_ratio > screen_ratio 
+6983:Robot: State changed to: stop 
+6983:WallMap: map_ratio > screen_ratio 
+6999:Robot: State changed to: stop 
+7003:Wall: Files have already been created, continuing 
+7003:WallMap: map_ratio > screen_ratio 
+7016:Robot: State changed to: stop 
+7016:WallMap: map_ratio > screen_ratio 
+7032:Robot: State changed to: stop 
+7034:Wall: Files have already been created, continuing 
+7036:Wall: Files have already been created, continuing 
+7036:WallMap: map_ratio > screen_ratio 
+7048:Robot: State changed to: stop 
+7048:WallMap: map_ratio > screen_ratio 
+7064:Robot: State changed to: stop 
+7068:WallMap: map_ratio > screen_ratio 
+7081:Robot: State changed to: stop 
+7081:WallMap: map_ratio > screen_ratio 
+7097:Robot: State changed to: stop 
+7101:Wall: Files have already been created, continuing 
+7101:WallMap: map_ratio > screen_ratio 
+7112:Robot: State changed to: stop 
+7112:WallMap: map_ratio > screen_ratio 
+7129:Robot: State changed to: stop 
+7133:Wall: Files have already been created, continuing 
+7133:WallMap: map_ratio > screen_ratio 
+7146:Robot: State changed to: stop 
+7146:WallMap: map_ratio > screen_ratio 
+7162:Robot: State changed to: stop 
+7164:Wall: Files have already been created, continuing 
+7167:WallMap: map_ratio > screen_ratio 
+7179:Robot: State changed to: stop 
+7179:WallMap: map_ratio > screen_ratio 
+7195:Robot: State changed to: stop 
+7197:Wall: Files have already been created, continuing 
+7199:Wall: Files have already been created, continuing 
+7200:WallMap: map_ratio > screen_ratio 
+7210:Robot: State changed to: stop 
+7211:WallMap: map_ratio > screen_ratio 
+7227:Robot: State changed to: stop 
+7229:Wall: Files have already been created, continuing 
+7232:WallMap: map_ratio > screen_ratio 
+7244:Robot: State changed to: stop 
+7244:WallMap: map_ratio > screen_ratio 
+7260:Robot: State changed to: stop 
+7262:Wall: Files have already been created, continuing 
+7264:Wall: Files have already been created, continuing 
+7265:WallMap: map_ratio > screen_ratio 
+7277:Robot: State changed to: stop 
+7277:WallMap: map_ratio > screen_ratio 
+7294:Robot: State changed to: stop 
+7299:WallMap: map_ratio > screen_ratio 
+7310:Robot: State changed to: stop 
+7310:WallMap: map_ratio > screen_ratio 
+7327:Robot: State changed to: stop 
+7331:WallMap: map_ratio > screen_ratio 
+7343:Robot: State changed to: stop 
+7343:WallMap: map_ratio > screen_ratio 
+7360:Robot: State changed to: stop 
+7362:Wall: Files have already been created, continuing 
+7365:WallMap: map_ratio > screen_ratio 
+7377:Robot: State changed to: stop 
+7377:WallMap: map_ratio > screen_ratio 
+7394:Robot: State changed to: stop 
+7398:WallMap: map_ratio > screen_ratio 
+7410:Robot: State changed to: stop 
+7410:WallMap: map_ratio > screen_ratio 
+7425:Robot: State changed to: stop 
+7430:Wall: Files have already been created, continuing 
+7430:WallMap: map_ratio > screen_ratio 
+7441:Robot: State changed to: stop 
+7442:WallMap: map_ratio > screen_ratio 
+7459:Robot: State changed to: stop 
+7461:Wall: Files have already been created, continuing 
+7463:Wall: Files have already been created, continuing 
+7463:WallMap: map_ratio > screen_ratio 
+7475:Robot: State changed to: stop 
+7475:WallMap: map_ratio > screen_ratio 
+7492:Robot: State changed to: stop 
+7494:Wall: Files have already been created, continuing 
+7496:Wall: Files have already been created, continuing 
+7497:WallMap: map_ratio > screen_ratio 
+7508:Robot: State changed to: stop 
+7508:WallMap: map_ratio > screen_ratio 
+7525:Robot: State changed to: stop 
+7528:WallMap: map_ratio > screen_ratio 
+7541:Robot: State changed to: stop 
+7542:WallMap: map_ratio > screen_ratio 
+7559:Robot: State changed to: stop 
+7563:WallMap: map_ratio > screen_ratio 
+7574:Robot: State changed to: stop 
+7575:WallMap: map_ratio > screen_ratio 
+7591:Robot: State changed to: stop 
+7595:WallMap: map_ratio > screen_ratio 
+7607:Robot: State changed to: stop 
+7607:WallMap: map_ratio > screen_ratio 
+7624:Robot: State changed to: stop 
+7626:Wall: Files have already been created, continuing 
+7629:WallMap: map_ratio > screen_ratio 
+7640:Robot: State changed to: stop 
+7640:WallMap: map_ratio > screen_ratio 
+7656:Robot: State changed to: stop 
+7661:WallMap: map_ratio > screen_ratio 
+7673:Robot: State changed to: stop 
+7673:WallMap: map_ratio > screen_ratio 
+7689:Robot: State changed to: stop 
+7693:Wall: Files have already been created, continuing 
+7694:WallMap: map_ratio > screen_ratio 
+7704:Robot: State changed to: stop 
+7705:WallMap: map_ratio > screen_ratio 
+7721:Robot: State changed to: stop 
+7725:WallMap: map_ratio > screen_ratio 
+7738:Robot: State changed to: stop 
+7739:WallMap: map_ratio > screen_ratio 
+7755:Robot: State changed to: stop 
+7760:WallMap: map_ratio > screen_ratio 
+7772:Robot: State changed to: stop 
+7772:WallMap: map_ratio > screen_ratio 
+7789:Robot: State changed to: stop 
+7791:Wall: Files have already been created, continuing 
+7794:Wall: Files have already been created, continuing 
+7794:WallMap: map_ratio > screen_ratio 
+7805:Robot: State changed to: stop 
+7805:WallMap: map_ratio > screen_ratio 
+7821:Robot: State changed to: stop 
+7825:Wall: Files have already been created, continuing 
+7825:WallMap: map_ratio > screen_ratio 
+7837:Robot: State changed to: stop 
+7838:WallMap: map_ratio > screen_ratio 
+7853:Robot: State changed to: stop 
+7858:Wall: Files have already been created, continuing 
+7858:WallMap: map_ratio > screen_ratio 
+7870:Robot: State changed to: stop 
+7871:WallMap: map_ratio > screen_ratio 
+7887:Robot: State changed to: stop 
+7891:WallMap: map_ratio > screen_ratio 
+7904:Robot: State changed to: stop 
+7905:WallMap: map_ratio > screen_ratio 
+7920:Robot: State changed to: stop 
+7923:Wall: Files have already been created, continuing 
+7926:Wall: Files have already been created, continuing 
+7926:WallMap: map_ratio > screen_ratio 
+7936:Robot: State changed to: stop 
+7937:WallMap: map_ratio > screen_ratio 
+7953:Robot: State changed to: stop 
+7957:Wall: Files have already been created, continuing 
+7958:WallMap: map_ratio > screen_ratio 
+7969:Robot: State changed to: stop 
+7969:WallMap: map_ratio > screen_ratio 
+7987:Robot: State changed to: stop 
+7989:Wall: Files have already been created, continuing 
+7991:Wall: Files have already been created, continuing 
+7992:WallMap: map_ratio > screen_ratio 
+8003:Robot: State changed to: stop 
+8003:WallMap: map_ratio > screen_ratio 
+8019:Robot: State changed to: stop 
+8021:Wall: Files have already been created, continuing 
+8024:Wall: Files have already been created, continuing 
+8024:WallMap: map_ratio > screen_ratio 
+8035:Robot: State changed to: stop 
+8035:WallMap: map_ratio > screen_ratio 
+8052:Robot: State changed to: stop 
+8056:Wall: Files have already been created, continuing 
+8056:WallMap: map_ratio > screen_ratio 
+8068:Robot: State changed to: stop 
+8069:WallMap: map_ratio > screen_ratio 
+8085:Robot: State changed to: stop 
+8088:Wall: Files have already been created, continuing 
+8088:WallMap: map_ratio > screen_ratio 
+8103:Robot: State changed to: stop 
+8103:WallMap: map_ratio > screen_ratio 
+8120:Robot: State changed to: stop 
+8122:Wall: Files have already been created, continuing 
+8125:WallMap: map_ratio > screen_ratio 
+8136:Robot: State changed to: stop 
+8136:WallMap: map_ratio > screen_ratio 
+8151:Robot: State changed to: stop 
+8154:Wall: Files have already been created, continuing 
+8156:Wall: Files have already been created, continuing 
+8156:WallMap: map_ratio > screen_ratio 
+8167:Robot: State changed to: stop 
+8167:WallMap: map_ratio > screen_ratio 
+8185:Robot: State changed to: stop 
+8187:Wall: Files have already been created, continuing 
+8190:WallMap: map_ratio > screen_ratio 
+8201:Robot: State changed to: stop 
+8201:WallMap: map_ratio > screen_ratio 
+8217:Robot: State changed to: stop 
+8221:WallMap: map_ratio > screen_ratio 
+8233:Robot: State changed to: stop 
+8233:WallMap: map_ratio > screen_ratio 
+8249:Robot: State changed to: stop 
+8251:Wall: Files have already been created, continuing 
+8253:Wall: Files have already been created, continuing 
+8253:WallMap: map_ratio > screen_ratio 
+8265:Robot: State changed to: stop 
+8265:WallMap: map_ratio > screen_ratio 
+8282:Robot: State changed to: stop 
+8286:Wall: Files have already been created, continuing 
+8287:WallMap: map_ratio > screen_ratio 
+8298:Robot: State changed to: stop 
+8299:WallMap: map_ratio > screen_ratio 
+8314:Robot: State changed to: stop 
+8318:WallMap: map_ratio > screen_ratio 
+8331:Robot: State changed to: stop 
+8331:WallMap: map_ratio > screen_ratio 
+8347:Robot: State changed to: stop 
+8351:Wall: Files have already been created, continuing 
+8351:WallMap: map_ratio > screen_ratio 
+8363:Robot: State changed to: stop 
+8363:WallMap: map_ratio > screen_ratio 
+8379:Robot: State changed to: stop 
+8383:WallMap: map_ratio > screen_ratio 
+8395:Robot: State changed to: stop 
+8395:WallMap: map_ratio > screen_ratio 
+8412:Robot: State changed to: stop 
+8416:WallMap: map_ratio > screen_ratio 
+8427:Robot: State changed to: stop 
+8428:WallMap: map_ratio > screen_ratio 
+8447:Robot: State changed to: stop 
+8449:Wall: Files have already been created, continuing 
+8451:WallMap: map_ratio > screen_ratio 
+8461:Robot: State changed to: stop 
+8461:WallMap: map_ratio > screen_ratio 
+8477:Robot: State changed to: stop 
+8482:Wall: Files have already been created, continuing 
+8482:WallMap: map_ratio > screen_ratio 
+8493:Robot: State changed to: stop 
+8494:WallMap: map_ratio > screen_ratio 
+8510:Robot: State changed to: stop 
+8515:Wall: Files have already been created, continuing 
+8515:WallMap: map_ratio > screen_ratio 
+8527:Robot: State changed to: stop 
+8528:WallMap: map_ratio > screen_ratio 
+8543:Robot: State changed to: stop 
+8546:Wall: Files have already been created, continuing 
+8548:WallMap: map_ratio > screen_ratio 
+8559:Robot: State changed to: stop 
+8560:WallMap: map_ratio > screen_ratio 
+8576:Robot: State changed to: stop 
+8580:Wall: Files have already been created, continuing 
+8581:WallMap: map_ratio > screen_ratio 
+8593:Robot: State changed to: stop 
+8593:WallMap: map_ratio > screen_ratio 
+8609:Robot: State changed to: stop 
+8613:WallMap: map_ratio > screen_ratio 
+8625:Robot: State changed to: stop 
+8625:WallMap: map_ratio > screen_ratio 
+8641:Robot: State changed to: stop 
+8646:WallMap: map_ratio > screen_ratio 
+8658:Robot: State changed to: stop 
+8658:WallMap: map_ratio > screen_ratio 
+8673:Robot: State changed to: stop 
+8676:Wall: Files have already been created, continuing 
+8678:Wall: Files have already been created, continuing 
+8678:WallMap: map_ratio > screen_ratio 
+8690:Robot: State changed to: stop 
+8691:WallMap: map_ratio > screen_ratio 
+8707:Robot: State changed to: stop 
+8711:WallMap: map_ratio > screen_ratio 
+8723:Robot: State changed to: stop 
+8724:WallMap: map_ratio > screen_ratio 
+8739:Robot: State changed to: stop 
+8744:Wall: Files have already been created, continuing 
+8744:WallMap: map_ratio > screen_ratio 
+8756:Robot: State changed to: stop 
+8757:WallMap: map_ratio > screen_ratio 
+8772:Robot: State changed to: stop 
+8776:WallMap: map_ratio > screen_ratio 
 8788:Robot: State changed to: stop 
-8789:WallMap: map_ratio > screen_ratio 
-8806:Robot: State changed to: stop 
-8811:Wall: Files have already been created, continuing 
-8811:WallMap: map_ratio > screen_ratio 
-8822:Robot: State changed to: stop 
-8823:WallMap: map_ratio > screen_ratio 
+8788:WallMap: map_ratio > screen_ratio 
+8805:Robot: State changed to: stop 
+8810:Wall: Files have already been created, continuing 
+8810:WallMap: map_ratio > screen_ratio 
+8821:Robot: State changed to: stop 
+8821:WallMap: map_ratio > screen_ratio 
 8838:Robot: State changed to: stop 
+8840:Wall: Files have already been created, continuing 
+8843:Wall: Files have already been created, continuing 
 8843:WallMap: map_ratio > screen_ratio 
 8854:Robot: State changed to: stop 
-8854:WallMap: map_ratio > screen_ratio 
+8855:WallMap: map_ratio > screen_ratio 
 8871:Robot: State changed to: stop 
-8875:Wall: Files have already been created, continuing 
+8873:Wall: Files have already been created, continuing 
 8875:WallMap: map_ratio > screen_ratio 
 8887:Robot: State changed to: stop 
 8888:WallMap: map_ratio > screen_ratio 
-8903:Robot: State changed to: stop 
+8904:Robot: State changed to: stop 
+8906:Wall: Files have already been created, continuing 
+8908:Wall: Files have already been created, continuing 
 8908:WallMap: map_ratio > screen_ratio 
-8919:Robot: State changed to: stop 
+8920:Robot: State changed to: stop 
 8920:WallMap: map_ratio > screen_ratio 
-8935:Robot: State changed to: stop 
-8939:Wall: Files have already been created, continuing 
-8939:WallMap: map_ratio > screen_ratio 
-8951:Robot: State changed to: stop 
-8951:WallMap: map_ratio > screen_ratio 
-8967:Robot: State changed to: stop 
-8969:Wall: Files have already been created, continuing 
-8971:Wall: Files have already been created, continuing 
-8971:WallMap: map_ratio > screen_ratio 
-8984:Robot: State changed to: stop 
-8984:WallMap: map_ratio > screen_ratio 
-9001:Robot: State changed to: stop 
-9005:Wall: Files have already been created, continuing 
-9005:WallMap: map_ratio > screen_ratio 
-9017:Robot: State changed to: stop 
+8937:Robot: State changed to: stop 
+8940:Wall: Files have already been created, continuing 
+8942:WallMap: map_ratio > screen_ratio 
+8953:Robot: State changed to: stop 
+8953:WallMap: map_ratio > screen_ratio 
+8969:Robot: State changed to: stop 
+8972:Wall: Files have already been created, continuing 
+8974:Wall: Files have already been created, continuing 
+8974:WallMap: map_ratio > screen_ratio 
+8986:Robot: State changed to: stop 
+8986:WallMap: map_ratio > screen_ratio 
+9002:Robot: State changed to: stop 
+9004:Wall: Files have already been created, continuing 
+9006:Wall: Files have already been created, continuing 
+9007:WallMap: map_ratio > screen_ratio 
+9018:Robot: State changed to: stop 
 9018:WallMap: map_ratio > screen_ratio 
-9033:Robot: State changed to: stop 
-9035:Wall: Files have already been created, continuing 
-9037:WallMap: map_ratio > screen_ratio 
+9034:Robot: State changed to: stop 
+9038:WallMap: map_ratio > screen_ratio 
 9050:Robot: State changed to: stop 
-9050:WallMap: map_ratio > screen_ratio 
-9066:Robot: State changed to: stop 
-9070:WallMap: map_ratio > screen_ratio 
-9081:Robot: State changed to: stop 
-9082:WallMap: map_ratio > screen_ratio 
-9099:Robot: State changed to: stop 
-9103:Wall: Files have already been created, continuing 
-9103:WallMap: map_ratio > screen_ratio 
-9116:Robot: State changed to: stop 
-9116:WallMap: map_ratio > screen_ratio 
+9051:WallMap: map_ratio > screen_ratio 
+9067:Robot: State changed to: stop 
+9069:Wall: Files have already been created, continuing 
+9071:Wall: Files have already been created, continuing 
+9072:WallMap: map_ratio > screen_ratio 
+9084:Robot: State changed to: stop 
+9084:WallMap: map_ratio > screen_ratio 
+9101:Robot: State changed to: stop 
+9105:WallMap: map_ratio > screen_ratio 
+9117:Robot: State changed to: stop 
+9117:WallMap: map_ratio > screen_ratio 
 9132:Robot: State changed to: stop 
+9134:Wall: Files have already been created, continuing 
+9136:Wall: Files have already been created, continuing 
 9136:WallMap: map_ratio > screen_ratio 
-9148:Robot: State changed to: stop 
-9148:WallMap: map_ratio > screen_ratio 
+9149:Robot: State changed to: stop 
+9150:WallMap: map_ratio > screen_ratio 
 9165:Robot: State changed to: stop 
 9167:Wall: Files have already been created, continuing 
-9169:Wall: Files have already been created, continuing 
-9169:WallMap: map_ratio > screen_ratio 
+9170:Wall: Files have already been created, continuing 
+9170:WallMap: map_ratio > screen_ratio 
 9181:Robot: State changed to: stop 
-9181:WallMap: map_ratio > screen_ratio 
-9197:Robot: State changed to: stop 
-9201:Wall: Files have already been created, continuing 
-9202:WallMap: map_ratio > screen_ratio 
+9182:WallMap: map_ratio > screen_ratio 
+9198:Robot: State changed to: stop 
+9200:Wall: Files have already been created, continuing 
+9202:Wall: Files have already been created, continuing 
+9203:WallMap: map_ratio > screen_ratio 
 9214:Robot: State changed to: stop 
-9214:WallMap: map_ratio > screen_ratio 
-9230:Robot: State changed to: stop 
-9232:Wall: Files have already been created, continuing 
-9234:Wall: Files have already been created, continuing 
-9234:WallMap: map_ratio > screen_ratio 
-9246:Robot: State changed to: stop 
-9246:WallMap: map_ratio > screen_ratio 
-9262:Robot: State changed to: stop 
-9264:Wall: Files have already been created, continuing 
-9266:WallMap: map_ratio > screen_ratio 
-9277:Robot: State changed to: stop 
-9278:WallMap: map_ratio > screen_ratio 
-9294:Robot: State changed to: stop 
-9297:Wall: Files have already been created, continuing 
-9299:WallMap: map_ratio > screen_ratio 
-9311:Robot: State changed to: stop 
+9215:WallMap: map_ratio > screen_ratio 
+9231:Robot: State changed to: stop 
+9235:WallMap: map_ratio > screen_ratio 
+9248:Robot: State changed to: stop 
+9248:WallMap: map_ratio > screen_ratio 
+9264:Robot: State changed to: stop 
+9268:WallMap: map_ratio > screen_ratio 
+9280:Robot: State changed to: stop 
+9280:WallMap: map_ratio > screen_ratio 
+9296:Robot: State changed to: stop 
+9300:WallMap: map_ratio > screen_ratio 
+9312:Robot: State changed to: stop 
 9312:WallMap: map_ratio > screen_ratio 
-9327:Robot: State changed to: stop 
-9331:WallMap: map_ratio > screen_ratio 
+9328:Robot: State changed to: stop 
+9330:Wall: Files have already been created, continuing 
+9333:WallMap: map_ratio > screen_ratio 
 9344:Robot: State changed to: stop 
 9344:WallMap: map_ratio > screen_ratio 
-9361:Robot: State changed to: stop 
-9363:Wall: Files have already been created, continuing 
+9360:Robot: State changed to: stop 
 9365:WallMap: map_ratio > screen_ratio 
-9377:Robot: State changed to: stop 
+9376:Robot: State changed to: stop 
 9377:WallMap: map_ratio > screen_ratio 
 9393:Robot: State changed to: stop 
-9396:Wall: Files have already been created, continuing 
-9397:Wall: Files have already been created, continuing 
 9398:WallMap: map_ratio > screen_ratio 
 9410:Robot: State changed to: stop 
 9411:WallMap: map_ratio > screen_ratio 
-9426:Robot: State changed to: stop 
-9430:WallMap: map_ratio > screen_ratio 
-9443:Robot: State changed to: stop 
-9443:WallMap: map_ratio > screen_ratio 
-9459:Robot: State changed to: stop 
-9462:Wall: Files have already been created, continuing 
-9464:Wall: Files have already been created, continuing 
-9464:WallMap: map_ratio > screen_ratio 
-9477:Robot: State changed to: stop 
+9427:Robot: State changed to: stop 
+9429:Wall: Files have already been created, continuing 
+9431:Wall: Files have already been created, continuing 
+9432:WallMap: map_ratio > screen_ratio 
+9444:Robot: State changed to: stop 
+9445:WallMap: map_ratio > screen_ratio 
+9461:Robot: State changed to: stop 
+9463:Wall: Files have already been created, continuing 
+9465:Wall: Files have already been created, continuing 
+9466:WallMap: map_ratio > screen_ratio 
+9476:Robot: State changed to: stop 
 9477:WallMap: map_ratio > screen_ratio 
 9493:Robot: State changed to: stop 
 9497:WallMap: map_ratio > screen_ratio 
-9509:Robot: State changed to: stop 
+9510:Robot: State changed to: stop 
 9510:WallMap: map_ratio > screen_ratio 
 9526:Robot: State changed to: stop 
-9530:WallMap: map_ratio > screen_ratio 
+9531:Wall: Files have already been created, continuing 
+9531:WallMap: map_ratio > screen_ratio 
 9543:Robot: State changed to: stop 
-9543:WallMap: map_ratio > screen_ratio 
-9559:Robot: State changed to: stop 
-9563:Wall: Files have already been created, continuing 
-9563:WallMap: map_ratio > screen_ratio 
-9575:Robot: State changed to: stop 
-9575:WallMap: map_ratio > screen_ratio 
-9591:Robot: State changed to: stop 
-9593:Wall: Files have already been created, continuing 
-9595:WallMap: map_ratio > screen_ratio 
+9544:WallMap: map_ratio > screen_ratio 
+9560:Robot: State changed to: stop 
+9562:Wall: Files have already been created, continuing 
+9564:Wall: Files have already been created, continuing 
+9565:WallMap: map_ratio > screen_ratio 
+9576:Robot: State changed to: stop 
+9576:WallMap: map_ratio > screen_ratio 
+9593:Robot: State changed to: stop 
+9595:Wall: Files have already been created, continuing 
+9598:WallMap: map_ratio > screen_ratio 
 9609:Robot: State changed to: stop 
 9609:WallMap: map_ratio > screen_ratio 
-9628:Robot: State changed to: stop 
-9632:WallMap: map_ratio > screen_ratio 
-9649:Robot: State changed to: stop 
-9649:WallMap: map_ratio > screen_ratio 
-9664:Robot: State changed to: stop 
-9668:WallMap: map_ratio > screen_ratio 
-9682:Robot: State changed to: stop 
-9683:WallMap: map_ratio > screen_ratio 
-9699:Robot: State changed to: stop 
-9701:Wall: Files have already been created, continuing 
-9703:Wall: Files have already been created, continuing 
-9703:WallMap: map_ratio > screen_ratio 
-9719:Robot: State changed to: stop 
-9720:WallMap: map_ratio > screen_ratio 
-9735:Robot: State changed to: stop 
-9739:WallMap: map_ratio > screen_ratio 
-9752:Robot: State changed to: stop 
-9752:WallMap: map_ratio > screen_ratio 
-9768:Robot: State changed to: stop 
-9770:Wall: Files have already been created, continuing 
-9772:Wall: Files have already been created, continuing 
-9772:WallMap: map_ratio > screen_ratio 
-9784:Robot: State changed to: stop 
-9785:WallMap: map_ratio > screen_ratio 
-9801:Robot: State changed to: stop 
-9805:Wall: Files have already been created, continuing 
-9805:WallMap: map_ratio > screen_ratio 
-9818:Robot: State changed to: stop 
-9818:WallMap: map_ratio > screen_ratio 
-9834:Robot: State changed to: stop 
-9837:Wall: Files have already been created, continuing 
-9838:WallMap: map_ratio > screen_ratio 
-9851:Robot: State changed to: stop 
-9852:WallMap: map_ratio > screen_ratio 
+9625:Robot: State changed to: stop 
+9629:WallMap: map_ratio > screen_ratio 
+9642:Robot: State changed to: stop 
+9642:WallMap: map_ratio > screen_ratio 
+9658:Robot: State changed to: stop 
+9662:WallMap: map_ratio > screen_ratio 
+9673:Robot: State changed to: stop 
+9674:WallMap: map_ratio > screen_ratio 
+9690:Robot: State changed to: stop 
+9694:WallMap: map_ratio > screen_ratio 
+9705:Robot: State changed to: stop 
+9706:WallMap: map_ratio > screen_ratio 
+9722:Robot: State changed to: stop 
+9727:WallMap: map_ratio > screen_ratio 
+9737:Robot: State changed to: stop 
+9738:WallMap: map_ratio > screen_ratio 
+9755:Robot: State changed to: stop 
+9759:Wall: Files have already been created, continuing 
+9759:WallMap: map_ratio > screen_ratio 
+9770:Robot: State changed to: stop 
+9771:WallMap: map_ratio > screen_ratio 
+9787:Robot: State changed to: stop 
+9789:Wall: Files have already been created, continuing 
+9792:WallMap: map_ratio > screen_ratio 
+9803:Robot: State changed to: stop 
+9803:WallMap: map_ratio > screen_ratio 
+9820:Robot: State changed to: stop 
+9822:Wall: Files have already been created, continuing 
+9824:Wall: Files have already been created, continuing 
+9825:WallMap: map_ratio > screen_ratio 
+9837:Robot: State changed to: stop 
+9837:WallMap: map_ratio > screen_ratio 
+9853:Robot: State changed to: stop 
+9857:Wall: Files have already been created, continuing 
+9857:WallMap: map_ratio > screen_ratio 
 9869:Robot: State changed to: stop 
-9873:WallMap: map_ratio > screen_ratio 
+9870:WallMap: map_ratio > screen_ratio 
 9886:Robot: State changed to: stop 
-9886:WallMap: map_ratio > screen_ratio 
-9902:Robot: State changed to: stop 
-9905:WallMap: map_ratio > screen_ratio 
-9919:Robot: State changed to: stop 
-9919:WallMap: map_ratio > screen_ratio 
-9935:Robot: State changed to: stop 
-9938:Wall: Files have already been created, continuing 
-9938:WallMap: map_ratio > screen_ratio 
-9952:Robot: State changed to: stop 
-9952:WallMap: map_ratio > screen_ratio 
-9968:Robot: State changed to: stop 
-9972:WallMap: map_ratio > screen_ratio 
-9984:Robot: State changed to: stop 
-9985:WallMap: map_ratio > screen_ratio 
-10001:Robot: State changed to: stop 
-10003:Wall: Files have already been created, continuing 
-10005:Wall: Files have already been created, continuing 
-10005:WallMap: map_ratio > screen_ratio 
-10019:Robot: State changed to: stop 
-10019:WallMap: map_ratio > screen_ratio 
-10035:Robot: State changed to: stop 
-10037:Wall: Files have already been created, continuing 
-10039:Wall: Files have already been created, continuing 
-10039:WallMap: map_ratio > screen_ratio 
-10053:Robot: State changed to: stop 
-10053:WallMap: map_ratio > screen_ratio 
-10069:Robot: State changed to: stop 
-10071:Wall: Files have already been created, continuing 
-10073:Wall: Files have already been created, continuing 
-10073:WallMap: map_ratio > screen_ratio 
-10087:Robot: State changed to: stop 
-10088:WallMap: map_ratio > screen_ratio 
-10104:Robot: State changed to: stop 
-10106:Wall: Files have already been created, continuing 
-10108:WallMap: map_ratio > screen_ratio 
-10122:Robot: State changed to: stop 
-10123:WallMap: map_ratio > screen_ratio 
-10139:Robot: State changed to: stop 
-10140:Wall: Files have already been created, continuing 
-10142:WallMap: map_ratio > screen_ratio 
-10158:Robot: State changed to: stop 
-10159:WallMap: map_ratio > screen_ratio 
-10175:Robot: State changed to: stop 
-10178:WallMap: map_ratio > screen_ratio 
-10195:Robot: State changed to: stop 
-10195:WallMap: map_ratio > screen_ratio 
-10212:Robot: State changed to: stop 
-10216:WallMap: map_ratio > screen_ratio 
-10232:Robot: State changed to: stop 
-10233:WallMap: map_ratio > screen_ratio 
-10249:Robot: State changed to: stop 
-10253:Wall: Files have already been created, continuing 
-10253:WallMap: map_ratio > screen_ratio 
-10270:Robot: State changed to: stop 
-10270:WallMap: map_ratio > screen_ratio 
-10286:Robot: State changed to: stop 
-10288:Wall: Files have already been created, continuing 
-10289:Wall: Files have already been created, continuing 
-10290:WallMap: map_ratio > screen_ratio 
-10305:Robot: State changed to: stop 
-10306:WallMap: map_ratio > screen_ratio 
-10323:Robot: State changed to: stop 
-10326:Wall: Files have already been created, continuing 
-10326:WallMap: map_ratio > screen_ratio 
-10343:Robot: State changed to: stop 
-10344:WallMap: map_ratio > screen_ratio 
-10361:Robot: State changed to: stop 
-10363:Wall: Files have already been created, continuing 
-10364:Wall: Files have already been created, continuing 
-10365:WallMap: map_ratio > screen_ratio 
-10382:Robot: State changed to: stop 
-10382:WallMap: map_ratio > screen_ratio 
-10399:Robot: State changed to: stop 
-10402:WallMap: map_ratio > screen_ratio 
-10421:Robot: State changed to: stop 
-10421:WallMap: map_ratio > screen_ratio 
-10443:Robot: State changed to: stop 
-10445:Wall: Files have already been created, continuing 
-10446:WallMap: map_ratio > screen_ratio 
-10465:Robot: State changed to: stop 
-10465:WallMap: map_ratio > screen_ratio 
-10486:Robot: State changed to: stop 
+9888:Wall: Files have already been created, continuing 
+9890:Wall: Files have already been created, continuing 
+9890:WallMap: map_ratio > screen_ratio 
+9901:Robot: State changed to: stop 
+9902:WallMap: map_ratio > screen_ratio 
+9917:Robot: State changed to: stop 
+9922:WallMap: map_ratio > screen_ratio 
+9933:Robot: State changed to: stop 
+9934:WallMap: map_ratio > screen_ratio 
+9950:Robot: State changed to: stop 
+9954:WallMap: map_ratio > screen_ratio 
+9966:Robot: State changed to: stop 
+9966:WallMap: map_ratio > screen_ratio 
+9982:Robot: State changed to: stop 
+9986:WallMap: map_ratio > screen_ratio 
+9998:Robot: State changed to: stop 
+9999:WallMap: map_ratio > screen_ratio 
+10014:Robot: State changed to: stop 
+10016:Wall: Files have already been created, continuing 
+10018:WallMap: map_ratio > screen_ratio 
+10031:Robot: State changed to: stop 
+10031:WallMap: map_ratio > screen_ratio 
+10047:Robot: State changed to: stop 
+10051:Wall: Files have already been created, continuing 
+10051:WallMap: map_ratio > screen_ratio 
+10062:Robot: State changed to: stop 
+10063:WallMap: map_ratio > screen_ratio 
+10078:Robot: State changed to: stop 
+10082:Wall: Files have already been created, continuing 
+10082:WallMap: map_ratio > screen_ratio 
+10095:Robot: State changed to: stop 
+10096:WallMap: map_ratio > screen_ratio 
+10112:Robot: State changed to: stop 
+10114:Wall: Files have already been created, continuing 
+10116:WallMap: map_ratio > screen_ratio 
+10127:Robot: State changed to: stop 
+10128:WallMap: map_ratio > screen_ratio 
+10143:Robot: State changed to: stop 
+10147:Wall: Files have already been created, continuing 
+10148:WallMap: map_ratio > screen_ratio 
+10159:Robot: State changed to: stop 
+10160:WallMap: map_ratio > screen_ratio 
+10176:Robot: State changed to: stop 
+10181:WallMap: map_ratio > screen_ratio 
+10193:Robot: State changed to: stop 
+10193:WallMap: map_ratio > screen_ratio 
+10209:Robot: State changed to: stop 
+10211:Wall: Files have already been created, continuing 
+10213:Wall: Files have already been created, continuing 
+10213:WallMap: map_ratio > screen_ratio 
+10225:Robot: State changed to: stop 
+10226:WallMap: map_ratio > screen_ratio 
+10242:Robot: State changed to: stop 
+10246:WallMap: map_ratio > screen_ratio 
+10259:Robot: State changed to: stop 
+10259:WallMap: map_ratio > screen_ratio 
+10275:Robot: State changed to: stop 
+10279:WallMap: map_ratio > screen_ratio 
+10292:Robot: State changed to: stop 
+10292:WallMap: map_ratio > screen_ratio 
+10308:Robot: State changed to: stop 
+10310:Wall: Files have already been created, continuing 
+10312:Wall: Files have already been created, continuing 
+10312:WallMap: map_ratio > screen_ratio 
+10325:Robot: State changed to: stop 
+10325:WallMap: map_ratio > screen_ratio 
+10341:Robot: State changed to: stop 
+10344:Wall: Files have already been created, continuing 
+10345:WallMap: map_ratio > screen_ratio 
+10357:Robot: State changed to: stop 
+10358:WallMap: map_ratio > screen_ratio 
+10374:Robot: State changed to: stop 
+10378:Wall: Files have already been created, continuing 
+10378:WallMap: map_ratio > screen_ratio 
+10390:Robot: State changed to: stop 
+10391:WallMap: map_ratio > screen_ratio 
+10407:Robot: State changed to: stop 
+10411:WallMap: map_ratio > screen_ratio 
+10424:Robot: State changed to: stop 
+10424:WallMap: map_ratio > screen_ratio 
+10440:Robot: State changed to: stop 
+10444:WallMap: map_ratio > screen_ratio 
+10457:Robot: State changed to: stop 
+10458:WallMap: map_ratio > screen_ratio 
+10474:Robot: State changed to: stop 
+10476:Wall: Files have already been created, continuing 
+10478:Wall: Files have already been created, continuing 
+10479:WallMap: map_ratio > screen_ratio 
+10491:Robot: State changed to: stop 
 10492:WallMap: map_ratio > screen_ratio 
-10516:Robot: State changed to: stop 
-10516:WallMap: map_ratio > screen_ratio 
-10535:Robot: State changed to: stop 
-10539:WallMap: map_ratio > screen_ratio 
-10557:Robot: State changed to: stop 
-10557:WallMap: map_ratio > screen_ratio 
-10575:Robot: State changed to: stop 
+10508:Robot: State changed to: stop 
+10511:WallMap: map_ratio > screen_ratio 
+10525:Robot: State changed to: stop 
+10525:WallMap: map_ratio > screen_ratio 
+10542:Robot: State changed to: stop 
+10546:WallMap: map_ratio > screen_ratio 
+10560:Robot: State changed to: stop 
+10561:WallMap: map_ratio > screen_ratio 
+10576:Robot: State changed to: stop 
 10578:Wall: Files have already been created, continuing 
-10578:WallMap: map_ratio > screen_ratio 
-10596:Robot: State changed to: stop 
-10596:WallMap: map_ratio > screen_ratio 
-10614:Robot: State changed to: stop 
-10617:Wall: Files have already been created, continuing 
-10618:WallMap: map_ratio > screen_ratio 
-10635:Robot: State changed to: stop 
-10636:WallMap: map_ratio > screen_ratio 
-10654:Robot: State changed to: stop 
-10655:Wall: Files have already been created, continuing 
-10657:WallMap: map_ratio > screen_ratio 
-10673:Robot: State changed to: stop 
-10674:WallMap: map_ratio > screen_ratio 
-10689:Robot: State changed to: stop 
-10692:WallMap: map_ratio > screen_ratio 
-10708:Robot: State changed to: stop 
-10709:WallMap: map_ratio > screen_ratio 
-10727:Robot: State changed to: stop 
-10728:Wall: Files have already been created, continuing 
-10730:WallMap: map_ratio > screen_ratio 
-10748:Robot: State changed to: stop 
-10748:WallMap: map_ratio > screen_ratio 
-10766:Robot: State changed to: stop 
-10768:WallMap: map_ratio > screen_ratio 
-10785:Robot: State changed to: stop 
-10785:WallMap: map_ratio > screen_ratio 
-10802:Robot: State changed to: stop 
-10803:Wall: Files have already been created, continuing 
-10805:WallMap: map_ratio > screen_ratio 
-10823:Robot: State changed to: stop 
-10823:WallMap: map_ratio > screen_ratio 
-10841:Robot: State changed to: stop 
-10845:Wall: Files have already been created, continuing 
-10845:WallMap: map_ratio > screen_ratio 
-10863:Robot: State changed to: stop 
-10863:WallMap: map_ratio > screen_ratio 
-10881:Robot: State changed to: stop 
-10884:WallMap: map_ratio > screen_ratio 
-10900:Robot: State changed to: stop 
-10901:WallMap: map_ratio > screen_ratio 
-10918:Robot: State changed to: stop 
-10922:WallMap: map_ratio > screen_ratio 
-10941:Robot: State changed to: stop 
-10941:WallMap: map_ratio > screen_ratio 
-10960:Robot: State changed to: stop 
-10963:WallMap: map_ratio > screen_ratio 
-10981:Robot: State changed to: stop 
-10982:WallMap: map_ratio > screen_ratio 
-10998:Robot: State changed to: stop 
-11000:Wall: Files have already been created, continuing 
-11001:Wall: Files have already been created, continuing 
-11001:WallMap: map_ratio > screen_ratio 
-11021:Robot: State changed to: stop 
-11021:WallMap: map_ratio > screen_ratio 
-11040:Robot: State changed to: stop 
-11042:Wall: Files have already been created, continuing 
-11044:WallMap: map_ratio > screen_ratio 
-11063:Robot: State changed to: stop 
-11063:WallMap: map_ratio > screen_ratio 
-11081:Robot: State changed to: stop 
-11083:Wall: Files have already been created, continuing 
-11084:WallMap: map_ratio > screen_ratio 
-11103:Robot: State changed to: stop 
-11103:WallMap: map_ratio > screen_ratio 
-11123:Robot: State changed to: stop 
-11126:WallMap: map_ratio > screen_ratio 
-11146:Robot: State changed to: stop 
-11146:WallMap: map_ratio > screen_ratio 
-11166:Robot: State changed to: stop 
-11169:WallMap: map_ratio > screen_ratio 
-11190:Robot: State changed to: stop 
-11190:WallMap: map_ratio > screen_ratio 
-11211:Robot: State changed to: stop 
-11214:WallMap: map_ratio > screen_ratio 
-11238:Robot: State changed to: stop 
-11239:WallMap: map_ratio > screen_ratio 
-11262:Robot: State changed to: stop 
-11264:Wall: Files have already been created, continuing 
-11265:Wall: Files have already been created, continuing 
-11266:WallMap: map_ratio > screen_ratio 
-11289:Robot: State changed to: stop 
-11289:WallMap: map_ratio > screen_ratio 
-11311:Robot: State changed to: stop 
-11315:Wall: Files have already been created, continuing 
-11315:WallMap: map_ratio > screen_ratio 
-11340:Robot: State changed to: stop 
-11340:WallMap: map_ratio > screen_ratio 
-11364:Robot: State changed to: stop 
-11367:WallMap: map_ratio > screen_ratio 
-11390:Robot: State changed to: stop 
-11390:WallMap: map_ratio > screen_ratio 
-11412:Robot: State changed to: stop 
-11415:Wall: Files have already been created, continuing 
-11415:WallMap: map_ratio > screen_ratio 
-11438:Robot: State changed to: stop 
-11438:WallMap: map_ratio > screen_ratio 
-11460:Robot: State changed to: stop 
-11461:Wall: Files have already been created, continuing 
-11463:Wall: Files have already been created, continuing 
-11463:WallMap: map_ratio > screen_ratio 
-11484:Robot: State changed to: stop 
-11484:WallMap: map_ratio > screen_ratio 
-11506:Robot: State changed to: stop 
-11507:Wall: Files have already been created, continuing 
+10580:WallMap: map_ratio > screen_ratio 
+10594:Robot: State changed to: stop 
+10595:WallMap: map_ratio > screen_ratio 
+10610:Robot: State changed to: stop 
+10614:Wall: Files have already been created, continuing 
+10614:WallMap: map_ratio > screen_ratio 
+10628:Robot: State changed to: stop 
+10629:WallMap: map_ratio > screen_ratio 
+10645:Robot: State changed to: stop 
+10647:Wall: Files have already been created, continuing 
+10649:WallMap: map_ratio > screen_ratio 
+10664:Robot: State changed to: stop 
+10664:WallMap: map_ratio > screen_ratio 
+10680:Robot: State changed to: stop 
+10684:WallMap: map_ratio > screen_ratio 
+10698:Robot: State changed to: stop 
+10698:WallMap: map_ratio > screen_ratio 
+10715:Robot: State changed to: stop 
+10719:WallMap: map_ratio > screen_ratio 
+10733:Robot: State changed to: stop 
+10733:WallMap: map_ratio > screen_ratio 
+10749:Robot: State changed to: stop 
+10751:Wall: Files have already been created, continuing 
+10752:Wall: Files have already been created, continuing 
+10753:WallMap: map_ratio > screen_ratio 
+10767:Robot: State changed to: stop 
+10767:WallMap: map_ratio > screen_ratio 
+10782:Robot: State changed to: stop 
+10784:Wall: Files have already been created, continuing 
+10786:Wall: Files have already been created, continuing 
+10786:WallMap: map_ratio > screen_ratio 
+10800:Robot: State changed to: stop 
+10801:WallMap: map_ratio > screen_ratio 
+10817:Robot: State changed to: stop 
+10821:WallMap: map_ratio > screen_ratio 
+10835:Robot: State changed to: stop 
+10836:WallMap: map_ratio > screen_ratio 
+10852:Robot: State changed to: stop 
+10854:Wall: Files have already been created, continuing 
+10856:Wall: Files have already been created, continuing 
+10856:WallMap: map_ratio > screen_ratio 
+10871:Robot: State changed to: stop 
+10871:WallMap: map_ratio > screen_ratio 
+10887:Robot: State changed to: stop 
+10891:WallMap: map_ratio > screen_ratio 
+10906:Robot: State changed to: stop 
+10906:WallMap: map_ratio > screen_ratio 
+10921:Robot: State changed to: stop 
+10923:Wall: Files have already been created, continuing 
+10925:Wall: Files have already been created, continuing 
+10925:WallMap: map_ratio > screen_ratio 
+10940:Robot: State changed to: stop 
+10940:WallMap: map_ratio > screen_ratio 
+10955:Robot: State changed to: stop 
+10959:WallMap: map_ratio > screen_ratio 
+10974:Robot: State changed to: stop 
+10974:WallMap: map_ratio > screen_ratio 
+10989:Robot: State changed to: stop 
+10991:Wall: Files have already been created, continuing 
+10993:Wall: Files have already been created, continuing 
+10993:WallMap: map_ratio > screen_ratio 
+11008:Robot: State changed to: stop 
+11009:WallMap: map_ratio > screen_ratio 
+11025:Robot: State changed to: stop 
+11028:Wall: Files have already been created, continuing 
+11028:WallMap: map_ratio > screen_ratio 
+11043:Robot: State changed to: stop 
+11043:WallMap: map_ratio > screen_ratio 
+11059:Robot: State changed to: stop 
+11062:Wall: Files have already been created, continuing 
+11062:WallMap: map_ratio > screen_ratio 
+11077:Robot: State changed to: stop 
+11078:WallMap: map_ratio > screen_ratio 
+11094:Robot: State changed to: stop 
+11098:WallMap: map_ratio > screen_ratio 
+11114:Robot: State changed to: stop 
+11114:WallMap: map_ratio > screen_ratio 
+11129:Robot: State changed to: stop 
+11133:WallMap: map_ratio > screen_ratio 
+11148:Robot: State changed to: stop 
+11148:WallMap: map_ratio > screen_ratio 
+11165:Robot: State changed to: stop 
+11168:WallMap: map_ratio > screen_ratio 
+11184:Robot: State changed to: stop 
+11185:WallMap: map_ratio > screen_ratio 
+11200:Robot: State changed to: stop 
+11204:WallMap: map_ratio > screen_ratio 
+11220:Robot: State changed to: stop 
+11220:WallMap: map_ratio > screen_ratio 
+11236:Robot: State changed to: stop 
+11238:Wall: Files have already been created, continuing 
+11240:WallMap: map_ratio > screen_ratio 
+11256:Robot: State changed to: stop 
+11256:WallMap: map_ratio > screen_ratio 
+11272:Robot: State changed to: stop 
+11275:WallMap: map_ratio > screen_ratio 
+11291:Robot: State changed to: stop 
+11291:WallMap: map_ratio > screen_ratio 
+11307:Robot: State changed to: stop 
+11309:Wall: Files have already been created, continuing 
+11310:Wall: Files have already been created, continuing 
+11310:WallMap: map_ratio > screen_ratio 
+11326:Robot: State changed to: stop 
+11327:WallMap: map_ratio > screen_ratio 
+11342:Robot: State changed to: stop 
+11346:WallMap: map_ratio > screen_ratio 
+11362:Robot: State changed to: stop 
+11362:WallMap: map_ratio > screen_ratio 
+11378:Robot: State changed to: stop 
+11381:WallMap: map_ratio > screen_ratio 
+11397:Robot: State changed to: stop 
+11398:WallMap: map_ratio > screen_ratio 
+11414:Robot: State changed to: stop 
+11416:Wall: Files have already been created, continuing 
+11418:Wall: Files have already been created, continuing 
+11418:WallMap: map_ratio > screen_ratio 
+11435:Robot: State changed to: stop 
+11435:WallMap: map_ratio > screen_ratio 
+11452:Robot: State changed to: stop 
+11455:WallMap: map_ratio > screen_ratio 
+11471:Robot: State changed to: stop 
+11472:WallMap: map_ratio > screen_ratio 
+11488:Robot: State changed to: stop 
+11490:Wall: Files have already been created, continuing 
+11492:Wall: Files have already been created, continuing 
+11492:WallMap: map_ratio > screen_ratio 
+11509:Robot: State changed to: stop 
 11509:WallMap: map_ratio > screen_ratio 
-11532:Robot: State changed to: stop 
-11532:WallMap: map_ratio > screen_ratio 
-11553:Robot: State changed to: stop 
-11556:Wall: Files have already been created, continuing 
-11556:WallMap: map_ratio > screen_ratio 
-11578:Robot: State changed to: stop 
-11578:WallMap: map_ratio > screen_ratio 
-11600:Robot: State changed to: stop 
-11601:Wall: Files have already been created, continuing 
-11602:Wall: Files have already been created, continuing 
-11602:WallMap: map_ratio > screen_ratio 
-11624:Robot: State changed to: stop 
-11624:WallMap: map_ratio > screen_ratio 
-11647:Robot: State changed to: stop 
-11650:WallMap: map_ratio > screen_ratio 
-11672:Robot: State changed to: stop 
-11672:WallMap: map_ratio > screen_ratio 
-11694:Robot: State changed to: stop 
-11696:WallMap: map_ratio > screen_ratio 
-11720:Robot: State changed to: stop 
-11720:WallMap: map_ratio > screen_ratio 
-11744:Robot: State changed to: stop 
-11746:Wall: Files have already been created, continuing 
-11746:WallMap: map_ratio > screen_ratio 
-11771:Robot: State changed to: stop 
-11772:WallMap: map_ratio > screen_ratio 
-11796:Robot: State changed to: stop 
-11797:Wall: Files have already been created, continuing 
-11798:WallMap: map_ratio > screen_ratio 
-11825:Robot: State changed to: stop 
-11825:WallMap: map_ratio > screen_ratio 
-11853:Robot: State changed to: stop 
-11856:WallMap: map_ratio > screen_ratio 
-11882:Robot: State changed to: stop 
-11882:WallMap: map_ratio > screen_ratio 
-11909:Robot: State changed to: stop 
-11911:WallMap: map_ratio > screen_ratio 
-11939:Robot: State changed to: stop 
-11940:WallMap: map_ratio > screen_ratio 
-11967:Robot: State changed to: stop 
-11970:WallMap: map_ratio > screen_ratio 
-11997:Robot: State changed to: stop 
-11997:WallMap: map_ratio > screen_ratio 
-12027:Robot: State changed to: stop 
-12030:WallMap: map_ratio > screen_ratio 
-12063:Robot: State changed to: stop 
-12063:WallMap: map_ratio > screen_ratio 
-12096:Robot: State changed to: stop 
-12097:Wall: Files have already been created, continuing 
-12099:Wall: Files have already been created, continuing 
-12099:WallMap: map_ratio > screen_ratio 
-12134:Robot: State changed to: stop 
+11526:Robot: State changed to: stop 
+11529:Wall: Files have already been created, continuing 
+11529:WallMap: map_ratio > screen_ratio 
+11545:Robot: State changed to: stop 
+11546:WallMap: map_ratio > screen_ratio 
+11561:Robot: State changed to: stop 
+11564:WallMap: map_ratio > screen_ratio 
+11580:Robot: State changed to: stop 
+11580:WallMap: map_ratio > screen_ratio 
+11597:Robot: State changed to: stop 
+11599:Wall: Files have already been created, continuing 
+11600:WallMap: map_ratio > screen_ratio 
+11617:Robot: State changed to: stop 
+11617:WallMap: map_ratio > screen_ratio 
+11633:Robot: State changed to: stop 
+11635:Wall: Files have already been created, continuing 
+11636:Wall: Files have already been created, continuing 
+11637:WallMap: map_ratio > screen_ratio 
+11653:Robot: State changed to: stop 
+11653:WallMap: map_ratio > screen_ratio 
+11671:Robot: State changed to: stop 
+11674:Wall: Files have already been created, continuing 
+11674:WallMap: map_ratio > screen_ratio 
+11692:Robot: State changed to: stop 
+11692:WallMap: map_ratio > screen_ratio 
+11710:Robot: State changed to: stop 
+11711:Wall: Files have already been created, continuing 
+11713:Wall: Files have already been created, continuing 
+11713:WallMap: map_ratio > screen_ratio 
+11730:Robot: State changed to: stop 
+11730:WallMap: map_ratio > screen_ratio 
+11747:Robot: State changed to: stop 
+11750:Wall: Files have already been created, continuing 
+11750:WallMap: map_ratio > screen_ratio 
+11767:Robot: State changed to: stop 
+11768:WallMap: map_ratio > screen_ratio 
+11785:Robot: State changed to: stop 
+11786:Wall: Files have already been created, continuing 
+11788:WallMap: map_ratio > screen_ratio 
+11809:Robot: State changed to: stop 
+11809:WallMap: map_ratio > screen_ratio 
+11830:Robot: State changed to: stop 
+11833:WallMap: map_ratio > screen_ratio 
+11855:Robot: State changed to: stop 
+11855:WallMap: map_ratio > screen_ratio 
+11877:Robot: State changed to: stop 
+11880:WallMap: map_ratio > screen_ratio 
+11902:Robot: State changed to: stop 
+11902:WallMap: map_ratio > screen_ratio 
+11925:Robot: State changed to: stop 
+11927:Wall: Files have already been created, continuing 
+11928:WallMap: map_ratio > screen_ratio 
+11954:Robot: State changed to: stop 
+11954:WallMap: map_ratio > screen_ratio 
+11980:Robot: State changed to: stop 
+11981:Wall: Files have already been created, continuing 
+11983:Wall: Files have already been created, continuing 
+11983:WallMap: map_ratio > screen_ratio 
+12009:Robot: State changed to: stop 
+12009:WallMap: map_ratio > screen_ratio 
+12032:Robot: State changed to: stop 
+12034:Wall: Files have already been created, continuing 
+12035:Wall: Files have already been created, continuing 
+12035:WallMap: map_ratio > screen_ratio 
+12058:Robot: State changed to: stop 
+12059:WallMap: map_ratio > screen_ratio 
+12082:Robot: State changed to: stop 
+12084:Wall: Files have already been created, continuing 
+12084:WallMap: map_ratio > screen_ratio 
+12108:Robot: State changed to: stop 
+12108:WallMap: map_ratio > screen_ratio 
+12131:Robot: State changed to: stop 
+12132:Wall: Files have already been created, continuing 
 12134:WallMap: map_ratio > screen_ratio 
-12166:Robot: State changed to: stop 
-12168:Wall: Files have already been created, continuing 
-12169:Wall: Files have already been created, continuing 
-12169:WallMap: map_ratio > screen_ratio 
-12198:Robot: State changed to: stop 
-12198:WallMap: map_ratio > screen_ratio 
+12159:Robot: State changed to: stop 
+12159:WallMap: map_ratio > screen_ratio 
+12184:Robot: State changed to: stop 
+12185:Wall: Files have already been created, continuing 
+12187:Wall: Files have already been created, continuing 
+12187:WallMap: map_ratio > screen_ratio 
+12212:Robot: State changed to: stop 
+12212:WallMap: map_ratio > screen_ratio 
 12237:Robot: State changed to: stop 
-12241:WallMap: map_ratio > screen_ratio 
-12277:Robot: State changed to: stop 
-12277:WallMap: map_ratio > screen_ratio 
-12310:Robot: State changed to: stop 
-12313:WallMap: map_ratio > screen_ratio 
-12343:Robot: State changed to: stop 
-12343:WallMap: map_ratio > screen_ratio 
-12372:Robot: State changed to: stop 
-12375:WallMap: map_ratio > screen_ratio 
-12413:BotDisplay: Stopping all tasks and quitting program 
+12240:WallMap: map_ratio > screen_ratio 
+12265:Robot: State changed to: stop 
+12266:WallMap: map_ratio > screen_ratio 
+12291:Robot: State changed to: stop 
+12294:Wall: Files have already been created, continuing 
+12294:WallMap: map_ratio > screen_ratio 
+12323:Robot: State changed to: stop 
+12323:WallMap: map_ratio > screen_ratio 
+12352:Robot: State changed to: stop 
+12354:WallMap: map_ratio > screen_ratio 
+12383:Robot: State changed to: stop 
+12383:WallMap: map_ratio > screen_ratio 
+12412:Robot: State changed to: stop 
+12415:Wall: Files have already been created, continuing 
+12415:WallMap: map_ratio > screen_ratio 
+12444:Robot: State changed to: stop 
+12444:WallMap: map_ratio > screen_ratio 
+12473:Robot: State changed to: stop 
+12475:Wall: Files have already been created, continuing 
+12476:WallMap: map_ratio > screen_ratio 
+12506:Robot: State changed to: stop 
+12506:WallMap: map_ratio > screen_ratio 
+12535:Robot: State changed to: stop 
+12537:Wall: Files have already been created, continuing 
+12538:WallMap: map_ratio > screen_ratio 
+12567:Robot: State changed to: stop 
+12567:WallMap: map_ratio > screen_ratio 
+12596:Robot: State changed to: stop 
+12599:WallMap: map_ratio > screen_ratio 
+12628:Robot: State changed to: stop 
+12629:WallMap: map_ratio > screen_ratio 
+12658:Robot: State changed to: stop 
+12661:WallMap: map_ratio > screen_ratio 
+12691:Robot: State changed to: stop 
+12691:WallMap: map_ratio > screen_ratio 
+12721:Robot: State changed to: stop 
+12723:WallMap: map_ratio > screen_ratio 
+12754:Robot: State changed to: stop 
+12754:WallMap: map_ratio > screen_ratio 
+12784:Robot: State changed to: stop 
+12786:WallMap: map_ratio > screen_ratio 
+12817:Robot: State changed to: stop 
+12817:WallMap: map_ratio > screen_ratio 
+12847:Robot: State changed to: stop 
+12850:Wall: Files have already been created, continuing 
+12850:WallMap: map_ratio > screen_ratio 
+12881:Robot: State changed to: stop 
+12881:WallMap: map_ratio > screen_ratio 
+12912:Robot: State changed to: stop 
+12914:WallMap: map_ratio > screen_ratio 
+12945:Robot: State changed to: stop 
+12945:WallMap: map_ratio > screen_ratio 
+12976:Robot: State changed to: stop 
+12979:WallMap: map_ratio > screen_ratio 
+13010:Robot: State changed to: stop 
+13010:WallMap: map_ratio > screen_ratio 
+13041:Robot: State changed to: stop 
+13043:WallMap: map_ratio > screen_ratio 
+13075:Robot: State changed to: stop 
+13076:WallMap: map_ratio > screen_ratio 
+13107:Robot: State changed to: stop 
+13110:WallMap: map_ratio > screen_ratio 
+13143:Robot: State changed to: stop 
+13143:WallMap: map_ratio > screen_ratio 
+13175:Robot: State changed to: stop 
+13178:Wall: Files have already been created, continuing 
+13178:WallMap: map_ratio > screen_ratio 
+13210:Robot: State changed to: stop 
+13210:WallMap: map_ratio > screen_ratio 
+13243:Robot: State changed to: stop 
+13245:WallMap: map_ratio > screen_ratio 
+13277:Robot: State changed to: stop 
+13278:WallMap: map_ratio > screen_ratio 
+13310:Robot: State changed to: stop 
+13314:WallMap: map_ratio > screen_ratio 
+13346:Robot: State changed to: stop 
+13346:WallMap: map_ratio > screen_ratio 
+13379:Robot: State changed to: stop 
+13380:Wall: Files have already been created, continuing 
+13382:WallMap: map_ratio > screen_ratio 
+13419:Robot: State changed to: stop 
+13419:WallMap: map_ratio > screen_ratio 
+13456:Robot: State changed to: stop 
+13459:WallMap: map_ratio > screen_ratio 
+13496:Robot: State changed to: stop 
+13497:WallMap: map_ratio > screen_ratio 
+13534:Robot: State changed to: stop 
+13536:Wall: Files have already been created, continuing 
+13537:WallMap: map_ratio > screen_ratio 
+13574:Robot: State changed to: stop 
+13574:WallMap: map_ratio > screen_ratio 
+13612:Robot: State changed to: stop 
+13613:Wall: Files have already been created, continuing 
+13614:WallMap: map_ratio > screen_ratio 
+13652:Robot: State changed to: stop 
+13652:WallMap: map_ratio > screen_ratio 
+13693:Robot: State changed to: stop 
+13695:Wall: Files have already been created, continuing 
+13697:WallMap: map_ratio > screen_ratio 
+13743:Robot: State changed to: stop 
+13744:WallMap: map_ratio > screen_ratio 
+13783:Robot: State changed to: stop 
+13785:Wall: Files have already been created, continuing 
+13785:WallMap: map_ratio > screen_ratio 
+13824:Robot: State changed to: stop 
+13824:WallMap: map_ratio > screen_ratio 
+13862:Robot: State changed to: stop 
+13864:WallMap: map_ratio > screen_ratio 
+13903:Robot: State changed to: stop 
+13903:WallMap: map_ratio > screen_ratio 
+13942:Robot: State changed to: stop 
+13944:WallMap: map_ratio > screen_ratio 
+13985:Robot: State changed to: stop 
+13985:WallMap: map_ratio > screen_ratio 
+14025:Robot: State changed to: stop 
+14027:Wall: Files have already been created, continuing 
+14028:WallMap: map_ratio > screen_ratio 
+14068:Robot: State changed to: stop 
+14068:WallMap: map_ratio > screen_ratio 
+14108:Robot: State changed to: stop 
+14111:WallMap: map_ratio > screen_ratio 
+14151:Robot: State changed to: stop 
+14151:WallMap: map_ratio > screen_ratio 
+14191:Robot: State changed to: stop 
+14194:Wall: Files have already been created, continuing 
+14194:WallMap: map_ratio > screen_ratio 
+14235:Robot: State changed to: stop 
+14235:WallMap: map_ratio > screen_ratio 
+14275:Robot: State changed to: stop 
+14278:Wall: Files have already been created, continuing 
+14278:WallMap: map_ratio > screen_ratio 
+14318:Robot: State changed to: stop 
+14319:WallMap: map_ratio > screen_ratio 
+14359:Robot: State changed to: stop 
+14360:Wall: Files have already been created, continuing 
+14362:WallMap: map_ratio > screen_ratio 
+14402:Robot: State changed to: stop 
+14402:WallMap: map_ratio > screen_ratio 
+14442:Robot: State changed to: stop 
+14444:Wall: Files have already been created, continuing 
+14445:Wall: Files have already been created, continuing 
+14445:WallMap: map_ratio > screen_ratio 
+14485:Robot: State changed to: stop 
+14486:WallMap: map_ratio > screen_ratio 
+14526:Robot: State changed to: stop 
+14527:Wall: Files have already been created, continuing 
+14529:WallMap: map_ratio > screen_ratio 
+14572:Robot: State changed to: stop 
+14572:WallMap: map_ratio > screen_ratio 
+14615:Robot: State changed to: stop 
+14618:WallMap: map_ratio > screen_ratio 
+14662:Robot: State changed to: stop 
+14662:WallMap: map_ratio > screen_ratio 
+14705:Robot: State changed to: stop 
+14708:Wall: Files have already been created, continuing 
+14708:WallMap: map_ratio > screen_ratio 
+14754:Robot: State changed to: stop 
+14754:WallMap: map_ratio > screen_ratio 
+14799:Robot: State changed to: stop 
+14802:Wall: Files have already been created, continuing 
+14802:WallMap: map_ratio > screen_ratio 
+14852:Robot: State changed to: stop 
+14852:WallMap: map_ratio > screen_ratio 
+14902:Robot: State changed to: stop 
+14904:WallMap: map_ratio > screen_ratio 
+14954:Robot: State changed to: stop 
+14955:WallMap: map_ratio > screen_ratio 
+15005:Robot: State changed to: stop 
+15007:WallMap: map_ratio > screen_ratio 
+15058:Robot: State changed to: stop 
+15059:WallMap: map_ratio > screen_ratio 
+15112:Robot: State changed to: stop 
+15114:WallMap: map_ratio > screen_ratio 
+15191:Robot: State changed to: stop 
+15191:WallMap: map_ratio > screen_ratio 
+15269:Robot: State changed to: stop 
+15271:WallMap: map_ratio > screen_ratio 
+15350:Robot: State changed to: stop 
+15350:WallMap: map_ratio > screen_ratio 
+15403:Robot: State changed to: stop 
+15405:WallMap: map_ratio > screen_ratio 
+15460:Robot: State changed to: stop 
+15460:WallMap: map_ratio > screen_ratio 
+15513:Robot: State changed to: stop 
+15514:Wall: Files have already been created, continuing 
+15515:Wall: Files have already been created, continuing 
+15515:WallMap: map_ratio > screen_ratio 
+15569:Robot: State changed to: stop 
+15569:WallMap: map_ratio > screen_ratio 
+15623:Robot: State changed to: stop 
+15624:Wall: Files have already been created, continuing 
+15625:Wall: Files have already been created, continuing 
+15625:WallMap: map_ratio > screen_ratio 
+15684:Robot: State changed to: stop 
+15684:WallMap: map_ratio > screen_ratio 
+15738:Robot: State changed to: stop 
+15740:Wall: Files have already been created, continuing 
+15740:WallMap: map_ratio > screen_ratio 
+15796:Robot: State changed to: stop 
+15796:WallMap: map_ratio > screen_ratio 
+15852:Robot: State changed to: stop 
+15854:WallMap: map_ratio > screen_ratio 
+15912:Robot: State changed to: stop 
+15912:WallMap: map_ratio > screen_ratio 
+15969:Robot: State changed to: stop 
+15971:Wall: Files have already been created, continuing 
+15972:Wall: Files have already been created, continuing 
+15972:WallMap: map_ratio > screen_ratio 
+16029:Robot: State changed to: stop 
+16030:WallMap: map_ratio > screen_ratio 
+16087:Robot: State changed to: stop 
+16090:WallMap: map_ratio > screen_ratio 
+16148:Robot: State changed to: stop 
+16148:WallMap: map_ratio > screen_ratio 
+16207:Robot: State changed to: stop 
+16208:Wall: Files have already been created, continuing 
+16209:Wall: Files have already been created, continuing 
+16210:WallMap: map_ratio > screen_ratio 
+16269:Robot: State changed to: stop 
+16270:WallMap: map_ratio > screen_ratio 
+16332:Robot: State changed to: stop 
+16334:WallMap: map_ratio > screen_ratio 
+16392:Robot: State changed to: stop 
+16392:WallMap: map_ratio > screen_ratio 
+16451:Robot: State changed to: stop 
+16454:WallMap: map_ratio > screen_ratio 
+16513:Robot: State changed to: stop 
+16514:WallMap: map_ratio > screen_ratio 
+16573:Robot: State changed to: stop 
+16574:Wall: Files have already been created, continuing 
+16575:Wall: Files have already been created, continuing 
+16575:WallMap: map_ratio > screen_ratio 
+16634:Robot: State changed to: stop 
+16635:WallMap: map_ratio > screen_ratio 
+16694:Robot: State changed to: stop 
+16696:WallMap: map_ratio > screen_ratio 
+16756:Robot: State changed to: stop 
+16757:WallMap: map_ratio > screen_ratio 
+16816:Robot: State changed to: stop 
+16818:WallMap: map_ratio > screen_ratio 
+16878:Robot: State changed to: stop 
+16878:WallMap: map_ratio > screen_ratio 
+16943:Robot: State changed to: stop 
+16946:WallMap: map_ratio > screen_ratio 
+17008:Robot: State changed to: stop 
+17008:WallMap: map_ratio > screen_ratio 
+17069:Robot: State changed to: stop 
+17071:WallMap: map_ratio > screen_ratio 
+17132:Robot: State changed to: stop 
+17132:WallMap: map_ratio > screen_ratio 
+17194:Robot: State changed to: stop 
+17196:WallMap: map_ratio > screen_ratio 
+17259:Robot: State changed to: stop 
+17259:WallMap: map_ratio > screen_ratio 
+17321:Robot: State changed to: stop 
+17323:WallMap: map_ratio > screen_ratio 
+17385:Robot: State changed to: stop 
+17385:WallMap: map_ratio > screen_ratio 
+17447:Robot: State changed to: stop 
+17450:Wall: Files have already been created, continuing 
+17450:WallMap: map_ratio > screen_ratio 
+17520:Robot: State changed to: stop 
+17521:WallMap: map_ratio > screen_ratio 
+17586:Robot: State changed to: stop 
+17588:WallMap: map_ratio > screen_ratio 
+17655:Robot: State changed to: stop 
+17655:WallMap: map_ratio > screen_ratio 
+17722:Robot: State changed to: stop 
+17724:WallMap: map_ratio > screen_ratio 
+17792:Robot: State changed to: stop 
+17792:WallMap: map_ratio > screen_ratio 
+17859:Robot: State changed to: stop 
+17861:WallMap: map_ratio > screen_ratio 
+17930:Robot: State changed to: stop 
+17930:WallMap: map_ratio > screen_ratio 
+17999:Robot: State changed to: stop 
+18001:WallMap: map_ratio > screen_ratio 
+18069:Robot: State changed to: stop 
+18070:WallMap: map_ratio > screen_ratio 
+18138:Robot: State changed to: stop 
+18140:Wall: Files have already been created, continuing 
+18141:Wall: Files have already been created, continuing 
+18141:WallMap: map_ratio > screen_ratio 
+18209:Robot: State changed to: stop 
+18210:WallMap: map_ratio > screen_ratio 
+18279:Robot: State changed to: stop 
+18281:WallMap: map_ratio > screen_ratio 
+18352:Robot: State changed to: stop 
+18352:WallMap: map_ratio > screen_ratio 
+18421:Robot: State changed to: stop 
+18423:WallMap: map_ratio > screen_ratio 
+18495:Robot: State changed to: stop 
+18495:WallMap: map_ratio > screen_ratio 
+18566:Robot: State changed to: stop 
+18567:Wall: Files have already been created, continuing 
+18568:Wall: Files have already been created, continuing 
+18569:WallMap: map_ratio > screen_ratio 
+18647:Robot: State changed to: stop 
+18647:WallMap: map_ratio > screen_ratio 
+18725:Robot: State changed to: stop 
+18727:WallMap: map_ratio > screen_ratio 
+18806:Robot: State changed to: stop 
+18806:WallMap: map_ratio > screen_ratio 
+18884:Robot: State changed to: stop 
+18886:Wall: Files have already been created, continuing 
+18886:WallMap: map_ratio > screen_ratio 
+18966:Robot: State changed to: stop 
+18967:WallMap: map_ratio > screen_ratio 
+19046:Robot: State changed to: stop 
+19048:WallMap: map_ratio > screen_ratio 
+19127:Robot: State changed to: stop 
+19127:WallMap: map_ratio > screen_ratio 
+19207:Robot: State changed to: stop 
+19210:Wall: Files have already been created, continuing 
+19210:WallMap: map_ratio > screen_ratio 
+19293:Robot: State changed to: stop 
+19293:WallMap: map_ratio > screen_ratio 
+19376:Robot: State changed to: stop 
+19378:WallMap: map_ratio > screen_ratio 
+19465:Robot: State changed to: stop 
+19465:WallMap: map_ratio > screen_ratio 
+19574:Robot: State changed to: stop 
+19578:WallMap: map_ratio > screen_ratio 
+19735:Robot: State changed to: stop 
+19735:WallMap: map_ratio > screen_ratio 
+19840:Robot: State changed to: stop 
+19843:WallMap: map_ratio > screen_ratio 
+19936:Robot: State changed to: stop 
+19937:WallMap: map_ratio > screen_ratio 
+20030:Robot: State changed to: stop 
+20032:WallMap: map_ratio > screen_ratio 
+20132:Robot: State changed to: stop 
+20132:WallMap: map_ratio > screen_ratio 
+20235:Robot: State changed to: stop 
+20237:WallMap: map_ratio > screen_ratio 
+20328:Robot: State changed to: stop 
+20328:WallMap: map_ratio > screen_ratio 
+20414:Robot: State changed to: stop 
+20416:WallMap: map_ratio > screen_ratio 
+20509:Robot: State changed to: stop 
+20509:WallMap: map_ratio > screen_ratio 
+20599:Robot: State changed to: stop 
+20601:WallMap: map_ratio > screen_ratio 
+20690:Robot: State changed to: stop 
+20691:WallMap: map_ratio > screen_ratio 
+20779:Robot: State changed to: stop 
+20781:Wall: Files have already been created, continuing 
+20781:WallMap: map_ratio > screen_ratio 
+20870:Robot: State changed to: stop 
+20870:WallMap: map_ratio > screen_ratio 
+20967:BotDisplay: Stopping all tasks and quitting program 

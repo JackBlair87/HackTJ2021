@@ -40,6 +40,7 @@ class Wall:
       return polygon.distance(Point(x, y))
 
   def calculate_distance_prerelease(self, point):
+    # same situation here, peep the comment on draw_wall
     if len(self.points) == 1:
       x = self.points[0][0]
       y = self.points[0][1]
@@ -85,6 +86,10 @@ class Wall:
       pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)
   
   def draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
+    # ok so this draws it kinda like the stl thing you were talking about but there's a lil problem
+    # if the wall is curved outward (like if we were in a circular room) it'll combine the points
+    # and turn it into a filled in circle, rather than a circular outline
+    # so im leaving the method here for now but you can delete it if ^that^ makes sense
     for point1 in self.points:
       for point2 in self.points:
         if point1 is point2:
