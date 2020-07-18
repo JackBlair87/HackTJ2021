@@ -831,16 +831,15 @@ static const char *__pyx_f[] = {
 
 /*--- Type declarations ---*/
 struct __pyx_obj_13WallMapCython_Wall;
-struct __pyx_obj_13WallMapCython_WallMap;
 struct __pyx_ctuple_int__and_int;
 typedef struct __pyx_ctuple_int__and_int __pyx_ctuple_int__and_int;
-struct __pyx_ctuple_float__and_float;
-typedef struct __pyx_ctuple_float__and_float __pyx_ctuple_float__and_float;
+struct __pyx_defaults;
+typedef struct __pyx_defaults __pyx_defaults;
 
-/* "WallMapCython.pyx":24
+/* "WallMapCython.pyx":21
  *     self.logger = Logger("Wall")
  * 
- *   cpdef add_point(Wall self, (int, int) point):             # <<<<<<<<<<<<<<
+ *   def add_point(self, (int, int) point):             # <<<<<<<<<<<<<<
  *     self.points.append(point)
  * 
  */
@@ -848,20 +847,12 @@ struct __pyx_ctuple_int__and_int {
   int f0;
   int f1;
 };
-
-/* "WallMapCython.pyx":214
- *     cdef (int, int) point
- *     cdef float x, y
- *     cdef (float, float) center             # <<<<<<<<<<<<<<
- *     for wall in self.walls:
- *       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
- */
-struct __pyx_ctuple_float__and_float {
-  float f0;
-  float f1;
+struct __pyx_defaults {
+  PyObject *__pyx_arg_obstacle_points;
+  PyObject *__pyx_arg_clear_rectangles;
 };
 
-/* "WallMapCython.pyx":13
+/* "WallMapCython.pyx":10
  * from shapely.geometry import Polygon, Point, LineString
  * 
  * cdef class Wall:             # <<<<<<<<<<<<<<
@@ -870,65 +861,10 @@ struct __pyx_ctuple_float__and_float {
  */
 struct __pyx_obj_13WallMapCython_Wall {
   PyObject_HEAD
-  struct __pyx_vtabstruct_13WallMapCython_Wall *__pyx_vtab;
   PyObject *points;
   PyObject *logger;
 };
 
-
-/* "WallMapCython.pyx":123
- *         pygame.draw.line(screen, Colors.RED, start_pos=(x1, y1), end_pos=(x2, y2), width=2)
- * 
- * cdef class WallMap:             # <<<<<<<<<<<<<<
- *   cdef object logger
- *   cdef set obstacle_points, clear_rectangles, walls
- */
-struct __pyx_obj_13WallMapCython_WallMap {
-  PyObject_HEAD
-  struct __pyx_vtabstruct_13WallMapCython_WallMap *__pyx_vtab;
-  PyObject *logger;
-  PyObject *obstacle_points;
-  PyObject *clear_rectangles;
-  PyObject *walls;
-  int x_min;
-  int x_max;
-  int y_min;
-  int y_max;
-  int count_since_last_refresh;
-};
-
-
-
-/* "WallMapCython.pyx":13
- * from shapely.geometry import Polygon, Point, LineString
- * 
- * cdef class Wall:             # <<<<<<<<<<<<<<
- *   cdef public list points
- *   cdef object logger
- */
-
-struct __pyx_vtabstruct_13WallMapCython_Wall {
-  PyObject *(*add_point)(struct __pyx_obj_13WallMapCython_Wall *, __pyx_ctuple_int__and_int, int __pyx_skip_dispatch);
-  PyObject *(*calculate_distance)(struct __pyx_obj_13WallMapCython_Wall *, __pyx_ctuple_int__and_int, int __pyx_skip_dispatch);
-  PyObject *(*draw_wall)(struct __pyx_obj_13WallMapCython_Wall *, PyObject *, PyObject *, PyObject *, PyObject *, PyObject *, PyObject *, PyObject *, PyObject *, int __pyx_skip_dispatch);
-};
-static struct __pyx_vtabstruct_13WallMapCython_Wall *__pyx_vtabptr_13WallMapCython_Wall;
-
-
-/* "WallMapCython.pyx":123
- *         pygame.draw.line(screen, Colors.RED, start_pos=(x1, y1), end_pos=(x2, y2), width=2)
- * 
- * cdef class WallMap:             # <<<<<<<<<<<<<<
- *   cdef object logger
- *   cdef set obstacle_points, clear_rectangles, walls
- */
-
-struct __pyx_vtabstruct_13WallMapCython_WallMap {
-  PyObject *(*add_obstacle_point)(struct __pyx_obj_13WallMapCython_WallMap *, int, int, int __pyx_skip_dispatch);
-  PyObject *(*refresh_walls)(struct __pyx_obj_13WallMapCython_WallMap *);
-  PyObject *(*draw_map)(struct __pyx_obj_13WallMapCython_WallMap *, PyObject *, int, int, int, int, int __pyx_skip_dispatch);
-};
-static struct __pyx_vtabstruct_13WallMapCython_WallMap *__pyx_vtabptr_13WallMapCython_WallMap;
 
 /* --- Runtime support code (head) --- */
 /* Refnanny.proto */
@@ -1150,6 +1086,18 @@ static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j);
 static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i,
                                                      int is_list, int wraparound, int boundscheck);
 
+/* RaiseTooManyValuesToUnpack.proto */
+static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected);
+
+/* RaiseNeedMoreValuesToUnpack.proto */
+static CYTHON_INLINE void __Pyx_RaiseNeedMoreValuesError(Py_ssize_t index);
+
+/* IterFinish.proto */
+static CYTHON_INLINE int __Pyx_IterFinish(void);
+
+/* UnpackItemEndCheck.proto */
+static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected);
+
 /* PyErrExceptionMatches.proto */
 #if CYTHON_FAST_THREAD_STATE
 #define __Pyx_PyErr_ExceptionMatches(err) __Pyx_PyErr_ExceptionMatchesInState(__pyx_tstate, err)
@@ -1200,16 +1148,37 @@ static CYTHON_INLINE PyObject *__Pyx_GetAttr(PyObject *, PyObject *);
 /* GetAttr3.proto */
 static CYTHON_INLINE PyObject *__Pyx_GetAttr3(PyObject *, PyObject *, PyObject *);
 
-/* IterFinish.proto */
-static CYTHON_INLINE int __Pyx_IterFinish(void);
+/* PyObjectSetAttrStr.proto */
+#if CYTHON_USE_TYPE_SLOTS
+#define __Pyx_PyObject_DelAttrStr(o,n) __Pyx_PyObject_SetAttrStr(o, n, NULL)
+static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value);
+#else
+#define __Pyx_PyObject_DelAttrStr(o,n)   PyObject_DelAttr(o,n)
+#define __Pyx_PyObject_SetAttrStr(o,n,v) PyObject_SetAttr(o,n,v)
+#endif
 
-/* set_iter.proto */
-static CYTHON_INLINE PyObject* __Pyx_set_iterator(PyObject* iterable, int is_set,
-                                                  Py_ssize_t* p_orig_length, int* p_source_is_set);
-static CYTHON_INLINE int __Pyx_set_iter_next(
-        PyObject* iter_obj, Py_ssize_t orig_length,
-        Py_ssize_t* ppos, PyObject **value,
-        int source_is_set);
+/* PyIntBinop.proto */
+#if !CYTHON_COMPILING_IN_PYPY
+static PyObject* __Pyx_PyInt_SubtractObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check);
+#else
+#define __Pyx_PyInt_SubtractObjC(op1, op2, intval, inplace, zerodivision_check)\
+    (inplace ? PyNumber_InPlaceSubtract(op1, op2) : PyNumber_Subtract(op1, op2))
+#endif
+
+/* PyIntBinop.proto */
+#if !CYTHON_COMPILING_IN_PYPY
+static PyObject* __Pyx_PyInt_AddObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check);
+#else
+#define __Pyx_PyInt_AddObjC(op1, op2, intval, inplace, zerodivision_check)\
+    (inplace ? PyNumber_InPlaceAdd(op1, op2) : PyNumber_Add(op1, op2))
+#endif
+
+/* PyObjectCallNoArg.proto */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func);
+#else
+#define __Pyx_PyObject_CallNoArg(func) __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL)
+#endif
 
 /* ListExtend.proto */
 static CYTHON_INLINE int __Pyx_PyList_Extend(PyObject* L, PyObject* v) {
@@ -1223,19 +1192,6 @@ static CYTHON_INLINE int __Pyx_PyList_Extend(PyObject* L, PyObject* v) {
     return PyList_SetSlice(L, PY_SSIZE_T_MAX, PY_SSIZE_T_MAX, v);
 #endif
 }
-
-/* pyfrozenset_new.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyFrozenSet_New(PyObject* it);
-
-/* py_set_discard.proto */
-static CYTHON_INLINE int __Pyx_PySet_Discard(PyObject *set, PyObject *key);
-
-/* None.proto */
-static CYTHON_INLINE int __Pyx_div_int(int, int);
-
-/* UnaryNegOverflows.proto */
-#define UNARY_NEG_WOULD_OVERFLOW(x)\
-        (((x) < 0) & ((unsigned long)(x) == 0-(unsigned long)(x)))
 
 /* Import.proto */
 static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level);
@@ -1263,14 +1219,94 @@ static PyObject* __Pyx_PyObject_GenericGetAttr(PyObject* obj, PyObject* attr_nam
 #define __Pyx_PyObject_GenericGetAttr PyObject_GenericGetAttr
 #endif
 
-/* SetVTable.proto */
-static int __Pyx_SetVtable(PyObject *dict, void *vtable);
-
 /* PyObjectGetAttrStrNoError.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStrNoError(PyObject* obj, PyObject* attr_name);
 
 /* SetupReduce.proto */
 static int __Pyx_setup_reduce(PyObject* type_obj);
+
+/* FetchCommonType.proto */
+static PyTypeObject* __Pyx_FetchCommonType(PyTypeObject* type);
+
+/* CythonFunctionShared.proto */
+#define __Pyx_CyFunction_USED 1
+#define __Pyx_CYFUNCTION_STATICMETHOD  0x01
+#define __Pyx_CYFUNCTION_CLASSMETHOD   0x02
+#define __Pyx_CYFUNCTION_CCLASS        0x04
+#define __Pyx_CyFunction_GetClosure(f)\
+    (((__pyx_CyFunctionObject *) (f))->func_closure)
+#define __Pyx_CyFunction_GetClassObj(f)\
+    (((__pyx_CyFunctionObject *) (f))->func_classobj)
+#define __Pyx_CyFunction_Defaults(type, f)\
+    ((type *)(((__pyx_CyFunctionObject *) (f))->defaults))
+#define __Pyx_CyFunction_SetDefaultsGetter(f, g)\
+    ((__pyx_CyFunctionObject *) (f))->defaults_getter = (g)
+typedef struct {
+    PyCFunctionObject func;
+#if PY_VERSION_HEX < 0x030500A0
+    PyObject *func_weakreflist;
+#endif
+    PyObject *func_dict;
+    PyObject *func_name;
+    PyObject *func_qualname;
+    PyObject *func_doc;
+    PyObject *func_globals;
+    PyObject *func_code;
+    PyObject *func_closure;
+    PyObject *func_classobj;
+    void *defaults;
+    int defaults_pyobjects;
+    size_t defaults_size;  // used by FusedFunction for copying defaults
+    int flags;
+    PyObject *defaults_tuple;
+    PyObject *defaults_kwdict;
+    PyObject *(*defaults_getter)(PyObject *);
+    PyObject *func_annotations;
+} __pyx_CyFunctionObject;
+static PyTypeObject *__pyx_CyFunctionType = 0;
+#define __Pyx_CyFunction_Check(obj)  (__Pyx_TypeCheck(obj, __pyx_CyFunctionType))
+static PyObject *__Pyx_CyFunction_Init(__pyx_CyFunctionObject* op, PyMethodDef *ml,
+                                      int flags, PyObject* qualname,
+                                      PyObject *self,
+                                      PyObject *module, PyObject *globals,
+                                      PyObject* code);
+static CYTHON_INLINE void *__Pyx_CyFunction_InitDefaults(PyObject *m,
+                                                         size_t size,
+                                                         int pyobjects);
+static CYTHON_INLINE void __Pyx_CyFunction_SetDefaultsTuple(PyObject *m,
+                                                            PyObject *tuple);
+static CYTHON_INLINE void __Pyx_CyFunction_SetDefaultsKwDict(PyObject *m,
+                                                             PyObject *dict);
+static CYTHON_INLINE void __Pyx_CyFunction_SetAnnotationsDict(PyObject *m,
+                                                              PyObject *dict);
+static int __pyx_CyFunction_init(void);
+
+/* CythonFunction.proto */
+static PyObject *__Pyx_CyFunction_New(PyMethodDef *ml,
+                                      int flags, PyObject* qualname,
+                                      PyObject *closure,
+                                      PyObject *module, PyObject *globals,
+                                      PyObject* code);
+
+/* SetNameInClass.proto */
+#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030500A1
+#define __Pyx_SetNameInClass(ns, name, value)\
+    (likely(PyDict_CheckExact(ns)) ? _PyDict_SetItem_KnownHash(ns, name, value, ((PyASCIIObject *) name)->hash) : PyObject_SetItem(ns, name, value))
+#elif CYTHON_COMPILING_IN_CPYTHON
+#define __Pyx_SetNameInClass(ns, name, value)\
+    (likely(PyDict_CheckExact(ns)) ? PyDict_SetItem(ns, name, value) : PyObject_SetItem(ns, name, value))
+#else
+#define __Pyx_SetNameInClass(ns, name, value)  PyObject_SetItem(ns, name, value)
+#endif
+
+/* CalculateMetaclass.proto */
+static PyObject *__Pyx_CalculateMetaclass(PyTypeObject *metaclass, PyObject *bases);
+
+/* Py3ClassCreate.proto */
+static PyObject *__Pyx_Py3MetaclassPrepare(PyObject *metaclass, PyObject *bases, PyObject *name, PyObject *qualname,
+                                           PyObject *mkw, PyObject *modname, PyObject *doc);
+static PyObject *__Pyx_Py3ClassCreate(PyObject *metaclass, PyObject *name, PyObject *bases, PyObject *dict,
+                                      PyObject *mkw, int calculate_metaclass, int allow_py2_metaclass);
 
 /* CLineInTraceback.proto */
 #ifdef CYTHON_CLINE_IN_TRACEBACK
@@ -1298,20 +1334,17 @@ static void __pyx_insert_code_object(int code_line, PyCodeObject* code_object);
 static void __Pyx_AddTraceback(const char *funcname, int c_line,
                                int py_line, const char *filename);
 
-/* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
-
 /* FromPyCTupleUtility.proto */
 static __pyx_ctuple_int__and_int __pyx_convert__from_py___pyx_ctuple_int__and_int(PyObject *);
+
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
 
 /* ToPyCTupleUtility.proto */
 static PyObject* __pyx_convert__to_py___pyx_ctuple_int__and_int(__pyx_ctuple_int__and_int);
 
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
-
-/* ToPyCTupleUtility.proto */
-static PyObject* __pyx_convert__to_py___pyx_ctuple_float__and_float(__pyx_ctuple_float__and_float);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
@@ -1338,18 +1371,10 @@ static int __Pyx_check_binary_version(void);
 /* InitStrings.proto */
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
-static PyObject *__pyx_f_13WallMapCython_4Wall_add_point(struct __pyx_obj_13WallMapCython_Wall *__pyx_v_self, __pyx_ctuple_int__and_int __pyx_v_point, int __pyx_skip_dispatch); /* proto*/
-static PyObject *__pyx_f_13WallMapCython_4Wall_calculate_distance(struct __pyx_obj_13WallMapCython_Wall *__pyx_v_self, __pyx_ctuple_int__and_int __pyx_v_point, int __pyx_skip_dispatch); /* proto*/
-static PyObject *__pyx_f_13WallMapCython_4Wall_draw_wall(struct __pyx_obj_13WallMapCython_Wall *__pyx_v_self, PyObject *__pyx_v_screen, PyObject *__pyx_v_y_max, PyObject *__pyx_v_x_add_num, PyObject *__pyx_v_x_scale, PyObject *__pyx_v_x_screen_adjustment, PyObject *__pyx_v_y_add_num, PyObject *__pyx_v_y_scale, PyObject *__pyx_v_y_screen_adjustment, int __pyx_skip_dispatch); /* proto*/
-static PyObject *__pyx_f_13WallMapCython_7WallMap_add_obstacle_point(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v_self, int __pyx_v_x, int __pyx_v_y, int __pyx_skip_dispatch); /* proto*/
-static PyObject *__pyx_f_13WallMapCython_7WallMap_refresh_walls(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v_self); /* proto*/
-static PyObject *__pyx_f_13WallMapCython_7WallMap_draw_map(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v_self, PyObject *__pyx_v_screen, int __pyx_v_x_min, int __pyx_v_x_max, int __pyx_v_y_min, int __pyx_v_y_max, int __pyx_skip_dispatch); /* proto*/
 
 /* Module declarations from 'WallMapCython' */
 static PyTypeObject *__pyx_ptype_13WallMapCython_Wall = 0;
-static PyTypeObject *__pyx_ptype_13WallMapCython_WallMap = 0;
 static PyObject *__pyx_f_13WallMapCython___pyx_unpickle_Wall__set_state(struct __pyx_obj_13WallMapCython_Wall *, PyObject *); /*proto*/
-static PyObject *__pyx_f_13WallMapCython___pyx_unpickle_WallMap__set_state(struct __pyx_obj_13WallMapCython_WallMap *, PyObject *); /*proto*/
 #define __Pyx_MODULE_NAME "WallMapCython"
 extern int __pyx_module_is_main_WallMapCython;
 int __pyx_module_is_main_WallMapCython = 0;
@@ -1359,19 +1384,26 @@ static const char __pyx_k_x[] = "x";
 static const char __pyx_k_y[] = "y";
 static const char __pyx_k_os[] = "os";
 static const char __pyx_k_RED[] = "RED";
+static const char __pyx_k_add[] = "add";
+static const char __pyx_k_doc[] = "__doc__";
 static const char __pyx_k_inf[] = "inf";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_BLUE[] = "BLUE";
 static const char __pyx_k_Wall[] = "Wall";
 static const char __pyx_k_dict[] = "__dict__";
 static const char __pyx_k_draw[] = "draw";
+static const char __pyx_k_init[] = "__init__";
 static const char __pyx_k_line[] = "line";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_math[] = "math";
 static const char __pyx_k_name[] = "__name__";
+static const char __pyx_k_self[] = "self";
 static const char __pyx_k_test[] = "__test__";
+static const char __pyx_k_wall[] = "wall";
 static const char __pyx_k_Point[] = "Point";
 static const char __pyx_k_color[] = "color";
+static const char __pyx_k_point[] = "point";
+static const char __pyx_k_walls[] = "walls";
 static const char __pyx_k_width[] = "width";
 static const char __pyx_k_x_max[] = "x_max";
 static const char __pyx_k_x_min[] = "x_min";
@@ -1382,6 +1414,8 @@ static const char __pyx_k_Logger[] = "Logger";
 static const char __pyx_k_center[] = "center";
 static const char __pyx_k_circle[] = "circle";
 static const char __pyx_k_import[] = "__import__";
+static const char __pyx_k_logger[] = "logger";
+static const char __pyx_k_module[] = "__module__";
 static const char __pyx_k_pickle[] = "pickle";
 static const char __pyx_k_points[] = "points";
 static const char __pyx_k_pygame[] = "pygame";
@@ -1391,8 +1425,10 @@ static const char __pyx_k_screen[] = "screen";
 static const char __pyx_k_update[] = "update";
 static const char __pyx_k_Polygon[] = "Polygon";
 static const char __pyx_k_WallMap[] = "WallMap";
+static const char __pyx_k_discard[] = "discard";
 static const char __pyx_k_end_pos[] = "end_pos";
 static const char __pyx_k_polygon[] = "polygon";
+static const char __pyx_k_prepare[] = "__prepare__";
 static const char __pyx_k_surface[] = "surface";
 static const char __pyx_k_x_scale[] = "x_scale";
 static const char __pyx_k_y_scale[] = "y_scale";
@@ -1400,28 +1436,41 @@ static const char __pyx_k_distance[] = "distance";
 static const char __pyx_k_draw_map[] = "draw_map";
 static const char __pyx_k_getstate[] = "__getstate__";
 static const char __pyx_k_pyx_type[] = "__pyx_type";
+static const char __pyx_k_qualname[] = "__qualname__";
 static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_Resources[] = "Resources";
 static const char __pyx_k_add_point[] = "add_point";
 static const char __pyx_k_draw_wall[] = "draw_wall";
+static const char __pyx_k_map_ratio[] = "map_ratio";
+static const char __pyx_k_map_width[] = "map_width";
+static const char __pyx_k_metaclass[] = "__metaclass__";
 static const char __pyx_k_pyx_state[] = "__pyx_state";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_start_pos[] = "start_pos";
 static const char __pyx_k_x_add_num[] = "x_add_num";
 static const char __pyx_k_y_add_num[] = "y_add_num";
 static const char __pyx_k_LineString[] = "LineString";
+static const char __pyx_k_map_height[] = "map_height";
 static const char __pyx_k_pyx_result[] = "__pyx_result";
-static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_PickleError[] = "PickleError";
+static const char __pyx_k_adding_wall[] = "adding_wall";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
+static const char __pyx_k_screen_ratio[] = "screen_ratio";
+static const char __pyx_k_screen_width[] = "screen_width";
 static const char __pyx_k_stringsource[] = "stringsource";
+static const char __pyx_k_total_points[] = "total_points";
+static const char __pyx_k_walls_to_add[] = "walls_to_add";
 static const char __pyx_k_WallMapCython[] = "WallMapCython";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
-static const char __pyx_k_DON_T_EDIT_HERE[] = "\nDON'T EDIT HERE\n";
+static const char __pyx_k_refresh_walls[] = "refresh_walls";
+static const char __pyx_k_screen_height[] = "screen_height";
+static const char __pyx_k_WallMap___init[] = "WallMap.__init__";
 static const char __pyx_k_obstacle_points[] = "obstacle_points";
 static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
+static const char __pyx_k_WallMap_draw_map[] = "WallMap.draw_map";
 static const char __pyx_k_clear_rectangles[] = "clear_rectangles";
+static const char __pyx_k_ratio_difference[] = "ratio_difference";
 static const char __pyx_k_shapely_geometry[] = "shapely.geometry";
 static const char __pyx_k_pyx_unpickle_Wall[] = "__pyx_unpickle_Wall";
 static const char __pyx_k_add_obstacle_point[] = "add_obstacle_point";
@@ -1429,12 +1478,13 @@ static const char __pyx_k_calculate_distance[] = "calculate_distance";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_x_screen_adjustment[] = "x_screen_adjustment";
 static const char __pyx_k_y_screen_adjustment[] = "y_screen_adjustment";
-static const char __pyx_k_pyx_unpickle_WallMap[] = "__pyx_unpickle_WallMap";
-static const char __pyx_k_Incompatible_checksums_s_vs_0x90[] = "Incompatible checksums (%s vs 0x90612b1 = (clear_rectangles, count_since_last_refresh, logger, obstacle_points, walls, x_max, x_min, y_max, y_min))";
+static const char __pyx_k_WallMap_refresh_walls[] = "WallMap.refresh_walls";
+static const char __pyx_k_count_since_last_refresh[] = "count_since_last_refresh";
+static const char __pyx_k_WallMap_add_obstacle_point[] = "WallMap.add_obstacle_point";
 static const char __pyx_k_Incompatible_checksums_s_vs_0xfd[] = "Incompatible checksums (%s vs 0xfd15c2c = (logger, points))";
+static const char __pyx_k_ground_station_WallMapCython_pyx[] = "ground_station/WallMapCython.pyx";
 static PyObject *__pyx_n_s_BLUE;
 static PyObject *__pyx_n_s_Colors;
-static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x90;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0xfd;
 static PyObject *__pyx_n_s_LineString;
 static PyObject *__pyx_n_s_Logger;
@@ -1446,33 +1496,52 @@ static PyObject *__pyx_n_s_Resources;
 static PyObject *__pyx_n_s_Wall;
 static PyObject *__pyx_n_s_WallMap;
 static PyObject *__pyx_n_s_WallMapCython;
+static PyObject *__pyx_n_s_WallMap___init;
+static PyObject *__pyx_n_s_WallMap_add_obstacle_point;
+static PyObject *__pyx_n_s_WallMap_draw_map;
+static PyObject *__pyx_n_s_WallMap_refresh_walls;
+static PyObject *__pyx_n_s_add;
 static PyObject *__pyx_n_s_add_obstacle_point;
 static PyObject *__pyx_n_s_add_point;
+static PyObject *__pyx_n_s_adding_wall;
 static PyObject *__pyx_n_s_calculate_distance;
 static PyObject *__pyx_n_s_center;
 static PyObject *__pyx_n_s_circle;
 static PyObject *__pyx_n_s_clear_rectangles;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_color;
+static PyObject *__pyx_n_s_count_since_last_refresh;
 static PyObject *__pyx_n_s_dict;
+static PyObject *__pyx_n_s_discard;
 static PyObject *__pyx_n_s_distance;
+static PyObject *__pyx_n_s_doc;
 static PyObject *__pyx_n_s_draw;
 static PyObject *__pyx_n_s_draw_map;
 static PyObject *__pyx_n_s_draw_wall;
 static PyObject *__pyx_n_s_end_pos;
 static PyObject *__pyx_n_s_getstate;
+static PyObject *__pyx_kp_s_ground_station_WallMapCython_pyx;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_inf;
+static PyObject *__pyx_n_s_init;
 static PyObject *__pyx_n_s_line;
+static PyObject *__pyx_n_s_logger;
 static PyObject *__pyx_n_s_main;
+static PyObject *__pyx_n_s_map_height;
+static PyObject *__pyx_n_s_map_ratio;
+static PyObject *__pyx_n_s_map_width;
 static PyObject *__pyx_n_s_math;
+static PyObject *__pyx_n_s_metaclass;
+static PyObject *__pyx_n_s_module;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_new;
 static PyObject *__pyx_n_s_obstacle_points;
 static PyObject *__pyx_n_s_os;
 static PyObject *__pyx_n_s_pickle;
+static PyObject *__pyx_n_s_point;
 static PyObject *__pyx_n_s_points;
 static PyObject *__pyx_n_s_polygon;
+static PyObject *__pyx_n_s_prepare;
 static PyObject *__pyx_n_s_pygame;
 static PyObject *__pyx_n_s_pyx_PickleError;
 static PyObject *__pyx_n_s_pyx_checksum;
@@ -1480,13 +1549,18 @@ static PyObject *__pyx_n_s_pyx_result;
 static PyObject *__pyx_n_s_pyx_state;
 static PyObject *__pyx_n_s_pyx_type;
 static PyObject *__pyx_n_s_pyx_unpickle_Wall;
-static PyObject *__pyx_n_s_pyx_unpickle_WallMap;
-static PyObject *__pyx_n_s_pyx_vtable;
+static PyObject *__pyx_n_s_qualname;
 static PyObject *__pyx_n_s_radius;
+static PyObject *__pyx_n_s_ratio_difference;
 static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
+static PyObject *__pyx_n_s_refresh_walls;
 static PyObject *__pyx_n_s_screen;
+static PyObject *__pyx_n_s_screen_height;
+static PyObject *__pyx_n_s_screen_ratio;
+static PyObject *__pyx_n_s_screen_width;
+static PyObject *__pyx_n_s_self;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_shapely_geometry;
@@ -1494,7 +1568,11 @@ static PyObject *__pyx_n_s_start_pos;
 static PyObject *__pyx_kp_s_stringsource;
 static PyObject *__pyx_n_s_surface;
 static PyObject *__pyx_n_s_test;
+static PyObject *__pyx_n_s_total_points;
 static PyObject *__pyx_n_s_update;
+static PyObject *__pyx_n_s_wall;
+static PyObject *__pyx_n_s_walls;
+static PyObject *__pyx_n_s_walls_to_add;
 static PyObject *__pyx_n_s_width;
 static PyObject *__pyx_n_s_x;
 static PyObject *__pyx_n_s_x_add_num;
@@ -1519,32 +1597,38 @@ static int __pyx_pf_13WallMapCython_4Wall_6points_2__set__(struct __pyx_obj_13Wa
 static int __pyx_pf_13WallMapCython_4Wall_6points_4__del__(struct __pyx_obj_13WallMapCython_Wall *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_13WallMapCython_4Wall_12__reduce_cython__(struct __pyx_obj_13WallMapCython_Wall *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_13WallMapCython_4Wall_14__setstate_cython__(struct __pyx_obj_13WallMapCython_Wall *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
-static int __pyx_pf_13WallMapCython_7WallMap___init__(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v_self, PyObject *__pyx_v_obstacle_points, PyObject *__pyx_v_clear_rectangles); /* proto */
-static PyObject *__pyx_pf_13WallMapCython_7WallMap_2add_obstacle_point(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v_self, int __pyx_v_x, int __pyx_v_y); /* proto */
-static PyObject *__pyx_pf_13WallMapCython_7WallMap_4draw_map(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v_self, PyObject *__pyx_v_screen, int __pyx_v_x_min, int __pyx_v_x_max, int __pyx_v_y_min, int __pyx_v_y_max); /* proto */
-static PyObject *__pyx_pf_13WallMapCython_7WallMap_6__reduce_cython__(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_13WallMapCython_7WallMap_8__setstate_cython__(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_13WallMapCython_2__defaults__(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_13WallMapCython_7WallMap___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_obstacle_points, PyObject *__pyx_v_clear_rectangles); /* proto */
+static PyObject *__pyx_pf_13WallMapCython_7WallMap_2add_obstacle_point(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_x, PyObject *__pyx_v_y); /* proto */
+static PyObject *__pyx_pf_13WallMapCython_7WallMap_4refresh_walls(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_13WallMapCython_7WallMap_6draw_map(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_screen, int __pyx_v_x_min, int __pyx_v_x_max, int __pyx_v_y_min, int __pyx_v_y_max); /* proto */
 static PyObject *__pyx_pf_13WallMapCython___pyx_unpickle_Wall(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_13WallMapCython_2__pyx_unpickle_WallMap(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_tp_new_13WallMapCython_Wall(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_13WallMapCython_WallMap(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_int_0;
+static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_2;
 static PyObject *__pyx_int_3;
 static PyObject *__pyx_int_5;
-static PyObject *__pyx_int_151392945;
+static PyObject *__pyx_int_10;
 static PyObject *__pyx_int_265378860;
-static PyObject *__pyx_k_;
-static PyObject *__pyx_k__2;
+static PyObject *__pyx_int_neg_1;
+static PyObject *__pyx_int_neg_10;
+static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__5;
+static PyObject *__pyx_tuple__7;
+static PyObject *__pyx_tuple__9;
+static PyObject *__pyx_codeobj__2;
 static PyObject *__pyx_codeobj__4;
 static PyObject *__pyx_codeobj__6;
+static PyObject *__pyx_codeobj__8;
+static PyObject *__pyx_codeobj__10;
 /* Late includes */
 
-/* "WallMapCython.pyx":16
+/* "WallMapCython.pyx":13
  *   cdef public list points
  *   cdef object logger
- *   def __init__(Wall self, points):             # <<<<<<<<<<<<<<
+ *   def __init__(self, points):             # <<<<<<<<<<<<<<
  *     if type(points) is list:
  *       self.points = points
  */
@@ -1578,7 +1662,7 @@ static int __pyx_pw_13WallMapCython_4Wall_1__init__(PyObject *__pyx_v_self, PyOb
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 16, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 13, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -1589,7 +1673,7 @@ static int __pyx_pw_13WallMapCython_4Wall_1__init__(PyObject *__pyx_v_self, PyOb
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 16, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 13, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("WallMapCython.Wall.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1615,9 +1699,9 @@ static int __pyx_pf_13WallMapCython_4Wall___init__(struct __pyx_obj_13WallMapCyt
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "WallMapCython.pyx":17
+  /* "WallMapCython.pyx":14
  *   cdef object logger
- *   def __init__(Wall self, points):
+ *   def __init__(self, points):
  *     if type(points) is list:             # <<<<<<<<<<<<<<
  *       self.points = points
  *     else:
@@ -1626,14 +1710,14 @@ static int __pyx_pf_13WallMapCython_4Wall___init__(struct __pyx_obj_13WallMapCyt
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "WallMapCython.pyx":18
- *   def __init__(Wall self, points):
+    /* "WallMapCython.pyx":15
+ *   def __init__(self, points):
  *     if type(points) is list:
  *       self.points = points             # <<<<<<<<<<<<<<
  *     else:
  *       self.points = [points]
  */
-    if (!(likely(PyList_CheckExact(__pyx_v_points))||((__pyx_v_points) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_points)->tp_name), 0))) __PYX_ERR(0, 18, __pyx_L1_error)
+    if (!(likely(PyList_CheckExact(__pyx_v_points))||((__pyx_v_points) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_points)->tp_name), 0))) __PYX_ERR(0, 15, __pyx_L1_error)
     __pyx_t_3 = __pyx_v_points;
     __Pyx_INCREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_3);
@@ -1642,9 +1726,9 @@ static int __pyx_pf_13WallMapCython_4Wall___init__(struct __pyx_obj_13WallMapCyt
     __pyx_v_self->points = ((PyObject*)__pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "WallMapCython.pyx":17
+    /* "WallMapCython.pyx":14
  *   cdef object logger
- *   def __init__(Wall self, points):
+ *   def __init__(self, points):
  *     if type(points) is list:             # <<<<<<<<<<<<<<
  *       self.points = points
  *     else:
@@ -1652,7 +1736,7 @@ static int __pyx_pf_13WallMapCython_4Wall___init__(struct __pyx_obj_13WallMapCyt
     goto __pyx_L3;
   }
 
-  /* "WallMapCython.pyx":20
+  /* "WallMapCython.pyx":17
  *       self.points = points
  *     else:
  *       self.points = [points]             # <<<<<<<<<<<<<<
@@ -1660,7 +1744,7 @@ static int __pyx_pf_13WallMapCython_4Wall___init__(struct __pyx_obj_13WallMapCyt
  *     self.logger = Logger("Wall")
  */
   /*else*/ {
-    __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_points);
     __Pyx_GIVEREF(__pyx_v_points);
@@ -1673,14 +1757,14 @@ static int __pyx_pf_13WallMapCython_4Wall___init__(struct __pyx_obj_13WallMapCyt
   }
   __pyx_L3:;
 
-  /* "WallMapCython.pyx":22
+  /* "WallMapCython.pyx":19
  *       self.points = [points]
  * 
  *     self.logger = Logger("Wall")             # <<<<<<<<<<<<<<
  * 
- *   cpdef add_point(Wall self, (int, int) point):
+ *   def add_point(self, (int, int) point):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Logger); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Logger); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -1694,7 +1778,7 @@ static int __pyx_pf_13WallMapCython_4Wall___init__(struct __pyx_obj_13WallMapCyt
   }
   __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_n_s_Wall) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_n_s_Wall);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_GIVEREF(__pyx_t_3);
@@ -1703,10 +1787,10 @@ static int __pyx_pf_13WallMapCython_4Wall___init__(struct __pyx_obj_13WallMapCyt
   __pyx_v_self->logger = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "WallMapCython.pyx":16
+  /* "WallMapCython.pyx":13
  *   cdef public list points
  *   cdef object logger
- *   def __init__(Wall self, points):             # <<<<<<<<<<<<<<
+ *   def __init__(self, points):             # <<<<<<<<<<<<<<
  *     if type(points) is list:
  *       self.points = points
  */
@@ -1725,118 +1809,13 @@ static int __pyx_pf_13WallMapCython_4Wall___init__(struct __pyx_obj_13WallMapCyt
   return __pyx_r;
 }
 
-/* "WallMapCython.pyx":24
+/* "WallMapCython.pyx":21
  *     self.logger = Logger("Wall")
  * 
- *   cpdef add_point(Wall self, (int, int) point):             # <<<<<<<<<<<<<<
+ *   def add_point(self, (int, int) point):             # <<<<<<<<<<<<<<
  *     self.points.append(point)
  * 
  */
-
-static PyObject *__pyx_pw_13WallMapCython_4Wall_3add_point(PyObject *__pyx_v_self, PyObject *__pyx_arg_point); /*proto*/
-static PyObject *__pyx_f_13WallMapCython_4Wall_add_point(struct __pyx_obj_13WallMapCython_Wall *__pyx_v_self, __pyx_ctuple_int__and_int __pyx_v_point, int __pyx_skip_dispatch) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  int __pyx_t_6;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("add_point", 0);
-  /* Check if called by wrapper */
-  if (unlikely(__pyx_skip_dispatch)) ;
-  /* Check if overridden in Python */
-  else if (unlikely((Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0) || (Py_TYPE(((PyObject *)__pyx_v_self))->tp_flags & (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))) {
-    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
-      PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_add_point); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_13WallMapCython_4Wall_3add_point)) {
-        __Pyx_XDECREF(__pyx_r);
-        __pyx_t_3 = __pyx_convert__to_py___pyx_ctuple_int__and_int(__pyx_v_point); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_4 = __pyx_t_1; __pyx_t_5 = NULL;
-        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
-          __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
-          if (likely(__pyx_t_5)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-            __Pyx_INCREF(__pyx_t_5);
-            __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_4, function);
-          }
-        }
-        __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
-        __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_r = __pyx_t_2;
-        __pyx_t_2 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        goto __pyx_L0;
-      }
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
-      if (unlikely(__pyx_type_dict_guard != __pyx_tp_dict_version)) {
-        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-      }
-      #endif
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    }
-    #endif
-  }
-
-  /* "WallMapCython.pyx":25
- * 
- *   cpdef add_point(Wall self, (int, int) point):
- *     self.points.append(point)             # <<<<<<<<<<<<<<
- * 
- *   cpdef calculate_distance(Wall self, (int, int) point):
- */
-  if (unlikely(__pyx_v_self->points == Py_None)) {
-    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-    __PYX_ERR(0, 25, __pyx_L1_error)
-  }
-  __pyx_t_1 = __pyx_convert__to_py___pyx_ctuple_int__and_int(__pyx_v_point); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_self->points, __pyx_t_1); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "WallMapCython.pyx":24
- *     self.logger = Logger("Wall")
- * 
- *   cpdef add_point(Wall self, (int, int) point):             # <<<<<<<<<<<<<<
- *     self.points.append(point)
- * 
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("WallMapCython.Wall.add_point", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
 
 /* Python wrapper */
 static PyObject *__pyx_pw_13WallMapCython_4Wall_3add_point(PyObject *__pyx_v_self, PyObject *__pyx_arg_point); /*proto*/
@@ -1849,7 +1828,7 @@ static PyObject *__pyx_pw_13WallMapCython_4Wall_3add_point(PyObject *__pyx_v_sel
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("add_point (wrapper)", 0);
   assert(__pyx_arg_point); {
-    __pyx_v_point = __pyx_convert__from_py___pyx_ctuple_int__and_int(__pyx_arg_point); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 24, __pyx_L3_error)
+    __pyx_v_point = __pyx_convert__from_py___pyx_ctuple_int__and_int(__pyx_arg_point); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 21, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -1868,18 +1847,39 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_2add_point(struct __pyx_obj_13Wa
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
+  int __pyx_t_2;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("add_point", 0);
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_13WallMapCython_4Wall_add_point(__pyx_v_self, __pyx_v_point, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
+
+  /* "WallMapCython.pyx":22
+ * 
+ *   def add_point(self, (int, int) point):
+ *     self.points.append(point)             # <<<<<<<<<<<<<<
+ * 
+ *   def calculate_distance(self, (int, int) point):
+ */
+  if (unlikely(__pyx_v_self->points == Py_None)) {
+    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
+    __PYX_ERR(0, 22, __pyx_L1_error)
+  }
+  __pyx_t_1 = __pyx_convert__to_py___pyx_ctuple_int__and_int(__pyx_v_point); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
+  __pyx_t_2 = __Pyx_PyList_Append(__pyx_v_self->points, __pyx_t_1); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "WallMapCython.pyx":21
+ *     self.logger = Logger("Wall")
+ * 
+ *   def add_point(self, (int, int) point):             # <<<<<<<<<<<<<<
+ *     self.points.append(point)
+ * 
+ */
 
   /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_AddTraceback("WallMapCython.Wall.add_point", __pyx_clineno, __pyx_lineno, __pyx_filename);
@@ -1890,624 +1890,13 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_2add_point(struct __pyx_obj_13Wa
   return __pyx_r;
 }
 
-/* "WallMapCython.pyx":27
+/* "WallMapCython.pyx":24
  *     self.points.append(point)
  * 
- *   cpdef calculate_distance(Wall self, (int, int) point):             # <<<<<<<<<<<<<<
- *     cdef int x, y
- *     if len(self.points) == 1:
- */
-
-static PyObject *__pyx_pw_13WallMapCython_4Wall_5calculate_distance(PyObject *__pyx_v_self, PyObject *__pyx_arg_point); /*proto*/
-static PyObject *__pyx_f_13WallMapCython_4Wall_calculate_distance(struct __pyx_obj_13WallMapCython_Wall *__pyx_v_self, __pyx_ctuple_int__and_int __pyx_v_point, int __pyx_skip_dispatch) {
-  int __pyx_v_x;
-  int __pyx_v_y;
-  PyObject *__pyx_v_wall_point = NULL;
-  PyObject *__pyx_v_input_point = NULL;
-  PyObject *__pyx_v_wall_line = NULL;
-  PyObject *__pyx_v_polygon = NULL;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  Py_ssize_t __pyx_t_6;
-  int __pyx_t_7;
-  int __pyx_t_8;
-  PyObject *__pyx_t_9 = NULL;
-  PyObject *__pyx_t_10 = NULL;
-  PyObject *__pyx_t_11 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("calculate_distance", 0);
-  /* Check if called by wrapper */
-  if (unlikely(__pyx_skip_dispatch)) ;
-  /* Check if overridden in Python */
-  else if (unlikely((Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0) || (Py_TYPE(((PyObject *)__pyx_v_self))->tp_flags & (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))) {
-    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
-      PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculate_distance); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_13WallMapCython_4Wall_5calculate_distance)) {
-        __Pyx_XDECREF(__pyx_r);
-        __pyx_t_3 = __pyx_convert__to_py___pyx_ctuple_int__and_int(__pyx_v_point); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_4 = __pyx_t_1; __pyx_t_5 = NULL;
-        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
-          __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
-          if (likely(__pyx_t_5)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-            __Pyx_INCREF(__pyx_t_5);
-            __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_4, function);
-          }
-        }
-        __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
-        __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_r = __pyx_t_2;
-        __pyx_t_2 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        goto __pyx_L0;
-      }
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
-      if (unlikely(__pyx_type_dict_guard != __pyx_tp_dict_version)) {
-        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-      }
-      #endif
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    }
-    #endif
-  }
-
-  /* "WallMapCython.pyx":29
- *   cpdef calculate_distance(Wall self, (int, int) point):
- *     cdef int x, y
- *     if len(self.points) == 1:             # <<<<<<<<<<<<<<
- *       x = self.points[0][0]
- *       y = self.points[0][1]
- */
-  __pyx_t_1 = __pyx_v_self->points;
-  __Pyx_INCREF(__pyx_t_1);
-  if (unlikely(__pyx_t_1 == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 29, __pyx_L1_error)
-  }
-  __pyx_t_6 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 29, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_7 = ((__pyx_t_6 == 1) != 0);
-  if (__pyx_t_7) {
-
-    /* "WallMapCython.pyx":30
- *     cdef int x, y
- *     if len(self.points) == 1:
- *       x = self.points[0][0]             # <<<<<<<<<<<<<<
- *       y = self.points[0][1]
- *       wall_point = Point(x, y)
- */
-    if (unlikely(__pyx_v_self->points == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 30, __pyx_L1_error)
-    }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->points, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 30, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_x = __pyx_t_8;
-
-    /* "WallMapCython.pyx":31
+ *   def calculate_distance(self, (int, int) point):             # <<<<<<<<<<<<<<
  *     if len(self.points) == 1:
  *       x = self.points[0][0]
- *       y = self.points[0][1]             # <<<<<<<<<<<<<<
- *       wall_point = Point(x, y)
- *       input_point = Point(point[0], point[1])
  */
-    if (unlikely(__pyx_v_self->points == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 31, __pyx_L1_error)
-    }
-    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->points, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 31, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_v_y = __pyx_t_8;
-
-    /* "WallMapCython.pyx":32
- *       x = self.points[0][0]
- *       y = self.points[0][1]
- *       wall_point = Point(x, y)             # <<<<<<<<<<<<<<
- *       input_point = Point(point[0], point[1])
- *       return wall_point.distance(input_point)
- */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Point); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 32, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = NULL;
-    __pyx_t_8 = 0;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
-      if (likely(__pyx_t_5)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-        __Pyx_INCREF(__pyx_t_5);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_2, function);
-        __pyx_t_8 = 1;
-      }
-    }
-    #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_2)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_t_4, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    } else
-    #endif
-    #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_t_4, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    } else
-    #endif
-    {
-      __pyx_t_9 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 32, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_9);
-      if (__pyx_t_5) {
-        __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_5); __pyx_t_5 = NULL;
-      }
-      __Pyx_GIVEREF(__pyx_t_4);
-      PyTuple_SET_ITEM(__pyx_t_9, 0+__pyx_t_8, __pyx_t_4);
-      __Pyx_GIVEREF(__pyx_t_3);
-      PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_8, __pyx_t_3);
-      __pyx_t_4 = 0;
-      __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    }
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_wall_point = __pyx_t_1;
-    __pyx_t_1 = 0;
-
-    /* "WallMapCython.pyx":33
- *       y = self.points[0][1]
- *       wall_point = Point(x, y)
- *       input_point = Point(point[0], point[1])             # <<<<<<<<<<<<<<
- *       return wall_point.distance(input_point)
- *     elif len(self.points) == 2:
- */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Point); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_point.f0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 33, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_point.f1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = NULL;
-    __pyx_t_8 = 0;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
-      if (likely(__pyx_t_4)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-        __Pyx_INCREF(__pyx_t_4);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_2, function);
-        __pyx_t_8 = 1;
-      }
-    }
-    #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_2)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_9, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    } else
-    #endif
-    #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_9, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    } else
-    #endif
-    {
-      __pyx_t_5 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 33, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      if (__pyx_t_4) {
-        __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
-      }
-      __Pyx_GIVEREF(__pyx_t_9);
-      PyTuple_SET_ITEM(__pyx_t_5, 0+__pyx_t_8, __pyx_t_9);
-      __Pyx_GIVEREF(__pyx_t_3);
-      PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_8, __pyx_t_3);
-      __pyx_t_9 = 0;
-      __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    }
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_input_point = __pyx_t_1;
-    __pyx_t_1 = 0;
-
-    /* "WallMapCython.pyx":34
- *       wall_point = Point(x, y)
- *       input_point = Point(point[0], point[1])
- *       return wall_point.distance(input_point)             # <<<<<<<<<<<<<<
- *     elif len(self.points) == 2:
- *       wall_line = LineString(self.points)
- */
-    __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_wall_point, __pyx_n_s_distance); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = NULL;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
-      if (likely(__pyx_t_5)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-        __Pyx_INCREF(__pyx_t_5);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_2, function);
-      }
-    }
-    __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_5, __pyx_v_input_point) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_input_point);
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
-    goto __pyx_L0;
-
-    /* "WallMapCython.pyx":29
- *   cpdef calculate_distance(Wall self, (int, int) point):
- *     cdef int x, y
- *     if len(self.points) == 1:             # <<<<<<<<<<<<<<
- *       x = self.points[0][0]
- *       y = self.points[0][1]
- */
-  }
-
-  /* "WallMapCython.pyx":35
- *       input_point = Point(point[0], point[1])
- *       return wall_point.distance(input_point)
- *     elif len(self.points) == 2:             # <<<<<<<<<<<<<<
- *       wall_line = LineString(self.points)
- *       input_point = Point(point[0], point[1])
- */
-  __pyx_t_1 = __pyx_v_self->points;
-  __Pyx_INCREF(__pyx_t_1);
-  if (unlikely(__pyx_t_1 == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 35, __pyx_L1_error)
-  }
-  __pyx_t_6 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 35, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_7 = ((__pyx_t_6 == 2) != 0);
-  if (__pyx_t_7) {
-
-    /* "WallMapCython.pyx":36
- *       return wall_point.distance(input_point)
- *     elif len(self.points) == 2:
- *       wall_line = LineString(self.points)             # <<<<<<<<<<<<<<
- *       input_point = Point(point[0], point[1])
- *       return wall_line.distance(input_point)
- */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_LineString); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = NULL;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
-      if (likely(__pyx_t_5)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-        __Pyx_INCREF(__pyx_t_5);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_2, function);
-      }
-    }
-    __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_5, __pyx_v_self->points) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_self->points);
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_wall_line = __pyx_t_1;
-    __pyx_t_1 = 0;
-
-    /* "WallMapCython.pyx":37
- *     elif len(self.points) == 2:
- *       wall_line = LineString(self.points)
- *       input_point = Point(point[0], point[1])             # <<<<<<<<<<<<<<
- *       return wall_line.distance(input_point)
- *     else:
- */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Point); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_point.f0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 37, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_point.f1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_9 = NULL;
-    __pyx_t_8 = 0;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-      __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_2);
-      if (likely(__pyx_t_9)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-        __Pyx_INCREF(__pyx_t_9);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_2, function);
-        __pyx_t_8 = 1;
-      }
-    }
-    #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_2)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_t_5, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    } else
-    #endif
-    #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_t_5, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    } else
-    #endif
-    {
-      __pyx_t_4 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 37, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      if (__pyx_t_9) {
-        __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_9); __pyx_t_9 = NULL;
-      }
-      __Pyx_GIVEREF(__pyx_t_5);
-      PyTuple_SET_ITEM(__pyx_t_4, 0+__pyx_t_8, __pyx_t_5);
-      __Pyx_GIVEREF(__pyx_t_3);
-      PyTuple_SET_ITEM(__pyx_t_4, 1+__pyx_t_8, __pyx_t_3);
-      __pyx_t_5 = 0;
-      __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    }
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_input_point = __pyx_t_1;
-    __pyx_t_1 = 0;
-
-    /* "WallMapCython.pyx":38
- *       wall_line = LineString(self.points)
- *       input_point = Point(point[0], point[1])
- *       return wall_line.distance(input_point)             # <<<<<<<<<<<<<<
- *     else:
- *       x = point[0]
- */
-    __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_wall_line, __pyx_n_s_distance); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = NULL;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
-      if (likely(__pyx_t_4)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-        __Pyx_INCREF(__pyx_t_4);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_2, function);
-      }
-    }
-    __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_4, __pyx_v_input_point) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_input_point);
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
-    goto __pyx_L0;
-
-    /* "WallMapCython.pyx":35
- *       input_point = Point(point[0], point[1])
- *       return wall_point.distance(input_point)
- *     elif len(self.points) == 2:             # <<<<<<<<<<<<<<
- *       wall_line = LineString(self.points)
- *       input_point = Point(point[0], point[1])
- */
-  }
-
-  /* "WallMapCython.pyx":40
- *       return wall_line.distance(input_point)
- *     else:
- *       x = point[0]             # <<<<<<<<<<<<<<
- *       y = point[1]
- *       polygon = Polygon(self.points)
- */
-  /*else*/ {
-    __pyx_v_x = __pyx_v_point.f0;
-
-    /* "WallMapCython.pyx":41
- *     else:
- *       x = point[0]
- *       y = point[1]             # <<<<<<<<<<<<<<
- *       polygon = Polygon(self.points)
- *       return polygon.distance(Point(x, y))
- */
-    __pyx_v_y = __pyx_v_point.f1;
-
-    /* "WallMapCython.pyx":42
- *       x = point[0]
- *       y = point[1]
- *       polygon = Polygon(self.points)             # <<<<<<<<<<<<<<
- *       return polygon.distance(Point(x, y))
- * 
- */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Polygon); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = NULL;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
-      if (likely(__pyx_t_4)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-        __Pyx_INCREF(__pyx_t_4);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_2, function);
-      }
-    }
-    __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_4, __pyx_v_self->points) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_self->points);
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_polygon = __pyx_t_1;
-    __pyx_t_1 = 0;
-
-    /* "WallMapCython.pyx":43
- *       y = point[1]
- *       polygon = Polygon(self.points)
- *       return polygon.distance(Point(x, y))             # <<<<<<<<<<<<<<
- * 
- *   def calculate_distance_prerelease(self, point):
- */
-    __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_polygon, __pyx_n_s_distance); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Point); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 43, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_10 = NULL;
-    __pyx_t_8 = 0;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_10 = PyMethod_GET_SELF(__pyx_t_3);
-      if (likely(__pyx_t_10)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-        __Pyx_INCREF(__pyx_t_10);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_3, function);
-        __pyx_t_8 = 1;
-      }
-    }
-    #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_t_5, __pyx_t_9};
-      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    } else
-    #endif
-    #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_t_5, __pyx_t_9};
-      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    } else
-    #endif
-    {
-      __pyx_t_11 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 43, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_11);
-      if (__pyx_t_10) {
-        __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_10); __pyx_t_10 = NULL;
-      }
-      __Pyx_GIVEREF(__pyx_t_5);
-      PyTuple_SET_ITEM(__pyx_t_11, 0+__pyx_t_8, __pyx_t_5);
-      __Pyx_GIVEREF(__pyx_t_9);
-      PyTuple_SET_ITEM(__pyx_t_11, 1+__pyx_t_8, __pyx_t_9);
-      __pyx_t_5 = 0;
-      __pyx_t_9 = 0;
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_11, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-    }
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = NULL;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
-      if (likely(__pyx_t_3)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-        __Pyx_INCREF(__pyx_t_3);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_2, function);
-      }
-    }
-    __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4);
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
-    goto __pyx_L0;
-  }
-
-  /* "WallMapCython.pyx":27
- *     self.points.append(point)
- * 
- *   cpdef calculate_distance(Wall self, (int, int) point):             # <<<<<<<<<<<<<<
- *     cdef int x, y
- *     if len(self.points) == 1:
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_XDECREF(__pyx_t_10);
-  __Pyx_XDECREF(__pyx_t_11);
-  __Pyx_AddTraceback("WallMapCython.Wall.calculate_distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_wall_point);
-  __Pyx_XDECREF(__pyx_v_input_point);
-  __Pyx_XDECREF(__pyx_v_wall_line);
-  __Pyx_XDECREF(__pyx_v_polygon);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
 
 /* Python wrapper */
 static PyObject *__pyx_pw_13WallMapCython_4Wall_5calculate_distance(PyObject *__pyx_v_self, PyObject *__pyx_arg_point); /*proto*/
@@ -2520,7 +1909,7 @@ static PyObject *__pyx_pw_13WallMapCython_4Wall_5calculate_distance(PyObject *__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("calculate_distance (wrapper)", 0);
   assert(__pyx_arg_point); {
-    __pyx_v_point = __pyx_convert__from_py___pyx_ctuple_int__and_int(__pyx_arg_point); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 27, __pyx_L3_error)
+    __pyx_v_point = __pyx_convert__from_py___pyx_ctuple_int__and_int(__pyx_arg_point); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 24, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -2536,32 +1925,553 @@ static PyObject *__pyx_pw_13WallMapCython_4Wall_5calculate_distance(PyObject *__
 }
 
 static PyObject *__pyx_pf_13WallMapCython_4Wall_4calculate_distance(struct __pyx_obj_13WallMapCython_Wall *__pyx_v_self, __pyx_ctuple_int__and_int __pyx_v_point) {
+  PyObject *__pyx_v_x = NULL;
+  PyObject *__pyx_v_y = NULL;
+  PyObject *__pyx_v_wall_point = NULL;
+  PyObject *__pyx_v_input_point = NULL;
+  PyObject *__pyx_v_wall_line = NULL;
+  PyObject *__pyx_v_polygon = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
+  Py_ssize_t __pyx_t_2;
+  int __pyx_t_3;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  int __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  PyObject *__pyx_t_8 = NULL;
+  PyObject *__pyx_t_9 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calculate_distance", 0);
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_13WallMapCython_4Wall_calculate_distance(__pyx_v_self, __pyx_v_point, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
+
+  /* "WallMapCython.pyx":25
+ * 
+ *   def calculate_distance(self, (int, int) point):
+ *     if len(self.points) == 1:             # <<<<<<<<<<<<<<
+ *       x = self.points[0][0]
+ *       y = self.points[0][1]
+ */
+  __pyx_t_1 = __pyx_v_self->points;
+  __Pyx_INCREF(__pyx_t_1);
+  if (unlikely(__pyx_t_1 == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
+    __PYX_ERR(0, 25, __pyx_L1_error)
+  }
+  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = ((__pyx_t_2 == 1) != 0);
+  if (__pyx_t_3) {
+
+    /* "WallMapCython.pyx":26
+ *   def calculate_distance(self, (int, int) point):
+ *     if len(self.points) == 1:
+ *       x = self.points[0][0]             # <<<<<<<<<<<<<<
+ *       y = self.points[0][1]
+ *       wall_point = Point(x, y)
+ */
+    if (unlikely(__pyx_v_self->points == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+      __PYX_ERR(0, 26, __pyx_L1_error)
+    }
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->points, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_v_x = __pyx_t_4;
+    __pyx_t_4 = 0;
+
+    /* "WallMapCython.pyx":27
+ *     if len(self.points) == 1:
+ *       x = self.points[0][0]
+ *       y = self.points[0][1]             # <<<<<<<<<<<<<<
+ *       wall_point = Point(x, y)
+ *       input_point = Point(point[0], point[1])
+ */
+    if (unlikely(__pyx_v_self->points == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+      __PYX_ERR(0, 27, __pyx_L1_error)
+    }
+    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->points, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 27, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_4, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_v_y = __pyx_t_1;
+    __pyx_t_1 = 0;
+
+    /* "WallMapCython.pyx":28
+ *       x = self.points[0][0]
+ *       y = self.points[0][1]
+ *       wall_point = Point(x, y)             # <<<<<<<<<<<<<<
+ *       input_point = Point(point[0], point[1])
+ *       return wall_point.distance(input_point)
+ */
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Point); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = NULL;
+    __pyx_t_6 = 0;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+        __pyx_t_6 = 1;
+      }
+    }
+    #if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(__pyx_t_4)) {
+      PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_x, __pyx_v_y};
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_GOTREF(__pyx_t_1);
+    } else
+    #endif
+    #if CYTHON_FAST_PYCCALL
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
+      PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_x, __pyx_v_y};
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_GOTREF(__pyx_t_1);
+    } else
+    #endif
+    {
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 28, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      if (__pyx_t_5) {
+        __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
+      }
+      __Pyx_INCREF(__pyx_v_x);
+      __Pyx_GIVEREF(__pyx_v_x);
+      PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_6, __pyx_v_x);
+      __Pyx_INCREF(__pyx_v_y);
+      __Pyx_GIVEREF(__pyx_v_y);
+      PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_v_y);
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    }
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_v_wall_point = __pyx_t_1;
+    __pyx_t_1 = 0;
+
+    /* "WallMapCython.pyx":29
+ *       y = self.points[0][1]
+ *       wall_point = Point(x, y)
+ *       input_point = Point(point[0], point[1])             # <<<<<<<<<<<<<<
+ *       return wall_point.distance(input_point)
+ *     elif len(self.points) == 2:
+ */
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Point); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_point.f0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_point.f1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_8 = NULL;
+    __pyx_t_6 = 0;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_8)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_8);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+        __pyx_t_6 = 1;
+      }
+    }
+    #if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(__pyx_t_4)) {
+      PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_7, __pyx_t_5};
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    } else
+    #endif
+    #if CYTHON_FAST_PYCCALL
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
+      PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_7, __pyx_t_5};
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    } else
+    #endif
+    {
+      __pyx_t_9 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 29, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      if (__pyx_t_8) {
+        __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8); __pyx_t_8 = NULL;
+      }
+      __Pyx_GIVEREF(__pyx_t_7);
+      PyTuple_SET_ITEM(__pyx_t_9, 0+__pyx_t_6, __pyx_t_7);
+      __Pyx_GIVEREF(__pyx_t_5);
+      PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_6, __pyx_t_5);
+      __pyx_t_7 = 0;
+      __pyx_t_5 = 0;
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    }
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_v_input_point = __pyx_t_1;
+    __pyx_t_1 = 0;
+
+    /* "WallMapCython.pyx":30
+ *       wall_point = Point(x, y)
+ *       input_point = Point(point[0], point[1])
+ *       return wall_point.distance(input_point)             # <<<<<<<<<<<<<<
+ *     elif len(self.points) == 2:
+ *       wall_line = LineString(self.points)
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_wall_point, __pyx_n_s_distance); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 30, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_9 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_9)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_9);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+      }
+    }
+    __pyx_t_1 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_9, __pyx_v_input_point) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_input_point);
+    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_r = __pyx_t_1;
+    __pyx_t_1 = 0;
+    goto __pyx_L0;
+
+    /* "WallMapCython.pyx":25
+ * 
+ *   def calculate_distance(self, (int, int) point):
+ *     if len(self.points) == 1:             # <<<<<<<<<<<<<<
+ *       x = self.points[0][0]
+ *       y = self.points[0][1]
+ */
+  }
+
+  /* "WallMapCython.pyx":31
+ *       input_point = Point(point[0], point[1])
+ *       return wall_point.distance(input_point)
+ *     elif len(self.points) == 2:             # <<<<<<<<<<<<<<
+ *       wall_line = LineString(self.points)
+ *       input_point = Point(point[0], point[1])
+ */
+  __pyx_t_1 = __pyx_v_self->points;
+  __Pyx_INCREF(__pyx_t_1);
+  if (unlikely(__pyx_t_1 == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
+    __PYX_ERR(0, 31, __pyx_L1_error)
+  }
+  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 31, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = ((__pyx_t_2 == 2) != 0);
+  if (__pyx_t_3) {
+
+    /* "WallMapCython.pyx":32
+ *       return wall_point.distance(input_point)
+ *     elif len(self.points) == 2:
+ *       wall_line = LineString(self.points)             # <<<<<<<<<<<<<<
+ *       input_point = Point(point[0], point[1])
+ *       return wall_line.distance(input_point)
+ */
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_LineString); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_9 = NULL;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_9)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_9);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+      }
+    }
+    __pyx_t_1 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_9, __pyx_v_self->points) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_self->points);
+    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_v_wall_line = __pyx_t_1;
+    __pyx_t_1 = 0;
+
+    /* "WallMapCython.pyx":33
+ *     elif len(self.points) == 2:
+ *       wall_line = LineString(self.points)
+ *       input_point = Point(point[0], point[1])             # <<<<<<<<<<<<<<
+ *       return wall_line.distance(input_point)
+ *     else:
+ */
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Point); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_point.f0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_point.f1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_7 = NULL;
+    __pyx_t_6 = 0;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_7)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_7);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+        __pyx_t_6 = 1;
+      }
+    }
+    #if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(__pyx_t_4)) {
+      PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_9, __pyx_t_5};
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    } else
+    #endif
+    #if CYTHON_FAST_PYCCALL
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
+      PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_9, __pyx_t_5};
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    } else
+    #endif
+    {
+      __pyx_t_8 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 33, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      if (__pyx_t_7) {
+        __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7); __pyx_t_7 = NULL;
+      }
+      __Pyx_GIVEREF(__pyx_t_9);
+      PyTuple_SET_ITEM(__pyx_t_8, 0+__pyx_t_6, __pyx_t_9);
+      __Pyx_GIVEREF(__pyx_t_5);
+      PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_6, __pyx_t_5);
+      __pyx_t_9 = 0;
+      __pyx_t_5 = 0;
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    }
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_v_input_point = __pyx_t_1;
+    __pyx_t_1 = 0;
+
+    /* "WallMapCython.pyx":34
+ *       wall_line = LineString(self.points)
+ *       input_point = Point(point[0], point[1])
+ *       return wall_line.distance(input_point)             # <<<<<<<<<<<<<<
+ *     else:
+ *       x = point[0]
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_wall_line, __pyx_n_s_distance); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 34, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_8 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_8)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_8);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+      }
+    }
+    __pyx_t_1 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_8, __pyx_v_input_point) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_input_point);
+    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_r = __pyx_t_1;
+    __pyx_t_1 = 0;
+    goto __pyx_L0;
+
+    /* "WallMapCython.pyx":31
+ *       input_point = Point(point[0], point[1])
+ *       return wall_point.distance(input_point)
+ *     elif len(self.points) == 2:             # <<<<<<<<<<<<<<
+ *       wall_line = LineString(self.points)
+ *       input_point = Point(point[0], point[1])
+ */
+  }
+
+  /* "WallMapCython.pyx":36
+ *       return wall_line.distance(input_point)
+ *     else:
+ *       x = point[0]             # <<<<<<<<<<<<<<
+ *       y = point[1]
+ *       polygon = Polygon(self.points)
+ */
+  /*else*/ {
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_point.f0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_v_x = __pyx_t_1;
+    __pyx_t_1 = 0;
+
+    /* "WallMapCython.pyx":37
+ *     else:
+ *       x = point[0]
+ *       y = point[1]             # <<<<<<<<<<<<<<
+ *       polygon = Polygon(self.points)
+ *       return polygon.distance(Point(x, y))
+ */
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_point.f1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_v_y = __pyx_t_1;
+    __pyx_t_1 = 0;
+
+    /* "WallMapCython.pyx":38
+ *       x = point[0]
+ *       y = point[1]
+ *       polygon = Polygon(self.points)             # <<<<<<<<<<<<<<
+ *       return polygon.distance(Point(x, y))
+ * 
+ */
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Polygon); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 38, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_8 = NULL;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_8)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_8);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+      }
+    }
+    __pyx_t_1 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_8, __pyx_v_self->points) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_self->points);
+    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_v_polygon = __pyx_t_1;
+    __pyx_t_1 = 0;
+
+    /* "WallMapCython.pyx":39
+ *       y = point[1]
+ *       polygon = Polygon(self.points)
+ *       return polygon.distance(Point(x, y))             # <<<<<<<<<<<<<<
+ * 
+ *   def calculate_distance_prerelease(self, point):
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_polygon, __pyx_n_s_distance); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 39, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_Point); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 39, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_9 = NULL;
+    __pyx_t_6 = 0;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
+      __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_5);
+      if (likely(__pyx_t_9)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+        __Pyx_INCREF(__pyx_t_9);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_5, function);
+        __pyx_t_6 = 1;
+      }
+    }
+    #if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(__pyx_t_5)) {
+      PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_v_x, __pyx_v_y};
+      __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 39, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __Pyx_GOTREF(__pyx_t_8);
+    } else
+    #endif
+    #if CYTHON_FAST_PYCCALL
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
+      PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_v_x, __pyx_v_y};
+      __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 39, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __Pyx_GOTREF(__pyx_t_8);
+    } else
+    #endif
+    {
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 39, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      if (__pyx_t_9) {
+        __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_9); __pyx_t_9 = NULL;
+      }
+      __Pyx_INCREF(__pyx_v_x);
+      __Pyx_GIVEREF(__pyx_v_x);
+      PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_6, __pyx_v_x);
+      __Pyx_INCREF(__pyx_v_y);
+      __Pyx_GIVEREF(__pyx_v_y);
+      PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_v_y);
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 39, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    }
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_5 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+      }
+    }
+    __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_8);
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_r = __pyx_t_1;
+    __pyx_t_1 = 0;
+    goto __pyx_L0;
+  }
+
+  /* "WallMapCython.pyx":24
+ *     self.points.append(point)
+ * 
+ *   def calculate_distance(self, (int, int) point):             # <<<<<<<<<<<<<<
+ *     if len(self.points) == 1:
+ *       x = self.points[0][0]
+ */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_9);
   __Pyx_AddTraceback("WallMapCython.Wall.calculate_distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_x);
+  __Pyx_XDECREF(__pyx_v_y);
+  __Pyx_XDECREF(__pyx_v_wall_point);
+  __Pyx_XDECREF(__pyx_v_input_point);
+  __Pyx_XDECREF(__pyx_v_wall_line);
+  __Pyx_XDECREF(__pyx_v_polygon);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "WallMapCython.pyx":45
+/* "WallMapCython.pyx":41
  *       return polygon.distance(Point(x, y))
  * 
  *   def calculate_distance_prerelease(self, point):             # <<<<<<<<<<<<<<
@@ -2610,7 +2520,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calculate_distance_prerelease", 0);
 
-  /* "WallMapCython.pyx":47
+  /* "WallMapCython.pyx":43
  *   def calculate_distance_prerelease(self, point):
  *     # same situation here, peep the comment on draw_wall
  *     if len(self.points) == 1:             # <<<<<<<<<<<<<<
@@ -2621,14 +2531,14 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
   __Pyx_INCREF(__pyx_t_1);
   if (unlikely(__pyx_t_1 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 47, __pyx_L1_error)
+    __PYX_ERR(0, 43, __pyx_L1_error)
   }
-  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = ((__pyx_t_2 == 1) != 0);
   if (__pyx_t_3) {
 
-    /* "WallMapCython.pyx":48
+    /* "WallMapCython.pyx":44
  *     # same situation here, peep the comment on draw_wall
  *     if len(self.points) == 1:
  *       x = self.points[0][0]             # <<<<<<<<<<<<<<
@@ -2637,17 +2547,17 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
  */
     if (unlikely(__pyx_v_self->points == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 48, __pyx_L1_error)
+      __PYX_ERR(0, 44, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->points, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->points, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_x = __pyx_t_4;
     __pyx_t_4 = 0;
 
-    /* "WallMapCython.pyx":49
+    /* "WallMapCython.pyx":45
  *     if len(self.points) == 1:
  *       x = self.points[0][0]
  *       y = self.points[0][1]             # <<<<<<<<<<<<<<
@@ -2656,24 +2566,24 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
  */
     if (unlikely(__pyx_v_self->points == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 49, __pyx_L1_error)
+      __PYX_ERR(0, 45, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->points, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->points, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_4, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_4, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_y = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "WallMapCython.pyx":50
+    /* "WallMapCython.pyx":46
  *       x = self.points[0][0]
  *       y = self.points[0][1]
  *       wall_point = Point(x, y)             # <<<<<<<<<<<<<<
  *       input_point = Point(point[0], point[1])
  *       return wall_point.distance(input_point)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Point); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Point); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 46, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -2690,7 +2600,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_x, __pyx_v_y};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
@@ -2698,13 +2608,13 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_x, __pyx_v_y};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 50, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 46, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_5) {
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -2715,7 +2625,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
       __Pyx_INCREF(__pyx_v_y);
       __Pyx_GIVEREF(__pyx_v_y);
       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_v_y);
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -2723,18 +2633,18 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     __pyx_v_wall_point = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "WallMapCython.pyx":51
+    /* "WallMapCython.pyx":47
  *       y = self.points[0][1]
  *       wall_point = Point(x, y)
  *       input_point = Point(point[0], point[1])             # <<<<<<<<<<<<<<
  *       return wall_point.distance(input_point)
  *     elif len(self.points) == 2:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Point); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Point); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_8 = NULL;
     __pyx_t_6 = 0;
@@ -2751,7 +2661,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_7, __pyx_t_5};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -2761,7 +2671,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_7, __pyx_t_5};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -2769,7 +2679,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     } else
     #endif
     {
-      __pyx_t_9 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 51, __pyx_L1_error)
+      __pyx_t_9 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       if (__pyx_t_8) {
         __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -2780,7 +2690,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
       PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_6, __pyx_t_5);
       __pyx_t_7 = 0;
       __pyx_t_5 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     }
@@ -2788,7 +2698,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     __pyx_v_input_point = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "WallMapCython.pyx":52
+    /* "WallMapCython.pyx":48
  *       wall_point = Point(x, y)
  *       input_point = Point(point[0], point[1])
  *       return wall_point.distance(input_point)             # <<<<<<<<<<<<<<
@@ -2796,7 +2706,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
  *       wall_line = LineString(self.points)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_wall_point, __pyx_n_s_distance); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_wall_point, __pyx_n_s_distance); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 48, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_9 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -2810,14 +2720,14 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     }
     __pyx_t_1 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_9, __pyx_v_input_point) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_input_point);
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "WallMapCython.pyx":47
+    /* "WallMapCython.pyx":43
  *   def calculate_distance_prerelease(self, point):
  *     # same situation here, peep the comment on draw_wall
  *     if len(self.points) == 1:             # <<<<<<<<<<<<<<
@@ -2826,7 +2736,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
  */
   }
 
-  /* "WallMapCython.pyx":53
+  /* "WallMapCython.pyx":49
  *       input_point = Point(point[0], point[1])
  *       return wall_point.distance(input_point)
  *     elif len(self.points) == 2:             # <<<<<<<<<<<<<<
@@ -2837,21 +2747,21 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
   __Pyx_INCREF(__pyx_t_1);
   if (unlikely(__pyx_t_1 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 53, __pyx_L1_error)
+    __PYX_ERR(0, 49, __pyx_L1_error)
   }
-  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = ((__pyx_t_2 == 2) != 0);
   if (__pyx_t_3) {
 
-    /* "WallMapCython.pyx":54
+    /* "WallMapCython.pyx":50
  *       return wall_point.distance(input_point)
  *     elif len(self.points) == 2:
  *       wall_line = LineString(self.points)             # <<<<<<<<<<<<<<
  *       input_point = Point(point[0], point[1])
  *       return wall_line.distance(input_point)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_LineString); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_LineString); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_9 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -2865,24 +2775,24 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     }
     __pyx_t_1 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_9, __pyx_v_self->points) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_self->points);
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_wall_line = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "WallMapCython.pyx":55
+    /* "WallMapCython.pyx":51
  *     elif len(self.points) == 2:
  *       wall_line = LineString(self.points)
  *       input_point = Point(point[0], point[1])             # <<<<<<<<<<<<<<
  *       return wall_line.distance(input_point)
  *     else:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Point); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Point); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 51, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 51, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 51, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_7 = NULL;
     __pyx_t_6 = 0;
@@ -2899,7 +2809,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_9, __pyx_t_5};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -2909,7 +2819,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_9, __pyx_t_5};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -2917,7 +2827,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 55, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 51, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       if (__pyx_t_7) {
         __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -2928,7 +2838,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
       PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_6, __pyx_t_5);
       __pyx_t_9 = 0;
       __pyx_t_5 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
@@ -2936,7 +2846,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     __pyx_v_input_point = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "WallMapCython.pyx":56
+    /* "WallMapCython.pyx":52
  *       wall_line = LineString(self.points)
  *       input_point = Point(point[0], point[1])
  *       return wall_line.distance(input_point)             # <<<<<<<<<<<<<<
@@ -2944,7 +2854,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
  *       x = point[0]
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_wall_line, __pyx_n_s_distance); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_wall_line, __pyx_n_s_distance); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -2958,14 +2868,14 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     }
     __pyx_t_1 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_8, __pyx_v_input_point) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_input_point);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "WallMapCython.pyx":53
+    /* "WallMapCython.pyx":49
  *       input_point = Point(point[0], point[1])
  *       return wall_point.distance(input_point)
  *     elif len(self.points) == 2:             # <<<<<<<<<<<<<<
@@ -2974,7 +2884,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
  */
   }
 
-  /* "WallMapCython.pyx":58
+  /* "WallMapCython.pyx":54
  *       return wall_line.distance(input_point)
  *     else:
  *       x = point[0]             # <<<<<<<<<<<<<<
@@ -2982,47 +2892,47 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
  *       min_distance = float('inf')
  */
   /*else*/ {
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_x = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "WallMapCython.pyx":59
+    /* "WallMapCython.pyx":55
  *     else:
  *       x = point[0]
  *       y = point[1]             # <<<<<<<<<<<<<<
  *       min_distance = float('inf')
  *       input_point = Point(point[0], point[1])
  */
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_y = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "WallMapCython.pyx":60
+    /* "WallMapCython.pyx":56
  *       x = point[0]
  *       y = point[1]
  *       min_distance = float('inf')             # <<<<<<<<<<<<<<
  *       input_point = Point(point[0], point[1])
  *       for point1 in self.points:
  */
-    __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_n_s_inf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_n_s_inf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_min_distance = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "WallMapCython.pyx":61
+    /* "WallMapCython.pyx":57
  *       y = point[1]
  *       min_distance = float('inf')
  *       input_point = Point(point[0], point[1])             # <<<<<<<<<<<<<<
  *       for point1 in self.points:
  *         for point2 in self.points:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Point); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Point); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 61, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 61, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_9 = NULL;
     __pyx_t_6 = 0;
@@ -3039,7 +2949,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_t_8, __pyx_t_5};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -3049,7 +2959,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_t_8, __pyx_t_5};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -3057,7 +2967,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 61, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 57, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_9) {
         __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_9); __pyx_t_9 = NULL;
@@ -3068,7 +2978,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_5);
       __pyx_t_8 = 0;
       __pyx_t_5 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -3076,7 +2986,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     __pyx_v_input_point = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "WallMapCython.pyx":62
+    /* "WallMapCython.pyx":58
  *       min_distance = float('inf')
  *       input_point = Point(point[0], point[1])
  *       for point1 in self.points:             # <<<<<<<<<<<<<<
@@ -3085,21 +2995,21 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
  */
     if (unlikely(__pyx_v_self->points == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      __PYX_ERR(0, 62, __pyx_L1_error)
+      __PYX_ERR(0, 58, __pyx_L1_error)
     }
     __pyx_t_1 = __pyx_v_self->points; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
     for (;;) {
       if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 62, __pyx_L1_error)
+      __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 58, __pyx_L1_error)
       #else
-      __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
+      __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_point1, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "WallMapCython.pyx":63
+      /* "WallMapCython.pyx":59
  *       input_point = Point(point[0], point[1])
  *       for point1 in self.points:
  *         for point2 in self.points:             # <<<<<<<<<<<<<<
@@ -3108,21 +3018,21 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
  */
       if (unlikely(__pyx_v_self->points == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-        __PYX_ERR(0, 63, __pyx_L1_error)
+        __PYX_ERR(0, 59, __pyx_L1_error)
       }
       __pyx_t_4 = __pyx_v_self->points; __Pyx_INCREF(__pyx_t_4); __pyx_t_10 = 0;
       for (;;) {
         if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_10); __Pyx_INCREF(__pyx_t_7); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 63, __pyx_L1_error)
+        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_10); __Pyx_INCREF(__pyx_t_7); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 63, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
         __Pyx_XDECREF_SET(__pyx_v_point2, __pyx_t_7);
         __pyx_t_7 = 0;
 
-        /* "WallMapCython.pyx":64
+        /* "WallMapCython.pyx":60
  *       for point1 in self.points:
  *         for point2 in self.points:
  *           if point1 is point2:             # <<<<<<<<<<<<<<
@@ -3133,7 +3043,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
         __pyx_t_11 = (__pyx_t_3 != 0);
         if (__pyx_t_11) {
 
-          /* "WallMapCython.pyx":65
+          /* "WallMapCython.pyx":61
  *         for point2 in self.points:
  *           if point1 is point2:
  *             continue             # <<<<<<<<<<<<<<
@@ -3142,7 +3052,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
  */
           goto __pyx_L6_continue;
 
-          /* "WallMapCython.pyx":64
+          /* "WallMapCython.pyx":60
  *       for point1 in self.points:
  *         for point2 in self.points:
  *           if point1 is point2:             # <<<<<<<<<<<<<<
@@ -3151,16 +3061,16 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
  */
         }
 
-        /* "WallMapCython.pyx":66
+        /* "WallMapCython.pyx":62
  *           if point1 is point2:
  *             continue
  *           wall_line = LineString([point1, point2])             # <<<<<<<<<<<<<<
  *           distance = wall_line.distance(input_point)
  *           if distance < min_distance:
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_LineString); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 66, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_LineString); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 62, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_8 = PyList_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 66, __pyx_L1_error)
+        __pyx_t_8 = PyList_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 62, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_INCREF(__pyx_v_point1);
         __Pyx_GIVEREF(__pyx_v_point1);
@@ -3181,20 +3091,20 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
         __pyx_t_7 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_9, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_8);
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 66, __pyx_L1_error)
+        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 62, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_XDECREF_SET(__pyx_v_wall_line, __pyx_t_7);
         __pyx_t_7 = 0;
 
-        /* "WallMapCython.pyx":67
+        /* "WallMapCython.pyx":63
  *             continue
  *           wall_line = LineString([point1, point2])
  *           distance = wall_line.distance(input_point)             # <<<<<<<<<<<<<<
  *           if distance < min_distance:
  *             min_distance = distance
  */
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_wall_line, __pyx_n_s_distance); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 67, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_wall_line, __pyx_n_s_distance); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 63, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __pyx_t_8 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -3208,25 +3118,25 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
         }
         __pyx_t_7 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_8, __pyx_v_input_point) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_input_point);
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 67, __pyx_L1_error)
+        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 63, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_XDECREF_SET(__pyx_v_distance, __pyx_t_7);
         __pyx_t_7 = 0;
 
-        /* "WallMapCython.pyx":68
+        /* "WallMapCython.pyx":64
  *           wall_line = LineString([point1, point2])
  *           distance = wall_line.distance(input_point)
  *           if distance < min_distance:             # <<<<<<<<<<<<<<
  *             min_distance = distance
  *       return min_distance
  */
-        __pyx_t_7 = PyObject_RichCompare(__pyx_v_distance, __pyx_v_min_distance, Py_LT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 68, __pyx_L1_error)
-        __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 68, __pyx_L1_error)
+        __pyx_t_7 = PyObject_RichCompare(__pyx_v_distance, __pyx_v_min_distance, Py_LT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 64, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         if (__pyx_t_11) {
 
-          /* "WallMapCython.pyx":69
+          /* "WallMapCython.pyx":65
  *           distance = wall_line.distance(input_point)
  *           if distance < min_distance:
  *             min_distance = distance             # <<<<<<<<<<<<<<
@@ -3236,7 +3146,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
           __Pyx_INCREF(__pyx_v_distance);
           __Pyx_DECREF_SET(__pyx_v_min_distance, __pyx_v_distance);
 
-          /* "WallMapCython.pyx":68
+          /* "WallMapCython.pyx":64
  *           wall_line = LineString([point1, point2])
  *           distance = wall_line.distance(input_point)
  *           if distance < min_distance:             # <<<<<<<<<<<<<<
@@ -3245,7 +3155,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
  */
         }
 
-        /* "WallMapCython.pyx":63
+        /* "WallMapCython.pyx":59
  *       input_point = Point(point[0], point[1])
  *       for point1 in self.points:
  *         for point2 in self.points:             # <<<<<<<<<<<<<<
@@ -3256,7 +3166,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
       }
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "WallMapCython.pyx":62
+      /* "WallMapCython.pyx":58
  *       min_distance = float('inf')
  *       input_point = Point(point[0], point[1])
  *       for point1 in self.points:             # <<<<<<<<<<<<<<
@@ -3266,12 +3176,12 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "WallMapCython.pyx":70
+    /* "WallMapCython.pyx":66
  *           if distance < min_distance:
  *             min_distance = distance
  *       return min_distance             # <<<<<<<<<<<<<<
  * 
- *   cpdef draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
+ *   def draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
  */
     __Pyx_XDECREF(__pyx_r);
     __Pyx_INCREF(__pyx_v_min_distance);
@@ -3279,7 +3189,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
     goto __pyx_L0;
   }
 
-  /* "WallMapCython.pyx":45
+  /* "WallMapCython.pyx":41
  *       return polygon.distance(Point(x, y))
  * 
  *   def calculate_distance_prerelease(self, point):             # <<<<<<<<<<<<<<
@@ -3312,401 +3222,13 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_6calculate_distance_prerelease(s
   return __pyx_r;
 }
 
-/* "WallMapCython.pyx":72
+/* "WallMapCython.pyx":68
  *       return min_distance
  * 
- *   cpdef draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):             # <<<<<<<<<<<<<<
+ *   def draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):             # <<<<<<<<<<<<<<
  *     screen_points = []
- *     cdef (int, int) point
- */
-
-static PyObject *__pyx_pw_13WallMapCython_4Wall_9draw_wall(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_f_13WallMapCython_4Wall_draw_wall(struct __pyx_obj_13WallMapCython_Wall *__pyx_v_self, PyObject *__pyx_v_screen, PyObject *__pyx_v_y_max, PyObject *__pyx_v_x_add_num, PyObject *__pyx_v_x_scale, PyObject *__pyx_v_x_screen_adjustment, PyObject *__pyx_v_y_add_num, PyObject *__pyx_v_y_scale, PyObject *__pyx_v_y_screen_adjustment, int __pyx_skip_dispatch) {
-  PyObject *__pyx_v_screen_points = NULL;
-  __pyx_ctuple_int__and_int __pyx_v_point;
-  int __pyx_v_x;
-  int __pyx_v_y;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  int __pyx_t_5;
-  PyObject *__pyx_t_6 = NULL;
-  Py_ssize_t __pyx_t_7;
-  __pyx_ctuple_int__and_int __pyx_t_8;
-  int __pyx_t_9;
-  int __pyx_t_10;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("draw_wall", 0);
-  /* Check if called by wrapper */
-  if (unlikely(__pyx_skip_dispatch)) ;
-  /* Check if overridden in Python */
-  else if (unlikely((Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0) || (Py_TYPE(((PyObject *)__pyx_v_self))->tp_flags & (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))) {
-    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
-      PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_draw_wall); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_13WallMapCython_4Wall_9draw_wall)) {
-        __Pyx_XDECREF(__pyx_r);
-        __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
-        __pyx_t_5 = 0;
-        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
-          __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-          if (likely(__pyx_t_4)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-            __Pyx_INCREF(__pyx_t_4);
-            __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_3, function);
-            __pyx_t_5 = 1;
-          }
-        }
-        #if CYTHON_FAST_PYCALL
-        if (PyFunction_Check(__pyx_t_3)) {
-          PyObject *__pyx_temp[9] = {__pyx_t_4, __pyx_v_screen, __pyx_v_y_max, __pyx_v_x_add_num, __pyx_v_x_scale, __pyx_v_x_screen_adjustment, __pyx_v_y_add_num, __pyx_v_y_scale, __pyx_v_y_screen_adjustment};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 8+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __Pyx_GOTREF(__pyx_t_2);
-        } else
-        #endif
-        #if CYTHON_FAST_PYCCALL
-        if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-          PyObject *__pyx_temp[9] = {__pyx_t_4, __pyx_v_screen, __pyx_v_y_max, __pyx_v_x_add_num, __pyx_v_x_scale, __pyx_v_x_screen_adjustment, __pyx_v_y_add_num, __pyx_v_y_scale, __pyx_v_y_screen_adjustment};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 8+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __Pyx_GOTREF(__pyx_t_2);
-        } else
-        #endif
-        {
-          __pyx_t_6 = PyTuple_New(8+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 72, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_6);
-          if (__pyx_t_4) {
-            __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
-          }
-          __Pyx_INCREF(__pyx_v_screen);
-          __Pyx_GIVEREF(__pyx_v_screen);
-          PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_5, __pyx_v_screen);
-          __Pyx_INCREF(__pyx_v_y_max);
-          __Pyx_GIVEREF(__pyx_v_y_max);
-          PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_y_max);
-          __Pyx_INCREF(__pyx_v_x_add_num);
-          __Pyx_GIVEREF(__pyx_v_x_add_num);
-          PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_5, __pyx_v_x_add_num);
-          __Pyx_INCREF(__pyx_v_x_scale);
-          __Pyx_GIVEREF(__pyx_v_x_scale);
-          PyTuple_SET_ITEM(__pyx_t_6, 3+__pyx_t_5, __pyx_v_x_scale);
-          __Pyx_INCREF(__pyx_v_x_screen_adjustment);
-          __Pyx_GIVEREF(__pyx_v_x_screen_adjustment);
-          PyTuple_SET_ITEM(__pyx_t_6, 4+__pyx_t_5, __pyx_v_x_screen_adjustment);
-          __Pyx_INCREF(__pyx_v_y_add_num);
-          __Pyx_GIVEREF(__pyx_v_y_add_num);
-          PyTuple_SET_ITEM(__pyx_t_6, 5+__pyx_t_5, __pyx_v_y_add_num);
-          __Pyx_INCREF(__pyx_v_y_scale);
-          __Pyx_GIVEREF(__pyx_v_y_scale);
-          PyTuple_SET_ITEM(__pyx_t_6, 6+__pyx_t_5, __pyx_v_y_scale);
-          __Pyx_INCREF(__pyx_v_y_screen_adjustment);
-          __Pyx_GIVEREF(__pyx_v_y_screen_adjustment);
-          PyTuple_SET_ITEM(__pyx_t_6, 7+__pyx_t_5, __pyx_v_y_screen_adjustment);
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_2);
-          __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        }
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_r = __pyx_t_2;
-        __pyx_t_2 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        goto __pyx_L0;
-      }
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
-      if (unlikely(__pyx_type_dict_guard != __pyx_tp_dict_version)) {
-        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-      }
-      #endif
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    }
-    #endif
-  }
-
-  /* "WallMapCython.pyx":73
- * 
- *   cpdef draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
- *     screen_points = []             # <<<<<<<<<<<<<<
- *     cdef (int, int) point
  *     cdef int x, y
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v_screen_points = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "WallMapCython.pyx":76
- *     cdef (int, int) point
- *     cdef int x, y
- *     for point in self.points:             # <<<<<<<<<<<<<<
- *       x = point[0]
- *       y = point[1]
- */
-  if (unlikely(__pyx_v_self->points == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 76, __pyx_L1_error)
-  }
-  __pyx_t_1 = __pyx_v_self->points; __Pyx_INCREF(__pyx_t_1); __pyx_t_7 = 0;
-  for (;;) {
-    if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_1)) break;
-    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 76, __pyx_L1_error)
-    #else
-    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    #endif
-    __pyx_t_8 = __pyx_convert__from_py___pyx_ctuple_int__and_int(__pyx_t_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 76, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_point = __pyx_t_8;
-
-    /* "WallMapCython.pyx":77
- *     cdef int x, y
- *     for point in self.points:
- *       x = point[0]             # <<<<<<<<<<<<<<
- *       y = point[1]
- * 
- */
-    __pyx_v_x = __pyx_v_point.f0;
-
-    /* "WallMapCython.pyx":78
- *     for point in self.points:
- *       x = point[0]
- *       y = point[1]             # <<<<<<<<<<<<<<
- * 
- *       x += x_add_num
- */
-    __pyx_v_y = __pyx_v_point.f1;
-
-    /* "WallMapCython.pyx":80
- *       y = point[1]
- * 
- *       x += x_add_num             # <<<<<<<<<<<<<<
- *       x *= x_scale
- *       x += x_screen_adjustment
- */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_t_2, __pyx_v_x_add_num); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 80, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_x = __pyx_t_5;
-
-    /* "WallMapCython.pyx":81
- * 
- *       x += x_add_num
- *       x *= x_scale             # <<<<<<<<<<<<<<
- *       x += x_screen_adjustment
- * 
- */
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 81, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PyNumber_InPlaceMultiply(__pyx_t_3, __pyx_v_x_scale); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 81, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_x = __pyx_t_5;
-
-    /* "WallMapCython.pyx":82
- *       x += x_add_num
- *       x *= x_scale
- *       x += x_screen_adjustment             # <<<<<<<<<<<<<<
- * 
- *       y += y_add_num
- */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_t_2, __pyx_v_x_screen_adjustment); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 82, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_x = __pyx_t_5;
-
-    /* "WallMapCython.pyx":84
- *       x += x_screen_adjustment
- * 
- *       y += y_add_num             # <<<<<<<<<<<<<<
- *       y *= y_scale
- *       y += y_screen_adjustment
- */
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 84, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_t_3, __pyx_v_y_add_num); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 84, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_y = __pyx_t_5;
-
-    /* "WallMapCython.pyx":85
- * 
- *       y += y_add_num
- *       y *= y_scale             # <<<<<<<<<<<<<<
- *       y += y_screen_adjustment
- * 
- */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyNumber_InPlaceMultiply(__pyx_t_2, __pyx_v_y_scale); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 85, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 85, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_v_y = __pyx_t_5;
-
-    /* "WallMapCython.pyx":86
- *       y += y_add_num
- *       y *= y_scale
- *       y += y_screen_adjustment             # <<<<<<<<<<<<<<
- * 
- *       screen_points.append( (x, y_max - y) ) #correct the order (x, y) to (r, c)
- */
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_t_3, __pyx_v_y_screen_adjustment); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 86, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_y = __pyx_t_5;
-
-    /* "WallMapCython.pyx":88
- *       y += y_screen_adjustment
- * 
- *       screen_points.append( (x, y_max - y) ) #correct the order (x, y) to (r, c)             # <<<<<<<<<<<<<<
- *     if len(self.points) > 2:
- *     #   self.logger.log("Adding wall at ", screen_points)
- */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = PyNumber_Subtract(__pyx_v_y_max, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 88, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_GIVEREF(__pyx_t_2);
-    PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
-    __Pyx_GIVEREF(__pyx_t_6);
-    PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_6);
-    __pyx_t_2 = 0;
-    __pyx_t_6 = 0;
-    __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_screen_points, __pyx_t_3); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 88, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-    /* "WallMapCython.pyx":76
- *     cdef (int, int) point
- *     cdef int x, y
- *     for point in self.points:             # <<<<<<<<<<<<<<
- *       x = point[0]
- *       y = point[1]
- */
-  }
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "WallMapCython.pyx":89
- * 
- *       screen_points.append( (x, y_max - y) ) #correct the order (x, y) to (r, c)
- *     if len(self.points) > 2:             # <<<<<<<<<<<<<<
- *     #   self.logger.log("Adding wall at ", screen_points)
- *       pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)
- */
-  __pyx_t_1 = __pyx_v_self->points;
-  __Pyx_INCREF(__pyx_t_1);
-  if (unlikely(__pyx_t_1 == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 89, __pyx_L1_error)
-  }
-  __pyx_t_7 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 89, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_10 = ((__pyx_t_7 > 2) != 0);
-  if (__pyx_t_10) {
-
-    /* "WallMapCython.pyx":91
- *     if len(self.points) > 2:
- *     #   self.logger.log("Adding wall at ", screen_points)
- *       pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)             # <<<<<<<<<<<<<<
- * 
- *   def draw_wall_prerelease(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
- */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_draw); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 91, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_polygon); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 91, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_surface, __pyx_v_screen) < 0) __PYX_ERR(0, 91, __pyx_L1_error)
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_Colors); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 91, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_RED); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_color, __pyx_t_2) < 0) __PYX_ERR(0, 91, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_points, __pyx_v_screen_points) < 0) __PYX_ERR(0, 91, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_width, __pyx_int_3) < 0) __PYX_ERR(0, 91, __pyx_L1_error)
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-    /* "WallMapCython.pyx":89
- * 
- *       screen_points.append( (x, y_max - y) ) #correct the order (x, y) to (r, c)
- *     if len(self.points) > 2:             # <<<<<<<<<<<<<<
- *     #   self.logger.log("Adding wall at ", screen_points)
- *       pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)
- */
-  }
-
-  /* "WallMapCython.pyx":72
- *       return min_distance
- * 
- *   cpdef draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):             # <<<<<<<<<<<<<<
- *     screen_points = []
- *     cdef (int, int) point
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("WallMapCython.Wall.draw_wall", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_screen_points);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
 
 /* Python wrapper */
 static PyObject *__pyx_pw_13WallMapCython_4Wall_9draw_wall(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
@@ -3760,47 +3282,47 @@ static PyObject *__pyx_pw_13WallMapCython_4Wall_9draw_wall(PyObject *__pyx_v_sel
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_max)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_wall", 1, 8, 8, 1); __PYX_ERR(0, 72, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_wall", 1, 8, 8, 1); __PYX_ERR(0, 68, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_add_num)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_wall", 1, 8, 8, 2); __PYX_ERR(0, 72, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_wall", 1, 8, 8, 2); __PYX_ERR(0, 68, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_scale)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_wall", 1, 8, 8, 3); __PYX_ERR(0, 72, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_wall", 1, 8, 8, 3); __PYX_ERR(0, 68, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_screen_adjustment)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_wall", 1, 8, 8, 4); __PYX_ERR(0, 72, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_wall", 1, 8, 8, 4); __PYX_ERR(0, 68, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_add_num)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_wall", 1, 8, 8, 5); __PYX_ERR(0, 72, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_wall", 1, 8, 8, 5); __PYX_ERR(0, 68, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_scale)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_wall", 1, 8, 8, 6); __PYX_ERR(0, 72, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_wall", 1, 8, 8, 6); __PYX_ERR(0, 68, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_screen_adjustment)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_wall", 1, 8, 8, 7); __PYX_ERR(0, 72, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_wall", 1, 8, 8, 7); __PYX_ERR(0, 68, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "draw_wall") < 0)) __PYX_ERR(0, 72, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "draw_wall") < 0)) __PYX_ERR(0, 68, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 8) {
       goto __pyx_L5_argtuple_error;
@@ -3825,7 +3347,7 @@ static PyObject *__pyx_pw_13WallMapCython_4Wall_9draw_wall(PyObject *__pyx_v_sel
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("draw_wall", 1, 8, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 72, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("draw_wall", 1, 8, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 68, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("WallMapCython.Wall.draw_wall", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3839,32 +3361,330 @@ static PyObject *__pyx_pw_13WallMapCython_4Wall_9draw_wall(PyObject *__pyx_v_sel
 }
 
 static PyObject *__pyx_pf_13WallMapCython_4Wall_8draw_wall(struct __pyx_obj_13WallMapCython_Wall *__pyx_v_self, PyObject *__pyx_v_screen, PyObject *__pyx_v_y_max, PyObject *__pyx_v_x_add_num, PyObject *__pyx_v_x_scale, PyObject *__pyx_v_x_screen_adjustment, PyObject *__pyx_v_y_add_num, PyObject *__pyx_v_y_scale, PyObject *__pyx_v_y_screen_adjustment) {
+  PyObject *__pyx_v_screen_points = NULL;
+  int __pyx_v_x;
+  int __pyx_v_y;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
+  Py_ssize_t __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *(*__pyx_t_7)(PyObject *);
+  int __pyx_t_8;
+  int __pyx_t_9;
+  int __pyx_t_10;
+  int __pyx_t_11;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("draw_wall", 0);
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_13WallMapCython_4Wall_draw_wall(__pyx_v_self, __pyx_v_screen, __pyx_v_y_max, __pyx_v_x_add_num, __pyx_v_x_scale, __pyx_v_x_screen_adjustment, __pyx_v_y_add_num, __pyx_v_y_scale, __pyx_v_y_screen_adjustment, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
+
+  /* "WallMapCython.pyx":69
+ * 
+ *   def draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
+ *     screen_points = []             # <<<<<<<<<<<<<<
+ *     cdef int x, y
+ *     for x, y in self.points:
+ */
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
+  __pyx_v_screen_points = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
-  goto __pyx_L0;
+
+  /* "WallMapCython.pyx":71
+ *     screen_points = []
+ *     cdef int x, y
+ *     for x, y in self.points:             # <<<<<<<<<<<<<<
+ *       x += x_add_num
+ *       x *= x_scale
+ */
+  if (unlikely(__pyx_v_self->points == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
+    __PYX_ERR(0, 71, __pyx_L1_error)
+  }
+  __pyx_t_1 = __pyx_v_self->points; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
+  for (;;) {
+    if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
+    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 71, __pyx_L1_error)
+    #else
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 71, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    #endif
+    if ((likely(PyTuple_CheckExact(__pyx_t_3))) || (PyList_CheckExact(__pyx_t_3))) {
+      PyObject* sequence = __pyx_t_3;
+      Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
+      if (unlikely(size != 2)) {
+        if (size > 2) __Pyx_RaiseTooManyValuesError(2);
+        else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
+        __PYX_ERR(0, 71, __pyx_L1_error)
+      }
+      #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+      if (likely(PyTuple_CheckExact(sequence))) {
+        __pyx_t_4 = PyTuple_GET_ITEM(sequence, 0); 
+        __pyx_t_5 = PyTuple_GET_ITEM(sequence, 1); 
+      } else {
+        __pyx_t_4 = PyList_GET_ITEM(sequence, 0); 
+        __pyx_t_5 = PyList_GET_ITEM(sequence, 1); 
+      }
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_5);
+      #else
+      __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 71, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      #endif
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    } else {
+      Py_ssize_t index = -1;
+      __pyx_t_6 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 71, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __pyx_t_7 = Py_TYPE(__pyx_t_6)->tp_iternext;
+      index = 0; __pyx_t_4 = __pyx_t_7(__pyx_t_6); if (unlikely(!__pyx_t_4)) goto __pyx_L5_unpacking_failed;
+      __Pyx_GOTREF(__pyx_t_4);
+      index = 1; __pyx_t_5 = __pyx_t_7(__pyx_t_6); if (unlikely(!__pyx_t_5)) goto __pyx_L5_unpacking_failed;
+      __Pyx_GOTREF(__pyx_t_5);
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_7(__pyx_t_6), 2) < 0) __PYX_ERR(0, 71, __pyx_L1_error)
+      __pyx_t_7 = NULL;
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      goto __pyx_L6_unpacking_done;
+      __pyx_L5_unpacking_failed:;
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __pyx_t_7 = NULL;
+      if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
+      __PYX_ERR(0, 71, __pyx_L1_error)
+      __pyx_L6_unpacking_done:;
+    }
+    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 71, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 71, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_v_x = __pyx_t_8;
+    __pyx_v_y = __pyx_t_9;
+
+    /* "WallMapCython.pyx":72
+ *     cdef int x, y
+ *     for x, y in self.points:
+ *       x += x_add_num             # <<<<<<<<<<<<<<
+ *       x *= x_scale
+ *       x += x_screen_adjustment
+ */
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_t_3, __pyx_v_x_add_num); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 72, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_v_x = __pyx_t_9;
+
+    /* "WallMapCython.pyx":73
+ *     for x, y in self.points:
+ *       x += x_add_num
+ *       x *= x_scale             # <<<<<<<<<<<<<<
+ *       x += x_screen_adjustment
+ * 
+ */
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 73, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = PyNumber_InPlaceMultiply(__pyx_t_5, __pyx_v_x_scale); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 73, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 73, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_v_x = __pyx_t_9;
+
+    /* "WallMapCython.pyx":74
+ *       x += x_add_num
+ *       x *= x_scale
+ *       x += x_screen_adjustment             # <<<<<<<<<<<<<<
+ * 
+ *       y += y_add_num
+ */
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_t_3, __pyx_v_x_screen_adjustment); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_v_x = __pyx_t_9;
+
+    /* "WallMapCython.pyx":76
+ *       x += x_screen_adjustment
+ * 
+ *       y += y_add_num             # <<<<<<<<<<<<<<
+ *       y *= y_scale
+ *       y += y_screen_adjustment
+ */
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_t_5, __pyx_v_y_add_num); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 76, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_v_y = __pyx_t_9;
+
+    /* "WallMapCython.pyx":77
+ * 
+ *       y += y_add_num
+ *       y *= y_scale             # <<<<<<<<<<<<<<
+ *       y += y_screen_adjustment
+ * 
+ */
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_5 = PyNumber_InPlaceMultiply(__pyx_t_3, __pyx_v_y_scale); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 77, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_v_y = __pyx_t_9;
+
+    /* "WallMapCython.pyx":78
+ *       y += y_add_num
+ *       y *= y_scale
+ *       y += y_screen_adjustment             # <<<<<<<<<<<<<<
+ * 
+ *       screen_points.append( (x, y_max - y) ) #correct the order (x, y) to (r, c)
+ */
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 78, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_t_5, __pyx_v_y_screen_adjustment); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 78, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 78, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_v_y = __pyx_t_9;
+
+    /* "WallMapCython.pyx":80
+ *       y += y_screen_adjustment
+ * 
+ *       screen_points.append( (x, y_max - y) ) #correct the order (x, y) to (r, c)             # <<<<<<<<<<<<<<
+ *     if len(self.points) > 2:
+ *       # self.logger.log("Adding wall at ", screen_points)
+ */
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_4 = PyNumber_Subtract(__pyx_v_y_max, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_GIVEREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3);
+    __Pyx_GIVEREF(__pyx_t_4);
+    PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
+    __pyx_t_3 = 0;
+    __pyx_t_4 = 0;
+    __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_screen_points, __pyx_t_5); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 80, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+    /* "WallMapCython.pyx":71
+ *     screen_points = []
+ *     cdef int x, y
+ *     for x, y in self.points:             # <<<<<<<<<<<<<<
+ *       x += x_add_num
+ *       x *= x_scale
+ */
+  }
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "WallMapCython.pyx":81
+ * 
+ *       screen_points.append( (x, y_max - y) ) #correct the order (x, y) to (r, c)
+ *     if len(self.points) > 2:             # <<<<<<<<<<<<<<
+ *       # self.logger.log("Adding wall at ", screen_points)
+ *       pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)
+ */
+  __pyx_t_1 = __pyx_v_self->points;
+  __Pyx_INCREF(__pyx_t_1);
+  if (unlikely(__pyx_t_1 == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
+    __PYX_ERR(0, 81, __pyx_L1_error)
+  }
+  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 81, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_11 = ((__pyx_t_2 > 2) != 0);
+  if (__pyx_t_11) {
+
+    /* "WallMapCython.pyx":83
+ *     if len(self.points) > 2:
+ *       # self.logger.log("Adding wall at ", screen_points)
+ *       pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)             # <<<<<<<<<<<<<<
+ * 
+ *   def draw_wall_prerelease(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
+ */
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_draw); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_polygon); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_5 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_surface, __pyx_v_screen) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Colors); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_RED); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_color, __pyx_t_3) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_points, __pyx_v_screen_points) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_width, __pyx_int_3) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "WallMapCython.pyx":81
+ * 
+ *       screen_points.append( (x, y_max - y) ) #correct the order (x, y) to (r, c)
+ *     if len(self.points) > 2:             # <<<<<<<<<<<<<<
+ *       # self.logger.log("Adding wall at ", screen_points)
+ *       pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)
+ */
+  }
+
+  /* "WallMapCython.pyx":68
+ *       return min_distance
+ * 
+ *   def draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):             # <<<<<<<<<<<<<<
+ *     screen_points = []
+ *     cdef int x, y
+ */
 
   /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
   __Pyx_AddTraceback("WallMapCython.Wall.draw_wall", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_screen_points);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "WallMapCython.pyx":93
+/* "WallMapCython.pyx":85
  *       pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)
  * 
  *   def draw_wall_prerelease(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):             # <<<<<<<<<<<<<<
@@ -3924,47 +3744,47 @@ static PyObject *__pyx_pw_13WallMapCython_4Wall_11draw_wall_prerelease(PyObject 
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_max)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_wall_prerelease", 1, 8, 8, 1); __PYX_ERR(0, 93, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_wall_prerelease", 1, 8, 8, 1); __PYX_ERR(0, 85, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_add_num)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_wall_prerelease", 1, 8, 8, 2); __PYX_ERR(0, 93, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_wall_prerelease", 1, 8, 8, 2); __PYX_ERR(0, 85, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_scale)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_wall_prerelease", 1, 8, 8, 3); __PYX_ERR(0, 93, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_wall_prerelease", 1, 8, 8, 3); __PYX_ERR(0, 85, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_screen_adjustment)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_wall_prerelease", 1, 8, 8, 4); __PYX_ERR(0, 93, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_wall_prerelease", 1, 8, 8, 4); __PYX_ERR(0, 85, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_add_num)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_wall_prerelease", 1, 8, 8, 5); __PYX_ERR(0, 93, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_wall_prerelease", 1, 8, 8, 5); __PYX_ERR(0, 85, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_scale)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_wall_prerelease", 1, 8, 8, 6); __PYX_ERR(0, 93, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_wall_prerelease", 1, 8, 8, 6); __PYX_ERR(0, 85, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_screen_adjustment)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_wall_prerelease", 1, 8, 8, 7); __PYX_ERR(0, 93, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_wall_prerelease", 1, 8, 8, 7); __PYX_ERR(0, 85, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "draw_wall_prerelease") < 0)) __PYX_ERR(0, 93, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "draw_wall_prerelease") < 0)) __PYX_ERR(0, 85, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 8) {
       goto __pyx_L5_argtuple_error;
@@ -3989,7 +3809,7 @@ static PyObject *__pyx_pw_13WallMapCython_4Wall_11draw_wall_prerelease(PyObject 
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("draw_wall_prerelease", 1, 8, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 93, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("draw_wall_prerelease", 1, 8, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 85, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("WallMapCython.Wall.draw_wall_prerelease", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4026,7 +3846,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_10draw_wall_prerelease(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("draw_wall_prerelease", 0);
 
-  /* "WallMapCython.pyx":98
+  /* "WallMapCython.pyx":90
  *     # and turn it into a filled in circle, rather than a circular outline
  *     # so im leaving the method here for now but you can delete it if ^that^ makes sense
  *     for point1 in self.points:             # <<<<<<<<<<<<<<
@@ -4035,21 +3855,21 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_10draw_wall_prerelease(struct __
  */
   if (unlikely(__pyx_v_self->points == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 98, __pyx_L1_error)
+    __PYX_ERR(0, 90, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->points; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 90, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 90, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_point1, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "WallMapCython.pyx":99
+    /* "WallMapCython.pyx":91
  *     # so im leaving the method here for now but you can delete it if ^that^ makes sense
  *     for point1 in self.points:
  *       for point2 in self.points:             # <<<<<<<<<<<<<<
@@ -4058,21 +3878,21 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_10draw_wall_prerelease(struct __
  */
     if (unlikely(__pyx_v_self->points == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      __PYX_ERR(0, 99, __pyx_L1_error)
+      __PYX_ERR(0, 91, __pyx_L1_error)
     }
     __pyx_t_3 = __pyx_v_self->points; __Pyx_INCREF(__pyx_t_3); __pyx_t_4 = 0;
     for (;;) {
       if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_3)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_5 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_5); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 99, __pyx_L1_error)
+      __pyx_t_5 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_5); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 91, __pyx_L1_error)
       #else
-      __pyx_t_5 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 99, __pyx_L1_error)
+      __pyx_t_5 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_point2, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":100
+      /* "WallMapCython.pyx":92
  *     for point1 in self.points:
  *       for point2 in self.points:
  *         if point1 is point2:             # <<<<<<<<<<<<<<
@@ -4083,7 +3903,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_10draw_wall_prerelease(struct __
       __pyx_t_7 = (__pyx_t_6 != 0);
       if (__pyx_t_7) {
 
-        /* "WallMapCython.pyx":101
+        /* "WallMapCython.pyx":93
  *       for point2 in self.points:
  *         if point1 is point2:
  *           continue             # <<<<<<<<<<<<<<
@@ -4092,7 +3912,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_10draw_wall_prerelease(struct __
  */
         goto __pyx_L5_continue;
 
-        /* "WallMapCython.pyx":100
+        /* "WallMapCython.pyx":92
  *     for point1 in self.points:
  *       for point2 in self.points:
  *         if point1 is point2:             # <<<<<<<<<<<<<<
@@ -4101,219 +3921,219 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_10draw_wall_prerelease(struct __
  */
       }
 
-      /* "WallMapCython.pyx":102
+      /* "WallMapCython.pyx":94
  *         if point1 is point2:
  *           continue
  *         x1 = point1[0]             # <<<<<<<<<<<<<<
  *         x1 += x_add_num
  *         x1 *= x_scale
  */
-      __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_point1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_point1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 94, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_XDECREF_SET(__pyx_v_x1, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":103
+      /* "WallMapCython.pyx":95
  *           continue
  *         x1 = point1[0]
  *         x1 += x_add_num             # <<<<<<<<<<<<<<
  *         x1 *= x_scale
  *         x1 += x_screen_adjustment
  */
-      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_x1, __pyx_v_x_add_num); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 103, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_x1, __pyx_v_x_add_num); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF_SET(__pyx_v_x1, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":104
+      /* "WallMapCython.pyx":96
  *         x1 = point1[0]
  *         x1 += x_add_num
  *         x1 *= x_scale             # <<<<<<<<<<<<<<
  *         x1 += x_screen_adjustment
  * 
  */
-      __pyx_t_5 = PyNumber_InPlaceMultiply(__pyx_v_x1, __pyx_v_x_scale); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_InPlaceMultiply(__pyx_v_x1, __pyx_v_x_scale); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF_SET(__pyx_v_x1, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":105
+      /* "WallMapCython.pyx":97
  *         x1 += x_add_num
  *         x1 *= x_scale
  *         x1 += x_screen_adjustment             # <<<<<<<<<<<<<<
  * 
  *         y1 = point1[1]
  */
-      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_x1, __pyx_v_x_screen_adjustment); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_x1, __pyx_v_x_screen_adjustment); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 97, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF_SET(__pyx_v_x1, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":107
+      /* "WallMapCython.pyx":99
  *         x1 += x_screen_adjustment
  * 
  *         y1 = point1[1]             # <<<<<<<<<<<<<<
  *         y1 += y_add_num
  *         y1 *= y_scale
  */
-      __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_point1, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_point1, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 99, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_XDECREF_SET(__pyx_v_y1, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":108
+      /* "WallMapCython.pyx":100
  * 
  *         y1 = point1[1]
  *         y1 += y_add_num             # <<<<<<<<<<<<<<
  *         y1 *= y_scale
  *         y1 += y_screen_adjustment
  */
-      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_y1, __pyx_v_y_add_num); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 108, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_y1, __pyx_v_y_add_num); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 100, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF_SET(__pyx_v_y1, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":109
+      /* "WallMapCython.pyx":101
  *         y1 = point1[1]
  *         y1 += y_add_num
  *         y1 *= y_scale             # <<<<<<<<<<<<<<
  *         y1 += y_screen_adjustment
  * 
  */
-      __pyx_t_5 = PyNumber_InPlaceMultiply(__pyx_v_y1, __pyx_v_y_scale); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_InPlaceMultiply(__pyx_v_y1, __pyx_v_y_scale); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 101, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF_SET(__pyx_v_y1, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":110
+      /* "WallMapCython.pyx":102
  *         y1 += y_add_num
  *         y1 *= y_scale
  *         y1 += y_screen_adjustment             # <<<<<<<<<<<<<<
  * 
  *         x2 = point2[0]
  */
-      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_y1, __pyx_v_y_screen_adjustment); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_y1, __pyx_v_y_screen_adjustment); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF_SET(__pyx_v_y1, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":112
+      /* "WallMapCython.pyx":104
  *         y1 += y_screen_adjustment
  * 
  *         x2 = point2[0]             # <<<<<<<<<<<<<<
  *         x2 += x_add_num
  *         x2 *= x_scale
  */
-      __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_point2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 112, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_point2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_XDECREF_SET(__pyx_v_x2, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":113
+      /* "WallMapCython.pyx":105
  * 
  *         x2 = point2[0]
  *         x2 += x_add_num             # <<<<<<<<<<<<<<
  *         x2 *= x_scale
  *         x2 += x_screen_adjustment
  */
-      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_x2, __pyx_v_x_add_num); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 113, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_x2, __pyx_v_x_add_num); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF_SET(__pyx_v_x2, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":114
+      /* "WallMapCython.pyx":106
  *         x2 = point2[0]
  *         x2 += x_add_num
  *         x2 *= x_scale             # <<<<<<<<<<<<<<
  *         x2 += x_screen_adjustment
  * 
  */
-      __pyx_t_5 = PyNumber_InPlaceMultiply(__pyx_v_x2, __pyx_v_x_scale); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_InPlaceMultiply(__pyx_v_x2, __pyx_v_x_scale); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF_SET(__pyx_v_x2, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":115
+      /* "WallMapCython.pyx":107
  *         x2 += x_add_num
  *         x2 *= x_scale
  *         x2 += x_screen_adjustment             # <<<<<<<<<<<<<<
  * 
  *         y2 = point2[1]
  */
-      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_x2, __pyx_v_x_screen_adjustment); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 115, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_x2, __pyx_v_x_screen_adjustment); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF_SET(__pyx_v_x2, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":117
+      /* "WallMapCython.pyx":109
  *         x2 += x_screen_adjustment
  * 
  *         y2 = point2[1]             # <<<<<<<<<<<<<<
  *         y2 += y_add_num
  *         y2 *= y_scale
  */
-      __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_point2, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 117, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_point2, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_XDECREF_SET(__pyx_v_y2, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":118
+      /* "WallMapCython.pyx":110
  * 
  *         y2 = point2[1]
  *         y2 += y_add_num             # <<<<<<<<<<<<<<
  *         y2 *= y_scale
  *         y2 += y_screen_adjustment
  */
-      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_y2, __pyx_v_y_add_num); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 118, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_y2, __pyx_v_y_add_num); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF_SET(__pyx_v_y2, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":119
+      /* "WallMapCython.pyx":111
  *         y2 = point2[1]
  *         y2 += y_add_num
  *         y2 *= y_scale             # <<<<<<<<<<<<<<
  *         y2 += y_screen_adjustment
  *         pygame.draw.line(screen, Colors.RED, start_pos=(x1, y1), end_pos=(x2, y2), width=2)
  */
-      __pyx_t_5 = PyNumber_InPlaceMultiply(__pyx_v_y2, __pyx_v_y_scale); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 119, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_InPlaceMultiply(__pyx_v_y2, __pyx_v_y_scale); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 111, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF_SET(__pyx_v_y2, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":120
+      /* "WallMapCython.pyx":112
  *         y2 += y_add_num
  *         y2 *= y_scale
  *         y2 += y_screen_adjustment             # <<<<<<<<<<<<<<
  *         pygame.draw.line(screen, Colors.RED, start_pos=(x1, y1), end_pos=(x2, y2), width=2)
  * 
  */
-      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_y2, __pyx_v_y_screen_adjustment); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 120, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_y2, __pyx_v_y_screen_adjustment); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 112, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF_SET(__pyx_v_y2, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "WallMapCython.pyx":121
+      /* "WallMapCython.pyx":113
  *         y2 *= y_scale
  *         y2 += y_screen_adjustment
  *         pygame.draw.line(screen, Colors.RED, start_pos=(x1, y1), end_pos=(x2, y2), width=2)             # <<<<<<<<<<<<<<
  * 
- * cdef class WallMap:
+ * class WallMap:
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_pygame); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_pygame); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 113, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_draw); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_draw); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 113, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 113, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_Colors); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_Colors); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 113, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_RED); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_RED); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 113, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 113, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_INCREF(__pyx_v_screen);
       __Pyx_GIVEREF(__pyx_v_screen);
@@ -4321,9 +4141,9 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_10draw_wall_prerelease(struct __
       __Pyx_GIVEREF(__pyx_t_9);
       PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_9);
       __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 113, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_INCREF(__pyx_v_x1);
       __Pyx_GIVEREF(__pyx_v_x1);
@@ -4331,9 +4151,9 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_10draw_wall_prerelease(struct __
       __Pyx_INCREF(__pyx_v_y1);
       __Pyx_GIVEREF(__pyx_v_y1);
       PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_y1);
-      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_start_pos, __pyx_t_10) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_start_pos, __pyx_t_10) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_INCREF(__pyx_v_x2);
       __Pyx_GIVEREF(__pyx_v_x2);
@@ -4341,17 +4161,17 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_10draw_wall_prerelease(struct __
       __Pyx_INCREF(__pyx_v_y2);
       __Pyx_GIVEREF(__pyx_v_y2);
       PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_y2);
-      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_end_pos, __pyx_t_10) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_end_pos, __pyx_t_10) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_width, __pyx_int_2) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
-      __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, __pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 121, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_width, __pyx_int_2) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, __pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-      /* "WallMapCython.pyx":99
+      /* "WallMapCython.pyx":91
  *     # so im leaving the method here for now but you can delete it if ^that^ makes sense
  *     for point1 in self.points:
  *       for point2 in self.points:             # <<<<<<<<<<<<<<
@@ -4362,7 +4182,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_10draw_wall_prerelease(struct __
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "WallMapCython.pyx":98
+    /* "WallMapCython.pyx":90
  *     # and turn it into a filled in circle, rather than a circular outline
  *     # so im leaving the method here for now but you can delete it if ^that^ makes sense
  *     for point1 in self.points:             # <<<<<<<<<<<<<<
@@ -4372,7 +4192,7 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_10draw_wall_prerelease(struct __
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "WallMapCython.pyx":93
+  /* "WallMapCython.pyx":85
  *       pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)
  * 
  *   def draw_wall_prerelease(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):             # <<<<<<<<<<<<<<
@@ -4404,12 +4224,12 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_10draw_wall_prerelease(struct __
   return __pyx_r;
 }
 
-/* "WallMapCython.pyx":14
+/* "WallMapCython.pyx":11
  * 
  * cdef class Wall:
  *   cdef public list points             # <<<<<<<<<<<<<<
  *   cdef object logger
- *   def __init__(Wall self, points):
+ *   def __init__(self, points):
  */
 
 /* Python wrapper */
@@ -4462,7 +4282,7 @@ static int __pyx_pf_13WallMapCython_4Wall_6points_2__set__(struct __pyx_obj_13Wa
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 11, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -4819,34 +4639,81 @@ static PyObject *__pyx_pf_13WallMapCython_4Wall_14__setstate_cython__(struct __p
   return __pyx_r;
 }
 
-/* "WallMapCython.pyx":127
- *   cdef set obstacle_points, clear_rectangles, walls
- *   cdef int x_min, x_max, y_min, y_max, count_since_last_refresh
+/* "WallMapCython.pyx":116
+ * 
+ * class WallMap:
  *   def __init__(self, obstacle_points=set(), clear_rectangles=set()):             # <<<<<<<<<<<<<<
  *     self.logger = Logger("WallMap")
  *     self.obstacle_points = obstacle_points
  */
 
+static PyObject *__pyx_pf_13WallMapCython_2__defaults__(CYTHON_UNUSED PyObject *__pyx_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__defaults__", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__Pyx_CyFunction_Defaults(__pyx_defaults, __pyx_self)->__pyx_arg_obstacle_points);
+  __Pyx_GIVEREF(__Pyx_CyFunction_Defaults(__pyx_defaults, __pyx_self)->__pyx_arg_obstacle_points);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __Pyx_CyFunction_Defaults(__pyx_defaults, __pyx_self)->__pyx_arg_obstacle_points);
+  __Pyx_INCREF(__Pyx_CyFunction_Defaults(__pyx_defaults, __pyx_self)->__pyx_arg_clear_rectangles);
+  __Pyx_GIVEREF(__Pyx_CyFunction_Defaults(__pyx_defaults, __pyx_self)->__pyx_arg_clear_rectangles);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __Pyx_CyFunction_Defaults(__pyx_defaults, __pyx_self)->__pyx_arg_clear_rectangles);
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
+  __Pyx_INCREF(Py_None);
+  __Pyx_GIVEREF(Py_None);
+  PyTuple_SET_ITEM(__pyx_t_2, 1, Py_None);
+  __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("WallMapCython.__defaults__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
 /* Python wrapper */
-static int __pyx_pw_13WallMapCython_7WallMap_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_13WallMapCython_7WallMap_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_13WallMapCython_7WallMap_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_13WallMapCython_7WallMap_1__init__ = {"__init__", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_13WallMapCython_7WallMap_1__init__, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_13WallMapCython_7WallMap_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_obstacle_points = 0;
   PyObject *__pyx_v_clear_rectangles = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  int __pyx_r;
+  PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__ (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_obstacle_points,&__pyx_n_s_clear_rectangles,0};
-    PyObject* values[2] = {0,0};
-    values[0] = __pyx_k_;
-    values[1] = __pyx_k__2;
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_obstacle_points,&__pyx_n_s_clear_rectangles,0};
+    PyObject* values[3] = {0,0,0};
+    __pyx_defaults *__pyx_dynamic_args = __Pyx_CyFunction_Defaults(__pyx_defaults, __pyx_self);
+    values[1] = __pyx_dynamic_args->__pyx_arg_obstacle_points;
+    values[2] = __pyx_dynamic_args->__pyx_arg_clear_rectangles;
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
         case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
         CYTHON_FALLTHROUGH;
         case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
@@ -4857,50 +4724,56 @@ static int __pyx_pw_13WallMapCython_7WallMap_1__init__(PyObject *__pyx_v_self, P
       kw_args = PyDict_Size(__pyx_kwds);
       switch (pos_args) {
         case  0:
-        if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_obstacle_points);
-          if (value) { values[0] = value; kw_args--; }
-        }
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_self)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_clear_rectangles);
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_obstacle_points);
           if (value) { values[1] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_clear_rectangles);
+          if (value) { values[2] = value; kw_args--; }
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 127, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 116, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
         case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
         CYTHON_FALLTHROUGH;
         case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
+        break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_obstacle_points = values[0];
-    __pyx_v_clear_rectangles = values[1];
+    __pyx_v_self = values[0];
+    __pyx_v_obstacle_points = values[1];
+    __pyx_v_clear_rectangles = values[2];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 127, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 116, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("WallMapCython.WallMap.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
-  return -1;
+  return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_13WallMapCython_7WallMap___init__(((struct __pyx_obj_13WallMapCython_WallMap *)__pyx_v_self), __pyx_v_obstacle_points, __pyx_v_clear_rectangles);
+  __pyx_r = __pyx_pf_13WallMapCython_7WallMap___init__(__pyx_self, __pyx_v_self, __pyx_v_obstacle_points, __pyx_v_clear_rectangles);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_13WallMapCython_7WallMap___init__(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v_self, PyObject *__pyx_v_obstacle_points, PyObject *__pyx_v_clear_rectangles) {
-  int __pyx_r;
+static PyObject *__pyx_pf_13WallMapCython_7WallMap___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_obstacle_points, PyObject *__pyx_v_clear_rectangles) {
+  PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -4910,14 +4783,14 @@ static int __pyx_pf_13WallMapCython_7WallMap___init__(struct __pyx_obj_13WallMap
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "WallMapCython.pyx":128
- *   cdef int x_min, x_max, y_min, y_max, count_since_last_refresh
+  /* "WallMapCython.pyx":117
+ * class WallMap:
  *   def __init__(self, obstacle_points=set(), clear_rectangles=set()):
  *     self.logger = Logger("WallMap")             # <<<<<<<<<<<<<<
  *     self.obstacle_points = obstacle_points
  *     self.clear_rectangles = clear_rectangles
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Logger); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Logger); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -4931,436 +4804,93 @@ static int __pyx_pf_13WallMapCython_7WallMap___init__(struct __pyx_obj_13WallMap
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_n_s_WallMap) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_n_s_WallMap);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v_self->logger);
-  __Pyx_DECREF(__pyx_v_self->logger);
-  __pyx_v_self->logger = __pyx_t_1;
-  __pyx_t_1 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_logger, __pyx_t_1) < 0) __PYX_ERR(0, 117, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "WallMapCython.pyx":129
+  /* "WallMapCython.pyx":118
  *   def __init__(self, obstacle_points=set(), clear_rectangles=set()):
  *     self.logger = Logger("WallMap")
  *     self.obstacle_points = obstacle_points             # <<<<<<<<<<<<<<
  *     self.clear_rectangles = clear_rectangles
  *     self.walls = set()
  */
-  if (!(likely(PySet_CheckExact(__pyx_v_obstacle_points))||((__pyx_v_obstacle_points) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "set", Py_TYPE(__pyx_v_obstacle_points)->tp_name), 0))) __PYX_ERR(0, 129, __pyx_L1_error)
-  __pyx_t_1 = __pyx_v_obstacle_points;
-  __Pyx_INCREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v_self->obstacle_points);
-  __Pyx_DECREF(__pyx_v_self->obstacle_points);
-  __pyx_v_self->obstacle_points = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_obstacle_points, __pyx_v_obstacle_points) < 0) __PYX_ERR(0, 118, __pyx_L1_error)
 
-  /* "WallMapCython.pyx":130
+  /* "WallMapCython.pyx":119
  *     self.logger = Logger("WallMap")
  *     self.obstacle_points = obstacle_points
  *     self.clear_rectangles = clear_rectangles             # <<<<<<<<<<<<<<
  *     self.walls = set()
  *     self.x_min = -10
  */
-  if (!(likely(PySet_CheckExact(__pyx_v_clear_rectangles))||((__pyx_v_clear_rectangles) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "set", Py_TYPE(__pyx_v_clear_rectangles)->tp_name), 0))) __PYX_ERR(0, 130, __pyx_L1_error)
-  __pyx_t_1 = __pyx_v_clear_rectangles;
-  __Pyx_INCREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v_self->clear_rectangles);
-  __Pyx_DECREF(__pyx_v_self->clear_rectangles);
-  __pyx_v_self->clear_rectangles = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_clear_rectangles, __pyx_v_clear_rectangles) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
 
-  /* "WallMapCython.pyx":131
+  /* "WallMapCython.pyx":120
  *     self.obstacle_points = obstacle_points
  *     self.clear_rectangles = clear_rectangles
  *     self.walls = set()             # <<<<<<<<<<<<<<
  *     self.x_min = -10
  *     self.x_max = 10
  */
-  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v_self->walls);
-  __Pyx_DECREF(__pyx_v_self->walls);
-  __pyx_v_self->walls = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_walls, __pyx_t_1) < 0) __PYX_ERR(0, 120, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "WallMapCython.pyx":132
+  /* "WallMapCython.pyx":121
  *     self.clear_rectangles = clear_rectangles
  *     self.walls = set()
  *     self.x_min = -10             # <<<<<<<<<<<<<<
  *     self.x_max = 10
  *     self.y_min = -10
  */
-  __pyx_v_self->x_min = -10;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_x_min, __pyx_int_neg_10) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
 
-  /* "WallMapCython.pyx":133
+  /* "WallMapCython.pyx":122
  *     self.walls = set()
  *     self.x_min = -10
  *     self.x_max = 10             # <<<<<<<<<<<<<<
  *     self.y_min = -10
  *     self.y_max = 10
  */
-  __pyx_v_self->x_max = 10;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_x_max, __pyx_int_10) < 0) __PYX_ERR(0, 122, __pyx_L1_error)
 
-  /* "WallMapCython.pyx":134
+  /* "WallMapCython.pyx":123
  *     self.x_min = -10
  *     self.x_max = 10
  *     self.y_min = -10             # <<<<<<<<<<<<<<
  *     self.y_max = 10
  *     self.count_since_last_refresh = 0
  */
-  __pyx_v_self->y_min = -10;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_y_min, __pyx_int_neg_10) < 0) __PYX_ERR(0, 123, __pyx_L1_error)
 
-  /* "WallMapCython.pyx":135
+  /* "WallMapCython.pyx":124
  *     self.x_max = 10
  *     self.y_min = -10
  *     self.y_max = 10             # <<<<<<<<<<<<<<
  *     self.count_since_last_refresh = 0
  * 
  */
-  __pyx_v_self->y_max = 10;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_y_max, __pyx_int_10) < 0) __PYX_ERR(0, 124, __pyx_L1_error)
 
-  /* "WallMapCython.pyx":136
+  /* "WallMapCython.pyx":125
  *     self.y_min = -10
  *     self.y_max = 10
  *     self.count_since_last_refresh = 0             # <<<<<<<<<<<<<<
  * 
- *   cpdef add_obstacle_point(WallMap self, int x, int y):
+ *   def add_obstacle_point(self, x, y):
  */
-  __pyx_v_self->count_since_last_refresh = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_count_since_last_refresh, __pyx_int_0) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
 
-  /* "WallMapCython.pyx":127
- *   cdef set obstacle_points, clear_rectangles, walls
- *   cdef int x_min, x_max, y_min, y_max, count_since_last_refresh
+  /* "WallMapCython.pyx":116
+ * 
+ * class WallMap:
  *   def __init__(self, obstacle_points=set(), clear_rectangles=set()):             # <<<<<<<<<<<<<<
  *     self.logger = Logger("WallMap")
  *     self.obstacle_points = obstacle_points
- */
-
-  /* function exit code */
-  __pyx_r = 0;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("WallMapCython.WallMap.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = -1;
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "WallMapCython.pyx":138
- *     self.count_since_last_refresh = 0
- * 
- *   cpdef add_obstacle_point(WallMap self, int x, int y):             # <<<<<<<<<<<<<<
- *     # self.logger.log("adding point (" + str(x) + ', ' + str(y))
- *     self.obstacle_points.add((x, y))
- */
-
-static PyObject *__pyx_pw_13WallMapCython_7WallMap_3add_obstacle_point(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_f_13WallMapCython_7WallMap_add_obstacle_point(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v_self, int __pyx_v_x, int __pyx_v_y, int __pyx_skip_dispatch) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  int __pyx_t_7;
-  PyObject *__pyx_t_8 = NULL;
-  int __pyx_t_9;
-  int __pyx_t_10;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("add_obstacle_point", 0);
-  /* Check if called by wrapper */
-  if (unlikely(__pyx_skip_dispatch)) ;
-  /* Check if overridden in Python */
-  else if (unlikely((Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0) || (Py_TYPE(((PyObject *)__pyx_v_self))->tp_flags & (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))) {
-    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
-      PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_add_obstacle_point); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_13WallMapCython_7WallMap_3add_obstacle_point)) {
-        __Pyx_XDECREF(__pyx_r);
-        __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 138, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 138, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_5 = __pyx_t_1; __pyx_t_6 = NULL;
-        __pyx_t_7 = 0;
-        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
-          __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_5);
-          if (likely(__pyx_t_6)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-            __Pyx_INCREF(__pyx_t_6);
-            __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_5, function);
-            __pyx_t_7 = 1;
-          }
-        }
-        #if CYTHON_FAST_PYCALL
-        if (PyFunction_Check(__pyx_t_5)) {
-          PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_t_3, __pyx_t_4};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-          __Pyx_GOTREF(__pyx_t_2);
-          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        } else
-        #endif
-        #if CYTHON_FAST_PYCCALL
-        if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
-          PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_t_3, __pyx_t_4};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-          __Pyx_GOTREF(__pyx_t_2);
-          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        } else
-        #endif
-        {
-          __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 138, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_8);
-          if (__pyx_t_6) {
-            __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
-          }
-          __Pyx_GIVEREF(__pyx_t_3);
-          PyTuple_SET_ITEM(__pyx_t_8, 0+__pyx_t_7, __pyx_t_3);
-          __Pyx_GIVEREF(__pyx_t_4);
-          PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_t_4);
-          __pyx_t_3 = 0;
-          __pyx_t_4 = 0;
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_2);
-          __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        }
-        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_r = __pyx_t_2;
-        __pyx_t_2 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        goto __pyx_L0;
-      }
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
-      if (unlikely(__pyx_type_dict_guard != __pyx_tp_dict_version)) {
-        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-      }
-      #endif
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    }
-    #endif
-  }
-
-  /* "WallMapCython.pyx":140
- *   cpdef add_obstacle_point(WallMap self, int x, int y):
- *     # self.logger.log("adding point (" + str(x) + ', ' + str(y))
- *     self.obstacle_points.add((x, y))             # <<<<<<<<<<<<<<
- *     if x > self.x_max - 10:
- *       self.x_max = x + 10
- */
-  if (unlikely(__pyx_v_self->obstacle_points == Py_None)) {
-    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "add");
-    __PYX_ERR(0, 140, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 140, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_2);
-  __pyx_t_1 = 0;
-  __pyx_t_2 = 0;
-  __pyx_t_9 = PySet_Add(__pyx_v_self->obstacle_points, __pyx_t_5); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 140, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-
-  /* "WallMapCython.pyx":141
- *     # self.logger.log("adding point (" + str(x) + ', ' + str(y))
- *     self.obstacle_points.add((x, y))
- *     if x > self.x_max - 10:             # <<<<<<<<<<<<<<
- *       self.x_max = x + 10
- *     if x < self.x_min + 10:
- */
-  __pyx_t_10 = ((__pyx_v_x > (__pyx_v_self->x_max - 10)) != 0);
-  if (__pyx_t_10) {
-
-    /* "WallMapCython.pyx":142
- *     self.obstacle_points.add((x, y))
- *     if x > self.x_max - 10:
- *       self.x_max = x + 10             # <<<<<<<<<<<<<<
- *     if x < self.x_min + 10:
- *       self.x_min = x - 10
- */
-    __pyx_v_self->x_max = (__pyx_v_x + 10);
-
-    /* "WallMapCython.pyx":141
- *     # self.logger.log("adding point (" + str(x) + ', ' + str(y))
- *     self.obstacle_points.add((x, y))
- *     if x > self.x_max - 10:             # <<<<<<<<<<<<<<
- *       self.x_max = x + 10
- *     if x < self.x_min + 10:
- */
-  }
-
-  /* "WallMapCython.pyx":143
- *     if x > self.x_max - 10:
- *       self.x_max = x + 10
- *     if x < self.x_min + 10:             # <<<<<<<<<<<<<<
- *       self.x_min = x - 10
- * 
- */
-  __pyx_t_10 = ((__pyx_v_x < (__pyx_v_self->x_min + 10)) != 0);
-  if (__pyx_t_10) {
-
-    /* "WallMapCython.pyx":144
- *       self.x_max = x + 10
- *     if x < self.x_min + 10:
- *       self.x_min = x - 10             # <<<<<<<<<<<<<<
- * 
- *     if y > self.y_max - 10:
- */
-    __pyx_v_self->x_min = (__pyx_v_x - 10);
-
-    /* "WallMapCython.pyx":143
- *     if x > self.x_max - 10:
- *       self.x_max = x + 10
- *     if x < self.x_min + 10:             # <<<<<<<<<<<<<<
- *       self.x_min = x - 10
- * 
- */
-  }
-
-  /* "WallMapCython.pyx":146
- *       self.x_min = x - 10
- * 
- *     if y > self.y_max - 10:             # <<<<<<<<<<<<<<
- *       self.y_max = y + 10
- *     if y < self.y_min + 10:
- */
-  __pyx_t_10 = ((__pyx_v_y > (__pyx_v_self->y_max - 10)) != 0);
-  if (__pyx_t_10) {
-
-    /* "WallMapCython.pyx":147
- * 
- *     if y > self.y_max - 10:
- *       self.y_max = y + 10             # <<<<<<<<<<<<<<
- *     if y < self.y_min + 10:
- *       self.y_min = y - 10
- */
-    __pyx_v_self->y_max = (__pyx_v_y + 10);
-
-    /* "WallMapCython.pyx":146
- *       self.x_min = x - 10
- * 
- *     if y > self.y_max - 10:             # <<<<<<<<<<<<<<
- *       self.y_max = y + 10
- *     if y < self.y_min + 10:
- */
-  }
-
-  /* "WallMapCython.pyx":148
- *     if y > self.y_max - 10:
- *       self.y_max = y + 10
- *     if y < self.y_min + 10:             # <<<<<<<<<<<<<<
- *       self.y_min = y - 10
- * 
- */
-  __pyx_t_10 = ((__pyx_v_y < (__pyx_v_self->y_min + 10)) != 0);
-  if (__pyx_t_10) {
-
-    /* "WallMapCython.pyx":149
- *       self.y_max = y + 10
- *     if y < self.y_min + 10:
- *       self.y_min = y - 10             # <<<<<<<<<<<<<<
- * 
- *     if self.count_since_last_refresh >= 1:
- */
-    __pyx_v_self->y_min = (__pyx_v_y - 10);
-
-    /* "WallMapCython.pyx":148
- *     if y > self.y_max - 10:
- *       self.y_max = y + 10
- *     if y < self.y_min + 10:             # <<<<<<<<<<<<<<
- *       self.y_min = y - 10
- * 
- */
-  }
-
-  /* "WallMapCython.pyx":151
- *       self.y_min = y - 10
- * 
- *     if self.count_since_last_refresh >= 1:             # <<<<<<<<<<<<<<
- *       self.refresh_walls()
- *       self.count_since_last_refresh = 0
- */
-  __pyx_t_10 = ((__pyx_v_self->count_since_last_refresh >= 1) != 0);
-  if (__pyx_t_10) {
-
-    /* "WallMapCython.pyx":152
- * 
- *     if self.count_since_last_refresh >= 1:
- *       self.refresh_walls()             # <<<<<<<<<<<<<<
- *       self.count_since_last_refresh = 0
- *     else:
- */
-    __pyx_t_5 = ((struct __pyx_vtabstruct_13WallMapCython_WallMap *)__pyx_v_self->__pyx_vtab)->refresh_walls(__pyx_v_self); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 152, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-
-    /* "WallMapCython.pyx":153
- *     if self.count_since_last_refresh >= 1:
- *       self.refresh_walls()
- *       self.count_since_last_refresh = 0             # <<<<<<<<<<<<<<
- *     else:
- *       self.count_since_last_refresh += 1
- */
-    __pyx_v_self->count_since_last_refresh = 0;
-
-    /* "WallMapCython.pyx":151
- *       self.y_min = y - 10
- * 
- *     if self.count_since_last_refresh >= 1:             # <<<<<<<<<<<<<<
- *       self.refresh_walls()
- *       self.count_since_last_refresh = 0
- */
-    goto __pyx_L7;
-  }
-
-  /* "WallMapCython.pyx":155
- *       self.count_since_last_refresh = 0
- *     else:
- *       self.count_since_last_refresh += 1             # <<<<<<<<<<<<<<
- * 
- *   cdef refresh_walls(WallMap self):
- */
-  /*else*/ {
-    __pyx_v_self->count_since_last_refresh = (__pyx_v_self->count_since_last_refresh + 1);
-  }
-  __pyx_L7:;
-
-  /* "WallMapCython.pyx":138
- *     self.count_since_last_refresh = 0
- * 
- *   cpdef add_obstacle_point(WallMap self, int x, int y):             # <<<<<<<<<<<<<<
- *     # self.logger.log("adding point (" + str(x) + ', ' + str(y))
- *     self.obstacle_points.add((x, y))
  */
 
   /* function exit code */
@@ -5370,23 +4900,29 @@ static PyObject *__pyx_f_13WallMapCython_7WallMap_add_obstacle_point(struct __py
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("WallMapCython.WallMap.add_obstacle_point", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
+  __Pyx_AddTraceback("WallMapCython.WallMap.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
+/* "WallMapCython.pyx":127
+ *     self.count_since_last_refresh = 0
+ * 
+ *   def add_obstacle_point(self, x, y):             # <<<<<<<<<<<<<<
+ *     self.obstacle_points.add((x, y))
+ *     if x > self.x_max - 10:
+ */
+
 /* Python wrapper */
-static PyObject *__pyx_pw_13WallMapCython_7WallMap_3add_obstacle_point(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_13WallMapCython_7WallMap_3add_obstacle_point(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  int __pyx_v_x;
-  int __pyx_v_y;
+static PyObject *__pyx_pw_13WallMapCython_7WallMap_3add_obstacle_point(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_13WallMapCython_7WallMap_3add_obstacle_point = {"add_obstacle_point", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_13WallMapCython_7WallMap_3add_obstacle_point, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_13WallMapCython_7WallMap_3add_obstacle_point(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_self = 0;
+  PyObject *__pyx_v_x = 0;
+  PyObject *__pyx_v_y = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -5394,12 +4930,14 @@ static PyObject *__pyx_pw_13WallMapCython_7WallMap_3add_obstacle_point(PyObject 
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("add_obstacle_point (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_x,&__pyx_n_s_y,0};
-    PyObject* values[2] = {0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_x,&__pyx_n_s_y,0};
+    PyObject* values[3] = {0,0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
         case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
         CYTHON_FALLTHROUGH;
         case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
@@ -5410,1155 +4948,341 @@ static PyObject *__pyx_pw_13WallMapCython_7WallMap_3add_obstacle_point(PyObject 
       kw_args = PyDict_Size(__pyx_kwds);
       switch (pos_args) {
         case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x)) != 0)) kw_args--;
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_self)) != 0)) kw_args--;
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y)) != 0)) kw_args--;
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add_obstacle_point", 1, 2, 2, 1); __PYX_ERR(0, 138, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_obstacle_point", 1, 3, 3, 1); __PYX_ERR(0, 127, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("add_obstacle_point", 1, 3, 3, 2); __PYX_ERR(0, 127, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add_obstacle_point") < 0)) __PYX_ERR(0, 138, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add_obstacle_point") < 0)) __PYX_ERR(0, 127, __pyx_L3_error)
       }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
-    __pyx_v_x = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_x == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 138, __pyx_L3_error)
-    __pyx_v_y = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_y == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 138, __pyx_L3_error)
+    __pyx_v_self = values[0];
+    __pyx_v_x = values[1];
+    __pyx_v_y = values[2];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("add_obstacle_point", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 138, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("add_obstacle_point", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 127, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("WallMapCython.WallMap.add_obstacle_point", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_13WallMapCython_7WallMap_2add_obstacle_point(((struct __pyx_obj_13WallMapCython_WallMap *)__pyx_v_self), __pyx_v_x, __pyx_v_y);
+  __pyx_r = __pyx_pf_13WallMapCython_7WallMap_2add_obstacle_point(__pyx_self, __pyx_v_self, __pyx_v_x, __pyx_v_y);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_13WallMapCython_7WallMap_2add_obstacle_point(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v_self, int __pyx_v_x, int __pyx_v_y) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("add_obstacle_point", 0);
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_13WallMapCython_7WallMap_add_obstacle_point(__pyx_v_self, __pyx_v_x, __pyx_v_y, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("WallMapCython.WallMap.add_obstacle_point", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "WallMapCython.pyx":157
- *       self.count_since_last_refresh += 1
- * 
- *   cdef refresh_walls(WallMap self):             # <<<<<<<<<<<<<<
- *     cdef (int, int) point
- *     cdef list walls_to_add
- */
-
-static PyObject *__pyx_f_13WallMapCython_7WallMap_refresh_walls(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v_self) {
-  __pyx_ctuple_int__and_int __pyx_v_point;
-  PyObject *__pyx_v_walls_to_add = 0;
-  PyObject *__pyx_v_wall = NULL;
-  PyObject *__pyx_v_distance = NULL;
-  PyObject *__pyx_v_total_points = NULL;
-  PyObject *__pyx_v_adding_wall = NULL;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  Py_ssize_t __pyx_t_2;
-  Py_ssize_t __pyx_t_3;
-  int __pyx_t_4;
-  PyObject *__pyx_t_5 = NULL;
-  int __pyx_t_6;
-  __pyx_ctuple_int__and_int __pyx_t_7;
-  Py_ssize_t __pyx_t_8;
-  int __pyx_t_9;
-  PyObject *__pyx_t_10 = NULL;
-  int __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
-  int __pyx_t_13;
-  PyObject *__pyx_t_14 = NULL;
-  PyObject *__pyx_t_15 = NULL;
-  PyObject *__pyx_t_16 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("refresh_walls", 0);
-
-  /* "WallMapCython.pyx":160
- *     cdef (int, int) point
- *     cdef list walls_to_add
- *     for point in self.obstacle_points:             # <<<<<<<<<<<<<<
- *       if len(self.walls) == 0:
- *         self.walls.add(Wall(point))
- */
-  __pyx_t_2 = 0;
-  __pyx_t_5 = __Pyx_set_iterator(__pyx_v_self->obstacle_points, 1, (&__pyx_t_3), (&__pyx_t_4)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_1);
-  __pyx_t_1 = __pyx_t_5;
-  __pyx_t_5 = 0;
-  while (1) {
-    __pyx_t_6 = __Pyx_set_iter_next(__pyx_t_1, __pyx_t_3, &__pyx_t_2, &__pyx_t_5, __pyx_t_4);
-    if (unlikely(__pyx_t_6 == 0)) break;
-    if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 160, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_7 = __pyx_convert__from_py___pyx_ctuple_int__and_int(__pyx_t_5); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 160, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_v_point = __pyx_t_7;
-
-    /* "WallMapCython.pyx":161
- *     cdef list walls_to_add
- *     for point in self.obstacle_points:
- *       if len(self.walls) == 0:             # <<<<<<<<<<<<<<
- *         self.walls.add(Wall(point))
- *         continue
- */
-    __pyx_t_5 = __pyx_v_self->walls;
-    __Pyx_INCREF(__pyx_t_5);
-    if (unlikely(__pyx_t_5 == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 161, __pyx_L1_error)
-    }
-    __pyx_t_8 = PySet_GET_SIZE(__pyx_t_5); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 161, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_9 = ((__pyx_t_8 == 0) != 0);
-    if (__pyx_t_9) {
-
-      /* "WallMapCython.pyx":162
- *     for point in self.obstacle_points:
- *       if len(self.walls) == 0:
- *         self.walls.add(Wall(point))             # <<<<<<<<<<<<<<
- *         continue
- * 
- */
-      if (unlikely(__pyx_v_self->walls == Py_None)) {
-        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "add");
-        __PYX_ERR(0, 162, __pyx_L1_error)
-      }
-      __pyx_t_5 = __pyx_convert__to_py___pyx_ctuple_int__and_int(__pyx_v_point); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 162, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_10 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_13WallMapCython_Wall), __pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 162, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_10);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_11 = PySet_Add(__pyx_v_self->walls, __pyx_t_10); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 162, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-
-      /* "WallMapCython.pyx":163
- *       if len(self.walls) == 0:
- *         self.walls.add(Wall(point))
- *         continue             # <<<<<<<<<<<<<<
- * 
- *       walls_to_add = []
- */
-      goto __pyx_L3_continue;
-
-      /* "WallMapCython.pyx":161
- *     cdef list walls_to_add
- *     for point in self.obstacle_points:
- *       if len(self.walls) == 0:             # <<<<<<<<<<<<<<
- *         self.walls.add(Wall(point))
- *         continue
- */
-    }
-
-    /* "WallMapCython.pyx":165
- *         continue
- * 
- *       walls_to_add = []             # <<<<<<<<<<<<<<
- *       for wall in self.walls:
- *         distance = wall.calculate_distance(point)
- */
-    __pyx_t_10 = PyList_New(0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 165, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    __Pyx_XDECREF_SET(__pyx_v_walls_to_add, ((PyObject*)__pyx_t_10));
-    __pyx_t_10 = 0;
-
-    /* "WallMapCython.pyx":166
- * 
- *       walls_to_add = []
- *       for wall in self.walls:             # <<<<<<<<<<<<<<
- *         distance = wall.calculate_distance(point)
- *         if distance < 5:
- */
-    __pyx_t_8 = 0;
-    __pyx_t_5 = __Pyx_set_iterator(__pyx_v_self->walls, 1, (&__pyx_t_12), (&__pyx_t_6)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 166, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_XDECREF(__pyx_t_10);
-    __pyx_t_10 = __pyx_t_5;
-    __pyx_t_5 = 0;
-    while (1) {
-      __pyx_t_13 = __Pyx_set_iter_next(__pyx_t_10, __pyx_t_12, &__pyx_t_8, &__pyx_t_5, __pyx_t_6);
-      if (unlikely(__pyx_t_13 == 0)) break;
-      if (unlikely(__pyx_t_13 == -1)) __PYX_ERR(0, 166, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_XDECREF_SET(__pyx_v_wall, __pyx_t_5);
-      __pyx_t_5 = 0;
-
-      /* "WallMapCython.pyx":167
- *       walls_to_add = []
- *       for wall in self.walls:
- *         distance = wall.calculate_distance(point)             # <<<<<<<<<<<<<<
- *         if distance < 5:
- *           walls_to_add.append(wall)
- */
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_wall, __pyx_n_s_calculate_distance); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 167, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_15 = __pyx_convert__to_py___pyx_ctuple_int__and_int(__pyx_v_point); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 167, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_15);
-      __pyx_t_16 = NULL;
-      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_14))) {
-        __pyx_t_16 = PyMethod_GET_SELF(__pyx_t_14);
-        if (likely(__pyx_t_16)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_14);
-          __Pyx_INCREF(__pyx_t_16);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_14, function);
-        }
-      }
-      __pyx_t_5 = (__pyx_t_16) ? __Pyx_PyObject_Call2Args(__pyx_t_14, __pyx_t_16, __pyx_t_15) : __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_t_15);
-      __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
-      __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 167, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      __Pyx_XDECREF_SET(__pyx_v_distance, __pyx_t_5);
-      __pyx_t_5 = 0;
-
-      /* "WallMapCython.pyx":168
- *       for wall in self.walls:
- *         distance = wall.calculate_distance(point)
- *         if distance < 5:             # <<<<<<<<<<<<<<
- *           walls_to_add.append(wall)
- *       if len(walls_to_add) == 1: #if it is close enough to another wall, add it to that wall
- */
-      __pyx_t_5 = PyObject_RichCompare(__pyx_v_distance, __pyx_int_5, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 168, __pyx_L1_error)
-      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 168, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (__pyx_t_9) {
-
-        /* "WallMapCython.pyx":169
- *         distance = wall.calculate_distance(point)
- *         if distance < 5:
- *           walls_to_add.append(wall)             # <<<<<<<<<<<<<<
- *       if len(walls_to_add) == 1: #if it is close enough to another wall, add it to that wall
- *         walls_to_add[0].add_point(point)
- */
-        __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_walls_to_add, __pyx_v_wall); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 169, __pyx_L1_error)
-
-        /* "WallMapCython.pyx":168
- *       for wall in self.walls:
- *         distance = wall.calculate_distance(point)
- *         if distance < 5:             # <<<<<<<<<<<<<<
- *           walls_to_add.append(wall)
- *       if len(walls_to_add) == 1: #if it is close enough to another wall, add it to that wall
- */
-      }
-    }
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-
-    /* "WallMapCython.pyx":170
- *         if distance < 5:
- *           walls_to_add.append(wall)
- *       if len(walls_to_add) == 1: #if it is close enough to another wall, add it to that wall             # <<<<<<<<<<<<<<
- *         walls_to_add[0].add_point(point)
- *       else: #otherwise make a new wall with this point
- */
-    __pyx_t_12 = PyList_GET_SIZE(__pyx_v_walls_to_add); if (unlikely(__pyx_t_12 == ((Py_ssize_t)-1))) __PYX_ERR(0, 170, __pyx_L1_error)
-    __pyx_t_9 = ((__pyx_t_12 == 1) != 0);
-    if (__pyx_t_9) {
-
-      /* "WallMapCython.pyx":171
- *           walls_to_add.append(wall)
- *       if len(walls_to_add) == 1: #if it is close enough to another wall, add it to that wall
- *         walls_to_add[0].add_point(point)             # <<<<<<<<<<<<<<
- *       else: #otherwise make a new wall with this point
- *         total_points = []
- */
-      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_walls_to_add, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 171, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_add_point); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 171, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_14);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __pyx_convert__to_py___pyx_ctuple_int__and_int(__pyx_v_point); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 171, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_15 = NULL;
-      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_14))) {
-        __pyx_t_15 = PyMethod_GET_SELF(__pyx_t_14);
-        if (likely(__pyx_t_15)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_14);
-          __Pyx_INCREF(__pyx_t_15);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_14, function);
-        }
-      }
-      __pyx_t_10 = (__pyx_t_15) ? __Pyx_PyObject_Call2Args(__pyx_t_14, __pyx_t_15, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_t_5);
-      __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 171, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_10);
-      __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-
-      /* "WallMapCython.pyx":170
- *         if distance < 5:
- *           walls_to_add.append(wall)
- *       if len(walls_to_add) == 1: #if it is close enough to another wall, add it to that wall             # <<<<<<<<<<<<<<
- *         walls_to_add[0].add_point(point)
- *       else: #otherwise make a new wall with this point
- */
-      goto __pyx_L9;
-    }
-
-    /* "WallMapCython.pyx":173
- *         walls_to_add[0].add_point(point)
- *       else: #otherwise make a new wall with this point
- *         total_points = []             # <<<<<<<<<<<<<<
- *         for adding_wall in walls_to_add: #combine walls if necessary
- *           total_points.extend(adding_wall.points)
- */
-    /*else*/ {
-      __pyx_t_10 = PyList_New(0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 173, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_10);
-      __Pyx_XDECREF_SET(__pyx_v_total_points, ((PyObject*)__pyx_t_10));
-      __pyx_t_10 = 0;
-
-      /* "WallMapCython.pyx":174
- *       else: #otherwise make a new wall with this point
- *         total_points = []
- *         for adding_wall in walls_to_add: #combine walls if necessary             # <<<<<<<<<<<<<<
- *           total_points.extend(adding_wall.points)
- *           self.walls.discard(adding_wall)
- */
-      __pyx_t_10 = __pyx_v_walls_to_add; __Pyx_INCREF(__pyx_t_10); __pyx_t_12 = 0;
-      for (;;) {
-        if (__pyx_t_12 >= PyList_GET_SIZE(__pyx_t_10)) break;
-        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_14 = PyList_GET_ITEM(__pyx_t_10, __pyx_t_12); __Pyx_INCREF(__pyx_t_14); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 174, __pyx_L1_error)
-        #else
-        __pyx_t_14 = PySequence_ITEM(__pyx_t_10, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 174, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_14);
-        #endif
-        __Pyx_XDECREF_SET(__pyx_v_adding_wall, __pyx_t_14);
-        __pyx_t_14 = 0;
-
-        /* "WallMapCython.pyx":175
- *         total_points = []
- *         for adding_wall in walls_to_add: #combine walls if necessary
- *           total_points.extend(adding_wall.points)             # <<<<<<<<<<<<<<
- *           self.walls.discard(adding_wall)
- *         self.walls.add(Wall(total_points))
- */
-        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_adding_wall, __pyx_n_s_points); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 175, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_14);
-        __pyx_t_11 = __Pyx_PyList_Extend(__pyx_v_total_points, __pyx_t_14); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 175, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-
-        /* "WallMapCython.pyx":176
- *         for adding_wall in walls_to_add: #combine walls if necessary
- *           total_points.extend(adding_wall.points)
- *           self.walls.discard(adding_wall)             # <<<<<<<<<<<<<<
- *         self.walls.add(Wall(total_points))
- *     self.obstacle_points = set()
- */
-        if (unlikely(__pyx_v_self->walls == Py_None)) {
-          PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "discard");
-          __PYX_ERR(0, 176, __pyx_L1_error)
-        }
-        __pyx_t_11 = __Pyx_PySet_Discard(__pyx_v_self->walls, __pyx_v_adding_wall); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 176, __pyx_L1_error)
-
-        /* "WallMapCython.pyx":174
- *       else: #otherwise make a new wall with this point
- *         total_points = []
- *         for adding_wall in walls_to_add: #combine walls if necessary             # <<<<<<<<<<<<<<
- *           total_points.extend(adding_wall.points)
- *           self.walls.discard(adding_wall)
- */
-      }
-      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-
-      /* "WallMapCython.pyx":177
- *           total_points.extend(adding_wall.points)
- *           self.walls.discard(adding_wall)
- *         self.walls.add(Wall(total_points))             # <<<<<<<<<<<<<<
- *     self.obstacle_points = set()
- * 
- */
-      if (unlikely(__pyx_v_self->walls == Py_None)) {
-        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "add");
-        __PYX_ERR(0, 177, __pyx_L1_error)
-      }
-      __pyx_t_10 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_13WallMapCython_Wall), __pyx_v_total_points); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 177, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_11 = PySet_Add(__pyx_v_self->walls, __pyx_t_10); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 177, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    }
-    __pyx_L9:;
-    __pyx_L3_continue:;
-  }
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "WallMapCython.pyx":178
- *           self.walls.discard(adding_wall)
- *         self.walls.add(Wall(total_points))
- *     self.obstacle_points = set()             # <<<<<<<<<<<<<<
- * 
- *   cpdef draw_map(self, screen, int x_min, int x_max, int y_min, int y_max):
- */
-  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v_self->obstacle_points);
-  __Pyx_DECREF(__pyx_v_self->obstacle_points);
-  __pyx_v_self->obstacle_points = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "WallMapCython.pyx":157
- *       self.count_since_last_refresh += 1
- * 
- *   cdef refresh_walls(WallMap self):             # <<<<<<<<<<<<<<
- *     cdef (int, int) point
- *     cdef list walls_to_add
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_10);
-  __Pyx_XDECREF(__pyx_t_14);
-  __Pyx_XDECREF(__pyx_t_15);
-  __Pyx_XDECREF(__pyx_t_16);
-  __Pyx_AddTraceback("WallMapCython.WallMap.refresh_walls", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_walls_to_add);
-  __Pyx_XDECREF(__pyx_v_wall);
-  __Pyx_XDECREF(__pyx_v_distance);
-  __Pyx_XDECREF(__pyx_v_total_points);
-  __Pyx_XDECREF(__pyx_v_adding_wall);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "WallMapCython.pyx":180
- *     self.obstacle_points = set()
- * 
- *   cpdef draw_map(self, screen, int x_min, int x_max, int y_min, int y_max):             # <<<<<<<<<<<<<<
- *     #parameters are given as actual dimensions, not from 0 to 1
- *     cdef int screen_width = x_max - x_min
- */
-
-static PyObject *__pyx_pw_13WallMapCython_7WallMap_5draw_map(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_f_13WallMapCython_7WallMap_draw_map(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v_self, PyObject *__pyx_v_screen, int __pyx_v_x_min, int __pyx_v_x_max, int __pyx_v_y_min, int __pyx_v_y_max, int __pyx_skip_dispatch) {
-  int __pyx_v_screen_width;
-  int __pyx_v_screen_height;
-  int __pyx_v_map_width;
-  int __pyx_v_map_height;
-  int __pyx_v_x_add_num;
-  float __pyx_v_x_scale;
-  int __pyx_v_y_add_num;
-  float __pyx_v_y_scale;
-  int __pyx_v_x_screen_adjustment;
-  int __pyx_v_y_screen_adjustment;
-  PyObject *__pyx_v_map_ratio = NULL;
-  PyObject *__pyx_v_screen_ratio = NULL;
-  PyObject *__pyx_v_ratio_difference = NULL;
-  __pyx_ctuple_int__and_int __pyx_v_point;
-  float __pyx_v_x;
-  float __pyx_v_y;
-  __pyx_ctuple_float__and_float __pyx_v_center;
-  PyObject *__pyx_v_wall = NULL;
+static PyObject *__pyx_pf_13WallMapCython_7WallMap_2add_obstacle_point(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_x, PyObject *__pyx_v_y) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  PyObject *__pyx_t_7 = NULL;
-  PyObject *__pyx_t_8 = NULL;
-  int __pyx_t_9;
-  PyObject *__pyx_t_10 = NULL;
-  int __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
-  Py_ssize_t __pyx_t_13;
-  int __pyx_t_14;
-  Py_ssize_t __pyx_t_15;
-  PyObject *(*__pyx_t_16)(PyObject *);
-  __pyx_ctuple_int__and_int __pyx_t_17;
-  __pyx_ctuple_float__and_float __pyx_t_18;
+  int __pyx_t_5;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("draw_map", 0);
-  /* Check if called by wrapper */
-  if (unlikely(__pyx_skip_dispatch)) ;
-  /* Check if overridden in Python */
-  else if (unlikely((Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0) || (Py_TYPE(((PyObject *)__pyx_v_self))->tp_flags & (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))) {
-    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
-      PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_draw_map); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_13WallMapCython_7WallMap_5draw_map)) {
-        __Pyx_XDECREF(__pyx_r);
-        __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_x_min); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 180, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_x_max); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 180, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_y_min); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 180, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_y_max); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 180, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_6);
-        __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_7 = __pyx_t_1; __pyx_t_8 = NULL;
-        __pyx_t_9 = 0;
-        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_7))) {
-          __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_7);
-          if (likely(__pyx_t_8)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
-            __Pyx_INCREF(__pyx_t_8);
-            __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_7, function);
-            __pyx_t_9 = 1;
-          }
-        }
-        #if CYTHON_FAST_PYCALL
-        if (PyFunction_Check(__pyx_t_7)) {
-          PyObject *__pyx_temp[6] = {__pyx_t_8, __pyx_v_screen, __pyx_t_3, __pyx_t_4, __pyx_t_5, __pyx_t_6};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 5+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-          __Pyx_GOTREF(__pyx_t_2);
-          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        } else
-        #endif
-        #if CYTHON_FAST_PYCCALL
-        if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
-          PyObject *__pyx_temp[6] = {__pyx_t_8, __pyx_v_screen, __pyx_t_3, __pyx_t_4, __pyx_t_5, __pyx_t_6};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 5+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-          __Pyx_GOTREF(__pyx_t_2);
-          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        } else
-        #endif
-        {
-          __pyx_t_10 = PyTuple_New(5+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 180, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_10);
-          if (__pyx_t_8) {
-            __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
-          }
-          __Pyx_INCREF(__pyx_v_screen);
-          __Pyx_GIVEREF(__pyx_v_screen);
-          PyTuple_SET_ITEM(__pyx_t_10, 0+__pyx_t_9, __pyx_v_screen);
-          __Pyx_GIVEREF(__pyx_t_3);
-          PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_9, __pyx_t_3);
-          __Pyx_GIVEREF(__pyx_t_4);
-          PyTuple_SET_ITEM(__pyx_t_10, 2+__pyx_t_9, __pyx_t_4);
-          __Pyx_GIVEREF(__pyx_t_5);
-          PyTuple_SET_ITEM(__pyx_t_10, 3+__pyx_t_9, __pyx_t_5);
-          __Pyx_GIVEREF(__pyx_t_6);
-          PyTuple_SET_ITEM(__pyx_t_10, 4+__pyx_t_9, __pyx_t_6);
-          __pyx_t_3 = 0;
-          __pyx_t_4 = 0;
-          __pyx_t_5 = 0;
-          __pyx_t_6 = 0;
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_2);
-          __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        }
-        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_r = __pyx_t_2;
-        __pyx_t_2 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        goto __pyx_L0;
-      }
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
-      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
-      if (unlikely(__pyx_type_dict_guard != __pyx_tp_dict_version)) {
-        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
-      }
-      #endif
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
-    }
-    #endif
-  }
+  __Pyx_RefNannySetupContext("add_obstacle_point", 0);
 
-  /* "WallMapCython.pyx":182
- *   cpdef draw_map(self, screen, int x_min, int x_max, int y_min, int y_max):
- *     #parameters are given as actual dimensions, not from 0 to 1
- *     cdef int screen_width = x_max - x_min             # <<<<<<<<<<<<<<
- *     cdef int screen_height = y_max - y_min
+  /* "WallMapCython.pyx":128
  * 
+ *   def add_obstacle_point(self, x, y):
+ *     self.obstacle_points.add((x, y))             # <<<<<<<<<<<<<<
+ *     if x > self.x_max - 10:
+ *       self.x_max = x + 10
  */
-  __pyx_v_screen_width = (__pyx_v_x_max - __pyx_v_x_min);
-
-  /* "WallMapCython.pyx":183
- *     #parameters are given as actual dimensions, not from 0 to 1
- *     cdef int screen_width = x_max - x_min
- *     cdef int screen_height = y_max - y_min             # <<<<<<<<<<<<<<
- * 
- *     cdef int map_width = self.x_max - self.x_min
- */
-  __pyx_v_screen_height = (__pyx_v_y_max - __pyx_v_y_min);
-
-  /* "WallMapCython.pyx":185
- *     cdef int screen_height = y_max - y_min
- * 
- *     cdef int map_width = self.x_max - self.x_min             # <<<<<<<<<<<<<<
- *     cdef int map_height = self.y_max - self.y_min
- * 
- */
-  __pyx_v_map_width = (__pyx_v_self->x_max - __pyx_v_self->x_min);
-
-  /* "WallMapCython.pyx":186
- * 
- *     cdef int map_width = self.x_max - self.x_min
- *     cdef int map_height = self.y_max - self.y_min             # <<<<<<<<<<<<<<
- * 
- *     cdef int x_add_num = -1 * self.x_min
- */
-  __pyx_v_map_height = (__pyx_v_self->y_max - __pyx_v_self->y_min);
-
-  /* "WallMapCython.pyx":188
- *     cdef int map_height = self.y_max - self.y_min
- * 
- *     cdef int x_add_num = -1 * self.x_min             # <<<<<<<<<<<<<<
- *     cdef float x_scale = screen_width / map_width
- * 
- */
-  __pyx_v_x_add_num = (-1L * __pyx_v_self->x_min);
-
-  /* "WallMapCython.pyx":189
- * 
- *     cdef int x_add_num = -1 * self.x_min
- *     cdef float x_scale = screen_width / map_width             # <<<<<<<<<<<<<<
- * 
- *     cdef int y_add_num = -1 * self.y_min
- */
-  if (unlikely(__pyx_v_map_width == 0)) {
-    PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(0, 189, __pyx_L1_error)
-  }
-  else if (sizeof(int) == sizeof(long) && (!(((int)-1) > 0)) && unlikely(__pyx_v_map_width == (int)-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_screen_width))) {
-    PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
-    __PYX_ERR(0, 189, __pyx_L1_error)
-  }
-  __pyx_v_x_scale = __Pyx_div_int(__pyx_v_screen_width, __pyx_v_map_width);
-
-  /* "WallMapCython.pyx":191
- *     cdef float x_scale = screen_width / map_width
- * 
- *     cdef int y_add_num = -1 * self.y_min             # <<<<<<<<<<<<<<
- *     cdef float y_scale = screen_height / map_height
- * 
- */
-  __pyx_v_y_add_num = (-1L * __pyx_v_self->y_min);
-
-  /* "WallMapCython.pyx":192
- * 
- *     cdef int y_add_num = -1 * self.y_min
- *     cdef float y_scale = screen_height / map_height             # <<<<<<<<<<<<<<
- * 
- *     cdef int x_screen_adjustment = 0
- */
-  if (unlikely(__pyx_v_map_height == 0)) {
-    PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(0, 192, __pyx_L1_error)
-  }
-  else if (sizeof(int) == sizeof(long) && (!(((int)-1) > 0)) && unlikely(__pyx_v_map_height == (int)-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_screen_height))) {
-    PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
-    __PYX_ERR(0, 192, __pyx_L1_error)
-  }
-  __pyx_v_y_scale = __Pyx_div_int(__pyx_v_screen_height, __pyx_v_map_height);
-
-  /* "WallMapCython.pyx":194
- *     cdef float y_scale = screen_height / map_height
- * 
- *     cdef int x_screen_adjustment = 0             # <<<<<<<<<<<<<<
- *     cdef int y_screen_adjustment = 0
- * 
- */
-  __pyx_v_x_screen_adjustment = 0;
-
-  /* "WallMapCython.pyx":195
- * 
- *     cdef int x_screen_adjustment = 0
- *     cdef int y_screen_adjustment = 0             # <<<<<<<<<<<<<<
- * 
- *     map_ratio = map_height / map_width
- */
-  __pyx_v_y_screen_adjustment = 0;
-
-  /* "WallMapCython.pyx":197
- *     cdef int y_screen_adjustment = 0
- * 
- *     map_ratio = map_height / map_width             # <<<<<<<<<<<<<<
- *     screen_ratio = screen_height / screen_width
- * 
- */
-  if (unlikely(__pyx_v_map_width == 0)) {
-    PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(0, 197, __pyx_L1_error)
-  }
-  else if (sizeof(int) == sizeof(long) && (!(((int)-1) > 0)) && unlikely(__pyx_v_map_width == (int)-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_map_height))) {
-    PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
-    __PYX_ERR(0, 197, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_PyInt_From_int(__Pyx_div_int(__pyx_v_map_height, __pyx_v_map_width)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 197, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v_map_ratio = __pyx_t_1;
-  __pyx_t_1 = 0;
-
-  /* "WallMapCython.pyx":198
- * 
- *     map_ratio = map_height / map_width
- *     screen_ratio = screen_height / screen_width             # <<<<<<<<<<<<<<
- * 
- *     if map_ratio > screen_ratio:
- */
-  if (unlikely(__pyx_v_screen_width == 0)) {
-    PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(0, 198, __pyx_L1_error)
-  }
-  else if (sizeof(int) == sizeof(long) && (!(((int)-1) > 0)) && unlikely(__pyx_v_screen_width == (int)-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_screen_height))) {
-    PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
-    __PYX_ERR(0, 198, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_PyInt_From_int(__Pyx_div_int(__pyx_v_screen_height, __pyx_v_screen_width)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 198, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v_screen_ratio = __pyx_t_1;
-  __pyx_t_1 = 0;
-
-  /* "WallMapCython.pyx":200
- *     screen_ratio = screen_height / screen_width
- * 
- *     if map_ratio > screen_ratio:             # <<<<<<<<<<<<<<
- *     #   self.logger.log("map_ratio > screen_ratio")
- *       ratio_difference = map_ratio - screen_ratio
- */
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_map_ratio, __pyx_v_screen_ratio, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
-  __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 200, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__pyx_t_11) {
-
-    /* "WallMapCython.pyx":202
- *     if map_ratio > screen_ratio:
- *     #   self.logger.log("map_ratio > screen_ratio")
- *       ratio_difference = map_ratio - screen_ratio             # <<<<<<<<<<<<<<
- *       ratio_difference /= 2
- *       y_screen_adjustment += ratio_difference * y_scale
- */
-    __pyx_t_1 = PyNumber_Subtract(__pyx_v_map_ratio, __pyx_v_screen_ratio); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_v_ratio_difference = __pyx_t_1;
-    __pyx_t_1 = 0;
-
-    /* "WallMapCython.pyx":203
- *     #   self.logger.log("map_ratio > screen_ratio")
- *       ratio_difference = map_ratio - screen_ratio
- *       ratio_difference /= 2             # <<<<<<<<<<<<<<
- *       y_screen_adjustment += ratio_difference * y_scale
- *     elif map_ratio > screen_ratio:
- */
-    __pyx_t_1 = __Pyx_PyNumber_InPlaceDivide(__pyx_v_ratio_difference, __pyx_int_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF_SET(__pyx_v_ratio_difference, __pyx_t_1);
-    __pyx_t_1 = 0;
-
-    /* "WallMapCython.pyx":204
- *       ratio_difference = map_ratio - screen_ratio
- *       ratio_difference /= 2
- *       y_screen_adjustment += ratio_difference * y_scale             # <<<<<<<<<<<<<<
- *     elif map_ratio > screen_ratio:
- *     #   self.logger.log("screen_ratio > map_ratio")
- */
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_y_screen_adjustment); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_y_scale); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = PyNumber_Multiply(__pyx_v_ratio_difference, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 204, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_t_1, __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 204, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_y_screen_adjustment = __pyx_t_9;
-
-    /* "WallMapCython.pyx":200
- *     screen_ratio = screen_height / screen_width
- * 
- *     if map_ratio > screen_ratio:             # <<<<<<<<<<<<<<
- *     #   self.logger.log("map_ratio > screen_ratio")
- *       ratio_difference = map_ratio - screen_ratio
- */
-    goto __pyx_L3;
-  }
-
-  /* "WallMapCython.pyx":205
- *       ratio_difference /= 2
- *       y_screen_adjustment += ratio_difference * y_scale
- *     elif map_ratio > screen_ratio:             # <<<<<<<<<<<<<<
- *     #   self.logger.log("screen_ratio > map_ratio")
- *       ratio_difference = screen_ratio - map_ratio
- */
-  __pyx_t_2 = PyObject_RichCompare(__pyx_v_map_ratio, __pyx_v_screen_ratio, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 205, __pyx_L1_error)
-  __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_obstacle_points); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_add); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__pyx_t_11) {
-
-    /* "WallMapCython.pyx":207
- *     elif map_ratio > screen_ratio:
- *     #   self.logger.log("screen_ratio > map_ratio")
- *       ratio_difference = screen_ratio - map_ratio             # <<<<<<<<<<<<<<
- *       ratio_difference /= 2
- *       x_screen_adjustment += ratio_difference * x_scale
- */
-    __pyx_t_2 = PyNumber_Subtract(__pyx_v_screen_ratio, __pyx_v_map_ratio); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 207, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_v_ratio_difference = __pyx_t_2;
-    __pyx_t_2 = 0;
-
-    /* "WallMapCython.pyx":208
- *     #   self.logger.log("screen_ratio > map_ratio")
- *       ratio_difference = screen_ratio - map_ratio
- *       ratio_difference /= 2             # <<<<<<<<<<<<<<
- *       x_screen_adjustment += ratio_difference * x_scale
- * 
- */
-    __pyx_t_2 = __Pyx_PyNumber_InPlaceDivide(__pyx_v_ratio_difference, __pyx_int_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 208, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF_SET(__pyx_v_ratio_difference, __pyx_t_2);
-    __pyx_t_2 = 0;
-
-    /* "WallMapCython.pyx":209
- *       ratio_difference = screen_ratio - map_ratio
- *       ratio_difference /= 2
- *       x_screen_adjustment += ratio_difference * x_scale             # <<<<<<<<<<<<<<
- * 
- * 
- */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_x_screen_adjustment); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 209, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = PyFloat_FromDouble(__pyx_v_x_scale); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 209, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_1 = PyNumber_Multiply(__pyx_v_ratio_difference, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 209, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 209, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_7); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 209, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_v_x_screen_adjustment = __pyx_t_9;
-
-    /* "WallMapCython.pyx":205
- *       ratio_difference /= 2
- *       y_screen_adjustment += ratio_difference * y_scale
- *     elif map_ratio > screen_ratio:             # <<<<<<<<<<<<<<
- *     #   self.logger.log("screen_ratio > map_ratio")
- *       ratio_difference = screen_ratio - map_ratio
- */
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_v_x);
+  __Pyx_GIVEREF(__pyx_v_x);
+  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_x);
+  __Pyx_INCREF(__pyx_v_y);
+  __Pyx_GIVEREF(__pyx_v_y);
+  PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_y);
+  __pyx_t_4 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
   }
-  __pyx_L3:;
-
-  /* "WallMapCython.pyx":215
- *     cdef float x, y
- *     cdef (float, float) center
- *     for wall in self.walls:             # <<<<<<<<<<<<<<
- *       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
- *       for point in wall.points:
- */
-  __pyx_t_12 = 0;
-  __pyx_t_1 = __Pyx_set_iterator(__pyx_v_self->walls, 1, (&__pyx_t_13), (&__pyx_t_9)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_7);
-  __pyx_t_7 = __pyx_t_1;
-  __pyx_t_1 = 0;
-  while (1) {
-    __pyx_t_14 = __Pyx_set_iter_next(__pyx_t_7, __pyx_t_13, &__pyx_t_12, &__pyx_t_1, __pyx_t_9);
-    if (unlikely(__pyx_t_14 == 0)) break;
-    if (unlikely(__pyx_t_14 == -1)) __PYX_ERR(0, 215, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_XDECREF_SET(__pyx_v_wall, __pyx_t_1);
-    __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "WallMapCython.pyx":216
- *     cdef (float, float) center
- *     for wall in self.walls:
- *       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)             # <<<<<<<<<<<<<<
- *       for point in wall.points:
- *         x = point[0]
+  /* "WallMapCython.pyx":129
+ *   def add_obstacle_point(self, x, y):
+ *     self.obstacle_points.add((x, y))
+ *     if x > self.x_max - 10:             # <<<<<<<<<<<<<<
+ *       self.x_max = x + 10
+ *     if x < self.x_min + 10:
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_wall, __pyx_n_s_draw_wall); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_x_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __Pyx_PyInt_SubtractObjC(__pyx_t_1, __pyx_int_10, 10, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_x, __pyx_t_3, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (__pyx_t_5) {
+
+    /* "WallMapCython.pyx":130
+ *     self.obstacle_points.add((x, y))
+ *     if x > self.x_max - 10:
+ *       self.x_max = x + 10             # <<<<<<<<<<<<<<
+ *     if x < self.x_min + 10:
+ *       self.x_min = x - 10
+ */
+    __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_v_x, __pyx_int_10, 10, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyDict_NewPresized(8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 216, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_screen, __pyx_v_screen) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
-    __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_y_max); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 216, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_y_max, __pyx_t_10) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_x_add_num); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 216, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_x_add_num, __pyx_t_10) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = PyFloat_FromDouble(__pyx_v_x_scale); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 216, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_x_scale, __pyx_t_10) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_x_screen_adjustment); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 216, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_x_screen_adjustment, __pyx_t_10) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_y_add_num); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 216, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_y_add_num, __pyx_t_10) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = PyFloat_FromDouble(__pyx_v_y_scale); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 216, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_y_scale, __pyx_t_10) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_y_screen_adjustment); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 216, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_y_screen_adjustment, __pyx_t_10) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 216, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_x_max, __pyx_t_1) < 0) __PYX_ERR(0, 130, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "WallMapCython.pyx":217
- *     for wall in self.walls:
- *       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
- *       for point in wall.points:             # <<<<<<<<<<<<<<
- *         x = point[0]
- *         y = point[1]
+    /* "WallMapCython.pyx":129
+ *   def add_obstacle_point(self, x, y):
+ *     self.obstacle_points.add((x, y))
+ *     if x > self.x_max - 10:             # <<<<<<<<<<<<<<
+ *       self.x_max = x + 10
+ *     if x < self.x_min + 10:
  */
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_wall, __pyx_n_s_points); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 217, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    if (likely(PyList_CheckExact(__pyx_t_10)) || PyTuple_CheckExact(__pyx_t_10)) {
-      __pyx_t_2 = __pyx_t_10; __Pyx_INCREF(__pyx_t_2); __pyx_t_15 = 0;
-      __pyx_t_16 = NULL;
-    } else {
-      __pyx_t_15 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 217, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_16 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 217, __pyx_L1_error)
-    }
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    for (;;) {
-      if (likely(!__pyx_t_16)) {
-        if (likely(PyList_CheckExact(__pyx_t_2))) {
-          if (__pyx_t_15 >= PyList_GET_SIZE(__pyx_t_2)) break;
-          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_10 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_15); __Pyx_INCREF(__pyx_t_10); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 217, __pyx_L1_error)
-          #else
-          __pyx_t_10 = PySequence_ITEM(__pyx_t_2, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 217, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_10);
-          #endif
-        } else {
-          if (__pyx_t_15 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
-          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_15); __Pyx_INCREF(__pyx_t_10); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 217, __pyx_L1_error)
-          #else
-          __pyx_t_10 = PySequence_ITEM(__pyx_t_2, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 217, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_10);
-          #endif
-        }
-      } else {
-        __pyx_t_10 = __pyx_t_16(__pyx_t_2);
-        if (unlikely(!__pyx_t_10)) {
-          PyObject* exc_type = PyErr_Occurred();
-          if (exc_type) {
-            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 217, __pyx_L1_error)
-          }
-          break;
-        }
-        __Pyx_GOTREF(__pyx_t_10);
-      }
-      __pyx_t_17 = __pyx_convert__from_py___pyx_ctuple_int__and_int(__pyx_t_10); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __pyx_v_point = __pyx_t_17;
-
-      /* "WallMapCython.pyx":218
- *       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
- *       for point in wall.points:
- *         x = point[0]             # <<<<<<<<<<<<<<
- *         y = point[1]
- * 
- */
-      __pyx_v_x = __pyx_v_point.f0;
-
-      /* "WallMapCython.pyx":219
- *       for point in wall.points:
- *         x = point[0]
- *         y = point[1]             # <<<<<<<<<<<<<<
- * 
- *         x += x_add_num
- */
-      __pyx_v_y = __pyx_v_point.f1;
-
-      /* "WallMapCython.pyx":221
- *         y = point[1]
- * 
- *         x += x_add_num             # <<<<<<<<<<<<<<
- *         x *= x_scale
- *         x += x_screen_adjustment
- */
-      __pyx_v_x = (__pyx_v_x + __pyx_v_x_add_num);
-
-      /* "WallMapCython.pyx":222
- * 
- *         x += x_add_num
- *         x *= x_scale             # <<<<<<<<<<<<<<
- *         x += x_screen_adjustment
- * 
- */
-      __pyx_v_x = (__pyx_v_x * __pyx_v_x_scale);
-
-      /* "WallMapCython.pyx":223
- *         x += x_add_num
- *         x *= x_scale
- *         x += x_screen_adjustment             # <<<<<<<<<<<<<<
- * 
- *         y += y_add_num
- */
-      __pyx_v_x = (__pyx_v_x + __pyx_v_x_screen_adjustment);
-
-      /* "WallMapCython.pyx":225
- *         x += x_screen_adjustment
- * 
- *         y += y_add_num             # <<<<<<<<<<<<<<
- *         y *= y_scale
- *         y += y_screen_adjustment
- */
-      __pyx_v_y = (__pyx_v_y + __pyx_v_y_add_num);
-
-      /* "WallMapCython.pyx":226
- * 
- *         y += y_add_num
- *         y *= y_scale             # <<<<<<<<<<<<<<
- *         y += y_screen_adjustment
- * 
- */
-      __pyx_v_y = (__pyx_v_y * __pyx_v_y_scale);
-
-      /* "WallMapCython.pyx":227
- *         y += y_add_num
- *         y *= y_scale
- *         y += y_screen_adjustment             # <<<<<<<<<<<<<<
- * 
- *         center = (x, y_max - y) #correct the order (x, y) to (r, c)
- */
-      __pyx_v_y = (__pyx_v_y + __pyx_v_y_screen_adjustment);
-
-      /* "WallMapCython.pyx":229
- *         y += y_screen_adjustment
- * 
- *         center = (x, y_max - y) #correct the order (x, y) to (r, c)             # <<<<<<<<<<<<<<
- *         pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=5)
- */
-      __pyx_t_18.f0 = __pyx_v_x;
-      __pyx_t_18.f1 = (__pyx_v_y_max - __pyx_v_y);
-      __pyx_v_center = __pyx_t_18;
-
-      /* "WallMapCython.pyx":230
- * 
- *         center = (x, y_max - y) #correct the order (x, y) to (r, c)
- *         pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=5)             # <<<<<<<<<<<<<<
- */
-      __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_pygame); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 230, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_draw); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_circle); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 230, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_10);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_surface, __pyx_v_screen) < 0) __PYX_ERR(0, 230, __pyx_L1_error)
-      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_Colors); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 230, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_BLUE); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 230, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_t_5) < 0) __PYX_ERR(0, 230, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __pyx_convert__to_py___pyx_ctuple_float__and_float(__pyx_v_center); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 230, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_center, __pyx_t_5) < 0) __PYX_ERR(0, 230, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_radius, __pyx_int_5) < 0) __PYX_ERR(0, 230, __pyx_L1_error)
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 230, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-
-      /* "WallMapCython.pyx":217
- *     for wall in self.walls:
- *       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
- *       for point in wall.points:             # <<<<<<<<<<<<<<
- *         x = point[0]
- *         y = point[1]
- */
-    }
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "WallMapCython.pyx":180
- *     self.obstacle_points = set()
+  /* "WallMapCython.pyx":131
+ *     if x > self.x_max - 10:
+ *       self.x_max = x + 10
+ *     if x < self.x_min + 10:             # <<<<<<<<<<<<<<
+ *       self.x_min = x - 10
  * 
- *   cpdef draw_map(self, screen, int x_min, int x_max, int y_min, int y_max):             # <<<<<<<<<<<<<<
- *     #parameters are given as actual dimensions, not from 0 to 1
- *     cdef int screen_width = x_max - x_min
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_x_min); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_10, 10, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_x, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (__pyx_t_5) {
+
+    /* "WallMapCython.pyx":132
+ *       self.x_max = x + 10
+ *     if x < self.x_min + 10:
+ *       self.x_min = x - 10             # <<<<<<<<<<<<<<
+ * 
+ *     if y > self.y_max - 10:
+ */
+    __pyx_t_1 = __Pyx_PyInt_SubtractObjC(__pyx_v_x, __pyx_int_10, 10, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_x_min, __pyx_t_1) < 0) __PYX_ERR(0, 132, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+    /* "WallMapCython.pyx":131
+ *     if x > self.x_max - 10:
+ *       self.x_max = x + 10
+ *     if x < self.x_min + 10:             # <<<<<<<<<<<<<<
+ *       self.x_min = x - 10
+ * 
+ */
+  }
+
+  /* "WallMapCython.pyx":134
+ *       self.x_min = x - 10
+ * 
+ *     if y > self.y_max - 10:             # <<<<<<<<<<<<<<
+ *       self.y_max = y + 10
+ *     if y < self.y_min + 10:
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __Pyx_PyInt_SubtractObjC(__pyx_t_1, __pyx_int_10, 10, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_y, __pyx_t_3, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (__pyx_t_5) {
+
+    /* "WallMapCython.pyx":135
+ * 
+ *     if y > self.y_max - 10:
+ *       self.y_max = y + 10             # <<<<<<<<<<<<<<
+ *     if y < self.y_min + 10:
+ *       self.y_min = y - 10
+ */
+    __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_v_y, __pyx_int_10, 10, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_y_max, __pyx_t_1) < 0) __PYX_ERR(0, 135, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+    /* "WallMapCython.pyx":134
+ *       self.x_min = x - 10
+ * 
+ *     if y > self.y_max - 10:             # <<<<<<<<<<<<<<
+ *       self.y_max = y + 10
+ *     if y < self.y_min + 10:
+ */
+  }
+
+  /* "WallMapCython.pyx":136
+ *     if y > self.y_max - 10:
+ *       self.y_max = y + 10
+ *     if y < self.y_min + 10:             # <<<<<<<<<<<<<<
+ *       self.y_min = y - 10
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_min); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_10, 10, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_y, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (__pyx_t_5) {
+
+    /* "WallMapCython.pyx":137
+ *       self.y_max = y + 10
+ *     if y < self.y_min + 10:
+ *       self.y_min = y - 10             # <<<<<<<<<<<<<<
+ * 
+ *     if self.count_since_last_refresh >= 1:
+ */
+    __pyx_t_1 = __Pyx_PyInt_SubtractObjC(__pyx_v_y, __pyx_int_10, 10, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_y_min, __pyx_t_1) < 0) __PYX_ERR(0, 137, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+    /* "WallMapCython.pyx":136
+ *     if y > self.y_max - 10:
+ *       self.y_max = y + 10
+ *     if y < self.y_min + 10:             # <<<<<<<<<<<<<<
+ *       self.y_min = y - 10
+ * 
+ */
+  }
+
+  /* "WallMapCython.pyx":139
+ *       self.y_min = y - 10
+ * 
+ *     if self.count_since_last_refresh >= 1:             # <<<<<<<<<<<<<<
+ *       self.refresh_walls()
+ *       self.count_since_last_refresh = 0
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_count_since_last_refresh); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_int_1, Py_GE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (__pyx_t_5) {
+
+    /* "WallMapCython.pyx":140
+ * 
+ *     if self.count_since_last_refresh >= 1:
+ *       self.refresh_walls()             # <<<<<<<<<<<<<<
+ *       self.count_since_last_refresh = 0
+ *     else:
+ */
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_refresh_walls); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
+      __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_1);
+      if (likely(__pyx_t_2)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+        __Pyx_INCREF(__pyx_t_2);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_1, function);
+      }
+    }
+    __pyx_t_3 = (__pyx_t_2) ? __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_2) : __Pyx_PyObject_CallNoArg(__pyx_t_1);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 140, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "WallMapCython.pyx":141
+ *     if self.count_since_last_refresh >= 1:
+ *       self.refresh_walls()
+ *       self.count_since_last_refresh = 0             # <<<<<<<<<<<<<<
+ *     else:
+ *       self.count_since_last_refresh += 1
+ */
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_count_since_last_refresh, __pyx_int_0) < 0) __PYX_ERR(0, 141, __pyx_L1_error)
+
+    /* "WallMapCython.pyx":139
+ *       self.y_min = y - 10
+ * 
+ *     if self.count_since_last_refresh >= 1:             # <<<<<<<<<<<<<<
+ *       self.refresh_walls()
+ *       self.count_since_last_refresh = 0
+ */
+    goto __pyx_L7;
+  }
+
+  /* "WallMapCython.pyx":143
+ *       self.count_since_last_refresh = 0
+ *     else:
+ *       self.count_since_last_refresh += 1             # <<<<<<<<<<<<<<
+ * 
+ *   def refresh_walls(self):
+ */
+  /*else*/ {
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_count_since_last_refresh); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 143, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_t_3, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_count_since_last_refresh, __pyx_t_1) < 0) __PYX_ERR(0, 143, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  }
+  __pyx_L7:;
+
+  /* "WallMapCython.pyx":127
+ *     self.count_since_last_refresh = 0
+ * 
+ *   def add_obstacle_point(self, x, y):             # <<<<<<<<<<<<<<
+ *     self.obstacle_points.add((x, y))
+ *     if x > self.x_max - 10:
  */
 
   /* function exit code */
@@ -6569,26 +5293,554 @@ static PyObject *__pyx_f_13WallMapCython_7WallMap_draw_map(struct __pyx_obj_13Wa
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_XDECREF(__pyx_t_10);
-  __Pyx_AddTraceback("WallMapCython.WallMap.draw_map", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
+  __Pyx_AddTraceback("WallMapCython.WallMap.add_obstacle_point", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_map_ratio);
-  __Pyx_XDECREF(__pyx_v_screen_ratio);
-  __Pyx_XDECREF(__pyx_v_ratio_difference);
-  __Pyx_XDECREF(__pyx_v_wall);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
+/* "WallMapCython.pyx":145
+ *       self.count_since_last_refresh += 1
+ * 
+ *   def refresh_walls(self):             # <<<<<<<<<<<<<<
+ *     cdef (int, int) point
+ *     cdef object wall, adding_wall
+ */
+
 /* Python wrapper */
-static PyObject *__pyx_pw_13WallMapCython_7WallMap_5draw_map(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_13WallMapCython_7WallMap_5draw_map(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_13WallMapCython_7WallMap_5refresh_walls(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_13WallMapCython_7WallMap_5refresh_walls = {"refresh_walls", (PyCFunction)__pyx_pw_13WallMapCython_7WallMap_5refresh_walls, METH_O, 0};
+static PyObject *__pyx_pw_13WallMapCython_7WallMap_5refresh_walls(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("refresh_walls (wrapper)", 0);
+  __pyx_r = __pyx_pf_13WallMapCython_7WallMap_4refresh_walls(__pyx_self, ((PyObject *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_13WallMapCython_7WallMap_4refresh_walls(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  __pyx_ctuple_int__and_int __pyx_v_point;
+  PyObject *__pyx_v_wall = 0;
+  PyObject *__pyx_v_adding_wall = 0;
+  PyObject *__pyx_v_walls_to_add = 0;
+  PyObject *__pyx_v_distance = NULL;
+  PyObject *__pyx_v_total_points = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  Py_ssize_t __pyx_t_3;
+  PyObject *(*__pyx_t_4)(PyObject *);
+  __pyx_ctuple_int__and_int __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
+  int __pyx_t_7;
+  PyObject *__pyx_t_8 = NULL;
+  PyObject *__pyx_t_9 = NULL;
+  PyObject *__pyx_t_10 = NULL;
+  PyObject *(*__pyx_t_11)(PyObject *);
+  PyObject *__pyx_t_12 = NULL;
+  int __pyx_t_13;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("refresh_walls", 0);
+
+  /* "WallMapCython.pyx":149
+ *     cdef object wall, adding_wall
+ *     cdef list walls_to_add
+ *     for point in self.obstacle_points:             # <<<<<<<<<<<<<<
+ *       if len(self.walls) == 0:
+ *         self.walls.add(Wall(point))
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_obstacle_points); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
+    __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
+    __pyx_t_4 = NULL;
+  } else {
+    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 149, __pyx_L1_error)
+  }
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  for (;;) {
+    if (likely(!__pyx_t_4)) {
+      if (likely(PyList_CheckExact(__pyx_t_2))) {
+        if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 149, __pyx_L1_error)
+        #else
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        #endif
+      } else {
+        if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 149, __pyx_L1_error)
+        #else
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        #endif
+      }
+    } else {
+      __pyx_t_1 = __pyx_t_4(__pyx_t_2);
+      if (unlikely(!__pyx_t_1)) {
+        PyObject* exc_type = PyErr_Occurred();
+        if (exc_type) {
+          if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+          else __PYX_ERR(0, 149, __pyx_L1_error)
+        }
+        break;
+      }
+      __Pyx_GOTREF(__pyx_t_1);
+    }
+    __pyx_t_5 = __pyx_convert__from_py___pyx_ctuple_int__and_int(__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 149, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_v_point = __pyx_t_5;
+
+    /* "WallMapCython.pyx":150
+ *     cdef list walls_to_add
+ *     for point in self.obstacle_points:
+ *       if len(self.walls) == 0:             # <<<<<<<<<<<<<<
+ *         self.walls.add(Wall(point))
+ *         continue
+ */
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_walls); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_6 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 150, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_7 = ((__pyx_t_6 == 0) != 0);
+    if (__pyx_t_7) {
+
+      /* "WallMapCython.pyx":151
+ *     for point in self.obstacle_points:
+ *       if len(self.walls) == 0:
+ *         self.walls.add(Wall(point))             # <<<<<<<<<<<<<<
+ *         continue
+ * 
+ */
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_walls); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_add); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __pyx_t_8 = __pyx_convert__to_py___pyx_ctuple_int__and_int(__pyx_v_point); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __pyx_t_10 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_13WallMapCython_Wall), __pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __pyx_t_8 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_9);
+        if (likely(__pyx_t_8)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+          __Pyx_INCREF(__pyx_t_8);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_9, function);
+        }
+      }
+      __pyx_t_1 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_8, __pyx_t_10) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_10);
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+      /* "WallMapCython.pyx":152
+ *       if len(self.walls) == 0:
+ *         self.walls.add(Wall(point))
+ *         continue             # <<<<<<<<<<<<<<
+ * 
+ *       walls_to_add = []
+ */
+      goto __pyx_L3_continue;
+
+      /* "WallMapCython.pyx":150
+ *     cdef list walls_to_add
+ *     for point in self.obstacle_points:
+ *       if len(self.walls) == 0:             # <<<<<<<<<<<<<<
+ *         self.walls.add(Wall(point))
+ *         continue
+ */
+    }
+
+    /* "WallMapCython.pyx":154
+ *         continue
+ * 
+ *       walls_to_add = []             # <<<<<<<<<<<<<<
+ *       for wall in self.walls:
+ *         distance = wall.calculate_distance(point)
+ */
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_XDECREF_SET(__pyx_v_walls_to_add, ((PyObject*)__pyx_t_1));
+    __pyx_t_1 = 0;
+
+    /* "WallMapCython.pyx":155
+ * 
+ *       walls_to_add = []
+ *       for wall in self.walls:             # <<<<<<<<<<<<<<
+ *         distance = wall.calculate_distance(point)
+ *         if distance < 5:
+ */
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_walls); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
+      __pyx_t_9 = __pyx_t_1; __Pyx_INCREF(__pyx_t_9); __pyx_t_6 = 0;
+      __pyx_t_11 = NULL;
+    } else {
+      __pyx_t_6 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 155, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_11 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 155, __pyx_L1_error)
+    }
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    for (;;) {
+      if (likely(!__pyx_t_11)) {
+        if (likely(PyList_CheckExact(__pyx_t_9))) {
+          if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_9)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 155, __pyx_L1_error)
+          #else
+          __pyx_t_1 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
+          #endif
+        } else {
+          if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 155, __pyx_L1_error)
+          #else
+          __pyx_t_1 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
+          #endif
+        }
+      } else {
+        __pyx_t_1 = __pyx_t_11(__pyx_t_9);
+        if (unlikely(!__pyx_t_1)) {
+          PyObject* exc_type = PyErr_Occurred();
+          if (exc_type) {
+            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+            else __PYX_ERR(0, 155, __pyx_L1_error)
+          }
+          break;
+        }
+        __Pyx_GOTREF(__pyx_t_1);
+      }
+      __Pyx_XDECREF_SET(__pyx_v_wall, __pyx_t_1);
+      __pyx_t_1 = 0;
+
+      /* "WallMapCython.pyx":156
+ *       walls_to_add = []
+ *       for wall in self.walls:
+ *         distance = wall.calculate_distance(point)             # <<<<<<<<<<<<<<
+ *         if distance < 5:
+ *           walls_to_add.append(wall)
+ */
+      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_wall, __pyx_n_s_calculate_distance); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __pyx_t_8 = __pyx_convert__to_py___pyx_ctuple_int__and_int(__pyx_v_point); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __pyx_t_12 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
+        __pyx_t_12 = PyMethod_GET_SELF(__pyx_t_10);
+        if (likely(__pyx_t_12)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
+          __Pyx_INCREF(__pyx_t_12);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_10, function);
+        }
+      }
+      __pyx_t_1 = (__pyx_t_12) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_12, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_8);
+      __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_distance, __pyx_t_1);
+      __pyx_t_1 = 0;
+
+      /* "WallMapCython.pyx":157
+ *       for wall in self.walls:
+ *         distance = wall.calculate_distance(point)
+ *         if distance < 5:             # <<<<<<<<<<<<<<
+ *           walls_to_add.append(wall)
+ *       if len(walls_to_add) == 1: #if it is close enough to another wall, add it to that wall
+ */
+      __pyx_t_1 = PyObject_RichCompare(__pyx_v_distance, __pyx_int_5, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 157, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      if (__pyx_t_7) {
+
+        /* "WallMapCython.pyx":158
+ *         distance = wall.calculate_distance(point)
+ *         if distance < 5:
+ *           walls_to_add.append(wall)             # <<<<<<<<<<<<<<
+ *       if len(walls_to_add) == 1: #if it is close enough to another wall, add it to that wall
+ *         walls_to_add[0].add_point(point)
+ */
+        __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_walls_to_add, __pyx_v_wall); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 158, __pyx_L1_error)
+
+        /* "WallMapCython.pyx":157
+ *       for wall in self.walls:
+ *         distance = wall.calculate_distance(point)
+ *         if distance < 5:             # <<<<<<<<<<<<<<
+ *           walls_to_add.append(wall)
+ *       if len(walls_to_add) == 1: #if it is close enough to another wall, add it to that wall
+ */
+      }
+
+      /* "WallMapCython.pyx":155
+ * 
+ *       walls_to_add = []
+ *       for wall in self.walls:             # <<<<<<<<<<<<<<
+ *         distance = wall.calculate_distance(point)
+ *         if distance < 5:
+ */
+    }
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+
+    /* "WallMapCython.pyx":159
+ *         if distance < 5:
+ *           walls_to_add.append(wall)
+ *       if len(walls_to_add) == 1: #if it is close enough to another wall, add it to that wall             # <<<<<<<<<<<<<<
+ *         walls_to_add[0].add_point(point)
+ *       else: #otherwise make a new wall with this point
+ */
+    __pyx_t_6 = PyList_GET_SIZE(__pyx_v_walls_to_add); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 159, __pyx_L1_error)
+    __pyx_t_7 = ((__pyx_t_6 == 1) != 0);
+    if (__pyx_t_7) {
+
+      /* "WallMapCython.pyx":160
+ *           walls_to_add.append(wall)
+ *       if len(walls_to_add) == 1: #if it is close enough to another wall, add it to that wall
+ *         walls_to_add[0].add_point(point)             # <<<<<<<<<<<<<<
+ *       else: #otherwise make a new wall with this point
+ *         total_points = []
+ */
+      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_walls_to_add, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_add_point); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_t_1 = __pyx_convert__to_py___pyx_ctuple_int__and_int(__pyx_v_point); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_8 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
+        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_10);
+        if (likely(__pyx_t_8)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
+          __Pyx_INCREF(__pyx_t_8);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_10, function);
+        }
+      }
+      __pyx_t_9 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_8, __pyx_t_1) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_1);
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+
+      /* "WallMapCython.pyx":159
+ *         if distance < 5:
+ *           walls_to_add.append(wall)
+ *       if len(walls_to_add) == 1: #if it is close enough to another wall, add it to that wall             # <<<<<<<<<<<<<<
+ *         walls_to_add[0].add_point(point)
+ *       else: #otherwise make a new wall with this point
+ */
+      goto __pyx_L9;
+    }
+
+    /* "WallMapCython.pyx":162
+ *         walls_to_add[0].add_point(point)
+ *       else: #otherwise make a new wall with this point
+ *         total_points = []             # <<<<<<<<<<<<<<
+ *         for adding_wall in walls_to_add: #combine walls if necessary
+ *           total_points.extend(adding_wall.points)
+ */
+    /*else*/ {
+      __pyx_t_9 = PyList_New(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 162, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __Pyx_XDECREF_SET(__pyx_v_total_points, ((PyObject*)__pyx_t_9));
+      __pyx_t_9 = 0;
+
+      /* "WallMapCython.pyx":163
+ *       else: #otherwise make a new wall with this point
+ *         total_points = []
+ *         for adding_wall in walls_to_add: #combine walls if necessary             # <<<<<<<<<<<<<<
+ *           total_points.extend(adding_wall.points)
+ *           self.walls.discard(adding_wall)
+ */
+      __pyx_t_9 = __pyx_v_walls_to_add; __Pyx_INCREF(__pyx_t_9); __pyx_t_6 = 0;
+      for (;;) {
+        if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_9)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_10 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_10); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 163, __pyx_L1_error)
+        #else
+        __pyx_t_10 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 163, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_10);
+        #endif
+        __Pyx_XDECREF_SET(__pyx_v_adding_wall, __pyx_t_10);
+        __pyx_t_10 = 0;
+
+        /* "WallMapCython.pyx":164
+ *         total_points = []
+ *         for adding_wall in walls_to_add: #combine walls if necessary
+ *           total_points.extend(adding_wall.points)             # <<<<<<<<<<<<<<
+ *           self.walls.discard(adding_wall)
+ *         self.walls.add(Wall(total_points))
+ */
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_adding_wall, __pyx_n_s_points); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 164, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_10);
+        __pyx_t_13 = __Pyx_PyList_Extend(__pyx_v_total_points, __pyx_t_10); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 164, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+
+        /* "WallMapCython.pyx":165
+ *         for adding_wall in walls_to_add: #combine walls if necessary
+ *           total_points.extend(adding_wall.points)
+ *           self.walls.discard(adding_wall)             # <<<<<<<<<<<<<<
+ *         self.walls.add(Wall(total_points))
+ *     self.obstacle_points = set()
+ */
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_walls); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_discard); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 165, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __pyx_t_1 = NULL;
+        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
+          __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_8);
+          if (likely(__pyx_t_1)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+            __Pyx_INCREF(__pyx_t_1);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_8, function);
+          }
+        }
+        __pyx_t_10 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_1, __pyx_v_adding_wall) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_v_adding_wall);
+        __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+        if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 165, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_10);
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+
+        /* "WallMapCython.pyx":163
+ *       else: #otherwise make a new wall with this point
+ *         total_points = []
+ *         for adding_wall in walls_to_add: #combine walls if necessary             # <<<<<<<<<<<<<<
+ *           total_points.extend(adding_wall.points)
+ *           self.walls.discard(adding_wall)
+ */
+      }
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+
+      /* "WallMapCython.pyx":166
+ *           total_points.extend(adding_wall.points)
+ *           self.walls.discard(adding_wall)
+ *         self.walls.add(Wall(total_points))             # <<<<<<<<<<<<<<
+ *     self.obstacle_points = set()
+ * 
+ */
+      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_walls); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 166, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_add); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 166, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __pyx_t_10 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_13WallMapCython_Wall), __pyx_v_total_points); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 166, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __pyx_t_1 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
+        __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_8);
+        if (likely(__pyx_t_1)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+          __Pyx_INCREF(__pyx_t_1);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_8, function);
+        }
+      }
+      __pyx_t_9 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_1, __pyx_t_10) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_10);
+      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 166, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    }
+    __pyx_L9:;
+
+    /* "WallMapCython.pyx":149
+ *     cdef object wall, adding_wall
+ *     cdef list walls_to_add
+ *     for point in self.obstacle_points:             # <<<<<<<<<<<<<<
+ *       if len(self.walls) == 0:
+ *         self.walls.add(Wall(point))
+ */
+    __pyx_L3_continue:;
+  }
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "WallMapCython.pyx":167
+ *           self.walls.discard(adding_wall)
+ *         self.walls.add(Wall(total_points))
+ *     self.obstacle_points = set()             # <<<<<<<<<<<<<<
+ * 
+ *   def draw_map(self, screen, int x_min, int x_max, int y_min, int y_max):
+ */
+  __pyx_t_2 = PySet_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_obstacle_points, __pyx_t_2) < 0) __PYX_ERR(0, 167, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "WallMapCython.pyx":145
+ *       self.count_since_last_refresh += 1
+ * 
+ *   def refresh_walls(self):             # <<<<<<<<<<<<<<
+ *     cdef (int, int) point
+ *     cdef object wall, adding_wall
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_12);
+  __Pyx_AddTraceback("WallMapCython.WallMap.refresh_walls", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_wall);
+  __Pyx_XDECREF(__pyx_v_adding_wall);
+  __Pyx_XDECREF(__pyx_v_walls_to_add);
+  __Pyx_XDECREF(__pyx_v_distance);
+  __Pyx_XDECREF(__pyx_v_total_points);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "WallMapCython.pyx":169
+ *     self.obstacle_points = set()
+ * 
+ *   def draw_map(self, screen, int x_min, int x_max, int y_min, int y_max):             # <<<<<<<<<<<<<<
+ *     #parameters are given as actual dimensions, not from 0 to 1
+ *     screen_width = x_max - x_min
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_13WallMapCython_7WallMap_7draw_map(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_13WallMapCython_7WallMap_7draw_map = {"draw_map", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_13WallMapCython_7WallMap_7draw_map, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_13WallMapCython_7WallMap_7draw_map(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_screen = 0;
   int __pyx_v_x_min;
   int __pyx_v_x_max;
@@ -6601,12 +5853,14 @@ static PyObject *__pyx_pw_13WallMapCython_7WallMap_5draw_map(PyObject *__pyx_v_s
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("draw_map (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_screen,&__pyx_n_s_x_min,&__pyx_n_s_x_max,&__pyx_n_s_y_min,&__pyx_n_s_y_max,0};
-    PyObject* values[5] = {0,0,0,0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_screen,&__pyx_n_s_x_min,&__pyx_n_s_x_max,&__pyx_n_s_y_min,&__pyx_n_s_y_max,0};
+    PyObject* values[6] = {0,0,0,0,0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
         case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
         CYTHON_FALLTHROUGH;
         case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
@@ -6623,37 +5877,43 @@ static PyObject *__pyx_pw_13WallMapCython_7WallMap_5draw_map(PyObject *__pyx_v_s
       kw_args = PyDict_Size(__pyx_kwds);
       switch (pos_args) {
         case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_screen)) != 0)) kw_args--;
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_self)) != 0)) kw_args--;
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_min)) != 0)) kw_args--;
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_screen)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_map", 1, 5, 5, 1); __PYX_ERR(0, 180, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_map", 1, 6, 6, 1); __PYX_ERR(0, 169, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
-        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_max)) != 0)) kw_args--;
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_min)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_map", 1, 5, 5, 2); __PYX_ERR(0, 180, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_map", 1, 6, 6, 2); __PYX_ERR(0, 169, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
-        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_min)) != 0)) kw_args--;
+        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x_max)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_map", 1, 5, 5, 3); __PYX_ERR(0, 180, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_map", 1, 6, 6, 3); __PYX_ERR(0, 169, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
-        if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_max)) != 0)) kw_args--;
+        if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_min)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("draw_map", 1, 5, 5, 4); __PYX_ERR(0, 180, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("draw_map", 1, 6, 6, 4); __PYX_ERR(0, 169, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  5:
+        if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_max)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("draw_map", 1, 6, 6, 5); __PYX_ERR(0, 169, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "draw_map") < 0)) __PYX_ERR(0, 180, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "draw_map") < 0)) __PYX_ERR(0, 169, __pyx_L3_error)
       }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 5) {
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 6) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
@@ -6661,397 +5921,705 @@ static PyObject *__pyx_pw_13WallMapCython_7WallMap_5draw_map(PyObject *__pyx_v_s
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
       values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
       values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+      values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
     }
-    __pyx_v_screen = values[0];
-    __pyx_v_x_min = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_x_min == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 180, __pyx_L3_error)
-    __pyx_v_x_max = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_x_max == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 180, __pyx_L3_error)
-    __pyx_v_y_min = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_y_min == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 180, __pyx_L3_error)
-    __pyx_v_y_max = __Pyx_PyInt_As_int(values[4]); if (unlikely((__pyx_v_y_max == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 180, __pyx_L3_error)
+    __pyx_v_self = values[0];
+    __pyx_v_screen = values[1];
+    __pyx_v_x_min = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_x_min == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 169, __pyx_L3_error)
+    __pyx_v_x_max = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_x_max == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 169, __pyx_L3_error)
+    __pyx_v_y_min = __Pyx_PyInt_As_int(values[4]); if (unlikely((__pyx_v_y_min == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 169, __pyx_L3_error)
+    __pyx_v_y_max = __Pyx_PyInt_As_int(values[5]); if (unlikely((__pyx_v_y_max == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 169, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("draw_map", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 180, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("draw_map", 1, 6, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 169, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("WallMapCython.WallMap.draw_map", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_13WallMapCython_7WallMap_4draw_map(((struct __pyx_obj_13WallMapCython_WallMap *)__pyx_v_self), __pyx_v_screen, __pyx_v_x_min, __pyx_v_x_max, __pyx_v_y_min, __pyx_v_y_max);
+  __pyx_r = __pyx_pf_13WallMapCython_7WallMap_6draw_map(__pyx_self, __pyx_v_self, __pyx_v_screen, __pyx_v_x_min, __pyx_v_x_max, __pyx_v_y_min, __pyx_v_y_max);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_13WallMapCython_7WallMap_4draw_map(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v_self, PyObject *__pyx_v_screen, int __pyx_v_x_min, int __pyx_v_x_max, int __pyx_v_y_min, int __pyx_v_y_max) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("draw_map", 0);
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_13WallMapCython_7WallMap_draw_map(__pyx_v_self, __pyx_v_screen, __pyx_v_x_min, __pyx_v_x_max, __pyx_v_y_min, __pyx_v_y_max, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("WallMapCython.WallMap.draw_map", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "(tree fragment)":1
- * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     cdef tuple state
- *     cdef object _dict
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_13WallMapCython_7WallMap_7__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_13WallMapCython_7WallMap_7__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_13WallMapCython_7WallMap_6__reduce_cython__(((struct __pyx_obj_13WallMapCython_WallMap *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_13WallMapCython_7WallMap_6__reduce_cython__(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v_self) {
-  PyObject *__pyx_v_state = 0;
-  PyObject *__pyx_v__dict = 0;
-  int __pyx_v_use_setstate;
+static PyObject *__pyx_pf_13WallMapCython_7WallMap_6draw_map(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_screen, int __pyx_v_x_min, int __pyx_v_x_max, int __pyx_v_y_min, int __pyx_v_y_max) {
+  PyObject *__pyx_v_screen_width = NULL;
+  PyObject *__pyx_v_screen_height = NULL;
+  PyObject *__pyx_v_map_width = NULL;
+  PyObject *__pyx_v_map_height = NULL;
+  PyObject *__pyx_v_x_add_num = NULL;
+  PyObject *__pyx_v_x_scale = NULL;
+  PyObject *__pyx_v_y_add_num = NULL;
+  PyObject *__pyx_v_y_scale = NULL;
+  PyObject *__pyx_v_x_screen_adjustment = NULL;
+  PyObject *__pyx_v_y_screen_adjustment = NULL;
+  PyObject *__pyx_v_map_ratio = NULL;
+  PyObject *__pyx_v_screen_ratio = NULL;
+  PyObject *__pyx_v_ratio_difference = NULL;
+  int __pyx_v_x;
+  int __pyx_v_y;
+  PyObject *__pyx_v_wall = 0;
+  PyObject *__pyx_v_center = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  int __pyx_t_7;
-  int __pyx_t_8;
-  int __pyx_t_9;
+  int __pyx_t_4;
+  Py_ssize_t __pyx_t_5;
+  PyObject *(*__pyx_t_6)(PyObject *);
+  PyObject *__pyx_t_7 = NULL;
+  Py_ssize_t __pyx_t_8;
+  PyObject *(*__pyx_t_9)(PyObject *);
+  PyObject *__pyx_t_10 = NULL;
+  PyObject *__pyx_t_11 = NULL;
+  PyObject *(*__pyx_t_12)(PyObject *);
+  int __pyx_t_13;
+  int __pyx_t_14;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__reduce_cython__", 0);
+  __Pyx_RefNannySetupContext("draw_map", 0);
 
-  /* "(tree fragment)":5
- *     cdef object _dict
- *     cdef bint use_setstate
- *     state = (self.clear_rectangles, self.count_since_last_refresh, self.logger, self.obstacle_points, self.walls, self.x_max, self.x_min, self.y_max, self.y_min)             # <<<<<<<<<<<<<<
- *     _dict = getattr(self, '__dict__', None)
- *     if _dict is not None:
+  /* "WallMapCython.pyx":171
+ *   def draw_map(self, screen, int x_min, int x_max, int y_min, int y_max):
+ *     #parameters are given as actual dimensions, not from 0 to 1
+ *     screen_width = x_max - x_min             # <<<<<<<<<<<<<<
+ *     screen_height = y_max - y_min
+ * 
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->count_since_last_refresh); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_x_max - __pyx_v_x_min)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->x_max); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->x_min); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->y_max); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->y_min); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyTuple_New(9); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_INCREF(__pyx_v_self->clear_rectangles);
-  __Pyx_GIVEREF(__pyx_v_self->clear_rectangles);
-  PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_self->clear_rectangles);
-  __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_1);
-  __Pyx_INCREF(__pyx_v_self->logger);
-  __Pyx_GIVEREF(__pyx_v_self->logger);
-  PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_v_self->logger);
-  __Pyx_INCREF(__pyx_v_self->obstacle_points);
-  __Pyx_GIVEREF(__pyx_v_self->obstacle_points);
-  PyTuple_SET_ITEM(__pyx_t_6, 3, __pyx_v_self->obstacle_points);
-  __Pyx_INCREF(__pyx_v_self->walls);
-  __Pyx_GIVEREF(__pyx_v_self->walls);
-  PyTuple_SET_ITEM(__pyx_t_6, 4, __pyx_v_self->walls);
-  __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_6, 5, __pyx_t_2);
-  __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_6, 6, __pyx_t_3);
-  __Pyx_GIVEREF(__pyx_t_4);
-  PyTuple_SET_ITEM(__pyx_t_6, 7, __pyx_t_4);
-  __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_6, 8, __pyx_t_5);
+  __pyx_v_screen_width = __pyx_t_1;
   __pyx_t_1 = 0;
-  __pyx_t_2 = 0;
+
+  /* "WallMapCython.pyx":172
+ *     #parameters are given as actual dimensions, not from 0 to 1
+ *     screen_width = x_max - x_min
+ *     screen_height = y_max - y_min             # <<<<<<<<<<<<<<
+ * 
+ *     map_width = self.x_max - self.x_min
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_y_max - __pyx_v_y_min)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_screen_height = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "WallMapCython.pyx":174
+ *     screen_height = y_max - y_min
+ * 
+ *     map_width = self.x_max - self.x_min             # <<<<<<<<<<<<<<
+ *     map_height = self.y_max - self.y_min
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_x_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_x_min); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_map_width = __pyx_t_3;
   __pyx_t_3 = 0;
-  __pyx_t_4 = 0;
-  __pyx_t_5 = 0;
-  __pyx_v_state = ((PyObject*)__pyx_t_6);
-  __pyx_t_6 = 0;
 
-  /* "(tree fragment)":6
- *     cdef bint use_setstate
- *     state = (self.clear_rectangles, self.count_since_last_refresh, self.logger, self.obstacle_points, self.walls, self.x_max, self.x_min, self.y_max, self.y_min)
- *     _dict = getattr(self, '__dict__', None)             # <<<<<<<<<<<<<<
- *     if _dict is not None:
- *         state += (_dict,)
+  /* "WallMapCython.pyx":175
+ * 
+ *     map_width = self.x_max - self.x_min
+ *     map_height = self.y_max - self.y_min             # <<<<<<<<<<<<<<
+ * 
+ *     x_add_num = -1 * self.x_min
  */
-  __pyx_t_6 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_n_s_dict, Py_None); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 6, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_v__dict = __pyx_t_6;
-  __pyx_t_6 = 0;
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_max); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_min); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = PyNumber_Subtract(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_map_height = __pyx_t_1;
+  __pyx_t_1 = 0;
 
-  /* "(tree fragment)":7
- *     state = (self.clear_rectangles, self.count_since_last_refresh, self.logger, self.obstacle_points, self.walls, self.x_max, self.x_min, self.y_max, self.y_min)
- *     _dict = getattr(self, '__dict__', None)
- *     if _dict is not None:             # <<<<<<<<<<<<<<
- *         state += (_dict,)
- *         use_setstate = True
+  /* "WallMapCython.pyx":177
+ *     map_height = self.y_max - self.y_min
+ * 
+ *     x_add_num = -1 * self.x_min             # <<<<<<<<<<<<<<
+ *     x_scale = screen_width / map_width
+ * 
  */
-  __pyx_t_7 = (__pyx_v__dict != Py_None);
-  __pyx_t_8 = (__pyx_t_7 != 0);
-  if (__pyx_t_8) {
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_x_min); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyNumber_Multiply(__pyx_int_neg_1, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_x_add_num = __pyx_t_2;
+  __pyx_t_2 = 0;
 
-    /* "(tree fragment)":8
- *     _dict = getattr(self, '__dict__', None)
- *     if _dict is not None:
- *         state += (_dict,)             # <<<<<<<<<<<<<<
- *         use_setstate = True
- *     else:
+  /* "WallMapCython.pyx":178
+ * 
+ *     x_add_num = -1 * self.x_min
+ *     x_scale = screen_width / map_width             # <<<<<<<<<<<<<<
+ * 
+ *     y_add_num = -1 * self.y_min
  */
-    __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_INCREF(__pyx_v__dict);
-    __Pyx_GIVEREF(__pyx_v__dict);
-    PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v__dict);
-    __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_5));
-    __pyx_t_5 = 0;
+  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_v_screen_width, __pyx_v_map_width); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_v_x_scale = __pyx_t_2;
+  __pyx_t_2 = 0;
 
-    /* "(tree fragment)":9
- *     if _dict is not None:
- *         state += (_dict,)
- *         use_setstate = True             # <<<<<<<<<<<<<<
- *     else:
- *         use_setstate = self.clear_rectangles is not None or self.logger is not None or self.obstacle_points is not None or self.walls is not None
+  /* "WallMapCython.pyx":180
+ *     x_scale = screen_width / map_width
+ * 
+ *     y_add_num = -1 * self.y_min             # <<<<<<<<<<<<<<
+ *     y_scale = screen_height / map_height
+ * 
  */
-    __pyx_v_use_setstate = 1;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_y_min); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = PyNumber_Multiply(__pyx_int_neg_1, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_y_add_num = __pyx_t_1;
+  __pyx_t_1 = 0;
 
-    /* "(tree fragment)":7
- *     state = (self.clear_rectangles, self.count_since_last_refresh, self.logger, self.obstacle_points, self.walls, self.x_max, self.x_min, self.y_max, self.y_min)
- *     _dict = getattr(self, '__dict__', None)
- *     if _dict is not None:             # <<<<<<<<<<<<<<
- *         state += (_dict,)
- *         use_setstate = True
+  /* "WallMapCython.pyx":181
+ * 
+ *     y_add_num = -1 * self.y_min
+ *     y_scale = screen_height / map_height             # <<<<<<<<<<<<<<
+ * 
+ *     x_screen_adjustment = 0
+ */
+  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_v_screen_height, __pyx_v_map_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_y_scale = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "WallMapCython.pyx":183
+ *     y_scale = screen_height / map_height
+ * 
+ *     x_screen_adjustment = 0             # <<<<<<<<<<<<<<
+ *     y_screen_adjustment = 0
+ * 
+ */
+  __Pyx_INCREF(__pyx_int_0);
+  __pyx_v_x_screen_adjustment = __pyx_int_0;
+
+  /* "WallMapCython.pyx":184
+ * 
+ *     x_screen_adjustment = 0
+ *     y_screen_adjustment = 0             # <<<<<<<<<<<<<<
+ * 
+ *     map_ratio = map_height / map_width
+ */
+  __Pyx_INCREF(__pyx_int_0);
+  __pyx_v_y_screen_adjustment = __pyx_int_0;
+
+  /* "WallMapCython.pyx":186
+ *     y_screen_adjustment = 0
+ * 
+ *     map_ratio = map_height / map_width             # <<<<<<<<<<<<<<
+ *     screen_ratio = screen_height / screen_width
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_v_map_height, __pyx_v_map_width); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_map_ratio = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "WallMapCython.pyx":187
+ * 
+ *     map_ratio = map_height / map_width
+ *     screen_ratio = screen_height / screen_width             # <<<<<<<<<<<<<<
+ * 
+ *     if map_ratio > screen_ratio:
+ */
+  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_v_screen_height, __pyx_v_screen_width); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_screen_ratio = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "WallMapCython.pyx":189
+ *     screen_ratio = screen_height / screen_width
+ * 
+ *     if map_ratio > screen_ratio:             # <<<<<<<<<<<<<<
+ *       # self.logger.log("map_ratio > screen_ratio")
+ *       ratio_difference = map_ratio - screen_ratio
+ */
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_map_ratio, __pyx_v_screen_ratio, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 189, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (__pyx_t_4) {
+
+    /* "WallMapCython.pyx":191
+ *     if map_ratio > screen_ratio:
+ *       # self.logger.log("map_ratio > screen_ratio")
+ *       ratio_difference = map_ratio - screen_ratio             # <<<<<<<<<<<<<<
+ *       ratio_difference /= 2
+ *       y_screen_adjustment += ratio_difference * y_scale
+ */
+    __pyx_t_1 = PyNumber_Subtract(__pyx_v_map_ratio, __pyx_v_screen_ratio); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_v_ratio_difference = __pyx_t_1;
+    __pyx_t_1 = 0;
+
+    /* "WallMapCython.pyx":192
+ *       # self.logger.log("map_ratio > screen_ratio")
+ *       ratio_difference = map_ratio - screen_ratio
+ *       ratio_difference /= 2             # <<<<<<<<<<<<<<
+ *       y_screen_adjustment += ratio_difference * y_scale
+ *     elif map_ratio > screen_ratio:
+ */
+    __pyx_t_1 = __Pyx_PyNumber_InPlaceDivide(__pyx_v_ratio_difference, __pyx_int_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF_SET(__pyx_v_ratio_difference, __pyx_t_1);
+    __pyx_t_1 = 0;
+
+    /* "WallMapCython.pyx":193
+ *       ratio_difference = map_ratio - screen_ratio
+ *       ratio_difference /= 2
+ *       y_screen_adjustment += ratio_difference * y_scale             # <<<<<<<<<<<<<<
+ *     elif map_ratio > screen_ratio:
+ *       # self.logger.log("screen_ratio > map_ratio")
+ */
+    __pyx_t_1 = PyNumber_Multiply(__pyx_v_ratio_difference, __pyx_v_y_scale); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 193, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_y_screen_adjustment, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 193, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF_SET(__pyx_v_y_screen_adjustment, __pyx_t_2);
+    __pyx_t_2 = 0;
+
+    /* "WallMapCython.pyx":189
+ *     screen_ratio = screen_height / screen_width
+ * 
+ *     if map_ratio > screen_ratio:             # <<<<<<<<<<<<<<
+ *       # self.logger.log("map_ratio > screen_ratio")
+ *       ratio_difference = map_ratio - screen_ratio
  */
     goto __pyx_L3;
   }
 
-  /* "(tree fragment)":11
- *         use_setstate = True
- *     else:
- *         use_setstate = self.clear_rectangles is not None or self.logger is not None or self.obstacle_points is not None or self.walls is not None             # <<<<<<<<<<<<<<
- *     if use_setstate:
- *         return __pyx_unpickle_WallMap, (type(self), 0x90612b1, None), state
+  /* "WallMapCython.pyx":194
+ *       ratio_difference /= 2
+ *       y_screen_adjustment += ratio_difference * y_scale
+ *     elif map_ratio > screen_ratio:             # <<<<<<<<<<<<<<
+ *       # self.logger.log("screen_ratio > map_ratio")
+ *       ratio_difference = screen_ratio - map_ratio
  */
-  /*else*/ {
-    __pyx_t_7 = (__pyx_v_self->clear_rectangles != ((PyObject*)Py_None));
-    __pyx_t_9 = (__pyx_t_7 != 0);
-    if (!__pyx_t_9) {
-    } else {
-      __pyx_t_8 = __pyx_t_9;
-      goto __pyx_L4_bool_binop_done;
-    }
-    __pyx_t_9 = (__pyx_v_self->logger != Py_None);
-    __pyx_t_7 = (__pyx_t_9 != 0);
-    if (!__pyx_t_7) {
-    } else {
-      __pyx_t_8 = __pyx_t_7;
-      goto __pyx_L4_bool_binop_done;
-    }
-    __pyx_t_7 = (__pyx_v_self->obstacle_points != ((PyObject*)Py_None));
-    __pyx_t_9 = (__pyx_t_7 != 0);
-    if (!__pyx_t_9) {
-    } else {
-      __pyx_t_8 = __pyx_t_9;
-      goto __pyx_L4_bool_binop_done;
-    }
-    __pyx_t_9 = (__pyx_v_self->walls != ((PyObject*)Py_None));
-    __pyx_t_7 = (__pyx_t_9 != 0);
-    __pyx_t_8 = __pyx_t_7;
-    __pyx_L4_bool_binop_done:;
-    __pyx_v_use_setstate = __pyx_t_8;
+  __pyx_t_2 = PyObject_RichCompare(__pyx_v_map_ratio, __pyx_v_screen_ratio, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__pyx_t_4) {
+
+    /* "WallMapCython.pyx":196
+ *     elif map_ratio > screen_ratio:
+ *       # self.logger.log("screen_ratio > map_ratio")
+ *       ratio_difference = screen_ratio - map_ratio             # <<<<<<<<<<<<<<
+ *       ratio_difference /= 2
+ *       x_screen_adjustment += ratio_difference * x_scale
+ */
+    __pyx_t_2 = PyNumber_Subtract(__pyx_v_screen_ratio, __pyx_v_map_ratio); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_v_ratio_difference = __pyx_t_2;
+    __pyx_t_2 = 0;
+
+    /* "WallMapCython.pyx":197
+ *       # self.logger.log("screen_ratio > map_ratio")
+ *       ratio_difference = screen_ratio - map_ratio
+ *       ratio_difference /= 2             # <<<<<<<<<<<<<<
+ *       x_screen_adjustment += ratio_difference * x_scale
+ * 
+ */
+    __pyx_t_2 = __Pyx_PyNumber_InPlaceDivide(__pyx_v_ratio_difference, __pyx_int_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF_SET(__pyx_v_ratio_difference, __pyx_t_2);
+    __pyx_t_2 = 0;
+
+    /* "WallMapCython.pyx":198
+ *       ratio_difference = screen_ratio - map_ratio
+ *       ratio_difference /= 2
+ *       x_screen_adjustment += ratio_difference * x_scale             # <<<<<<<<<<<<<<
+ * 
+ *     cdef int x, y
+ */
+    __pyx_t_2 = PyNumber_Multiply(__pyx_v_ratio_difference, __pyx_v_x_scale); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_x_screen_adjustment, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 198, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF_SET(__pyx_v_x_screen_adjustment, __pyx_t_1);
+    __pyx_t_1 = 0;
+
+    /* "WallMapCython.pyx":194
+ *       ratio_difference /= 2
+ *       y_screen_adjustment += ratio_difference * y_scale
+ *     elif map_ratio > screen_ratio:             # <<<<<<<<<<<<<<
+ *       # self.logger.log("screen_ratio > map_ratio")
+ *       ratio_difference = screen_ratio - map_ratio
+ */
   }
   __pyx_L3:;
 
-  /* "(tree fragment)":12
- *     else:
- *         use_setstate = self.clear_rectangles is not None or self.logger is not None or self.obstacle_points is not None or self.walls is not None
- *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_WallMap, (type(self), 0x90612b1, None), state
- *     else:
+  /* "WallMapCython.pyx":202
+ *     cdef int x, y
+ *     cdef object wall
+ *     for wall in self.walls:             # <<<<<<<<<<<<<<
+ *       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
+ *       for x, y in wall.points:
  */
-  __pyx_t_8 = (__pyx_v_use_setstate != 0);
-  if (__pyx_t_8) {
-
-    /* "(tree fragment)":13
- *         use_setstate = self.clear_rectangles is not None or self.logger is not None or self.obstacle_points is not None or self.walls is not None
- *     if use_setstate:
- *         return __pyx_unpickle_WallMap, (type(self), 0x90612b1, None), state             # <<<<<<<<<<<<<<
- *     else:
- *         return __pyx_unpickle_WallMap, (type(self), 0x90612b1, state)
- */
-    __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_pyx_unpickle_WallMap); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    PyTuple_SET_ITEM(__pyx_t_6, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_151392945);
-    __Pyx_GIVEREF(__pyx_int_151392945);
-    PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_int_151392945);
-    __Pyx_INCREF(Py_None);
-    __Pyx_GIVEREF(Py_None);
-    PyTuple_SET_ITEM(__pyx_t_6, 2, Py_None);
-    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_GIVEREF(__pyx_t_5);
-    PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
-    __Pyx_GIVEREF(__pyx_t_6);
-    PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_6);
-    __Pyx_INCREF(__pyx_v_state);
-    __Pyx_GIVEREF(__pyx_v_state);
-    PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_v_state);
-    __pyx_t_5 = 0;
-    __pyx_t_6 = 0;
-    __pyx_r = __pyx_t_4;
-    __pyx_t_4 = 0;
-    goto __pyx_L0;
-
-    /* "(tree fragment)":12
- *     else:
- *         use_setstate = self.clear_rectangles is not None or self.logger is not None or self.obstacle_points is not None or self.walls is not None
- *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_WallMap, (type(self), 0x90612b1, None), state
- *     else:
- */
-  }
-
-  /* "(tree fragment)":15
- *         return __pyx_unpickle_WallMap, (type(self), 0x90612b1, None), state
- *     else:
- *         return __pyx_unpickle_WallMap, (type(self), 0x90612b1, state)             # <<<<<<<<<<<<<<
- * def __setstate_cython__(self, __pyx_state):
- *     __pyx_unpickle_WallMap__set_state(self, __pyx_state)
- */
-  /*else*/ {
-    __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_pyx_unpickle_WallMap); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    PyTuple_SET_ITEM(__pyx_t_6, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_151392945);
-    __Pyx_GIVEREF(__pyx_int_151392945);
-    PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_int_151392945);
-    __Pyx_INCREF(__pyx_v_state);
-    __Pyx_GIVEREF(__pyx_v_state);
-    PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_v_state);
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_GIVEREF(__pyx_t_4);
-    PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4);
-    __Pyx_GIVEREF(__pyx_t_6);
-    PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_6);
-    __pyx_t_4 = 0;
-    __pyx_t_6 = 0;
-    __pyx_r = __pyx_t_5;
-    __pyx_t_5 = 0;
-    goto __pyx_L0;
-  }
-
-  /* "(tree fragment)":1
- * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     cdef tuple state
- *     cdef object _dict
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("WallMapCython.WallMap.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_state);
-  __Pyx_XDECREF(__pyx_v__dict);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "(tree fragment)":16
- *     else:
- *         return __pyx_unpickle_WallMap, (type(self), 0x90612b1, state)
- * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_unpickle_WallMap__set_state(self, __pyx_state)
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_13WallMapCython_7WallMap_9__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_13WallMapCython_7WallMap_9__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_13WallMapCython_7WallMap_8__setstate_cython__(((struct __pyx_obj_13WallMapCython_WallMap *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_13WallMapCython_7WallMap_8__setstate_cython__(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__setstate_cython__", 0);
-
-  /* "(tree fragment)":17
- *         return __pyx_unpickle_WallMap, (type(self), 0x90612b1, state)
- * def __setstate_cython__(self, __pyx_state):
- *     __pyx_unpickle_WallMap__set_state(self, __pyx_state)             # <<<<<<<<<<<<<<
- */
-  if (!(likely(PyTuple_CheckExact(__pyx_v___pyx_state))||((__pyx_v___pyx_state) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v___pyx_state)->tp_name), 0))) __PYX_ERR(1, 17, __pyx_L1_error)
-  __pyx_t_1 = __pyx_f_13WallMapCython___pyx_unpickle_WallMap__set_state(__pyx_v_self, ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 17, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_walls); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
+  if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
+    __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_5 = 0;
+    __pyx_t_6 = NULL;
+  } else {
+    __pyx_t_5 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_6 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 202, __pyx_L1_error)
+  }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  for (;;) {
+    if (likely(!__pyx_t_6)) {
+      if (likely(PyList_CheckExact(__pyx_t_2))) {
+        if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_2)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
+        #else
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        #endif
+      } else {
+        if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
+        #else
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        #endif
+      }
+    } else {
+      __pyx_t_1 = __pyx_t_6(__pyx_t_2);
+      if (unlikely(!__pyx_t_1)) {
+        PyObject* exc_type = PyErr_Occurred();
+        if (exc_type) {
+          if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+          else __PYX_ERR(0, 202, __pyx_L1_error)
+        }
+        break;
+      }
+      __Pyx_GOTREF(__pyx_t_1);
+    }
+    __Pyx_XDECREF_SET(__pyx_v_wall, __pyx_t_1);
+    __pyx_t_1 = 0;
 
-  /* "(tree fragment)":16
- *     else:
- *         return __pyx_unpickle_WallMap, (type(self), 0x90612b1, state)
- * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_unpickle_WallMap__set_state(self, __pyx_state)
+    /* "WallMapCython.pyx":203
+ *     cdef object wall
+ *     for wall in self.walls:
+ *       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)             # <<<<<<<<<<<<<<
+ *       for x, y in wall.points:
+ *         x += x_add_num
+ */
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_wall, __pyx_n_s_draw_wall); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = __Pyx_PyDict_NewPresized(8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 203, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_screen, __pyx_v_screen) < 0) __PYX_ERR(0, 203, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_y_max); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 203, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_y_max, __pyx_t_7) < 0) __PYX_ERR(0, 203, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_x_add_num, __pyx_v_x_add_num) < 0) __PYX_ERR(0, 203, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_x_scale, __pyx_v_x_scale) < 0) __PYX_ERR(0, 203, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_x_screen_adjustment, __pyx_v_x_screen_adjustment) < 0) __PYX_ERR(0, 203, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_y_add_num, __pyx_v_y_add_num) < 0) __PYX_ERR(0, 203, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_y_scale, __pyx_v_y_scale) < 0) __PYX_ERR(0, 203, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_y_screen_adjustment, __pyx_v_y_screen_adjustment) < 0) __PYX_ERR(0, 203, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 203, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+
+    /* "WallMapCython.pyx":204
+ *     for wall in self.walls:
+ *       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
+ *       for x, y in wall.points:             # <<<<<<<<<<<<<<
+ *         x += x_add_num
+ *         x *= x_scale
+ */
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_wall, __pyx_n_s_points); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    if (likely(PyList_CheckExact(__pyx_t_7)) || PyTuple_CheckExact(__pyx_t_7)) {
+      __pyx_t_3 = __pyx_t_7; __Pyx_INCREF(__pyx_t_3); __pyx_t_8 = 0;
+      __pyx_t_9 = NULL;
+    } else {
+      __pyx_t_8 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_9 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 204, __pyx_L1_error)
+    }
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    for (;;) {
+      if (likely(!__pyx_t_9)) {
+        if (likely(PyList_CheckExact(__pyx_t_3))) {
+          if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_3)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_7 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_8); __Pyx_INCREF(__pyx_t_7); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 204, __pyx_L1_error)
+          #else
+          __pyx_t_7 = PySequence_ITEM(__pyx_t_3, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 204, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_7);
+          #endif
+        } else {
+          if (__pyx_t_8 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_8); __Pyx_INCREF(__pyx_t_7); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 204, __pyx_L1_error)
+          #else
+          __pyx_t_7 = PySequence_ITEM(__pyx_t_3, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 204, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_7);
+          #endif
+        }
+      } else {
+        __pyx_t_7 = __pyx_t_9(__pyx_t_3);
+        if (unlikely(!__pyx_t_7)) {
+          PyObject* exc_type = PyErr_Occurred();
+          if (exc_type) {
+            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+            else __PYX_ERR(0, 204, __pyx_L1_error)
+          }
+          break;
+        }
+        __Pyx_GOTREF(__pyx_t_7);
+      }
+      if ((likely(PyTuple_CheckExact(__pyx_t_7))) || (PyList_CheckExact(__pyx_t_7))) {
+        PyObject* sequence = __pyx_t_7;
+        Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
+        if (unlikely(size != 2)) {
+          if (size > 2) __Pyx_RaiseTooManyValuesError(2);
+          else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
+          __PYX_ERR(0, 204, __pyx_L1_error)
+        }
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        if (likely(PyTuple_CheckExact(sequence))) {
+          __pyx_t_1 = PyTuple_GET_ITEM(sequence, 0); 
+          __pyx_t_10 = PyTuple_GET_ITEM(sequence, 1); 
+        } else {
+          __pyx_t_1 = PyList_GET_ITEM(sequence, 0); 
+          __pyx_t_10 = PyList_GET_ITEM(sequence, 1); 
+        }
+        __Pyx_INCREF(__pyx_t_1);
+        __Pyx_INCREF(__pyx_t_10);
+        #else
+        __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __pyx_t_10 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 204, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_10);
+        #endif
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      } else {
+        Py_ssize_t index = -1;
+        __pyx_t_11 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 204, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_11);
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __pyx_t_12 = Py_TYPE(__pyx_t_11)->tp_iternext;
+        index = 0; __pyx_t_1 = __pyx_t_12(__pyx_t_11); if (unlikely(!__pyx_t_1)) goto __pyx_L8_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_1);
+        index = 1; __pyx_t_10 = __pyx_t_12(__pyx_t_11); if (unlikely(!__pyx_t_10)) goto __pyx_L8_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_10);
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_12(__pyx_t_11), 2) < 0) __PYX_ERR(0, 204, __pyx_L1_error)
+        __pyx_t_12 = NULL;
+        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+        goto __pyx_L9_unpacking_done;
+        __pyx_L8_unpacking_failed:;
+        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+        __pyx_t_12 = NULL;
+        if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
+        __PYX_ERR(0, 204, __pyx_L1_error)
+        __pyx_L9_unpacking_done:;
+      }
+      __pyx_t_13 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_13 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 204, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_t_10); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 204, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __pyx_v_x = __pyx_t_13;
+      __pyx_v_y = __pyx_t_14;
+
+      /* "WallMapCython.pyx":205
+ *       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
+ *       for x, y in wall.points:
+ *         x += x_add_num             # <<<<<<<<<<<<<<
+ *         x *= x_scale
+ *         x += x_screen_adjustment
+ */
+      __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 205, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_10 = PyNumber_InPlaceAdd(__pyx_t_7, __pyx_v_x_add_num); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 205, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_t_10); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 205, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __pyx_v_x = __pyx_t_14;
+
+      /* "WallMapCython.pyx":206
+ *       for x, y in wall.points:
+ *         x += x_add_num
+ *         x *= x_scale             # <<<<<<<<<<<<<<
+ *         x += x_screen_adjustment
+ * 
+ */
+      __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 206, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __pyx_t_7 = PyNumber_InPlaceMultiply(__pyx_t_10, __pyx_v_x_scale); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 206, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_t_7); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 206, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_v_x = __pyx_t_14;
+
+      /* "WallMapCython.pyx":207
+ *         x += x_add_num
+ *         x *= x_scale
+ *         x += x_screen_adjustment             # <<<<<<<<<<<<<<
+ * 
+ *         y += y_add_num
+ */
+      __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 207, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_10 = PyNumber_InPlaceAdd(__pyx_t_7, __pyx_v_x_screen_adjustment); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 207, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_t_10); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 207, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __pyx_v_x = __pyx_t_14;
+
+      /* "WallMapCython.pyx":209
+ *         x += x_screen_adjustment
+ * 
+ *         y += y_add_num             # <<<<<<<<<<<<<<
+ *         y *= y_scale
+ *         y += y_screen_adjustment
+ */
+      __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 209, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_t_10, __pyx_v_y_add_num); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 209, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_t_7); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 209, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_v_y = __pyx_t_14;
+
+      /* "WallMapCython.pyx":210
+ * 
+ *         y += y_add_num
+ *         y *= y_scale             # <<<<<<<<<<<<<<
+ *         y += y_screen_adjustment
+ * 
+ */
+      __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 210, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_10 = PyNumber_InPlaceMultiply(__pyx_t_7, __pyx_v_y_scale); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 210, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_t_10); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 210, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __pyx_v_y = __pyx_t_14;
+
+      /* "WallMapCython.pyx":211
+ *         y += y_add_num
+ *         y *= y_scale
+ *         y += y_screen_adjustment             # <<<<<<<<<<<<<<
+ * 
+ *         center = (x, y_max - y) #correct the order (x, y) to (r, c)
+ */
+      __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 211, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_t_10, __pyx_v_y_screen_adjustment); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 211, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __pyx_t_14 = __Pyx_PyInt_As_int(__pyx_t_7); if (unlikely((__pyx_t_14 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_v_y = __pyx_t_14;
+
+      /* "WallMapCython.pyx":213
+ *         y += y_screen_adjustment
+ * 
+ *         center = (x, y_max - y) #correct the order (x, y) to (r, c)             # <<<<<<<<<<<<<<
+ *         pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=5)
+ */
+      __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 213, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_10 = __Pyx_PyInt_From_int((__pyx_v_y_max - __pyx_v_y)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 213, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_GIVEREF(__pyx_t_7);
+      PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_7);
+      __Pyx_GIVEREF(__pyx_t_10);
+      PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_10);
+      __pyx_t_7 = 0;
+      __pyx_t_10 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_center, __pyx_t_1);
+      __pyx_t_1 = 0;
+
+      /* "WallMapCython.pyx":214
+ * 
+ *         center = (x, y_max - y) #correct the order (x, y) to (r, c)
+ *         pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=5)             # <<<<<<<<<<<<<<
+ */
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_pygame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_draw); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 214, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_circle); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __pyx_t_10 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 214, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_surface, __pyx_v_screen) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_Colors); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 214, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_BLUE); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 214, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_color, __pyx_t_11) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+      if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_center, __pyx_v_center) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_radius, __pyx_int_5) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 214, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+
+      /* "WallMapCython.pyx":204
+ *     for wall in self.walls:
+ *       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
+ *       for x, y in wall.points:             # <<<<<<<<<<<<<<
+ *         x += x_add_num
+ *         x *= x_scale
+ */
+    }
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "WallMapCython.pyx":202
+ *     cdef int x, y
+ *     cdef object wall
+ *     for wall in self.walls:             # <<<<<<<<<<<<<<
+ *       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
+ *       for x, y in wall.points:
+ */
+  }
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "WallMapCython.pyx":169
+ *     self.obstacle_points = set()
+ * 
+ *   def draw_map(self, screen, int x_min, int x_max, int y_min, int y_max):             # <<<<<<<<<<<<<<
+ *     #parameters are given as actual dimensions, not from 0 to 1
+ *     screen_width = x_max - x_min
  */
 
   /* function exit code */
@@ -7059,9 +6627,29 @@ static PyObject *__pyx_pf_13WallMapCython_7WallMap_8__setstate_cython__(struct _
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("WallMapCython.WallMap.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_11);
+  __Pyx_AddTraceback("WallMapCython.WallMap.draw_map", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_screen_width);
+  __Pyx_XDECREF(__pyx_v_screen_height);
+  __Pyx_XDECREF(__pyx_v_map_width);
+  __Pyx_XDECREF(__pyx_v_map_height);
+  __Pyx_XDECREF(__pyx_v_x_add_num);
+  __Pyx_XDECREF(__pyx_v_x_scale);
+  __Pyx_XDECREF(__pyx_v_y_add_num);
+  __Pyx_XDECREF(__pyx_v_y_scale);
+  __Pyx_XDECREF(__pyx_v_x_screen_adjustment);
+  __Pyx_XDECREF(__pyx_v_y_screen_adjustment);
+  __Pyx_XDECREF(__pyx_v_map_ratio);
+  __Pyx_XDECREF(__pyx_v_screen_ratio);
+  __Pyx_XDECREF(__pyx_v_ratio_difference);
+  __Pyx_XDECREF(__pyx_v_wall);
+  __Pyx_XDECREF(__pyx_v_center);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -7476,486 +7064,6 @@ static PyObject *__pyx_f_13WallMapCython___pyx_unpickle_Wall__set_state(struct _
   return __pyx_r;
 }
 
-/* "(tree fragment)":1
- * def __pyx_unpickle_WallMap(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
- *     cdef object __pyx_PickleError
- *     cdef object __pyx_result
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_13WallMapCython_3__pyx_unpickle_WallMap(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_13WallMapCython_3__pyx_unpickle_WallMap = {"__pyx_unpickle_WallMap", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_13WallMapCython_3__pyx_unpickle_WallMap, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_13WallMapCython_3__pyx_unpickle_WallMap(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v___pyx_type = 0;
-  long __pyx_v___pyx_checksum;
-  PyObject *__pyx_v___pyx_state = 0;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__pyx_unpickle_WallMap (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_pyx_type,&__pyx_n_s_pyx_checksum,&__pyx_n_s_pyx_state,0};
-    PyObject* values[3] = {0,0,0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-        CYTHON_FALLTHROUGH;
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pyx_type)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pyx_checksum)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("__pyx_unpickle_WallMap", 1, 3, 3, 1); __PYX_ERR(1, 1, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  2:
-        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pyx_state)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("__pyx_unpickle_WallMap", 1, 3, 3, 2); __PYX_ERR(1, 1, __pyx_L3_error)
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__pyx_unpickle_WallMap") < 0)) __PYX_ERR(1, 1, __pyx_L3_error)
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-    }
-    __pyx_v___pyx_type = values[0];
-    __pyx_v___pyx_checksum = __Pyx_PyInt_As_long(values[1]); if (unlikely((__pyx_v___pyx_checksum == (long)-1) && PyErr_Occurred())) __PYX_ERR(1, 1, __pyx_L3_error)
-    __pyx_v___pyx_state = values[2];
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__pyx_unpickle_WallMap", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("WallMapCython.__pyx_unpickle_WallMap", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_13WallMapCython_2__pyx_unpickle_WallMap(__pyx_self, __pyx_v___pyx_type, __pyx_v___pyx_checksum, __pyx_v___pyx_state);
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_13WallMapCython_2__pyx_unpickle_WallMap(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state) {
-  PyObject *__pyx_v___pyx_PickleError = 0;
-  PyObject *__pyx_v___pyx_result = 0;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  int __pyx_t_6;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__pyx_unpickle_WallMap", 0);
-
-  /* "(tree fragment)":4
- *     cdef object __pyx_PickleError
- *     cdef object __pyx_result
- *     if __pyx_checksum != 0x90612b1:             # <<<<<<<<<<<<<<
- *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x90612b1 = (clear_rectangles, count_since_last_refresh, logger, obstacle_points, walls, x_max, x_min, y_max, y_min))" % __pyx_checksum)
- */
-  __pyx_t_1 = ((__pyx_v___pyx_checksum != 0x90612b1) != 0);
-  if (__pyx_t_1) {
-
-    /* "(tree fragment)":5
- *     cdef object __pyx_result
- *     if __pyx_checksum != 0x90612b1:
- *         from pickle import PickleError as __pyx_PickleError             # <<<<<<<<<<<<<<
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x90612b1 = (clear_rectangles, count_since_last_refresh, logger, obstacle_points, walls, x_max, x_min, y_max, y_min))" % __pyx_checksum)
- *     __pyx_result = WallMap.__new__(__pyx_type)
- */
-    __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 5, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_INCREF(__pyx_n_s_PickleError);
-    __Pyx_GIVEREF(__pyx_n_s_PickleError);
-    PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_PickleError);
-    __pyx_t_3 = __Pyx_Import(__pyx_n_s_pickle, __pyx_t_2, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 5, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_PickleError); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 5, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_INCREF(__pyx_t_2);
-    __pyx_v___pyx_PickleError = __pyx_t_2;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-    /* "(tree fragment)":6
- *     if __pyx_checksum != 0x90612b1:
- *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x90612b1 = (clear_rectangles, count_since_last_refresh, logger, obstacle_points, walls, x_max, x_min, y_max, y_min))" % __pyx_checksum)             # <<<<<<<<<<<<<<
- *     __pyx_result = WallMap.__new__(__pyx_type)
- *     if __pyx_state is not None:
- */
-    __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_v___pyx_checksum); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 6, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Incompatible_checksums_s_vs_0x90, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 6, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_INCREF(__pyx_v___pyx_PickleError);
-    __pyx_t_2 = __pyx_v___pyx_PickleError; __pyx_t_5 = NULL;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
-      if (likely(__pyx_t_5)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-        __Pyx_INCREF(__pyx_t_5);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_2, function);
-      }
-    }
-    __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_5, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4);
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 6, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(1, 6, __pyx_L1_error)
-
-    /* "(tree fragment)":4
- *     cdef object __pyx_PickleError
- *     cdef object __pyx_result
- *     if __pyx_checksum != 0x90612b1:             # <<<<<<<<<<<<<<
- *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x90612b1 = (clear_rectangles, count_since_last_refresh, logger, obstacle_points, walls, x_max, x_min, y_max, y_min))" % __pyx_checksum)
- */
-  }
-
-  /* "(tree fragment)":7
- *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x90612b1 = (clear_rectangles, count_since_last_refresh, logger, obstacle_points, walls, x_max, x_min, y_max, y_min))" % __pyx_checksum)
- *     __pyx_result = WallMap.__new__(__pyx_type)             # <<<<<<<<<<<<<<
- *     if __pyx_state is not None:
- *         __pyx_unpickle_WallMap__set_state(<WallMap> __pyx_result, __pyx_state)
- */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_13WallMapCython_WallMap), __pyx_n_s_new); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 7, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_4);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-    }
-  }
-  __pyx_t_3 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_4, __pyx_v___pyx_type) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v___pyx_type);
-  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 7, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_v___pyx_result = __pyx_t_3;
-  __pyx_t_3 = 0;
-
-  /* "(tree fragment)":8
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x90612b1 = (clear_rectangles, count_since_last_refresh, logger, obstacle_points, walls, x_max, x_min, y_max, y_min))" % __pyx_checksum)
- *     __pyx_result = WallMap.__new__(__pyx_type)
- *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
- *         __pyx_unpickle_WallMap__set_state(<WallMap> __pyx_result, __pyx_state)
- *     return __pyx_result
- */
-  __pyx_t_1 = (__pyx_v___pyx_state != Py_None);
-  __pyx_t_6 = (__pyx_t_1 != 0);
-  if (__pyx_t_6) {
-
-    /* "(tree fragment)":9
- *     __pyx_result = WallMap.__new__(__pyx_type)
- *     if __pyx_state is not None:
- *         __pyx_unpickle_WallMap__set_state(<WallMap> __pyx_result, __pyx_state)             # <<<<<<<<<<<<<<
- *     return __pyx_result
- * cdef __pyx_unpickle_WallMap__set_state(WallMap __pyx_result, tuple __pyx_state):
- */
-    if (!(likely(PyTuple_CheckExact(__pyx_v___pyx_state))||((__pyx_v___pyx_state) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v___pyx_state)->tp_name), 0))) __PYX_ERR(1, 9, __pyx_L1_error)
-    __pyx_t_3 = __pyx_f_13WallMapCython___pyx_unpickle_WallMap__set_state(((struct __pyx_obj_13WallMapCython_WallMap *)__pyx_v___pyx_result), ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 9, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-    /* "(tree fragment)":8
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x90612b1 = (clear_rectangles, count_since_last_refresh, logger, obstacle_points, walls, x_max, x_min, y_max, y_min))" % __pyx_checksum)
- *     __pyx_result = WallMap.__new__(__pyx_type)
- *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
- *         __pyx_unpickle_WallMap__set_state(<WallMap> __pyx_result, __pyx_state)
- *     return __pyx_result
- */
-  }
-
-  /* "(tree fragment)":10
- *     if __pyx_state is not None:
- *         __pyx_unpickle_WallMap__set_state(<WallMap> __pyx_result, __pyx_state)
- *     return __pyx_result             # <<<<<<<<<<<<<<
- * cdef __pyx_unpickle_WallMap__set_state(WallMap __pyx_result, tuple __pyx_state):
- *     __pyx_result.clear_rectangles = __pyx_state[0]; __pyx_result.count_since_last_refresh = __pyx_state[1]; __pyx_result.logger = __pyx_state[2]; __pyx_result.obstacle_points = __pyx_state[3]; __pyx_result.walls = __pyx_state[4]; __pyx_result.x_max = __pyx_state[5]; __pyx_result.x_min = __pyx_state[6]; __pyx_result.y_max = __pyx_state[7]; __pyx_result.y_min = __pyx_state[8]
- */
-  __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_v___pyx_result);
-  __pyx_r = __pyx_v___pyx_result;
-  goto __pyx_L0;
-
-  /* "(tree fragment)":1
- * def __pyx_unpickle_WallMap(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
- *     cdef object __pyx_PickleError
- *     cdef object __pyx_result
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("WallMapCython.__pyx_unpickle_WallMap", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v___pyx_PickleError);
-  __Pyx_XDECREF(__pyx_v___pyx_result);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "(tree fragment)":11
- *         __pyx_unpickle_WallMap__set_state(<WallMap> __pyx_result, __pyx_state)
- *     return __pyx_result
- * cdef __pyx_unpickle_WallMap__set_state(WallMap __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result.clear_rectangles = __pyx_state[0]; __pyx_result.count_since_last_refresh = __pyx_state[1]; __pyx_result.logger = __pyx_state[2]; __pyx_result.obstacle_points = __pyx_state[3]; __pyx_result.walls = __pyx_state[4]; __pyx_result.x_max = __pyx_state[5]; __pyx_result.x_min = __pyx_state[6]; __pyx_result.y_max = __pyx_state[7]; __pyx_result.y_min = __pyx_state[8]
- *     if len(__pyx_state) > 9 and hasattr(__pyx_result, '__dict__'):
- */
-
-static PyObject *__pyx_f_13WallMapCython___pyx_unpickle_WallMap__set_state(struct __pyx_obj_13WallMapCython_WallMap *__pyx_v___pyx_result, PyObject *__pyx_v___pyx_state) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_t_2;
-  int __pyx_t_3;
-  Py_ssize_t __pyx_t_4;
-  int __pyx_t_5;
-  int __pyx_t_6;
-  PyObject *__pyx_t_7 = NULL;
-  PyObject *__pyx_t_8 = NULL;
-  PyObject *__pyx_t_9 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__pyx_unpickle_WallMap__set_state", 0);
-
-  /* "(tree fragment)":12
- *     return __pyx_result
- * cdef __pyx_unpickle_WallMap__set_state(WallMap __pyx_result, tuple __pyx_state):
- *     __pyx_result.clear_rectangles = __pyx_state[0]; __pyx_result.count_since_last_refresh = __pyx_state[1]; __pyx_result.logger = __pyx_state[2]; __pyx_result.obstacle_points = __pyx_state[3]; __pyx_result.walls = __pyx_state[4]; __pyx_result.x_max = __pyx_state[5]; __pyx_result.x_min = __pyx_state[6]; __pyx_result.y_max = __pyx_state[7]; __pyx_result.y_min = __pyx_state[8]             # <<<<<<<<<<<<<<
- *     if len(__pyx_state) > 9 and hasattr(__pyx_result, '__dict__'):
- *         __pyx_result.__dict__.update(__pyx_state[9])
- */
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PySet_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "set", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v___pyx_result->clear_rectangles);
-  __Pyx_DECREF(__pyx_v___pyx_result->clear_rectangles);
-  __pyx_v___pyx_result->clear_rectangles = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v___pyx_result->count_since_last_refresh = __pyx_t_2;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v___pyx_result->logger);
-  __Pyx_DECREF(__pyx_v___pyx_result->logger);
-  __pyx_v___pyx_result->logger = __pyx_t_1;
-  __pyx_t_1 = 0;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PySet_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "set", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v___pyx_result->obstacle_points);
-  __Pyx_DECREF(__pyx_v___pyx_result->obstacle_points);
-  __pyx_v___pyx_result->obstacle_points = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 4, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PySet_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "set", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v___pyx_result->walls);
-  __Pyx_DECREF(__pyx_v___pyx_result->walls);
-  __pyx_v___pyx_result->walls = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v___pyx_result->x_max = __pyx_t_2;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v___pyx_result->x_min = __pyx_t_2;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v___pyx_result->y_max = __pyx_t_2;
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 8, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v___pyx_result->y_min = __pyx_t_2;
-
-  /* "(tree fragment)":13
- * cdef __pyx_unpickle_WallMap__set_state(WallMap __pyx_result, tuple __pyx_state):
- *     __pyx_result.clear_rectangles = __pyx_state[0]; __pyx_result.count_since_last_refresh = __pyx_state[1]; __pyx_result.logger = __pyx_state[2]; __pyx_result.obstacle_points = __pyx_state[3]; __pyx_result.walls = __pyx_state[4]; __pyx_result.x_max = __pyx_state[5]; __pyx_result.x_min = __pyx_state[6]; __pyx_result.y_max = __pyx_state[7]; __pyx_result.y_min = __pyx_state[8]
- *     if len(__pyx_state) > 9 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
- *         __pyx_result.__dict__.update(__pyx_state[9])
- */
-  if (unlikely(__pyx_v___pyx_state == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 13, __pyx_L1_error)
-  }
-  __pyx_t_4 = PyTuple_GET_SIZE(__pyx_v___pyx_state); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(1, 13, __pyx_L1_error)
-  __pyx_t_5 = ((__pyx_t_4 > 9) != 0);
-  if (__pyx_t_5) {
-  } else {
-    __pyx_t_3 = __pyx_t_5;
-    goto __pyx_L4_bool_binop_done;
-  }
-  __pyx_t_5 = __Pyx_HasAttr(((PyObject *)__pyx_v___pyx_result), __pyx_n_s_dict); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(1, 13, __pyx_L1_error)
-  __pyx_t_6 = (__pyx_t_5 != 0);
-  __pyx_t_3 = __pyx_t_6;
-  __pyx_L4_bool_binop_done:;
-  if (__pyx_t_3) {
-
-    /* "(tree fragment)":14
- *     __pyx_result.clear_rectangles = __pyx_state[0]; __pyx_result.count_since_last_refresh = __pyx_state[1]; __pyx_result.logger = __pyx_state[2]; __pyx_result.obstacle_points = __pyx_state[3]; __pyx_result.walls = __pyx_state[4]; __pyx_result.x_max = __pyx_state[5]; __pyx_result.x_min = __pyx_state[6]; __pyx_result.y_max = __pyx_state[7]; __pyx_result.y_min = __pyx_state[8]
- *     if len(__pyx_state) > 9 and hasattr(__pyx_result, '__dict__'):
- *         __pyx_result.__dict__.update(__pyx_state[9])             # <<<<<<<<<<<<<<
- */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v___pyx_result), __pyx_n_s_dict); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 14, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_update); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 14, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(__pyx_v___pyx_state == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 14, __pyx_L1_error)
-    }
-    __pyx_t_7 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 9, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 14, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_9 = NULL;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
-      __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_8);
-      if (likely(__pyx_t_9)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
-        __Pyx_INCREF(__pyx_t_9);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_8, function);
-      }
-    }
-    __pyx_t_1 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_9, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_7);
-    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 14, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-    /* "(tree fragment)":13
- * cdef __pyx_unpickle_WallMap__set_state(WallMap __pyx_result, tuple __pyx_state):
- *     __pyx_result.clear_rectangles = __pyx_state[0]; __pyx_result.count_since_last_refresh = __pyx_state[1]; __pyx_result.logger = __pyx_state[2]; __pyx_result.obstacle_points = __pyx_state[3]; __pyx_result.walls = __pyx_state[4]; __pyx_result.x_max = __pyx_state[5]; __pyx_result.x_min = __pyx_state[6]; __pyx_result.y_max = __pyx_state[7]; __pyx_result.y_min = __pyx_state[8]
- *     if len(__pyx_state) > 9 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
- *         __pyx_result.__dict__.update(__pyx_state[9])
- */
-  }
-
-  /* "(tree fragment)":11
- *         __pyx_unpickle_WallMap__set_state(<WallMap> __pyx_result, __pyx_state)
- *     return __pyx_result
- * cdef __pyx_unpickle_WallMap__set_state(WallMap __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result.clear_rectangles = __pyx_state[0]; __pyx_result.count_since_last_refresh = __pyx_state[1]; __pyx_result.logger = __pyx_state[2]; __pyx_result.obstacle_points = __pyx_state[3]; __pyx_result.walls = __pyx_state[4]; __pyx_result.x_max = __pyx_state[5]; __pyx_result.x_min = __pyx_state[6]; __pyx_result.y_max = __pyx_state[7]; __pyx_result.y_min = __pyx_state[8]
- *     if len(__pyx_state) > 9 and hasattr(__pyx_result, '__dict__'):
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("WallMapCython.__pyx_unpickle_WallMap__set_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-static struct __pyx_vtabstruct_13WallMapCython_Wall __pyx_vtable_13WallMapCython_Wall;
-
 static PyObject *__pyx_tp_new_13WallMapCython_Wall(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   struct __pyx_obj_13WallMapCython_Wall *p;
   PyObject *o;
@@ -7966,7 +7074,6 @@ static PyObject *__pyx_tp_new_13WallMapCython_Wall(PyTypeObject *t, CYTHON_UNUSE
   }
   if (unlikely(!o)) return 0;
   p = ((struct __pyx_obj_13WallMapCython_Wall *)o);
-  p->__pyx_vtab = __pyx_vtabptr_13WallMapCython_Wall;
   p->points = ((PyObject*)Py_None); Py_INCREF(Py_None);
   p->logger = Py_None; Py_INCREF(Py_None);
   return o;
@@ -8106,153 +7213,6 @@ static PyTypeObject __pyx_type_13WallMapCython_Wall = {
   0, /*tp_print*/
   #endif
 };
-static struct __pyx_vtabstruct_13WallMapCython_WallMap __pyx_vtable_13WallMapCython_WallMap;
-
-static PyObject *__pyx_tp_new_13WallMapCython_WallMap(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
-  struct __pyx_obj_13WallMapCython_WallMap *p;
-  PyObject *o;
-  if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
-    o = (*t->tp_alloc)(t, 0);
-  } else {
-    o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
-  }
-  if (unlikely(!o)) return 0;
-  p = ((struct __pyx_obj_13WallMapCython_WallMap *)o);
-  p->__pyx_vtab = __pyx_vtabptr_13WallMapCython_WallMap;
-  p->logger = Py_None; Py_INCREF(Py_None);
-  p->obstacle_points = ((PyObject*)Py_None); Py_INCREF(Py_None);
-  p->clear_rectangles = ((PyObject*)Py_None); Py_INCREF(Py_None);
-  p->walls = ((PyObject*)Py_None); Py_INCREF(Py_None);
-  return o;
-}
-
-static void __pyx_tp_dealloc_13WallMapCython_WallMap(PyObject *o) {
-  struct __pyx_obj_13WallMapCython_WallMap *p = (struct __pyx_obj_13WallMapCython_WallMap *)o;
-  #if CYTHON_USE_TP_FINALIZE
-  if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && !_PyGC_FINALIZED(o)) {
-    if (PyObject_CallFinalizerFromDealloc(o)) return;
-  }
-  #endif
-  PyObject_GC_UnTrack(o);
-  Py_CLEAR(p->logger);
-  Py_CLEAR(p->obstacle_points);
-  Py_CLEAR(p->clear_rectangles);
-  Py_CLEAR(p->walls);
-  (*Py_TYPE(o)->tp_free)(o);
-}
-
-static int __pyx_tp_traverse_13WallMapCython_WallMap(PyObject *o, visitproc v, void *a) {
-  int e;
-  struct __pyx_obj_13WallMapCython_WallMap *p = (struct __pyx_obj_13WallMapCython_WallMap *)o;
-  if (p->logger) {
-    e = (*v)(p->logger, a); if (e) return e;
-  }
-  if (p->obstacle_points) {
-    e = (*v)(p->obstacle_points, a); if (e) return e;
-  }
-  if (p->clear_rectangles) {
-    e = (*v)(p->clear_rectangles, a); if (e) return e;
-  }
-  if (p->walls) {
-    e = (*v)(p->walls, a); if (e) return e;
-  }
-  return 0;
-}
-
-static int __pyx_tp_clear_13WallMapCython_WallMap(PyObject *o) {
-  PyObject* tmp;
-  struct __pyx_obj_13WallMapCython_WallMap *p = (struct __pyx_obj_13WallMapCython_WallMap *)o;
-  tmp = ((PyObject*)p->logger);
-  p->logger = Py_None; Py_INCREF(Py_None);
-  Py_XDECREF(tmp);
-  tmp = ((PyObject*)p->obstacle_points);
-  p->obstacle_points = ((PyObject*)Py_None); Py_INCREF(Py_None);
-  Py_XDECREF(tmp);
-  tmp = ((PyObject*)p->clear_rectangles);
-  p->clear_rectangles = ((PyObject*)Py_None); Py_INCREF(Py_None);
-  Py_XDECREF(tmp);
-  tmp = ((PyObject*)p->walls);
-  p->walls = ((PyObject*)Py_None); Py_INCREF(Py_None);
-  Py_XDECREF(tmp);
-  return 0;
-}
-
-static PyMethodDef __pyx_methods_13WallMapCython_WallMap[] = {
-  {"add_obstacle_point", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_13WallMapCython_7WallMap_3add_obstacle_point, METH_VARARGS|METH_KEYWORDS, 0},
-  {"draw_map", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_13WallMapCython_7WallMap_5draw_map, METH_VARARGS|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_13WallMapCython_7WallMap_7__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_13WallMapCython_7WallMap_9__setstate_cython__, METH_O, 0},
-  {0, 0, 0, 0}
-};
-
-static PyTypeObject __pyx_type_13WallMapCython_WallMap = {
-  PyVarObject_HEAD_INIT(0, 0)
-  "WallMapCython.WallMap", /*tp_name*/
-  sizeof(struct __pyx_obj_13WallMapCython_WallMap), /*tp_basicsize*/
-  0, /*tp_itemsize*/
-  __pyx_tp_dealloc_13WallMapCython_WallMap, /*tp_dealloc*/
-  #if PY_VERSION_HEX < 0x030800b4
-  0, /*tp_print*/
-  #endif
-  #if PY_VERSION_HEX >= 0x030800b4
-  0, /*tp_vectorcall_offset*/
-  #endif
-  0, /*tp_getattr*/
-  0, /*tp_setattr*/
-  #if PY_MAJOR_VERSION < 3
-  0, /*tp_compare*/
-  #endif
-  #if PY_MAJOR_VERSION >= 3
-  0, /*tp_as_async*/
-  #endif
-  0, /*tp_repr*/
-  0, /*tp_as_number*/
-  0, /*tp_as_sequence*/
-  0, /*tp_as_mapping*/
-  0, /*tp_hash*/
-  0, /*tp_call*/
-  0, /*tp_str*/
-  0, /*tp_getattro*/
-  0, /*tp_setattro*/
-  0, /*tp_as_buffer*/
-  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  0, /*tp_doc*/
-  __pyx_tp_traverse_13WallMapCython_WallMap, /*tp_traverse*/
-  __pyx_tp_clear_13WallMapCython_WallMap, /*tp_clear*/
-  0, /*tp_richcompare*/
-  0, /*tp_weaklistoffset*/
-  0, /*tp_iter*/
-  0, /*tp_iternext*/
-  __pyx_methods_13WallMapCython_WallMap, /*tp_methods*/
-  0, /*tp_members*/
-  0, /*tp_getset*/
-  0, /*tp_base*/
-  0, /*tp_dict*/
-  0, /*tp_descr_get*/
-  0, /*tp_descr_set*/
-  0, /*tp_dictoffset*/
-  __pyx_pw_13WallMapCython_7WallMap_1__init__, /*tp_init*/
-  0, /*tp_alloc*/
-  __pyx_tp_new_13WallMapCython_WallMap, /*tp_new*/
-  0, /*tp_free*/
-  0, /*tp_is_gc*/
-  0, /*tp_bases*/
-  0, /*tp_mro*/
-  0, /*tp_cache*/
-  0, /*tp_subclasses*/
-  0, /*tp_weaklist*/
-  0, /*tp_del*/
-  0, /*tp_version_tag*/
-  #if PY_VERSION_HEX >= 0x030400a1
-  0, /*tp_finalize*/
-  #endif
-  #if PY_VERSION_HEX >= 0x030800b1
-  0, /*tp_vectorcall*/
-  #endif
-  #if PY_VERSION_HEX >= 0x030800b4 && PY_VERSION_HEX < 0x03090000
-  0, /*tp_print*/
-  #endif
-};
 
 static PyMethodDef __pyx_methods[] = {
   {0, 0, 0, 0}
@@ -8272,7 +7232,7 @@ static PyModuleDef_Slot __pyx_moduledef_slots[] = {
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
     "WallMapCython",
-    __pyx_k_DON_T_EDIT_HERE, /* m_doc */
+    0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
   #else
@@ -8302,7 +7262,6 @@ static struct PyModuleDef __pyx_moduledef = {
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_BLUE, __pyx_k_BLUE, sizeof(__pyx_k_BLUE), 0, 0, 1, 1},
   {&__pyx_n_s_Colors, __pyx_k_Colors, sizeof(__pyx_k_Colors), 0, 0, 1, 1},
-  {&__pyx_kp_s_Incompatible_checksums_s_vs_0x90, __pyx_k_Incompatible_checksums_s_vs_0x90, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x90), 0, 0, 1, 0},
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0xfd, __pyx_k_Incompatible_checksums_s_vs_0xfd, sizeof(__pyx_k_Incompatible_checksums_s_vs_0xfd), 0, 0, 1, 0},
   {&__pyx_n_s_LineString, __pyx_k_LineString, sizeof(__pyx_k_LineString), 0, 0, 1, 1},
   {&__pyx_n_s_Logger, __pyx_k_Logger, sizeof(__pyx_k_Logger), 0, 0, 1, 1},
@@ -8314,33 +7273,52 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_Wall, __pyx_k_Wall, sizeof(__pyx_k_Wall), 0, 0, 1, 1},
   {&__pyx_n_s_WallMap, __pyx_k_WallMap, sizeof(__pyx_k_WallMap), 0, 0, 1, 1},
   {&__pyx_n_s_WallMapCython, __pyx_k_WallMapCython, sizeof(__pyx_k_WallMapCython), 0, 0, 1, 1},
+  {&__pyx_n_s_WallMap___init, __pyx_k_WallMap___init, sizeof(__pyx_k_WallMap___init), 0, 0, 1, 1},
+  {&__pyx_n_s_WallMap_add_obstacle_point, __pyx_k_WallMap_add_obstacle_point, sizeof(__pyx_k_WallMap_add_obstacle_point), 0, 0, 1, 1},
+  {&__pyx_n_s_WallMap_draw_map, __pyx_k_WallMap_draw_map, sizeof(__pyx_k_WallMap_draw_map), 0, 0, 1, 1},
+  {&__pyx_n_s_WallMap_refresh_walls, __pyx_k_WallMap_refresh_walls, sizeof(__pyx_k_WallMap_refresh_walls), 0, 0, 1, 1},
+  {&__pyx_n_s_add, __pyx_k_add, sizeof(__pyx_k_add), 0, 0, 1, 1},
   {&__pyx_n_s_add_obstacle_point, __pyx_k_add_obstacle_point, sizeof(__pyx_k_add_obstacle_point), 0, 0, 1, 1},
   {&__pyx_n_s_add_point, __pyx_k_add_point, sizeof(__pyx_k_add_point), 0, 0, 1, 1},
+  {&__pyx_n_s_adding_wall, __pyx_k_adding_wall, sizeof(__pyx_k_adding_wall), 0, 0, 1, 1},
   {&__pyx_n_s_calculate_distance, __pyx_k_calculate_distance, sizeof(__pyx_k_calculate_distance), 0, 0, 1, 1},
   {&__pyx_n_s_center, __pyx_k_center, sizeof(__pyx_k_center), 0, 0, 1, 1},
   {&__pyx_n_s_circle, __pyx_k_circle, sizeof(__pyx_k_circle), 0, 0, 1, 1},
   {&__pyx_n_s_clear_rectangles, __pyx_k_clear_rectangles, sizeof(__pyx_k_clear_rectangles), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_color, __pyx_k_color, sizeof(__pyx_k_color), 0, 0, 1, 1},
+  {&__pyx_n_s_count_since_last_refresh, __pyx_k_count_since_last_refresh, sizeof(__pyx_k_count_since_last_refresh), 0, 0, 1, 1},
   {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
+  {&__pyx_n_s_discard, __pyx_k_discard, sizeof(__pyx_k_discard), 0, 0, 1, 1},
   {&__pyx_n_s_distance, __pyx_k_distance, sizeof(__pyx_k_distance), 0, 0, 1, 1},
+  {&__pyx_n_s_doc, __pyx_k_doc, sizeof(__pyx_k_doc), 0, 0, 1, 1},
   {&__pyx_n_s_draw, __pyx_k_draw, sizeof(__pyx_k_draw), 0, 0, 1, 1},
   {&__pyx_n_s_draw_map, __pyx_k_draw_map, sizeof(__pyx_k_draw_map), 0, 0, 1, 1},
   {&__pyx_n_s_draw_wall, __pyx_k_draw_wall, sizeof(__pyx_k_draw_wall), 0, 0, 1, 1},
   {&__pyx_n_s_end_pos, __pyx_k_end_pos, sizeof(__pyx_k_end_pos), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
+  {&__pyx_kp_s_ground_station_WallMapCython_pyx, __pyx_k_ground_station_WallMapCython_pyx, sizeof(__pyx_k_ground_station_WallMapCython_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_inf, __pyx_k_inf, sizeof(__pyx_k_inf), 0, 0, 1, 1},
+  {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
   {&__pyx_n_s_line, __pyx_k_line, sizeof(__pyx_k_line), 0, 0, 1, 1},
+  {&__pyx_n_s_logger, __pyx_k_logger, sizeof(__pyx_k_logger), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
+  {&__pyx_n_s_map_height, __pyx_k_map_height, sizeof(__pyx_k_map_height), 0, 0, 1, 1},
+  {&__pyx_n_s_map_ratio, __pyx_k_map_ratio, sizeof(__pyx_k_map_ratio), 0, 0, 1, 1},
+  {&__pyx_n_s_map_width, __pyx_k_map_width, sizeof(__pyx_k_map_width), 0, 0, 1, 1},
   {&__pyx_n_s_math, __pyx_k_math, sizeof(__pyx_k_math), 0, 0, 1, 1},
+  {&__pyx_n_s_metaclass, __pyx_k_metaclass, sizeof(__pyx_k_metaclass), 0, 0, 1, 1},
+  {&__pyx_n_s_module, __pyx_k_module, sizeof(__pyx_k_module), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
   {&__pyx_n_s_obstacle_points, __pyx_k_obstacle_points, sizeof(__pyx_k_obstacle_points), 0, 0, 1, 1},
   {&__pyx_n_s_os, __pyx_k_os, sizeof(__pyx_k_os), 0, 0, 1, 1},
   {&__pyx_n_s_pickle, __pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 0, 1, 1},
+  {&__pyx_n_s_point, __pyx_k_point, sizeof(__pyx_k_point), 0, 0, 1, 1},
   {&__pyx_n_s_points, __pyx_k_points, sizeof(__pyx_k_points), 0, 0, 1, 1},
   {&__pyx_n_s_polygon, __pyx_k_polygon, sizeof(__pyx_k_polygon), 0, 0, 1, 1},
+  {&__pyx_n_s_prepare, __pyx_k_prepare, sizeof(__pyx_k_prepare), 0, 0, 1, 1},
   {&__pyx_n_s_pygame, __pyx_k_pygame, sizeof(__pyx_k_pygame), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_PickleError, __pyx_k_pyx_PickleError, sizeof(__pyx_k_pyx_PickleError), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_checksum, __pyx_k_pyx_checksum, sizeof(__pyx_k_pyx_checksum), 0, 0, 1, 1},
@@ -8348,13 +7326,18 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_pyx_state, __pyx_k_pyx_state, sizeof(__pyx_k_pyx_state), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_type, __pyx_k_pyx_type, sizeof(__pyx_k_pyx_type), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_unpickle_Wall, __pyx_k_pyx_unpickle_Wall, sizeof(__pyx_k_pyx_unpickle_Wall), 0, 0, 1, 1},
-  {&__pyx_n_s_pyx_unpickle_WallMap, __pyx_k_pyx_unpickle_WallMap, sizeof(__pyx_k_pyx_unpickle_WallMap), 0, 0, 1, 1},
-  {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
+  {&__pyx_n_s_qualname, __pyx_k_qualname, sizeof(__pyx_k_qualname), 0, 0, 1, 1},
   {&__pyx_n_s_radius, __pyx_k_radius, sizeof(__pyx_k_radius), 0, 0, 1, 1},
+  {&__pyx_n_s_ratio_difference, __pyx_k_ratio_difference, sizeof(__pyx_k_ratio_difference), 0, 0, 1, 1},
   {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
+  {&__pyx_n_s_refresh_walls, __pyx_k_refresh_walls, sizeof(__pyx_k_refresh_walls), 0, 0, 1, 1},
   {&__pyx_n_s_screen, __pyx_k_screen, sizeof(__pyx_k_screen), 0, 0, 1, 1},
+  {&__pyx_n_s_screen_height, __pyx_k_screen_height, sizeof(__pyx_k_screen_height), 0, 0, 1, 1},
+  {&__pyx_n_s_screen_ratio, __pyx_k_screen_ratio, sizeof(__pyx_k_screen_ratio), 0, 0, 1, 1},
+  {&__pyx_n_s_screen_width, __pyx_k_screen_width, sizeof(__pyx_k_screen_width), 0, 0, 1, 1},
+  {&__pyx_n_s_self, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_shapely_geometry, __pyx_k_shapely_geometry, sizeof(__pyx_k_shapely_geometry), 0, 0, 1, 1},
@@ -8362,7 +7345,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_stringsource, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
   {&__pyx_n_s_surface, __pyx_k_surface, sizeof(__pyx_k_surface), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
+  {&__pyx_n_s_total_points, __pyx_k_total_points, sizeof(__pyx_k_total_points), 0, 0, 1, 1},
   {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
+  {&__pyx_n_s_wall, __pyx_k_wall, sizeof(__pyx_k_wall), 0, 0, 1, 1},
+  {&__pyx_n_s_walls, __pyx_k_walls, sizeof(__pyx_k_walls), 0, 0, 1, 1},
+  {&__pyx_n_s_walls_to_add, __pyx_k_walls_to_add, sizeof(__pyx_k_walls_to_add), 0, 0, 1, 1},
   {&__pyx_n_s_width, __pyx_k_width, sizeof(__pyx_k_width), 0, 0, 1, 1},
   {&__pyx_n_s_x, __pyx_k_x, sizeof(__pyx_k_x), 0, 0, 1, 1},
   {&__pyx_n_s_x_add_num, __pyx_k_x_add_num, sizeof(__pyx_k_x_add_num), 0, 0, 1, 1},
@@ -8386,19 +7373,63 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
+  /* "WallMapCython.pyx":116
+ * 
+ * class WallMap:
+ *   def __init__(self, obstacle_points=set(), clear_rectangles=set()):             # <<<<<<<<<<<<<<
+ *     self.logger = Logger("WallMap")
+ *     self.obstacle_points = obstacle_points
+ */
+  __pyx_tuple_ = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_obstacle_points, __pyx_n_s_clear_rectangles); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple_);
+  __Pyx_GIVEREF(__pyx_tuple_);
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ground_station_WallMapCython_pyx, __pyx_n_s_init, 116, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 116, __pyx_L1_error)
+
+  /* "WallMapCython.pyx":127
+ *     self.count_since_last_refresh = 0
+ * 
+ *   def add_obstacle_point(self, x, y):             # <<<<<<<<<<<<<<
+ *     self.obstacle_points.add((x, y))
+ *     if x > self.x_max - 10:
+ */
+  __pyx_tuple__3 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_x, __pyx_n_s_y); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__3);
+  __Pyx_GIVEREF(__pyx_tuple__3);
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ground_station_WallMapCython_pyx, __pyx_n_s_add_obstacle_point, 127, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 127, __pyx_L1_error)
+
+  /* "WallMapCython.pyx":145
+ *       self.count_since_last_refresh += 1
+ * 
+ *   def refresh_walls(self):             # <<<<<<<<<<<<<<
+ *     cdef (int, int) point
+ *     cdef object wall, adding_wall
+ */
+  __pyx_tuple__5 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_point, __pyx_n_s_wall, __pyx_n_s_adding_wall, __pyx_n_s_walls_to_add, __pyx_n_s_distance, __pyx_n_s_total_points); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__5);
+  __Pyx_GIVEREF(__pyx_tuple__5);
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(1, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ground_station_WallMapCython_pyx, __pyx_n_s_refresh_walls, 145, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 145, __pyx_L1_error)
+
+  /* "WallMapCython.pyx":169
+ *     self.obstacle_points = set()
+ * 
+ *   def draw_map(self, screen, int x_min, int x_max, int y_min, int y_max):             # <<<<<<<<<<<<<<
+ *     #parameters are given as actual dimensions, not from 0 to 1
+ *     screen_width = x_max - x_min
+ */
+  __pyx_tuple__7 = PyTuple_Pack(23, __pyx_n_s_self, __pyx_n_s_screen, __pyx_n_s_x_min, __pyx_n_s_x_max, __pyx_n_s_y_min, __pyx_n_s_y_max, __pyx_n_s_screen_width, __pyx_n_s_screen_height, __pyx_n_s_map_width, __pyx_n_s_map_height, __pyx_n_s_x_add_num, __pyx_n_s_x_scale, __pyx_n_s_y_add_num, __pyx_n_s_y_scale, __pyx_n_s_x_screen_adjustment, __pyx_n_s_y_screen_adjustment, __pyx_n_s_map_ratio, __pyx_n_s_screen_ratio, __pyx_n_s_ratio_difference, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_wall, __pyx_n_s_center); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__7);
+  __Pyx_GIVEREF(__pyx_tuple__7);
+  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(6, 0, 23, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ground_station_WallMapCython_pyx, __pyx_n_s_draw_map, 169, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 169, __pyx_L1_error)
+
   /* "(tree fragment)":1
  * def __pyx_unpickle_Wall(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_tuple__3 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__3);
-  __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Wall, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __pyx_tuple__5 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__5);
-  __Pyx_GIVEREF(__pyx_tuple__5);
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_WallMap, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__9 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__9);
+  __Pyx_GIVEREF(__pyx_tuple__9);
+  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Wall, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -8408,11 +7439,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 
 static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_2 = PyInt_FromLong(2); if (unlikely(!__pyx_int_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_3 = PyInt_FromLong(3); if (unlikely(!__pyx_int_3)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_5 = PyInt_FromLong(5); if (unlikely(!__pyx_int_5)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_int_151392945 = PyInt_FromLong(151392945L); if (unlikely(!__pyx_int_151392945)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_10 = PyInt_FromLong(10); if (unlikely(!__pyx_int_10)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_265378860 = PyInt_FromLong(265378860L); if (unlikely(!__pyx_int_265378860)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_neg_1 = PyInt_FromLong(-1); if (unlikely(!__pyx_int_neg_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_neg_10 = PyInt_FromLong(-10); if (unlikely(!__pyx_int_neg_10)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -8457,36 +7492,16 @@ static int __Pyx_modinit_type_init_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  __pyx_vtabptr_13WallMapCython_Wall = &__pyx_vtable_13WallMapCython_Wall;
-  __pyx_vtable_13WallMapCython_Wall.add_point = (PyObject *(*)(struct __pyx_obj_13WallMapCython_Wall *, __pyx_ctuple_int__and_int, int __pyx_skip_dispatch))__pyx_f_13WallMapCython_4Wall_add_point;
-  __pyx_vtable_13WallMapCython_Wall.calculate_distance = (PyObject *(*)(struct __pyx_obj_13WallMapCython_Wall *, __pyx_ctuple_int__and_int, int __pyx_skip_dispatch))__pyx_f_13WallMapCython_4Wall_calculate_distance;
-  __pyx_vtable_13WallMapCython_Wall.draw_wall = (PyObject *(*)(struct __pyx_obj_13WallMapCython_Wall *, PyObject *, PyObject *, PyObject *, PyObject *, PyObject *, PyObject *, PyObject *, PyObject *, int __pyx_skip_dispatch))__pyx_f_13WallMapCython_4Wall_draw_wall;
-  if (PyType_Ready(&__pyx_type_13WallMapCython_Wall) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_13WallMapCython_Wall) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_13WallMapCython_Wall.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_13WallMapCython_Wall.tp_dictoffset && __pyx_type_13WallMapCython_Wall.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_13WallMapCython_Wall.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_13WallMapCython_Wall.tp_dict, __pyx_vtabptr_13WallMapCython_Wall) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Wall, (PyObject *)&__pyx_type_13WallMapCython_Wall) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_13WallMapCython_Wall) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Wall, (PyObject *)&__pyx_type_13WallMapCython_Wall) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_13WallMapCython_Wall) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
   __pyx_ptype_13WallMapCython_Wall = &__pyx_type_13WallMapCython_Wall;
-  __pyx_vtabptr_13WallMapCython_WallMap = &__pyx_vtable_13WallMapCython_WallMap;
-  __pyx_vtable_13WallMapCython_WallMap.add_obstacle_point = (PyObject *(*)(struct __pyx_obj_13WallMapCython_WallMap *, int, int, int __pyx_skip_dispatch))__pyx_f_13WallMapCython_7WallMap_add_obstacle_point;
-  __pyx_vtable_13WallMapCython_WallMap.refresh_walls = (PyObject *(*)(struct __pyx_obj_13WallMapCython_WallMap *))__pyx_f_13WallMapCython_7WallMap_refresh_walls;
-  __pyx_vtable_13WallMapCython_WallMap.draw_map = (PyObject *(*)(struct __pyx_obj_13WallMapCython_WallMap *, PyObject *, int, int, int, int, int __pyx_skip_dispatch))__pyx_f_13WallMapCython_7WallMap_draw_map;
-  if (PyType_Ready(&__pyx_type_13WallMapCython_WallMap) < 0) __PYX_ERR(0, 123, __pyx_L1_error)
-  #if PY_VERSION_HEX < 0x030800B1
-  __pyx_type_13WallMapCython_WallMap.tp_print = 0;
-  #endif
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_13WallMapCython_WallMap.tp_dictoffset && __pyx_type_13WallMapCython_WallMap.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_13WallMapCython_WallMap.tp_getattro = __Pyx_PyObject_GenericGetAttr;
-  }
-  if (__Pyx_SetVtable(__pyx_type_13WallMapCython_WallMap.tp_dict, __pyx_vtabptr_13WallMapCython_WallMap) < 0) __PYX_ERR(0, 123, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_WallMap, (PyObject *)&__pyx_type_13WallMapCython_WallMap) < 0) __PYX_ERR(0, 123, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_13WallMapCython_WallMap) < 0) __PYX_ERR(0, 123, __pyx_L1_error)
-  __pyx_ptype_13WallMapCython_WallMap = &__pyx_type_13WallMapCython_WallMap;
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -8614,6 +7629,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_WallMapCython(PyObject *__pyx_pyin
 {
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -8675,7 +7691,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("WallMapCython", __pyx_methods, __pyx_k_DON_T_EDIT_HERE, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("WallMapCython", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -8721,14 +7737,12 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "WallMapCython.pyx":4
- * DON'T EDIT HERE
- * """
+  /* "WallMapCython.pyx":1
  * from Resources import Logger, Colors             # <<<<<<<<<<<<<<
  * import pygame
  * # import matplotlib.pyplot as plt
  */
-  __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_s_Logger);
   __Pyx_GIVEREF(__pyx_n_s_Logger);
@@ -8736,63 +7750,62 @@ if (!__Pyx_RefNanny) {
   __Pyx_INCREF(__pyx_n_s_Colors);
   __Pyx_GIVEREF(__pyx_n_s_Colors);
   PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_Colors);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_Resources, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_Resources, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Logger); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Logger); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Logger, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Logger, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Colors); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Colors); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Colors, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Colors, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "WallMapCython.pyx":5
- * """
+  /* "WallMapCython.pyx":2
  * from Resources import Logger, Colors
  * import pygame             # <<<<<<<<<<<<<<
  * # import matplotlib.pyplot as plt
  * import os
  */
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_pygame, 0, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_pygame, 0, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pygame, __pyx_t_2) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pygame, __pyx_t_2) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "WallMapCython.pyx":7
+  /* "WallMapCython.pyx":4
  * import pygame
  * # import matplotlib.pyplot as plt
  * import os             # <<<<<<<<<<<<<<
  * # from sklearn.model_selection import train_test_split
  * # from sklearn.linear_model import LinearRegression
  */
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_os, 0, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_os, 0, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_os, __pyx_t_2) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_os, __pyx_t_2) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "WallMapCython.pyx":10
+  /* "WallMapCython.pyx":7
  * # from sklearn.model_selection import train_test_split
  * # from sklearn.linear_model import LinearRegression
  * import math             # <<<<<<<<<<<<<<
  * from shapely.geometry import Polygon, Point, LineString
  * 
  */
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_math, 0, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_math, 0, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_math, __pyx_t_2) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_math, __pyx_t_2) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "WallMapCython.pyx":11
+  /* "WallMapCython.pyx":8
  * # from sklearn.linear_model import LinearRegression
  * import math
  * from shapely.geometry import Polygon, Point, LineString             # <<<<<<<<<<<<<<
  * 
  * cdef class Wall:
  */
-  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_Polygon);
   __Pyx_GIVEREF(__pyx_n_s_Polygon);
@@ -8803,40 +7816,105 @@ if (!__Pyx_RefNanny) {
   __Pyx_INCREF(__pyx_n_s_LineString);
   __Pyx_GIVEREF(__pyx_n_s_LineString);
   PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_LineString);
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_shapely_geometry, __pyx_t_2, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_shapely_geometry, __pyx_t_2, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_Polygon); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_Polygon); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Polygon, __pyx_t_2) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Polygon, __pyx_t_2) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_Point); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_Point); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Point, __pyx_t_2) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Point, __pyx_t_2) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_LineString); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_LineString); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_LineString, __pyx_t_2) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_LineString, __pyx_t_2) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "WallMapCython.pyx":127
- *   cdef set obstacle_points, clear_rectangles, walls
- *   cdef int x_min, x_max, y_min, y_max, count_since_last_refresh
+  /* "WallMapCython.pyx":115
+ *         pygame.draw.line(screen, Colors.RED, start_pos=(x1, y1), end_pos=(x2, y2), width=2)
+ * 
+ * class WallMap:             # <<<<<<<<<<<<<<
+ *   def __init__(self, obstacle_points=set(), clear_rectangles=set()):
+ *     self.logger = Logger("WallMap")
+ */
+  __pyx_t_1 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_WallMap, __pyx_n_s_WallMap, (PyObject *) NULL, __pyx_n_s_WallMapCython, (PyObject *) NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+
+  /* "WallMapCython.pyx":116
+ * 
+ * class WallMap:
  *   def __init__(self, obstacle_points=set(), clear_rectangles=set()):             # <<<<<<<<<<<<<<
  *     self.logger = Logger("WallMap")
  *     self.obstacle_points = obstacle_points
  */
-  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_k_ = __pyx_t_1;
-  __Pyx_GIVEREF(__pyx_t_1);
-  __pyx_t_1 = 0;
-  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_k__2 = __pyx_t_1;
-  __Pyx_GIVEREF(__pyx_t_1);
-  __pyx_t_1 = 0;
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13WallMapCython_7WallMap_1__init__, 0, __pyx_n_s_WallMap___init, NULL, __pyx_n_s_WallMapCython, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_2, sizeof(__pyx_defaults), 2)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_3 = PySet_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_CyFunction_Defaults(__pyx_defaults, __pyx_t_2)->__pyx_arg_obstacle_points = __pyx_t_3;
+  __Pyx_GIVEREF(__pyx_t_3);
+  __pyx_t_3 = 0;
+  __pyx_t_3 = PySet_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_CyFunction_Defaults(__pyx_defaults, __pyx_t_2)->__pyx_arg_clear_rectangles = __pyx_t_3;
+  __Pyx_GIVEREF(__pyx_t_3);
+  __pyx_t_3 = 0;
+  __Pyx_CyFunction_SetDefaultsGetter(__pyx_t_2, __pyx_pf_13WallMapCython_2__defaults__);
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_init, __pyx_t_2) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "WallMapCython.pyx":127
+ *     self.count_since_last_refresh = 0
+ * 
+ *   def add_obstacle_point(self, x, y):             # <<<<<<<<<<<<<<
+ *     self.obstacle_points.add((x, y))
+ *     if x > self.x_max - 10:
+ */
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13WallMapCython_7WallMap_3add_obstacle_point, 0, __pyx_n_s_WallMap_add_obstacle_point, NULL, __pyx_n_s_WallMapCython, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_add_obstacle_point, __pyx_t_2) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "WallMapCython.pyx":145
+ *       self.count_since_last_refresh += 1
+ * 
+ *   def refresh_walls(self):             # <<<<<<<<<<<<<<
+ *     cdef (int, int) point
+ *     cdef object wall, adding_wall
+ */
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13WallMapCython_7WallMap_5refresh_walls, 0, __pyx_n_s_WallMap_refresh_walls, NULL, __pyx_n_s_WallMapCython, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_refresh_walls, __pyx_t_2) < 0) __PYX_ERR(0, 145, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "WallMapCython.pyx":169
+ *     self.obstacle_points = set()
+ * 
+ *   def draw_map(self, screen, int x_min, int x_max, int y_min, int y_max):             # <<<<<<<<<<<<<<
+ *     #parameters are given as actual dimensions, not from 0 to 1
+ *     screen_width = x_max - x_min
+ */
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13WallMapCython_7WallMap_7draw_map, 0, __pyx_n_s_WallMap_draw_map, NULL, __pyx_n_s_WallMapCython, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_draw_map, __pyx_t_2) < 0) __PYX_ERR(0, 169, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "WallMapCython.pyx":115
+ *         pygame.draw.line(screen, Colors.RED, start_pos=(x1, y1), end_pos=(x2, y2), width=2)
+ * 
+ * class WallMap:             # <<<<<<<<<<<<<<
+ *   def __init__(self, obstacle_points=set(), clear_rectangles=set()):
+ *     self.logger = Logger("WallMap")
+ */
+  __pyx_t_2 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_WallMap, __pyx_empty_tuple, __pyx_t_1, NULL, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_WallMap, __pyx_t_2) < 0) __PYX_ERR(0, 115, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Wall(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
@@ -8848,22 +7926,10 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_Wall, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "(tree fragment)":11
- *         __pyx_unpickle_Wall__set_state(<Wall> __pyx_result, __pyx_state)
- *     return __pyx_result
- * cdef __pyx_unpickle_Wall__set_state(Wall __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result.logger = __pyx_state[0]; __pyx_result.points = __pyx_state[1]
- *     if len(__pyx_state) > 2 and hasattr(__pyx_result, '__dict__'):
- */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_13WallMapCython_3__pyx_unpickle_WallMap, NULL, __pyx_n_s_WallMapCython); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_WallMap, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
   /* "WallMapCython.pyx":1
- * """             # <<<<<<<<<<<<<<
- * DON'T EDIT HERE
- * """
+ * from Resources import Logger, Colors             # <<<<<<<<<<<<<<
+ * import pygame
+ * # import matplotlib.pyplot as plt
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -8876,6 +7942,7 @@ if (!__Pyx_RefNanny) {
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
   if (__pyx_m) {
     if (__pyx_d) {
       __Pyx_AddTraceback("init WallMapCython", __pyx_clineno, __pyx_lineno, __pyx_filename);
@@ -9482,6 +8549,66 @@ static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i, 
     return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
 }
 
+/* RaiseTooManyValuesToUnpack */
+static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected) {
+    PyErr_Format(PyExc_ValueError,
+                 "too many values to unpack (expected %" CYTHON_FORMAT_SSIZE_T "d)", expected);
+}
+
+/* RaiseNeedMoreValuesToUnpack */
+static CYTHON_INLINE void __Pyx_RaiseNeedMoreValuesError(Py_ssize_t index) {
+    PyErr_Format(PyExc_ValueError,
+                 "need more than %" CYTHON_FORMAT_SSIZE_T "d value%.1s to unpack",
+                 index, (index == 1) ? "" : "s");
+}
+
+/* IterFinish */
+static CYTHON_INLINE int __Pyx_IterFinish(void) {
+#if CYTHON_FAST_THREAD_STATE
+    PyThreadState *tstate = __Pyx_PyThreadState_Current;
+    PyObject* exc_type = tstate->curexc_type;
+    if (unlikely(exc_type)) {
+        if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) {
+            PyObject *exc_value, *exc_tb;
+            exc_value = tstate->curexc_value;
+            exc_tb = tstate->curexc_traceback;
+            tstate->curexc_type = 0;
+            tstate->curexc_value = 0;
+            tstate->curexc_traceback = 0;
+            Py_DECREF(exc_type);
+            Py_XDECREF(exc_value);
+            Py_XDECREF(exc_tb);
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+    return 0;
+#else
+    if (unlikely(PyErr_Occurred())) {
+        if (likely(PyErr_ExceptionMatches(PyExc_StopIteration))) {
+            PyErr_Clear();
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+    return 0;
+#endif
+}
+
+/* UnpackItemEndCheck */
+static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected) {
+    if (unlikely(retval)) {
+        Py_DECREF(retval);
+        __Pyx_RaiseTooManyValuesError(expected);
+        return -1;
+    } else {
+        return __Pyx_IterFinish();
+    }
+    return 0;
+}
+
 /* PyErrExceptionMatches */
 #if CYTHON_FAST_THREAD_STATE
 static int __Pyx_PyErr_ExceptionMatchesTuple(PyObject *exc_type, PyObject *tuple) {
@@ -9559,155 +8686,289 @@ static CYTHON_INLINE PyObject *__Pyx_GetAttr3(PyObject *o, PyObject *n, PyObject
     return (likely(r)) ? r : __Pyx_GetAttr3Default(d);
 }
 
-/* IterFinish */
-static CYTHON_INLINE int __Pyx_IterFinish(void) {
-#if CYTHON_FAST_THREAD_STATE
-    PyThreadState *tstate = __Pyx_PyThreadState_Current;
-    PyObject* exc_type = tstate->curexc_type;
-    if (unlikely(exc_type)) {
-        if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) {
-            PyObject *exc_value, *exc_tb;
-            exc_value = tstate->curexc_value;
-            exc_tb = tstate->curexc_traceback;
-            tstate->curexc_type = 0;
-            tstate->curexc_value = 0;
-            tstate->curexc_traceback = 0;
-            Py_DECREF(exc_type);
-            Py_XDECREF(exc_value);
-            Py_XDECREF(exc_tb);
-            return 0;
-        } else {
-            return -1;
-        }
-    }
-    return 0;
-#else
-    if (unlikely(PyErr_Occurred())) {
-        if (likely(PyErr_ExceptionMatches(PyExc_StopIteration))) {
-            PyErr_Clear();
-            return 0;
-        } else {
-            return -1;
-        }
-    }
-    return 0;
-#endif
-}
-
-/* set_iter */
-static CYTHON_INLINE PyObject* __Pyx_set_iterator(PyObject* iterable, int is_set,
-                                                  Py_ssize_t* p_orig_length, int* p_source_is_set) {
-#if CYTHON_COMPILING_IN_CPYTHON
-    is_set = is_set || likely(PySet_CheckExact(iterable) || PyFrozenSet_CheckExact(iterable));
-    *p_source_is_set = is_set;
-    if (likely(is_set)) {
-        *p_orig_length = PySet_Size(iterable);
-        Py_INCREF(iterable);
-        return iterable;
-    }
-#else
-    (void)is_set;
-    *p_source_is_set = 0;
-#endif
-    *p_orig_length = 0;
-    return PyObject_GetIter(iterable);
-}
-static CYTHON_INLINE int __Pyx_set_iter_next(
-        PyObject* iter_obj, Py_ssize_t orig_length,
-        Py_ssize_t* ppos, PyObject **value,
-        int source_is_set) {
-    if (!CYTHON_COMPILING_IN_CPYTHON || unlikely(!source_is_set)) {
-        *value = PyIter_Next(iter_obj);
-        if (unlikely(!*value)) {
-            return __Pyx_IterFinish();
-        }
-        (void)orig_length;
-        (void)ppos;
-        return 1;
-    }
-#if CYTHON_COMPILING_IN_CPYTHON
-    if (unlikely(PySet_GET_SIZE(iter_obj) != orig_length)) {
-        PyErr_SetString(
-            PyExc_RuntimeError,
-            "set changed size during iteration");
-        return -1;
-    }
-    {
-        Py_hash_t hash;
-        int ret = _PySet_NextEntry(iter_obj, ppos, value, &hash);
-        assert (ret != -1);
-        if (likely(ret)) {
-            Py_INCREF(*value);
-            return 1;
-        }
-    }
-#endif
-    return 0;
-}
-
-/* pyfrozenset_new */
-static CYTHON_INLINE PyObject* __Pyx_PyFrozenSet_New(PyObject* it) {
-    if (it) {
-        PyObject* result;
-#if CYTHON_COMPILING_IN_PYPY
-        PyObject* args;
-        args = PyTuple_Pack(1, it);
-        if (unlikely(!args))
-            return NULL;
-        result = PyObject_Call((PyObject*)&PyFrozenSet_Type, args, NULL);
-        Py_DECREF(args);
-        return result;
-#else
-        if (PyFrozenSet_CheckExact(it)) {
-            Py_INCREF(it);
-            return it;
-        }
-        result = PyFrozenSet_New(it);
-        if (unlikely(!result))
-            return NULL;
-        if (likely(PySet_GET_SIZE(result)))
-            return result;
-        Py_DECREF(result);
-#endif
-    }
+/* PyObjectSetAttrStr */
 #if CYTHON_USE_TYPE_SLOTS
-    return PyFrozenSet_Type.tp_new(&PyFrozenSet_Type, __pyx_empty_tuple, NULL);
-#else
-    return PyObject_Call((PyObject*)&PyFrozenSet_Type, __pyx_empty_tuple, NULL);
+static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value) {
+    PyTypeObject* tp = Py_TYPE(obj);
+    if (likely(tp->tp_setattro))
+        return tp->tp_setattro(obj, attr_name, value);
+#if PY_MAJOR_VERSION < 3
+    if (likely(tp->tp_setattr))
+        return tp->tp_setattr(obj, PyString_AS_STRING(attr_name), value);
 #endif
+    return PyObject_SetAttr(obj, attr_name, value);
 }
+#endif
 
-/* py_set_discard_unhashable */
-static int __Pyx_PySet_DiscardUnhashable(PyObject *set, PyObject *key) {
-    PyObject *tmpkey;
-    int rv;
-    if (likely(!PySet_Check(key) || !PyErr_ExceptionMatches(PyExc_TypeError)))
-        return -1;
-    PyErr_Clear();
-    tmpkey = __Pyx_PyFrozenSet_New(key);
-    if (tmpkey == NULL)
-        return -1;
-    rv = PySet_Discard(set, tmpkey);
-    Py_DECREF(tmpkey);
-    return rv;
-}
-
-/* py_set_discard */
-static CYTHON_INLINE int __Pyx_PySet_Discard(PyObject *set, PyObject *key) {
-    int found = PySet_Discard(set, key);
-    if (unlikely(found < 0)) {
-        found = __Pyx_PySet_DiscardUnhashable(set, key);
+/* PyIntBinop */
+#if !CYTHON_COMPILING_IN_PYPY
+static PyObject* __Pyx_PyInt_SubtractObjC(PyObject *op1, PyObject *op2, CYTHON_UNUSED long intval, int inplace, int zerodivision_check) {
+    (void)inplace;
+    (void)zerodivision_check;
+    #if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_CheckExact(op1))) {
+        const long b = intval;
+        long x;
+        long a = PyInt_AS_LONG(op1);
+            x = (long)((unsigned long)a - b);
+            if (likely((x^a) >= 0 || (x^~b) >= 0))
+                return PyInt_FromLong(x);
+            return PyLong_Type.tp_as_number->nb_subtract(op1, op2);
     }
-    return found;
+    #endif
+    #if CYTHON_USE_PYLONG_INTERNALS
+    if (likely(PyLong_CheckExact(op1))) {
+        const long b = intval;
+        long a, x;
+#ifdef HAVE_LONG_LONG
+        const PY_LONG_LONG llb = intval;
+        PY_LONG_LONG lla, llx;
+#endif
+        const digit* digits = ((PyLongObject*)op1)->ob_digit;
+        const Py_ssize_t size = Py_SIZE(op1);
+        if (likely(__Pyx_sst_abs(size) <= 1)) {
+            a = likely(size) ? digits[0] : 0;
+            if (size == -1) a = -a;
+        } else {
+            switch (size) {
+                case -2:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        a = -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 2:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        a = (long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case -3:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        a = -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 3:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        a = (long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case -4:
+                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                        a = -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 4:
+                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                        a = (long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                default: return PyLong_Type.tp_as_number->nb_subtract(op1, op2);
+            }
+        }
+                x = a - b;
+            return PyLong_FromLong(x);
+#ifdef HAVE_LONG_LONG
+        long_long:
+                llx = lla - llb;
+            return PyLong_FromLongLong(llx);
+#endif
+        
+        
+    }
+    #endif
+    if (PyFloat_CheckExact(op1)) {
+        const long b = intval;
+        double a = PyFloat_AS_DOUBLE(op1);
+            double result;
+            PyFPE_START_PROTECT("subtract", return NULL)
+            result = ((double)a) - (double)b;
+            PyFPE_END_PROTECT(result)
+            return PyFloat_FromDouble(result);
+    }
+    return (inplace ? PyNumber_InPlaceSubtract : PyNumber_Subtract)(op1, op2);
 }
+#endif
 
-/* None */
-static CYTHON_INLINE int __Pyx_div_int(int a, int b) {
-    int q = a / b;
-    int r = a - q*b;
-    q -= ((r != 0) & ((r ^ b) < 0));
-    return q;
+/* PyIntBinop */
+#if !CYTHON_COMPILING_IN_PYPY
+static PyObject* __Pyx_PyInt_AddObjC(PyObject *op1, PyObject *op2, CYTHON_UNUSED long intval, int inplace, int zerodivision_check) {
+    (void)inplace;
+    (void)zerodivision_check;
+    #if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_CheckExact(op1))) {
+        const long b = intval;
+        long x;
+        long a = PyInt_AS_LONG(op1);
+            x = (long)((unsigned long)a + b);
+            if (likely((x^a) >= 0 || (x^b) >= 0))
+                return PyInt_FromLong(x);
+            return PyLong_Type.tp_as_number->nb_add(op1, op2);
+    }
+    #endif
+    #if CYTHON_USE_PYLONG_INTERNALS
+    if (likely(PyLong_CheckExact(op1))) {
+        const long b = intval;
+        long a, x;
+#ifdef HAVE_LONG_LONG
+        const PY_LONG_LONG llb = intval;
+        PY_LONG_LONG lla, llx;
+#endif
+        const digit* digits = ((PyLongObject*)op1)->ob_digit;
+        const Py_ssize_t size = Py_SIZE(op1);
+        if (likely(__Pyx_sst_abs(size) <= 1)) {
+            a = likely(size) ? digits[0] : 0;
+            if (size == -1) a = -a;
+        } else {
+            switch (size) {
+                case -2:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        a = -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 2:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        a = (long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case -3:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        a = -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 3:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        a = (long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case -4:
+                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                        a = -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 4:
+                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                        a = (long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                default: return PyLong_Type.tp_as_number->nb_add(op1, op2);
+            }
+        }
+                x = a + b;
+            return PyLong_FromLong(x);
+#ifdef HAVE_LONG_LONG
+        long_long:
+                llx = lla + llb;
+            return PyLong_FromLongLong(llx);
+#endif
+        
+        
+    }
+    #endif
+    if (PyFloat_CheckExact(op1)) {
+        const long b = intval;
+        double a = PyFloat_AS_DOUBLE(op1);
+            double result;
+            PyFPE_START_PROTECT("add", return NULL)
+            result = ((double)a) + (double)b;
+            PyFPE_END_PROTECT(result)
+            return PyFloat_FromDouble(result);
+    }
+    return (inplace ? PyNumber_InPlaceAdd : PyNumber_Add)(op1, op2);
 }
+#endif
+
+/* PyObjectCallNoArg */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
+#if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(func)) {
+        return __Pyx_PyFunction_FastCall(func, NULL, 0);
+    }
+#endif
+#ifdef __Pyx_CyFunction_USED
+    if (likely(PyCFunction_Check(func) || __Pyx_CyFunction_Check(func)))
+#else
+    if (likely(PyCFunction_Check(func)))
+#endif
+    {
+        if (likely(PyCFunction_GET_FLAGS(func) & METH_NOARGS)) {
+            return __Pyx_PyObject_CallMethO(func, NULL);
+        }
+    }
+    return __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL);
+}
+#endif
 
 /* Import */
 static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level) {
@@ -10015,24 +9276,6 @@ static PyObject* __Pyx_PyObject_GenericGetAttr(PyObject* obj, PyObject* attr_nam
 }
 #endif
 
-/* SetVTable */
-static int __Pyx_SetVtable(PyObject *dict, void *vtable) {
-#if PY_VERSION_HEX >= 0x02070000
-    PyObject *ob = PyCapsule_New(vtable, 0, 0);
-#else
-    PyObject *ob = PyCObject_FromVoidPtr(vtable, 0);
-#endif
-    if (!ob)
-        goto bad;
-    if (PyDict_SetItem(dict, __pyx_n_s_pyx_vtable, ob) < 0)
-        goto bad;
-    Py_DECREF(ob);
-    return 0;
-bad:
-    Py_XDECREF(ob);
-    return -1;
-}
-
 /* PyObjectGetAttrStrNoError */
 static void __Pyx_PyObject_GetAttrStr_ClearAttributeError(void) {
     __Pyx_PyThreadState_declare
@@ -10137,6 +9380,768 @@ __PYX_GOOD:
     Py_XDECREF(setstate);
     Py_XDECREF(setstate_cython);
     return ret;
+}
+
+/* FetchCommonType */
+static PyTypeObject* __Pyx_FetchCommonType(PyTypeObject* type) {
+    PyObject* fake_module;
+    PyTypeObject* cached_type = NULL;
+    fake_module = PyImport_AddModule((char*) "_cython_" CYTHON_ABI);
+    if (!fake_module) return NULL;
+    Py_INCREF(fake_module);
+    cached_type = (PyTypeObject*) PyObject_GetAttrString(fake_module, type->tp_name);
+    if (cached_type) {
+        if (!PyType_Check((PyObject*)cached_type)) {
+            PyErr_Format(PyExc_TypeError,
+                "Shared Cython type %.200s is not a type object",
+                type->tp_name);
+            goto bad;
+        }
+        if (cached_type->tp_basicsize != type->tp_basicsize) {
+            PyErr_Format(PyExc_TypeError,
+                "Shared Cython type %.200s has the wrong size, try recompiling",
+                type->tp_name);
+            goto bad;
+        }
+    } else {
+        if (!PyErr_ExceptionMatches(PyExc_AttributeError)) goto bad;
+        PyErr_Clear();
+        if (PyType_Ready(type) < 0) goto bad;
+        if (PyObject_SetAttrString(fake_module, type->tp_name, (PyObject*) type) < 0)
+            goto bad;
+        Py_INCREF(type);
+        cached_type = type;
+    }
+done:
+    Py_DECREF(fake_module);
+    return cached_type;
+bad:
+    Py_XDECREF(cached_type);
+    cached_type = NULL;
+    goto done;
+}
+
+/* CythonFunctionShared */
+#include <structmember.h>
+static PyObject *
+__Pyx_CyFunction_get_doc(__pyx_CyFunctionObject *op, CYTHON_UNUSED void *closure)
+{
+    if (unlikely(op->func_doc == NULL)) {
+        if (op->func.m_ml->ml_doc) {
+#if PY_MAJOR_VERSION >= 3
+            op->func_doc = PyUnicode_FromString(op->func.m_ml->ml_doc);
+#else
+            op->func_doc = PyString_FromString(op->func.m_ml->ml_doc);
+#endif
+            if (unlikely(op->func_doc == NULL))
+                return NULL;
+        } else {
+            Py_INCREF(Py_None);
+            return Py_None;
+        }
+    }
+    Py_INCREF(op->func_doc);
+    return op->func_doc;
+}
+static int
+__Pyx_CyFunction_set_doc(__pyx_CyFunctionObject *op, PyObject *value, CYTHON_UNUSED void *context)
+{
+    PyObject *tmp = op->func_doc;
+    if (value == NULL) {
+        value = Py_None;
+    }
+    Py_INCREF(value);
+    op->func_doc = value;
+    Py_XDECREF(tmp);
+    return 0;
+}
+static PyObject *
+__Pyx_CyFunction_get_name(__pyx_CyFunctionObject *op, CYTHON_UNUSED void *context)
+{
+    if (unlikely(op->func_name == NULL)) {
+#if PY_MAJOR_VERSION >= 3
+        op->func_name = PyUnicode_InternFromString(op->func.m_ml->ml_name);
+#else
+        op->func_name = PyString_InternFromString(op->func.m_ml->ml_name);
+#endif
+        if (unlikely(op->func_name == NULL))
+            return NULL;
+    }
+    Py_INCREF(op->func_name);
+    return op->func_name;
+}
+static int
+__Pyx_CyFunction_set_name(__pyx_CyFunctionObject *op, PyObject *value, CYTHON_UNUSED void *context)
+{
+    PyObject *tmp;
+#if PY_MAJOR_VERSION >= 3
+    if (unlikely(value == NULL || !PyUnicode_Check(value)))
+#else
+    if (unlikely(value == NULL || !PyString_Check(value)))
+#endif
+    {
+        PyErr_SetString(PyExc_TypeError,
+                        "__name__ must be set to a string object");
+        return -1;
+    }
+    tmp = op->func_name;
+    Py_INCREF(value);
+    op->func_name = value;
+    Py_XDECREF(tmp);
+    return 0;
+}
+static PyObject *
+__Pyx_CyFunction_get_qualname(__pyx_CyFunctionObject *op, CYTHON_UNUSED void *context)
+{
+    Py_INCREF(op->func_qualname);
+    return op->func_qualname;
+}
+static int
+__Pyx_CyFunction_set_qualname(__pyx_CyFunctionObject *op, PyObject *value, CYTHON_UNUSED void *context)
+{
+    PyObject *tmp;
+#if PY_MAJOR_VERSION >= 3
+    if (unlikely(value == NULL || !PyUnicode_Check(value)))
+#else
+    if (unlikely(value == NULL || !PyString_Check(value)))
+#endif
+    {
+        PyErr_SetString(PyExc_TypeError,
+                        "__qualname__ must be set to a string object");
+        return -1;
+    }
+    tmp = op->func_qualname;
+    Py_INCREF(value);
+    op->func_qualname = value;
+    Py_XDECREF(tmp);
+    return 0;
+}
+static PyObject *
+__Pyx_CyFunction_get_self(__pyx_CyFunctionObject *m, CYTHON_UNUSED void *closure)
+{
+    PyObject *self;
+    self = m->func_closure;
+    if (self == NULL)
+        self = Py_None;
+    Py_INCREF(self);
+    return self;
+}
+static PyObject *
+__Pyx_CyFunction_get_dict(__pyx_CyFunctionObject *op, CYTHON_UNUSED void *context)
+{
+    if (unlikely(op->func_dict == NULL)) {
+        op->func_dict = PyDict_New();
+        if (unlikely(op->func_dict == NULL))
+            return NULL;
+    }
+    Py_INCREF(op->func_dict);
+    return op->func_dict;
+}
+static int
+__Pyx_CyFunction_set_dict(__pyx_CyFunctionObject *op, PyObject *value, CYTHON_UNUSED void *context)
+{
+    PyObject *tmp;
+    if (unlikely(value == NULL)) {
+        PyErr_SetString(PyExc_TypeError,
+               "function's dictionary may not be deleted");
+        return -1;
+    }
+    if (unlikely(!PyDict_Check(value))) {
+        PyErr_SetString(PyExc_TypeError,
+               "setting function's dictionary to a non-dict");
+        return -1;
+    }
+    tmp = op->func_dict;
+    Py_INCREF(value);
+    op->func_dict = value;
+    Py_XDECREF(tmp);
+    return 0;
+}
+static PyObject *
+__Pyx_CyFunction_get_globals(__pyx_CyFunctionObject *op, CYTHON_UNUSED void *context)
+{
+    Py_INCREF(op->func_globals);
+    return op->func_globals;
+}
+static PyObject *
+__Pyx_CyFunction_get_closure(CYTHON_UNUSED __pyx_CyFunctionObject *op, CYTHON_UNUSED void *context)
+{
+    Py_INCREF(Py_None);
+    return Py_None;
+}
+static PyObject *
+__Pyx_CyFunction_get_code(__pyx_CyFunctionObject *op, CYTHON_UNUSED void *context)
+{
+    PyObject* result = (op->func_code) ? op->func_code : Py_None;
+    Py_INCREF(result);
+    return result;
+}
+static int
+__Pyx_CyFunction_init_defaults(__pyx_CyFunctionObject *op) {
+    int result = 0;
+    PyObject *res = op->defaults_getter((PyObject *) op);
+    if (unlikely(!res))
+        return -1;
+    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    op->defaults_tuple = PyTuple_GET_ITEM(res, 0);
+    Py_INCREF(op->defaults_tuple);
+    op->defaults_kwdict = PyTuple_GET_ITEM(res, 1);
+    Py_INCREF(op->defaults_kwdict);
+    #else
+    op->defaults_tuple = PySequence_ITEM(res, 0);
+    if (unlikely(!op->defaults_tuple)) result = -1;
+    else {
+        op->defaults_kwdict = PySequence_ITEM(res, 1);
+        if (unlikely(!op->defaults_kwdict)) result = -1;
+    }
+    #endif
+    Py_DECREF(res);
+    return result;
+}
+static int
+__Pyx_CyFunction_set_defaults(__pyx_CyFunctionObject *op, PyObject* value, CYTHON_UNUSED void *context) {
+    PyObject* tmp;
+    if (!value) {
+        value = Py_None;
+    } else if (value != Py_None && !PyTuple_Check(value)) {
+        PyErr_SetString(PyExc_TypeError,
+                        "__defaults__ must be set to a tuple object");
+        return -1;
+    }
+    Py_INCREF(value);
+    tmp = op->defaults_tuple;
+    op->defaults_tuple = value;
+    Py_XDECREF(tmp);
+    return 0;
+}
+static PyObject *
+__Pyx_CyFunction_get_defaults(__pyx_CyFunctionObject *op, CYTHON_UNUSED void *context) {
+    PyObject* result = op->defaults_tuple;
+    if (unlikely(!result)) {
+        if (op->defaults_getter) {
+            if (__Pyx_CyFunction_init_defaults(op) < 0) return NULL;
+            result = op->defaults_tuple;
+        } else {
+            result = Py_None;
+        }
+    }
+    Py_INCREF(result);
+    return result;
+}
+static int
+__Pyx_CyFunction_set_kwdefaults(__pyx_CyFunctionObject *op, PyObject* value, CYTHON_UNUSED void *context) {
+    PyObject* tmp;
+    if (!value) {
+        value = Py_None;
+    } else if (value != Py_None && !PyDict_Check(value)) {
+        PyErr_SetString(PyExc_TypeError,
+                        "__kwdefaults__ must be set to a dict object");
+        return -1;
+    }
+    Py_INCREF(value);
+    tmp = op->defaults_kwdict;
+    op->defaults_kwdict = value;
+    Py_XDECREF(tmp);
+    return 0;
+}
+static PyObject *
+__Pyx_CyFunction_get_kwdefaults(__pyx_CyFunctionObject *op, CYTHON_UNUSED void *context) {
+    PyObject* result = op->defaults_kwdict;
+    if (unlikely(!result)) {
+        if (op->defaults_getter) {
+            if (__Pyx_CyFunction_init_defaults(op) < 0) return NULL;
+            result = op->defaults_kwdict;
+        } else {
+            result = Py_None;
+        }
+    }
+    Py_INCREF(result);
+    return result;
+}
+static int
+__Pyx_CyFunction_set_annotations(__pyx_CyFunctionObject *op, PyObject* value, CYTHON_UNUSED void *context) {
+    PyObject* tmp;
+    if (!value || value == Py_None) {
+        value = NULL;
+    } else if (!PyDict_Check(value)) {
+        PyErr_SetString(PyExc_TypeError,
+                        "__annotations__ must be set to a dict object");
+        return -1;
+    }
+    Py_XINCREF(value);
+    tmp = op->func_annotations;
+    op->func_annotations = value;
+    Py_XDECREF(tmp);
+    return 0;
+}
+static PyObject *
+__Pyx_CyFunction_get_annotations(__pyx_CyFunctionObject *op, CYTHON_UNUSED void *context) {
+    PyObject* result = op->func_annotations;
+    if (unlikely(!result)) {
+        result = PyDict_New();
+        if (unlikely(!result)) return NULL;
+        op->func_annotations = result;
+    }
+    Py_INCREF(result);
+    return result;
+}
+static PyGetSetDef __pyx_CyFunction_getsets[] = {
+    {(char *) "func_doc", (getter)__Pyx_CyFunction_get_doc, (setter)__Pyx_CyFunction_set_doc, 0, 0},
+    {(char *) "__doc__",  (getter)__Pyx_CyFunction_get_doc, (setter)__Pyx_CyFunction_set_doc, 0, 0},
+    {(char *) "func_name", (getter)__Pyx_CyFunction_get_name, (setter)__Pyx_CyFunction_set_name, 0, 0},
+    {(char *) "__name__", (getter)__Pyx_CyFunction_get_name, (setter)__Pyx_CyFunction_set_name, 0, 0},
+    {(char *) "__qualname__", (getter)__Pyx_CyFunction_get_qualname, (setter)__Pyx_CyFunction_set_qualname, 0, 0},
+    {(char *) "__self__", (getter)__Pyx_CyFunction_get_self, 0, 0, 0},
+    {(char *) "func_dict", (getter)__Pyx_CyFunction_get_dict, (setter)__Pyx_CyFunction_set_dict, 0, 0},
+    {(char *) "__dict__", (getter)__Pyx_CyFunction_get_dict, (setter)__Pyx_CyFunction_set_dict, 0, 0},
+    {(char *) "func_globals", (getter)__Pyx_CyFunction_get_globals, 0, 0, 0},
+    {(char *) "__globals__", (getter)__Pyx_CyFunction_get_globals, 0, 0, 0},
+    {(char *) "func_closure", (getter)__Pyx_CyFunction_get_closure, 0, 0, 0},
+    {(char *) "__closure__", (getter)__Pyx_CyFunction_get_closure, 0, 0, 0},
+    {(char *) "func_code", (getter)__Pyx_CyFunction_get_code, 0, 0, 0},
+    {(char *) "__code__", (getter)__Pyx_CyFunction_get_code, 0, 0, 0},
+    {(char *) "func_defaults", (getter)__Pyx_CyFunction_get_defaults, (setter)__Pyx_CyFunction_set_defaults, 0, 0},
+    {(char *) "__defaults__", (getter)__Pyx_CyFunction_get_defaults, (setter)__Pyx_CyFunction_set_defaults, 0, 0},
+    {(char *) "__kwdefaults__", (getter)__Pyx_CyFunction_get_kwdefaults, (setter)__Pyx_CyFunction_set_kwdefaults, 0, 0},
+    {(char *) "__annotations__", (getter)__Pyx_CyFunction_get_annotations, (setter)__Pyx_CyFunction_set_annotations, 0, 0},
+    {0, 0, 0, 0, 0}
+};
+static PyMemberDef __pyx_CyFunction_members[] = {
+    {(char *) "__module__", T_OBJECT, offsetof(PyCFunctionObject, m_module), PY_WRITE_RESTRICTED, 0},
+    {0, 0, 0,  0, 0}
+};
+static PyObject *
+__Pyx_CyFunction_reduce(__pyx_CyFunctionObject *m, CYTHON_UNUSED PyObject *args)
+{
+#if PY_MAJOR_VERSION >= 3
+    return PyUnicode_FromString(m->func.m_ml->ml_name);
+#else
+    return PyString_FromString(m->func.m_ml->ml_name);
+#endif
+}
+static PyMethodDef __pyx_CyFunction_methods[] = {
+    {"__reduce__", (PyCFunction)__Pyx_CyFunction_reduce, METH_VARARGS, 0},
+    {0, 0, 0, 0}
+};
+#if PY_VERSION_HEX < 0x030500A0
+#define __Pyx_CyFunction_weakreflist(cyfunc) ((cyfunc)->func_weakreflist)
+#else
+#define __Pyx_CyFunction_weakreflist(cyfunc) ((cyfunc)->func.m_weakreflist)
+#endif
+static PyObject *__Pyx_CyFunction_Init(__pyx_CyFunctionObject *op, PyMethodDef *ml, int flags, PyObject* qualname,
+                                       PyObject *closure, PyObject *module, PyObject* globals, PyObject* code) {
+    if (unlikely(op == NULL))
+        return NULL;
+    op->flags = flags;
+    __Pyx_CyFunction_weakreflist(op) = NULL;
+    op->func.m_ml = ml;
+    op->func.m_self = (PyObject *) op;
+    Py_XINCREF(closure);
+    op->func_closure = closure;
+    Py_XINCREF(module);
+    op->func.m_module = module;
+    op->func_dict = NULL;
+    op->func_name = NULL;
+    Py_INCREF(qualname);
+    op->func_qualname = qualname;
+    op->func_doc = NULL;
+    op->func_classobj = NULL;
+    op->func_globals = globals;
+    Py_INCREF(op->func_globals);
+    Py_XINCREF(code);
+    op->func_code = code;
+    op->defaults_pyobjects = 0;
+    op->defaults_size = 0;
+    op->defaults = NULL;
+    op->defaults_tuple = NULL;
+    op->defaults_kwdict = NULL;
+    op->defaults_getter = NULL;
+    op->func_annotations = NULL;
+    return (PyObject *) op;
+}
+static int
+__Pyx_CyFunction_clear(__pyx_CyFunctionObject *m)
+{
+    Py_CLEAR(m->func_closure);
+    Py_CLEAR(m->func.m_module);
+    Py_CLEAR(m->func_dict);
+    Py_CLEAR(m->func_name);
+    Py_CLEAR(m->func_qualname);
+    Py_CLEAR(m->func_doc);
+    Py_CLEAR(m->func_globals);
+    Py_CLEAR(m->func_code);
+    Py_CLEAR(m->func_classobj);
+    Py_CLEAR(m->defaults_tuple);
+    Py_CLEAR(m->defaults_kwdict);
+    Py_CLEAR(m->func_annotations);
+    if (m->defaults) {
+        PyObject **pydefaults = __Pyx_CyFunction_Defaults(PyObject *, m);
+        int i;
+        for (i = 0; i < m->defaults_pyobjects; i++)
+            Py_XDECREF(pydefaults[i]);
+        PyObject_Free(m->defaults);
+        m->defaults = NULL;
+    }
+    return 0;
+}
+static void __Pyx__CyFunction_dealloc(__pyx_CyFunctionObject *m)
+{
+    if (__Pyx_CyFunction_weakreflist(m) != NULL)
+        PyObject_ClearWeakRefs((PyObject *) m);
+    __Pyx_CyFunction_clear(m);
+    PyObject_GC_Del(m);
+}
+static void __Pyx_CyFunction_dealloc(__pyx_CyFunctionObject *m)
+{
+    PyObject_GC_UnTrack(m);
+    __Pyx__CyFunction_dealloc(m);
+}
+static int __Pyx_CyFunction_traverse(__pyx_CyFunctionObject *m, visitproc visit, void *arg)
+{
+    Py_VISIT(m->func_closure);
+    Py_VISIT(m->func.m_module);
+    Py_VISIT(m->func_dict);
+    Py_VISIT(m->func_name);
+    Py_VISIT(m->func_qualname);
+    Py_VISIT(m->func_doc);
+    Py_VISIT(m->func_globals);
+    Py_VISIT(m->func_code);
+    Py_VISIT(m->func_classobj);
+    Py_VISIT(m->defaults_tuple);
+    Py_VISIT(m->defaults_kwdict);
+    if (m->defaults) {
+        PyObject **pydefaults = __Pyx_CyFunction_Defaults(PyObject *, m);
+        int i;
+        for (i = 0; i < m->defaults_pyobjects; i++)
+            Py_VISIT(pydefaults[i]);
+    }
+    return 0;
+}
+static PyObject *__Pyx_CyFunction_descr_get(PyObject *func, PyObject *obj, PyObject *type)
+{
+#if PY_MAJOR_VERSION < 3
+    __pyx_CyFunctionObject *m = (__pyx_CyFunctionObject *) func;
+    if (m->flags & __Pyx_CYFUNCTION_STATICMETHOD) {
+        Py_INCREF(func);
+        return func;
+    }
+    if (m->flags & __Pyx_CYFUNCTION_CLASSMETHOD) {
+        if (type == NULL)
+            type = (PyObject *)(Py_TYPE(obj));
+        return __Pyx_PyMethod_New(func, type, (PyObject *)(Py_TYPE(type)));
+    }
+    if (obj == Py_None)
+        obj = NULL;
+#endif
+    return __Pyx_PyMethod_New(func, obj, type);
+}
+static PyObject*
+__Pyx_CyFunction_repr(__pyx_CyFunctionObject *op)
+{
+#if PY_MAJOR_VERSION >= 3
+    return PyUnicode_FromFormat("<cyfunction %U at %p>",
+                                op->func_qualname, (void *)op);
+#else
+    return PyString_FromFormat("<cyfunction %s at %p>",
+                               PyString_AsString(op->func_qualname), (void *)op);
+#endif
+}
+static PyObject * __Pyx_CyFunction_CallMethod(PyObject *func, PyObject *self, PyObject *arg, PyObject *kw) {
+    PyCFunctionObject* f = (PyCFunctionObject*)func;
+    PyCFunction meth = f->m_ml->ml_meth;
+    Py_ssize_t size;
+    switch (f->m_ml->ml_flags & (METH_VARARGS | METH_KEYWORDS | METH_NOARGS | METH_O)) {
+    case METH_VARARGS:
+        if (likely(kw == NULL || PyDict_Size(kw) == 0))
+            return (*meth)(self, arg);
+        break;
+    case METH_VARARGS | METH_KEYWORDS:
+        return (*(PyCFunctionWithKeywords)(void*)meth)(self, arg, kw);
+    case METH_NOARGS:
+        if (likely(kw == NULL || PyDict_Size(kw) == 0)) {
+            size = PyTuple_GET_SIZE(arg);
+            if (likely(size == 0))
+                return (*meth)(self, NULL);
+            PyErr_Format(PyExc_TypeError,
+                "%.200s() takes no arguments (%" CYTHON_FORMAT_SSIZE_T "d given)",
+                f->m_ml->ml_name, size);
+            return NULL;
+        }
+        break;
+    case METH_O:
+        if (likely(kw == NULL || PyDict_Size(kw) == 0)) {
+            size = PyTuple_GET_SIZE(arg);
+            if (likely(size == 1)) {
+                PyObject *result, *arg0;
+                #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+                arg0 = PyTuple_GET_ITEM(arg, 0);
+                #else
+                arg0 = PySequence_ITEM(arg, 0); if (unlikely(!arg0)) return NULL;
+                #endif
+                result = (*meth)(self, arg0);
+                #if !(CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS)
+                Py_DECREF(arg0);
+                #endif
+                return result;
+            }
+            PyErr_Format(PyExc_TypeError,
+                "%.200s() takes exactly one argument (%" CYTHON_FORMAT_SSIZE_T "d given)",
+                f->m_ml->ml_name, size);
+            return NULL;
+        }
+        break;
+    default:
+        PyErr_SetString(PyExc_SystemError, "Bad call flags in "
+                        "__Pyx_CyFunction_Call. METH_OLDARGS is no "
+                        "longer supported!");
+        return NULL;
+    }
+    PyErr_Format(PyExc_TypeError, "%.200s() takes no keyword arguments",
+                 f->m_ml->ml_name);
+    return NULL;
+}
+static CYTHON_INLINE PyObject *__Pyx_CyFunction_Call(PyObject *func, PyObject *arg, PyObject *kw) {
+    return __Pyx_CyFunction_CallMethod(func, ((PyCFunctionObject*)func)->m_self, arg, kw);
+}
+static PyObject *__Pyx_CyFunction_CallAsMethod(PyObject *func, PyObject *args, PyObject *kw) {
+    PyObject *result;
+    __pyx_CyFunctionObject *cyfunc = (__pyx_CyFunctionObject *) func;
+    if ((cyfunc->flags & __Pyx_CYFUNCTION_CCLASS) && !(cyfunc->flags & __Pyx_CYFUNCTION_STATICMETHOD)) {
+        Py_ssize_t argc;
+        PyObject *new_args;
+        PyObject *self;
+        argc = PyTuple_GET_SIZE(args);
+        new_args = PyTuple_GetSlice(args, 1, argc);
+        if (unlikely(!new_args))
+            return NULL;
+        self = PyTuple_GetItem(args, 0);
+        if (unlikely(!self)) {
+            Py_DECREF(new_args);
+            return NULL;
+        }
+        result = __Pyx_CyFunction_CallMethod(func, self, new_args, kw);
+        Py_DECREF(new_args);
+    } else {
+        result = __Pyx_CyFunction_Call(func, args, kw);
+    }
+    return result;
+}
+static PyTypeObject __pyx_CyFunctionType_type = {
+    PyVarObject_HEAD_INIT(0, 0)
+    "cython_function_or_method",
+    sizeof(__pyx_CyFunctionObject),
+    0,
+    (destructor) __Pyx_CyFunction_dealloc,
+    0,
+    0,
+    0,
+#if PY_MAJOR_VERSION < 3
+    0,
+#else
+    0,
+#endif
+    (reprfunc) __Pyx_CyFunction_repr,
+    0,
+    0,
+    0,
+    0,
+    __Pyx_CyFunction_CallAsMethod,
+    0,
+    0,
+    0,
+    0,
+    Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_GC,
+    0,
+    (traverseproc) __Pyx_CyFunction_traverse,
+    (inquiry) __Pyx_CyFunction_clear,
+    0,
+#if PY_VERSION_HEX < 0x030500A0
+    offsetof(__pyx_CyFunctionObject, func_weakreflist),
+#else
+    offsetof(PyCFunctionObject, m_weakreflist),
+#endif
+    0,
+    0,
+    __pyx_CyFunction_methods,
+    __pyx_CyFunction_members,
+    __pyx_CyFunction_getsets,
+    0,
+    0,
+    __Pyx_CyFunction_descr_get,
+    0,
+    offsetof(__pyx_CyFunctionObject, func_dict),
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+#if PY_VERSION_HEX >= 0x030400a1
+    0,
+#endif
+#if PY_VERSION_HEX >= 0x030800b1
+    0,
+#endif
+#if PY_VERSION_HEX >= 0x030800b4 && PY_VERSION_HEX < 0x03090000
+    0,
+#endif
+};
+static int __pyx_CyFunction_init(void) {
+    __pyx_CyFunctionType = __Pyx_FetchCommonType(&__pyx_CyFunctionType_type);
+    if (unlikely(__pyx_CyFunctionType == NULL)) {
+        return -1;
+    }
+    return 0;
+}
+static CYTHON_INLINE void *__Pyx_CyFunction_InitDefaults(PyObject *func, size_t size, int pyobjects) {
+    __pyx_CyFunctionObject *m = (__pyx_CyFunctionObject *) func;
+    m->defaults = PyObject_Malloc(size);
+    if (unlikely(!m->defaults))
+        return PyErr_NoMemory();
+    memset(m->defaults, 0, size);
+    m->defaults_pyobjects = pyobjects;
+    m->defaults_size = size;
+    return m->defaults;
+}
+static CYTHON_INLINE void __Pyx_CyFunction_SetDefaultsTuple(PyObject *func, PyObject *tuple) {
+    __pyx_CyFunctionObject *m = (__pyx_CyFunctionObject *) func;
+    m->defaults_tuple = tuple;
+    Py_INCREF(tuple);
+}
+static CYTHON_INLINE void __Pyx_CyFunction_SetDefaultsKwDict(PyObject *func, PyObject *dict) {
+    __pyx_CyFunctionObject *m = (__pyx_CyFunctionObject *) func;
+    m->defaults_kwdict = dict;
+    Py_INCREF(dict);
+}
+static CYTHON_INLINE void __Pyx_CyFunction_SetAnnotationsDict(PyObject *func, PyObject *dict) {
+    __pyx_CyFunctionObject *m = (__pyx_CyFunctionObject *) func;
+    m->func_annotations = dict;
+    Py_INCREF(dict);
+}
+
+/* CythonFunction */
+static PyObject *__Pyx_CyFunction_New(PyMethodDef *ml, int flags, PyObject* qualname,
+                                      PyObject *closure, PyObject *module, PyObject* globals, PyObject* code) {
+    PyObject *op = __Pyx_CyFunction_Init(
+        PyObject_GC_New(__pyx_CyFunctionObject, __pyx_CyFunctionType),
+        ml, flags, qualname, closure, module, globals, code
+    );
+    if (likely(op)) {
+        PyObject_GC_Track(op);
+    }
+    return op;
+}
+
+/* CalculateMetaclass */
+static PyObject *__Pyx_CalculateMetaclass(PyTypeObject *metaclass, PyObject *bases) {
+    Py_ssize_t i, nbases = PyTuple_GET_SIZE(bases);
+    for (i=0; i < nbases; i++) {
+        PyTypeObject *tmptype;
+        PyObject *tmp = PyTuple_GET_ITEM(bases, i);
+        tmptype = Py_TYPE(tmp);
+#if PY_MAJOR_VERSION < 3
+        if (tmptype == &PyClass_Type)
+            continue;
+#endif
+        if (!metaclass) {
+            metaclass = tmptype;
+            continue;
+        }
+        if (PyType_IsSubtype(metaclass, tmptype))
+            continue;
+        if (PyType_IsSubtype(tmptype, metaclass)) {
+            metaclass = tmptype;
+            continue;
+        }
+        PyErr_SetString(PyExc_TypeError,
+                        "metaclass conflict: "
+                        "the metaclass of a derived class "
+                        "must be a (non-strict) subclass "
+                        "of the metaclasses of all its bases");
+        return NULL;
+    }
+    if (!metaclass) {
+#if PY_MAJOR_VERSION < 3
+        metaclass = &PyClass_Type;
+#else
+        metaclass = &PyType_Type;
+#endif
+    }
+    Py_INCREF((PyObject*) metaclass);
+    return (PyObject*) metaclass;
+}
+
+/* Py3ClassCreate */
+static PyObject *__Pyx_Py3MetaclassPrepare(PyObject *metaclass, PyObject *bases, PyObject *name,
+                                           PyObject *qualname, PyObject *mkw, PyObject *modname, PyObject *doc) {
+    PyObject *ns;
+    if (metaclass) {
+        PyObject *prep = __Pyx_PyObject_GetAttrStr(metaclass, __pyx_n_s_prepare);
+        if (prep) {
+            PyObject *pargs = PyTuple_Pack(2, name, bases);
+            if (unlikely(!pargs)) {
+                Py_DECREF(prep);
+                return NULL;
+            }
+            ns = PyObject_Call(prep, pargs, mkw);
+            Py_DECREF(prep);
+            Py_DECREF(pargs);
+        } else {
+            if (unlikely(!PyErr_ExceptionMatches(PyExc_AttributeError)))
+                return NULL;
+            PyErr_Clear();
+            ns = PyDict_New();
+        }
+    } else {
+        ns = PyDict_New();
+    }
+    if (unlikely(!ns))
+        return NULL;
+    if (unlikely(PyObject_SetItem(ns, __pyx_n_s_module, modname) < 0)) goto bad;
+    if (unlikely(PyObject_SetItem(ns, __pyx_n_s_qualname, qualname) < 0)) goto bad;
+    if (unlikely(doc && PyObject_SetItem(ns, __pyx_n_s_doc, doc) < 0)) goto bad;
+    return ns;
+bad:
+    Py_DECREF(ns);
+    return NULL;
+}
+static PyObject *__Pyx_Py3ClassCreate(PyObject *metaclass, PyObject *name, PyObject *bases,
+                                      PyObject *dict, PyObject *mkw,
+                                      int calculate_metaclass, int allow_py2_metaclass) {
+    PyObject *result, *margs;
+    PyObject *owned_metaclass = NULL;
+    if (allow_py2_metaclass) {
+        owned_metaclass = PyObject_GetItem(dict, __pyx_n_s_metaclass);
+        if (owned_metaclass) {
+            metaclass = owned_metaclass;
+        } else if (likely(PyErr_ExceptionMatches(PyExc_KeyError))) {
+            PyErr_Clear();
+        } else {
+            return NULL;
+        }
+    }
+    if (calculate_metaclass && (!metaclass || PyType_Check(metaclass))) {
+        metaclass = __Pyx_CalculateMetaclass((PyTypeObject*) metaclass, bases);
+        Py_XDECREF(owned_metaclass);
+        if (unlikely(!metaclass))
+            return NULL;
+        owned_metaclass = metaclass;
+    }
+    margs = PyTuple_Pack(3, name, bases, dict);
+    if (unlikely(!margs)) {
+        result = NULL;
+    } else {
+        result = PyObject_Call(metaclass, margs, mkw);
+        Py_DECREF(margs);
+    }
+    Py_XDECREF(owned_metaclass);
+    return result;
 }
 
 /* CLineInTraceback */
@@ -10346,37 +10351,6 @@ bad:
     Py_XDECREF(py_frame);
 }
 
-/* CIntToPy */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
-    const int neg_one = (int) ((int) 0 - (int) 1), const_zero = (int) 0;
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(int) < sizeof(long)) {
-            return PyInt_FromLong((long) value);
-        } else if (sizeof(int) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-#endif
-        }
-    } else {
-        if (sizeof(int) <= sizeof(long)) {
-            return PyInt_FromLong((long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-#endif
-        }
-    }
-    {
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        unsigned char *bytes = (unsigned char *)&value;
-        return _PyLong_FromByteArray(bytes, sizeof(int),
-                                     little, !is_unsigned);
-    }
-}
-
 /* CIntFromPyVerify */
 #define __PYX_VERIFY_RETURN_INT(target_type, func_type, func_value)\
     __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, 0)
@@ -10429,6 +10403,37 @@ bad:
     return result;
 }
 
+/* CIntToPy */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
+    const int neg_one = (int) ((int) 0 - (int) 1), const_zero = (int) 0;
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(int) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(int) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(int) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&value;
+        return _PyLong_FromByteArray(bytes, sizeof(int),
+                                     little, !is_unsigned);
+    }
+}
+
 /* ToPyCTupleUtility */
 static PyObject* __pyx_convert__to_py___pyx_ctuple_int__and_int(__pyx_ctuple_int__and_int value) {
     PyObject* item = NULL;
@@ -10476,24 +10481,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
         return _PyLong_FromByteArray(bytes, sizeof(long),
                                      little, !is_unsigned);
     }
-}
-
-/* ToPyCTupleUtility */
-static PyObject* __pyx_convert__to_py___pyx_ctuple_float__and_float(__pyx_ctuple_float__and_float value) {
-    PyObject* item = NULL;
-    PyObject* result = PyTuple_New(2);
-    if (!result) goto bad;
-        item = PyFloat_FromDouble(value.f0);
-        if (!item) goto bad;
-        PyTuple_SET_ITEM(result, 0, item);
-        item = PyFloat_FromDouble(value.f1);
-        if (!item) goto bad;
-        PyTuple_SET_ITEM(result, 1, item);
-    return result;
-bad:
-    Py_XDECREF(item);
-    Py_XDECREF(result);
-    return NULL;
 }
 
 /* CIntFromPy */

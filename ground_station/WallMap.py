@@ -65,10 +65,7 @@ class Wall:
 
   def draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
     screen_points = []
-    for point in self.points:
-      x = point[0]
-      y = point[1]
-
+    for x, y in self.points:
       x += x_add_num
       x *= x_scale
       x += x_screen_adjustment
@@ -194,13 +191,9 @@ class WallMap:
       ratio_difference /= 2
       x_screen_adjustment += ratio_difference * x_scale
 
-
     for wall in self.walls:
       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
-      for point in wall.points:
-        x = point[0]
-        y = point[1]
-
+      for x, y in wall.points:
         x += x_add_num
         x *= x_scale
         x += x_screen_adjustment

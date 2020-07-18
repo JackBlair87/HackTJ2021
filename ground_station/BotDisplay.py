@@ -4,8 +4,8 @@ import math
 import time
 from Robot import Robot
 from Resources import InfoPacket, WheelInfo, Mode, State, Logger, Colors
-from WallMap import WallMap
-# from WallMapCython import WallMap
+# from WallMap import WallMap
+from WallMapCython import WallMap
 # from cythonized_files.WallMapCython import WallMap
 # from WallMapCython import WallMap
 # from WallMap import WallMap

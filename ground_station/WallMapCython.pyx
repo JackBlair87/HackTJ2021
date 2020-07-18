@@ -1,6 +1,3 @@
-"""
-DON'T EDIT HERE
-"""
 from Resources import Logger, Colors
 import pygame
 # import matplotlib.pyplot as plt
@@ -13,7 +10,7 @@ from shapely.geometry import Polygon, Point, LineString
 cdef class Wall:
   cdef public list points
   cdef object logger
-  def __init__(Wall self, points):
+  def __init__(self, points):
     if type(points) is list:
       self.points = points
     else:
@@ -21,11 +18,10 @@ cdef class Wall:
     
     self.logger = Logger("Wall")
     
-  cpdef add_point(Wall self, (int, int) point):
+  def add_point(self, (int, int) point):
     self.points.append(point)
 
-  cpdef calculate_distance(Wall self, (int, int) point):
-    cdef int x, y
+  def calculate_distance(self, (int, int) point):
     if len(self.points) == 1:
       x = self.points[0][0]
       y = self.points[0][1]
@@ -69,14 +65,10 @@ cdef class Wall:
             min_distance = distance
       return min_distance
 
-  cpdef draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
+  def draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
     screen_points = []
-    cdef (int, int) point
     cdef int x, y
-    for point in self.points:
-      x = point[0]
-      y = point[1]
-
+    for x, y in self.points:
       x += x_add_num
       x *= x_scale
       x += x_screen_adjustment
@@ -87,7 +79,7 @@ cdef class Wall:
 
       screen_points.append( (x, y_max - y) ) #correct the order (x, y) to (r, c)
     if len(self.points) > 2:
-    #   self.logger.log("Adding wall at ", screen_points)
+      # self.logger.log("Adding wall at ", screen_points)
       pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)
   
   def draw_wall_prerelease(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
@@ -120,10 +112,7 @@ cdef class Wall:
         y2 += y_screen_adjustment
         pygame.draw.line(screen, Colors.RED, start_pos=(x1, y1), end_pos=(x2, y2), width=2)
 
-cdef class WallMap:
-  cdef object logger
-  cdef set obstacle_points, clear_rectangles, walls
-  cdef int x_min, x_max, y_min, y_max, count_since_last_refresh
+class WallMap:
   def __init__(self, obstacle_points=set(), clear_rectangles=set()):
     self.logger = Logger("WallMap")
     self.obstacle_points = obstacle_points
@@ -135,8 +124,7 @@ cdef class WallMap:
     self.y_max = 10
     self.count_since_last_refresh = 0
   
-  cpdef add_obstacle_point(WallMap self, int x, int y):
-    # self.logger.log("adding point (" + str(x) + ', ' + str(y))
+  def add_obstacle_point(self, x, y):
     self.obstacle_points.add((x, y))
     if x > self.x_max - 10:
       self.x_max = x + 10
@@ -154,8 +142,9 @@ cdef class WallMap:
     else:
       self.count_since_last_refresh += 1
       
-  cdef refresh_walls(WallMap self):
+  def refresh_walls(self):
     cdef (int, int) point
+    cdef object wall, adding_wall
     cdef list walls_to_add
     for point in self.obstacle_points:
       if len(self.walls) == 0:
@@ -177,47 +166,42 @@ cdef class WallMap:
         self.walls.add(Wall(total_points))
     self.obstacle_points = set()
 
-  cpdef draw_map(self, screen, int x_min, int x_max, int y_min, int y_max):
+  def draw_map(self, screen, int x_min, int x_max, int y_min, int y_max):
     #parameters are given as actual dimensions, not from 0 to 1
-    cdef int screen_width = x_max - x_min
-    cdef int screen_height = y_max - y_min
+    screen_width = x_max - x_min
+    screen_height = y_max - y_min
 
-    cdef int map_width = self.x_max - self.x_min
-    cdef int map_height = self.y_max - self.y_min
+    map_width = self.x_max - self.x_min
+    map_height = self.y_max - self.y_min
 
-    cdef int x_add_num = -1 * self.x_min
-    cdef float x_scale = screen_width / map_width
+    x_add_num = -1 * self.x_min
+    x_scale = screen_width / map_width
 
-    cdef int y_add_num = -1 * self.y_min
-    cdef float y_scale = screen_height / map_height
+    y_add_num = -1 * self.y_min
+    y_scale = screen_height / map_height
 
-    cdef int x_screen_adjustment = 0
-    cdef int y_screen_adjustment = 0
+    x_screen_adjustment = 0
+    y_screen_adjustment = 0
 
     map_ratio = map_height / map_width
     screen_ratio = screen_height / screen_width
 
     if map_ratio > screen_ratio:
-    #   self.logger.log("map_ratio > screen_ratio")
+      # self.logger.log("map_ratio > screen_ratio")
       ratio_difference = map_ratio - screen_ratio
       ratio_difference /= 2
       y_screen_adjustment += ratio_difference * y_scale
     elif map_ratio > screen_ratio:
-    #   self.logger.log("screen_ratio > map_ratio")
+      # self.logger.log("screen_ratio > map_ratio")
       ratio_difference = screen_ratio - map_ratio
       ratio_difference /= 2
       x_screen_adjustment += ratio_difference * x_scale
 
-
-    cdef (int, int) point
-    cdef float x, y
-    cdef (float, float) center
+    cdef int x, y
+    cdef object wall
     for wall in self.walls:
       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
-      for point in wall.points:
-        x = point[0]
-        y = point[1]
-
+      for x, y in wall.points:
         x += x_add_num
         x *= x_scale
         x += x_screen_adjustment
