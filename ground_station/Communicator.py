@@ -98,7 +98,6 @@ class Communicator:
     if self.enabled and self.connected:
       self.bluetooth.close()
     
-    
 #Ideal Use
 #c = Communicator()
 #c.initiate_bluetooth()

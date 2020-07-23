@@ -38,7 +38,7 @@ def main():
   global robot, mode, screen, screen_width, screen_height
   start_time = int(round(time.time() * 1000))
   previous_time = start_time
-  for i in range(1000):
+  while True:
     #Check for user input on the keyboard and OSX operations
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -93,17 +93,17 @@ def main():
     # wall_map.add_obstacle_point(0, 0)
     # wall_map.add_obstacle_point(10, 10)
     # wall_map.add_obstacle_point(50, 0)
-    if int(round(time.time() * 1000)) - previous_time >= 0:
-      previous_time = int(round(time.time() * 1000))
-      wall_map.add_obstacle_point(random.randint(-50, 50), random.randint(-50, 50))
+    # if int(round(time.time() * 1000)) - previous_time >= 0:
+    #   previous_time = int(round(time.time() * 1000))
+    #   wall_map.add_obstacle_point(random.randint(-50, 50), random.randint(-50, 50))
       
-    # robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
-    # wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
-    robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y * 2 + .01) * screen_height, y_max=1 * screen_height)
-    wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y * 2 + .01) * screen_height, y_max=1 * screen_height)
+    
+    wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
+    robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
+    # wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y * 2 + .01) * screen_height, y_max=1 * screen_height)
+    # robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y * 2 + .01) * screen_height, y_max=1 * screen_height)
     draw_compass(screen_width-175, screen_height-175, robot.angle)
     pygame.display.flip()
-    # clock.tick(1000000000000000000) #Sets the FPS as 60
   print("Total time taken:", int(round(time.time() * 1000)) - start_time)
   quitProgram()
   

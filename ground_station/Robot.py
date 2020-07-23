@@ -18,7 +18,7 @@ class Robot:
         #^separate things above here into just the draw_robot method
         self.angle = angle
         self.dataPackets = [InfoPacket(angle=90), InfoPacket(angle=90)] #angles here should be changed to 0?
-        self.communicator = Communicator(enabled = False)
+        self.communicator = Communicator(enabled = True)
         self.communicator.initiate_bluetooth()
         self.state = State.stop
         self.communicator.transmit_info(self.state)
@@ -31,12 +31,13 @@ class Robot:
             self.dataPackets.append(new_packet)
             self.__update_location()
             self.logger.log(self.dataPackets[-1])
+            self.logger.log('adding data to robot')
             return self.generate_points() #returns two points
         
     def change_state(self, new_state = State.stop):
         self.state = new_state
         self.communicator.transmit_info(self.state)
-        # self.logger.log("State changed to: " + State.all_states[self.state])
+        self.logger.log("State changed to: " + State.all_states[self.state])
         
     def quitProgram(self):
         self.communicator.transmit_info(State.stop)
@@ -50,10 +51,11 @@ class Robot:
         
     def __update_location(self):
         delta_x, delta_y, angle = self.__calculate_delta_location_change()
-        #self.logger.log("delta_x, delta_y, delta_angle:", delta_x, delta_y, angle)
+        self.logger.log("delta_x, delta_y, delta_angle:", delta_x, delta_y, angle)
         self.xcoord += delta_x
         self.ycoord += delta_y
         self.angle = angle
+        self.logger.log('new position:', self.xcoord, self.ycoord, self.angle)
 
     def __calculate_delta_location_change(self):
         differenceR = self.dataPackets[-1].right_encoder_counts - self.dataPackets[-2].right_encoder_counts #Find the difference between last transmittion
