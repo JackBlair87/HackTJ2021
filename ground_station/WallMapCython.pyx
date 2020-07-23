@@ -7,7 +7,9 @@ import os
 import math
 from shapely.geometry import Polygon, Point, LineString
 
-class Wall:
+cdef class Wall:
+  cdef public list points
+  cdef object logger
   def __init__(self, points):
     if type(points) is list:
       self.points = points
@@ -16,10 +18,10 @@ class Wall:
     
     self.logger = Logger("Wall")
     
-  def add_point(self, point):
+  def add_point(self, (int, int) point):
     self.points.append(point)
 
-  def calculate_distance(self, point):
+  def calculate_distance(self, (int, int) point):
     if len(self.points) == 1:
       x = self.points[0][0]
       y = self.points[0][1]
@@ -65,6 +67,7 @@ class Wall:
 
   def draw_wall(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
     screen_points = []
+    cdef int x, y
     for x, y in self.points:
       x += x_add_num
       x *= x_scale
@@ -140,6 +143,9 @@ class WallMap:
       self.count_since_last_refresh += 1
       
   def refresh_walls(self):
+    cdef (int, int) point
+    cdef object wall, adding_wall
+    cdef list walls_to_add
     for point in self.obstacle_points:
       if len(self.walls) == 0:
         self.walls.add(Wall(point))
@@ -160,7 +166,7 @@ class WallMap:
         self.walls.add(Wall(total_points))
     self.obstacle_points = set()
 
-  def draw_map(self, screen, x_min, x_max, y_min, y_max):
+  def draw_map(self, screen, int x_min, int x_max, int y_min, int y_max):
     #parameters are given as actual dimensions, not from 0 to 1
     screen_width = x_max - x_min
     screen_height = y_max - y_min
@@ -191,6 +197,8 @@ class WallMap:
       ratio_difference /= 2
       x_screen_adjustment += ratio_difference * x_scale
 
+    cdef int x, y
+    cdef object wall
     for wall in self.walls:
       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
       for x, y in wall.points:

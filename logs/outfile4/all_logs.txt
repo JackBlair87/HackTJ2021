@@ -1,4 +1,5 @@
 Beginning output for all logs:
+<<<<<<< HEAD
 513:InfoPacket: Creating logger object 
 513:InfoPacket: Files have already been created, continuing 
 513:Communicator: Files have already been created, continuing 
@@ -1236,3 +1237,7 @@ Beginning output for all logs:
 10836:Robot: State changed to: stop 
 10837:WallMap: map_ratio > screen_ratio 
 10861:BotDisplay: Stopping all tasks and quitting program 
+=======
+1210:InfoPacket: Creating logger object 
+7026:BotDisplay: Stopping all tasks and quitting program 
+>>>>>>> 6e15fb292a13342aacdd6dc95155378efbbab88f

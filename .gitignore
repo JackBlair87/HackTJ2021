@@ -1,2 +1,3 @@
-hacktj_env
 .vscode/settings.json
+hacktj_venv
+hacktj_env_python3dot7

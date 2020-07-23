@@ -3,11 +3,9 @@ from math import pi
 import os
 from os import path
 import time
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
+# import matplotlib.pyplot as plt
+# from sklearn.model_selection import train_test_split
+# from sklearn.linear_model import LinearRegression
 
 class InfoPacket:
 
@@ -73,7 +71,7 @@ class Logger():
   def __init__(self, fromClass, outfolder="logs/outfile4"):
     self.fromClass = fromClass
     if Logger.created is True: #if a Logger has already been made, return log that and return false
-      self.log("Files have already been created, continuing")
+      # self.log("Files have already been created, continuing")
       return None
       self.start_time = int(round(time.time() * 1000))
     Logger.outfile = outfolder + "/all_logs.txt"

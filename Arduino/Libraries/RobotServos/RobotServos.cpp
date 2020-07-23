@@ -33,46 +33,46 @@ void RobotServos::setState(int newPosition) {
 
   if(newPosition != currentIntState){
     currentIntState = newPosition;
-  switch (newPosition) {
-  case 0:
-  currentState = State::STOP;
-    rServo.detach();
-    lServo.detach();
-    Serial.println("Vehicle Stopped");
-    break;
-  case 1:
-    currentState = State::FORWARD;
-    rServo.attach(rightServoPin);
-    lServo.attach(leftServoPin);
-    lServo.write(maxBackward);
-    rServo.write(maxForward);
-    Serial.println("Vehicle Forward");
-    break;
-  case 2:
-    currentState = State::REVERSE;
-    rServo.attach(rightServoPin);
-    lServo.attach(leftServoPin);
-    lServo.write(maxForward);
-    rServo.write(maxBackward);
-    Serial.println("Vehicle Backward");
-    break;
-  case 3:
-    currentState = State::LEFT;
-    rServo.attach(rightServoPin);
-    lServo.attach(leftServoPin);
-    lServo.write(maxForward);
-    rServo.write(maxForward);
-    Serial.println("Vehicle Turning Left");
-    break;
-  case 4:
-    currentState = State::RIGHT;
-    rServo.attach(rightServoPin);
-    lServo.attach(leftServoPin);
-    lServo.write(maxBackward);
-    rServo.write(maxBackward);
-    Serial.println("Vehicle Turning Right");
-    break;
-  }
+    switch (newPosition) {
+      case 0:
+      currentState = State::STOP;
+        rServo.detach();
+        lServo.detach();
+        Serial.println("Vehicle Stopped");
+        break;
+      case 1:
+        currentState = State::FORWARD;
+        rServo.attach(rightServoPin);
+        lServo.attach(leftServoPin);
+        lServo.write(maxBackward);
+        rServo.write(maxForward);
+        Serial.println("Vehicle Forward");
+        break;
+      case 2:
+        currentState = State::REVERSE;
+        rServo.attach(rightServoPin);
+        lServo.attach(leftServoPin);
+        lServo.write(maxForward);
+        rServo.write(maxBackward);
+        Serial.println("Vehicle Backward");
+        break;
+      case 3:
+        currentState = State::LEFT;
+        rServo.attach(rightServoPin);
+        lServo.attach(leftServoPin);
+        lServo.write(maxForward);
+        rServo.write(maxForward);
+        Serial.println("Vehicle Turning Left");
+        break;
+      case 4:
+        currentState = State::RIGHT;
+        rServo.attach(rightServoPin);
+        lServo.attach(leftServoPin);
+        lServo.write(maxBackward);
+        rServo.write(maxBackward);
+        Serial.println("Vehicle Turning Right");
+        break;
+      }
   }
 }
 

@@ -1,14 +1,17 @@
 import pygame
 import random
-import numpy as np
 import math
 import time
 from Robot import Robot
 from Resources import InfoPacket, WheelInfo, Mode, State, Logger, Colors
 from WallMap import WallMap
+# from WallMapCython import WallMap
+# from cythonized_files.WallMapCython import WallMap
+# from WallMapCython import WallMap
+# from WallMap import WallMap
 
 #Window
-screen_width = 1440 
+screen_width = 1440
 screen_height = 800
 all_buttons = []
 
@@ -26,12 +29,6 @@ largeFont = pygame.font.Font("./ground_station/assets/OpenSans-Regular.ttf", 40)
 #information about the robot and location
 mode = Mode.manual
 
-#todo phase out time increments
-# start_time = int(round(time.time() * 1000))
-# last_communication_time = 0
-# last_button_press_time = 0
-#print("Start Time" + str(start_time))
-
 #objects that we need
 robot = Robot(image = ROBOT)
 logger = Logger("BotDisplay")
@@ -41,8 +38,7 @@ def main():
   global robot, mode, screen, screen_width, screen_height
   start_time = int(round(time.time() * 1000))
   previous_time = start_time
-  while True:
-    
+  for i in range(1000):
     #Check for user input on the keyboard and OSX operations
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -99,7 +95,7 @@ def main():
     # wall_map.add_obstacle_point(50, 0)
     if int(round(time.time() * 1000)) - previous_time >= 0:
       previous_time = int(round(time.time() * 1000))
-      wall_map.add_obstacle_point(random.randint(0, 100), random.randint(0, 100))
+      wall_map.add_obstacle_point(random.randint(-50, 50), random.randint(-50, 50))
       
     # robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
     # wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
@@ -107,7 +103,8 @@ def main():
     wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y * 2 + .01) * screen_height, y_max=1 * screen_height)
     draw_compass(screen_width-175, screen_height-175, robot.angle)
     pygame.display.flip()
-    clock.tick(60) #Sets the FPS as 60
+    # clock.tick(1000000000000000000) #Sets the FPS as 60
+  print("Total time taken:", int(round(time.time() * 1000)) - start_time)
   quitProgram()
   
 def create_button_from_text(text, x, y, width, height, font_object, text_color=Colors.WHITE, background_color=Colors.BLACK):
@@ -140,7 +137,6 @@ def get_button_pressed():
         return button, text
       
 def draw_text(text, x, y, font_object=mediumFont, text_color=Colors.WHITE, basis_point='center', background_color=Colors.BLACK):
-  #todo: implement background color
   title = font_object.render(text, True, text_color)
   titleRect = title.get_rect()
   if basis_point == 'center':
