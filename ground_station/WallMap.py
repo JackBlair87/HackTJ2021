@@ -160,7 +160,7 @@ class WallMap:
         self.walls.add(Wall(total_points))
     self.obstacle_points = set()
 
-  def draw_map(self, screen, x_min, x_max, y_min, y_max):
+  def draw_map_stable(self, screen, x_min, x_max, y_min, y_max):
     #parameters are given as actual dimensions, not from 0 to 1
     screen_width = x_max - x_min
     screen_height = y_max - y_min
@@ -180,7 +180,7 @@ class WallMap:
     map_ratio = map_height / map_width
     screen_ratio = screen_height / screen_width
 
-    if map_ratio > screen_ratio:
+    if x_scale > y_scale: # the map is taller than the screen, relatively
       # self.logger.log("map_ratio > screen_ratio")
       ratio_difference = map_ratio - screen_ratio
       ratio_difference /= 2
@@ -203,4 +203,26 @@ class WallMap:
         y += y_screen_adjustment
 
         center = (x, y_max - y) #correct the order (x, y) to (r, c)
+        pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=5)
+
+    
+  def draw_map(self, screen, x_min, x_max, y_min, y_max):
+
+    screen_width = x_max - x_min
+    screen_height = y_max - y_min
+
+    map_width = self.x_max - self.x_min
+    map_height = self.y_max - self.y_min
+
+
+    map_max_value = max(map_height, map_width)
+    # Calculate normalized vertices
+
+    for wall in self.walls:
+      # wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
+      for x, y in wall.points:
+        normalized_x = screen_width * (x - self.x_min) / map_max_value
+        normalized_y = screen_height * (y - self.y_min) / map_max_value
+
+        center = (normalized_x, y_max - normalized_y) #correct the order (x, y) to (r, c)
         pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=5)
