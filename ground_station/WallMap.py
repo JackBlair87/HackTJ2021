@@ -174,24 +174,42 @@ class WallMap:
     y_add_num = -1 * self.y_min
     y_scale = screen_height / map_height
 
-    x_screen_adjustment = 0
-    y_screen_adjustment = 0
-
     map_ratio = map_height / map_width
     screen_ratio = screen_height / screen_width
 
     if x_scale > y_scale: # the map is taller than the screen, relatively
       # self.logger.log("map_ratio > screen_ratio")
-      ratio_difference = map_ratio - screen_ratio
-      ratio_difference /= 2
-      y_screen_adjustment += ratio_difference * y_scale
-      y_scale = x_scale
+      # ratio_difference = map_ratio - screen_ratio
+      # ratio_difference /= 2
+      # y_screen_adjustment += ratio_difference * y_scale
+      # scale_diff = x_scale - y_scale
+      # scale_diff /= 2
+      # x_screen_adjustment += scale_diff * x_scale
+      x_scale = y_scale
     else:
       # self.logger.log("screen_ratio > map_ratio")
-      ratio_difference = screen_ratio - map_ratio
-      ratio_difference /= 2
-      x_screen_adjustment += ratio_difference * x_scale
-      x_scale = y_scale
+      # ratio_difference = screen_ratio - map_ratio
+      # ratio_difference /= 2
+      # x_screen_adjustment += ratio_difference * x_scale
+      # scale_diff = y_scale - x_scale
+      # scale_diff /= 2
+      # y_screen_adjustment += scale_diff * y_scale
+      y_scale = x_scale
+    
+    map_mid_x = self.x_min + map_width / 2
+    map_mid_y = self.y_min + map_height / 2
+
+    map_mid_x += x_add_num
+    map_mid_x *= x_scale
+
+    map_mid_y += y_add_num
+    map_mid_y *= y_scale
+
+    screen_mid_x = x_min + screen_width / 2
+    screen_mid_y = y_min + screen_height / 2
+
+    x_screen_adjustment = screen_mid_x - map_mid_x
+    y_screen_adjustment = screen_mid_y - map_mid_y
 
     for wall in self.walls:
       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
@@ -205,40 +223,4 @@ class WallMap:
         y += y_screen_adjustment
 
         center = (x, y_max - y) #correct the order (x, y) to (r, c)
-        pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=5)
-
-    
-  def draw_map_prerelease(self, screen, x_min, x_max, y_min, y_max):
-
-    screen_width = x_max - x_min
-    screen_height = y_max - y_min
-
-    map_width = self.x_max - self.x_min
-    map_height = self.y_max - self.y_min
-
-    x_scale = screen_width / map_width
-    y_scale = screen_height / map_height
-
-    map_ratio = map_height / map_width
-    screen_ratio = screen_height / screen_width
-
-    if x_scale > y_scale: # the map is taller than the screen, relatively
-      # self.logger.log("map_ratio > screen_ratio")
-      ratio_difference = map_ratio - screen_ratio
-      ratio_difference /= 2
-      y_screen_adjustment += ratio_difference * y_scale
-    else:
-      # self.logger.log("screen_ratio > map_ratio")
-      ratio_difference = screen_ratio - map_ratio
-      ratio_difference /= 2
-      x_screen_adjustment += ratio_difference * x_scale
-
-
-    for wall in self.walls:
-      # wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
-      for x, y in wall.points:
-        normalized_x = screen_width * (x - self.x_min) / map_max_value
-        normalized_y = screen_height * (y - self.y_min) / map_max_value
-
-        center = (normalized_x, y_max - normalized_y) #correct the order (x, y) to (r, c)
         pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=5)

@@ -94,6 +94,8 @@ def main():
     # wall_map.add_obstacle_point(10, 10)
     # wall_map.add_obstacle_point(-10, -10)
     # wall_map.add_obstacle_point(0, 10)
+    # wall_map.add_obstacle_point(0, -10)
+    # wall_map.add_obstacle_point(0, 10)
     # wall_map.add_obstacle_point(10, 10)
     # wall_map.add_obstacle_point(50, 0)
     # if int(round(time.time() * 1000)) - previous_time >= 0:
