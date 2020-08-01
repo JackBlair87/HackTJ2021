@@ -65,6 +65,8 @@ def main():
     
     mode_label = draw_text("Mode: " + Mode.all_modes_english[mode], .91, top_bar_y, text_color=Colors.PINK)
     draw_text("State: " + State.all_states_english[robot.state], .75, top_bar_y, text_color=Colors.PINK)
+    draw_text(str(robot.dataPackets[-1].right_encoder_counts), .5, top_bar_y, text_color=Colors.PINK)
+    draw_text(str(robot.dataPackets[-1].left_encoder_counts), .3, top_bar_y, text_color=Colors.PINK)
     # draw_text(current_action, .01, top_bar_y, basis_point='midleft', text_color=Colors.PINK)
     
     #Draw interactive elements
