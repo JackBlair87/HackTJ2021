@@ -174,22 +174,42 @@ class WallMap:
     y_add_num = -1 * self.y_min
     y_scale = screen_height / map_height
 
-    x_screen_adjustment = 0
-    y_screen_adjustment = 0
-
     map_ratio = map_height / map_width
     screen_ratio = screen_height / screen_width
 
-    if map_ratio > screen_ratio:
+    if x_scale > y_scale: # the map is taller than the screen, relatively
       # self.logger.log("map_ratio > screen_ratio")
-      ratio_difference = map_ratio - screen_ratio
-      ratio_difference /= 2
-      y_screen_adjustment += ratio_difference * y_scale
-    elif map_ratio > screen_ratio:
+      # ratio_difference = map_ratio - screen_ratio
+      # ratio_difference /= 2
+      # y_screen_adjustment += ratio_difference * y_scale
+      # scale_diff = x_scale - y_scale
+      # scale_diff /= 2
+      # x_screen_adjustment += scale_diff * x_scale
+      x_scale = y_scale
+    else:
       # self.logger.log("screen_ratio > map_ratio")
-      ratio_difference = screen_ratio - map_ratio
-      ratio_difference /= 2
-      x_screen_adjustment += ratio_difference * x_scale
+      # ratio_difference = screen_ratio - map_ratio
+      # ratio_difference /= 2
+      # x_screen_adjustment += ratio_difference * x_scale
+      # scale_diff = y_scale - x_scale
+      # scale_diff /= 2
+      # y_screen_adjustment += scale_diff * y_scale
+      y_scale = x_scale
+    
+    map_mid_x = self.x_min + map_width / 2
+    map_mid_y = self.y_min + map_height / 2
+
+    map_mid_x += x_add_num
+    map_mid_x *= x_scale
+
+    map_mid_y += y_add_num
+    map_mid_y *= y_scale
+
+    screen_mid_x = x_min + screen_width / 2
+    screen_mid_y = y_min + screen_height / 2
+
+    x_screen_adjustment = screen_mid_x - map_mid_x
+    y_screen_adjustment = screen_mid_y - map_mid_y
 
     for wall in self.walls:
       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
