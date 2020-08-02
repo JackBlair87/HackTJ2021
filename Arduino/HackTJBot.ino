@@ -64,11 +64,15 @@ void recieveData(){
 }
 
 void transmitData(){
+
+recieveData();
+  
   if(isConnected){
-    groundStation.println(":" + String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()) + ":");
-    //groundStation.println(":" + String(millis()) + "," + String(state) + "," + String(10.00) + "," + String(10.00) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(random(0.00, 360.00)) + ":");
+    groundStation.print(":" + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()) + ":");
+    //groundStation.println(":2," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()) + ":");
+    //groundStation.println(":" + String(millis()) + "," + String(state) + "," + String(random(5, 10)) + "," + String(random(5, 10)) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(random(0.00, 360.00)) + ":");
+    Serial.println(":" + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()) + ":");
     //Example --> :12330,0,12.07,34.04,-48,-39,20.342:
-    Serial.println(":" + String(millis()) + "," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()) + ":");
     //Serial.println("Transmitted Data");
   }
 }
@@ -91,12 +95,12 @@ void refreshVariables(){
   }
 }
 
-TimedAction recieve = TimedAction(100, recieveData);
-TimedAction transmit = TimedAction(10, transmitData);
+//TimedAction recieve = TimedAction(100, recieveData);
+TimedAction transmit = TimedAction(100, transmitData);
 
 void loop(){
   refreshVariables();
   led.update(); //Run continuously
-  recieve.check();
+  //recieve.check();
   transmit.check();
 }
