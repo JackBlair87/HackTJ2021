@@ -67,6 +67,8 @@ def main():
     draw_text("State: " + State.all_states_english[robot.state], .75, top_bar_y, text_color=Colors.PINK)
     draw_text(str(robot.dataPackets[-1].right_encoder_counts), .5, top_bar_y, text_color=Colors.PINK)
     draw_text(str(robot.dataPackets[-1].left_encoder_counts), .3, top_bar_y, text_color=Colors.PINK)
+    draw_text(str(robot.dataPackets[-1].right_distance), .2, top_bar_y, text_color=Colors.PINK)
+    draw_text(str(robot.dataPackets[-1].front_distance), .1, top_bar_y, text_color=Colors.PINK)
     # draw_text(current_action, .01, top_bar_y, basis_point='midleft', text_color=Colors.PINK)
     
     #Draw interactive elements
@@ -86,7 +88,8 @@ def main():
     new_points = robot.add_data()
     if new_points is not None:
       for point in new_points:
-        wall_map.add_obstacle_point(point[0], point[1])
+        #wall_map.add_obstacle_point(point[0], point[1])
+        pass
 
     # angle = random.uniform(0, 2 * math.pi)
     # x = 5 * math.cos(angle)
