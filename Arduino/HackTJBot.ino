@@ -38,6 +38,8 @@ void setup(){
   led.blink(Color::Red);
 }
 
+void(* resetFunc) (void) = 0; //declare reset function @ address 0
+
 void recieveData(){
   if(groundStation.available()){
     int newState = state;
@@ -54,11 +56,12 @@ void recieveData(){
   }
   else{
     nullCount++;
-    if(nullCount > 25 && isConnected){
+    if(nullCount > 50 && isConnected){
       isConnected = false;
       state = 0;
       led.blink(Color::Red);
       Serial.println("Disconnected");
+      //resetFunc();
     }
   }
 }
@@ -68,7 +71,7 @@ void transmitData(){
 recieveData();
   
   if(isConnected){
-    groundStation.print(":" + String(state) + "," + String(distances[0]) + "," + String(distances[1]) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()) + ":");
+    groundStation.print(":" + String(state) + "," + String(distances[0]) + "," + String(distances[1]) + "," + String(totalTravelL) + "," + String(-totalTravelR) + "," + String(mpu.getYaw()) + ":");
     //groundStation.println(":2," + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()) + ":");
     //groundStation.println(":" + String(millis()) + "," + String(state) + "," + String(random(5, 10)) + "," + String(random(5, 10)) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(random(0.00, 360.00)) + ":");
     //Serial.println(":" + String(state) + "," + String(dR.getAverage()) + "," + String(dR.getAverage()) + "," + String(-totalTravelL) + "," + String(totalTravelR) + "," + String(mpu.getYaw()) + ":");
@@ -95,7 +98,7 @@ void sendPing(){
   //Serial.println(String(distances[0]) + ", " + String(distances[1]));
 }
 
-TimedAction transmit = TimedAction(100, transmitData);
+TimedAction transmit = TimedAction(10, transmitData);
 TimedAction pinG = TimedAction(50, sendPing);
    
 void loop(){
@@ -103,4 +106,5 @@ void loop(){
   led.update(); //Run continuously
   transmit.check();
   pinG.check();
+  Serial.println(millis());
 }
