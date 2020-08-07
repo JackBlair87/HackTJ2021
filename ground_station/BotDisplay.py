@@ -65,10 +65,14 @@ def main():
     
     mode_label = draw_text("Mode: " + Mode.all_modes_english[mode], .91, top_bar_y, text_color=Colors.PINK)
     draw_text("State: " + State.all_states_english[robot.state], .75, top_bar_y, text_color=Colors.PINK)
-    draw_text(str(robot.dataPackets[-1].right_encoder_counts), .5, top_bar_y, text_color=Colors.PINK)
-    draw_text(str(robot.dataPackets[-1].left_encoder_counts), .3, top_bar_y, text_color=Colors.PINK)
-    draw_text(str(robot.dataPackets[-1].right_distance), .2, top_bar_y, text_color=Colors.PINK)
-    draw_text(str(robot.dataPackets[-1].front_distance), .1, top_bar_y, text_color=Colors.PINK)
+
+    robot_x = round(robot.location[0], 2)
+    robot_y = round(robot.location[1], 2)
+    draw_text(str((robot_x, robot_y)), .4, top_bar_y, text_color=Colors.PINK)
+    draw_text(str(robot.dataPackets[-1].right_encoder_counts), .25, top_bar_y, text_color=Colors.PINK)
+    draw_text(str(robot.dataPackets[-1].left_encoder_counts), .15, top_bar_y, text_color=Colors.PINK)
+    draw_text(str(robot.dataPackets[-1].right_distance), .1, top_bar_y, text_color=Colors.PINK)
+    draw_text(str(robot.dataPackets[-1].front_distance), .05, top_bar_y, text_color=Colors.PINK)
     # draw_text(current_action, .01, top_bar_y, basis_point='midleft', text_color=Colors.PINK)
     
     #Draw interactive elements
@@ -77,18 +81,17 @@ def main():
 
     if mode == Mode.manual:
       robot.change_state(state_from_key_press())
-      pass
     elif mode == Mode.explore:
       pass
     elif mode == Mode.sweep:
-      pass
+      robot.sweep()
     elif mode == Mode.stop:
       robot.change_state(State.stop)
     
     new_points = robot.add_data()
     if new_points is not None:
       for point in new_points:
-        #wall_map.add_obstacle_point(point[0], point[1])
+        # wall_map.add_obstacle_point(point[0], point[1])
         pass
 
     # angle = random.uniform(0, 2 * math.pi)
@@ -108,8 +111,8 @@ def main():
     #   wall_map.add_obstacle_point(random.randint(-50, 50), random.randint(-50, 50))
       
     
-    wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
-    robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
+    wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height, robot = robot)
+    # robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
     # wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y * 2 + .01) * screen_height, y_max=1 * screen_height)
     # robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y * 2 + .01) * screen_height, y_max=1 * screen_height)
     draw_compass(screen_width-175, screen_height-175, robot.angle)

@@ -78,36 +78,6 @@ class Wall:
     if len(self.points) > 2:
       # self.logger.log("Adding wall at ", screen_points)
       pygame.draw.polygon(surface=screen, color=Colors.RED, points=screen_points, width=3)
-  
-  def draw_wall_prerelease(self, screen, y_max, x_add_num, x_scale, x_screen_adjustment, y_add_num, y_scale, y_screen_adjustment):
-    # ok so this draws it kinda like the stl thing you were talking about but there's a lil problem
-    # if the wall is curved outward (like if we were in a circular room) it'll combine the points
-    # and turn it into a filled in circle, rather than a circular outline
-    # so im leaving the method here for now but you can delete it if ^that^ makes sense
-    for point1 in self.points:
-      for point2 in self.points:
-        if point1 is point2:
-          continue
-        x1 = point1[0]
-        x1 += x_add_num
-        x1 *= x_scale
-        x1 += x_screen_adjustment
-
-        y1 = point1[1]
-        y1 += y_add_num
-        y1 *= y_scale
-        y1 += y_screen_adjustment
-
-        x2 = point2[0]
-        x2 += x_add_num
-        x2 *= x_scale
-        x2 += x_screen_adjustment
-
-        y2 = point2[1]
-        y2 += y_add_num
-        y2 *= y_scale
-        y2 += y_screen_adjustment
-        pygame.draw.line(screen, Colors.RED, start_pos=(x1, y1), end_pos=(x2, y2), width=2)
 
 class WallMap:
   def __init__(self, obstacle_points=set(), clear_rectangles=set()):
@@ -160,7 +130,8 @@ class WallMap:
         self.walls.add(Wall(total_points))
     self.obstacle_points = set()
 
-  def draw_map(self, screen, x_min, x_max, y_min, y_max):
+  def draw_map(self, screen, x_min, x_max, y_min, y_max, robot):
+                            # 0,   0,   1560, 1123
     #parameters are given as actual dimensions, not from 0 to 1
     screen_width = x_max - x_min
     screen_height = y_max - y_min
@@ -178,22 +149,8 @@ class WallMap:
     screen_ratio = screen_height / screen_width
 
     if x_scale > y_scale: # the map is taller than the screen, relatively
-      # self.logger.log("map_ratio > screen_ratio")
-      # ratio_difference = map_ratio - screen_ratio
-      # ratio_difference /= 2
-      # y_screen_adjustment += ratio_difference * y_scale
-      # scale_diff = x_scale - y_scale
-      # scale_diff /= 2
-      # x_screen_adjustment += scale_diff * x_scale
       x_scale = y_scale
     else:
-      # self.logger.log("screen_ratio > map_ratio")
-      # ratio_difference = screen_ratio - map_ratio
-      # ratio_difference /= 2
-      # x_screen_adjustment += ratio_difference * x_scale
-      # scale_diff = y_scale - x_scale
-      # scale_diff /= 2
-      # y_screen_adjustment += scale_diff * y_scale
       y_scale = x_scale
     
     map_mid_x = self.x_min + map_width / 2
@@ -210,6 +167,21 @@ class WallMap:
 
     x_screen_adjustment = screen_mid_x - map_mid_x
     y_screen_adjustment = screen_mid_y - map_mid_y
+
+    robot_x = (robot.location[0] + x_add_num) * x_scale + x_screen_adjustment
+    robot_y = (robot.location[1] + y_add_num) * y_scale + y_screen_adjustment
+
+    if robot_x > self.x_max - 10:
+      self.x_max = robot_x + 10
+    if robot_x < self.x_min + 10:
+      self.x_min = robot_x - 10
+    
+    if robot_y > self.y_max - 10:
+      self.y_max = robot_y + 10
+    if robot_y < self.y_min + 10:
+      self.y_min = robot_y - 10
+      
+    screen.blit(pygame.transform.rotate(robot.image, robot.angle), (robot_x, robot_y))
 
     for wall in self.walls:
       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)

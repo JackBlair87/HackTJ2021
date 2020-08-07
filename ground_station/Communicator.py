@@ -18,7 +18,7 @@ class Communicator:
         try:
           self.initiate_bluetooth()
         except:
-          self.logger.log("Communicator: bluetooth not connected")
+          self.logger.log("Communicator: Bluetooth Not Connected")
           self.logger.log(sys.exc_info())
           
   def initiate_bluetooth(self):
@@ -52,34 +52,6 @@ class Communicator:
         self.data_stream = self.data_stream[self.data_stream[self.data_stream.index(':')] : ]
         self.logger.log("self.data_stream", self.data_stream)
         print("first character is", int(self.data_stream[0]))
-      #if self.data_stream[0] != ":": #If first character is a colon
-      #   self.logger.log("we molested som data")
-      #   self.logger.log("data before:", self.data_stream)
-      #   self.data_stream = self.data_stream[self.data_stream.index(":") + 1:]
-      #   self.logger.log("data after:", self.data_stream)
-      
-      # if len(self.data_stream) >= 2 and self.data_stream[0] == ":" and self.data_stream[1] == ":":
-      #   self.logger.log("we molested some colons")
-      #   self.data_stream = self.data_stream[1:]
-      
-      
-      # if self.data_stream.count(":") >= 2:
-      #   print(self.data_stream)
-      #   self.data_stream = self.data_stream.lstrip()
-      #   self.data_stream = self.data_stream[1:]
-      #   data_packet = self.data_stream[0 : self.data_stream.index(":") + 1]
-      #   data_packet = data_packet[:-1]
-      #   print(data_packet)
-      #   self.data_stream = self.data_stream[len(data_packet) + 1: ]
-      #   self.data_stream = self.data_stream.lstrip()
-      #   data_packet = data_packet.split(",")
-      #   return self.create_info_packet(data_packet, old_state)
-      
-      # if len(self.data_stream) == 6:
-      #   data = self.create_info_packet(self.data_stream, old_state)
-      #   if data != None:
-      #     self.data_stream = []
-      #     return data
     
     return None
       #   #incoming data is separated with commas and represents these values in order: Millis, state, front distance, right distance, left encoder total, right encoder total, angle total
@@ -94,13 +66,6 @@ class Communicator:
     # self.logger.logDataPacket(newdata)
     self.connected = True
     return InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5])
-    
-    # if(old_state != 0 and newdata[0] == 0):
-    #   info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], True)
-    # else:
-    #   info = InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5], newdata[6], False)
-    #   self.connected = True
-    #   return info
       
   def transmit_info(self, state = 0):
     if self.enabled and self.connected:

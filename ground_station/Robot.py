@@ -4,7 +4,7 @@ from math import pi
 import pygame
 import sys
 import time
-from Resources import Mode, State, InfoPacket, WheelInfo, Logger
+from Resources import Mode, State, InfoPacket, WheelInfo, Logger, Rectifier
 
 class Robot:
     def __init__(self, image, x = 0.0, y = 0.0, angle = 0):
@@ -13,8 +13,7 @@ class Robot:
         self.size = self.image.get_size()
         self.left_encoder_counts = 0
         self.right_encoder_counts = 0
-        self.xcoord = x - self.size[0]/2
-        self.ycoord = y - self.size[1]/2
+        self.location = (x - self.size[0]/2, y - self.size[1]/2)
         #^separate things above here into just the draw_robot method
         self.angle = angle
         self.dataPackets = [InfoPacket(angle=90), InfoPacket(angle=90)] #angles here should be changed to 0?
@@ -24,40 +23,46 @@ class Robot:
         self.communicator.transmit_info(self.state)
         self.logger = Logger("Robot")
         self.max_dist = 150
+        self.last_index = -1
+        self.rectifier = None
+        self.last_state_switch_time = int(round(time.time() * 1000))
         
     def add_data(self):
         new_packet = self.communicator.recieve_info(self.state)
         if new_packet != None:
             self.dataPackets.append(new_packet)
-            self.__update_location()
+            self._update_location()
             self.logger.log(self.dataPackets[-1])
             self.logger.log('adding data to robot')
             return self.generate_points() #returns two points
-        
-    def change_state(self, new_state = State.stop):
-        self.state = new_state
-        self.communicator.transmit_info(self.state)
-        self.logger.log("State changed to: " + State.all_states[self.state])
         
     def quitProgram(self):
         self.communicator.transmit_info(State.stop)
         self.communicator.deactivate_bluetooth()
 
-    def draw_robot(self, screen, x_min, x_max, y_min, y_max):
-        #parameters are given as actual dimensions, not from 0 to 1
-        width = x_max - x_min
-        height = y_max - y_min
-        screen.blit(pygame.transform.rotate(self.image, self.angle), (self.xcoord + (width/2) + x_min, self.ycoord + (height/2) + y_min))
+    # def draw_robot(self, screen, x_min, x_max, y_min, y_max):
+    #     #parameters are given as actual dimensions, not from 0 to 1
+    #     width = x_max - x_min
+    #     height = y_max - y_min
+    #     screen.blit(pygame.transform.rotate(self.image, self.angle), (self.location[0] + (width/2) + x_min, self.location[1] + (height/2) + y_min))
         
-    def __update_location(self):
-        delta_x, delta_y, angle = self.__calculate_delta_location_change()
-        self.logger.log("delta_x, delta_y, delta_angle:", delta_x, delta_y, angle)
-        self.xcoord += delta_x
-        self.ycoord += delta_y
-        self.angle = angle
-        self.logger.log('new position:', self.xcoord, self.ycoord, self.angle)
+    def _update_location(self):
+        if self.rectifier is None and len(self.dataPackets) >= 3: # when we get the first new data, initialize
+            last_packet = self.dataPackets[-1]
+            self.rectifier = Rectifier(start_angle=last_packet.rotation, start_l_encoder=last_packet.left_encoder_counts, start_r_encoder=last_packet.right_encoder_counts)
+        
 
-    def __calculate_delta_location_change(self):
+        last_packet = self.dataPackets[-1]
+        last_packet.rotation = self.rectifier.offset_angle(last_packet.rotation)
+        last_packet.left_encoder_counts = self.rectifier.offset_l_encoder(last_packet.left_encoder_counts)
+        last_packet.right_encoder_counts = self.rectifier.offset_r_encoder(last_packet.right_encoder_counts)
+
+        delta_x, delta_y, angle = self._calculate_delta_location_change()
+        self.logger.log("delta_x, delta_y, delta_angle:", delta_x, delta_y, angle)
+        self.location = (self.location[0] + delta_x, self.location[1] + delta_y)
+        self.logger.log('new position:', self.location[0], self.location[1], self.angle)
+
+    def _calculate_delta_location_change(self):
         differenceR = self.dataPackets[-1].right_encoder_counts - self.dataPackets[-2].right_encoder_counts #Find the difference between last transmittion
         differenceL = self.dataPackets[-1].left_encoder_counts - self.dataPackets[-2].left_encoder_counts
         difference_average = (differenceL + differenceR) / 2
@@ -108,12 +113,7 @@ class Robot:
             else:
                 return ()
         
-    def sweep(self):
-        pass
-         #self.dataPackets[-1].front_distance
-    #move forward
-    #while front is clear and wall to
-    #move forward
+    
 
     def get_state_from_encoder(self, r, l):
         difference = r-l
@@ -130,8 +130,26 @@ class Robot:
             raise Exception("get_state_from_encoder method()")
     
     def front_is_clear(self):
-        self.logger.log("Rahel needs to work on this method BIG SMH")
-        return self.dataPackets[-1].front_distance > 50
+        # self.logger.log("Rahel needs to work on this method BIG SMH")
+        return self.dataPackets[-1].front_distance > 20
 
     def right_is_clear(self):
-        return self.dataPackets[-1].right_distance > 50
+        return self.dataPackets[-1].right_distance > 20
+
+    def change_state(self, new_state = State.stop):
+        self.state = new_state
+        self.communicator.transmit_info(self.state)
+        self.logger.log("State changed to: " + State.all_states[self.state])
+
+    def sweep(self):
+        self.logger.log("sweep method")
+        if int(round(time.time() * 1000)) - self.last_state_switch_time > 250:
+            self.logger.log("sweep method testing")
+            self.last_state_switch_time = int(round(time.time() * 1000))
+            if self.front_is_clear():
+                self.state = State.forward
+            else:
+                self.state = State.turn_right
+
+        self.communicator.transmit_info(self.state)
+        self.logger.log("State changed to: " + State.all_states[self.state])

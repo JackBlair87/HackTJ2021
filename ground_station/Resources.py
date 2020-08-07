@@ -21,16 +21,9 @@ class InfoPacket:
       self.rotation = float(angle)
     except:
       self.logger.log("ERROR CREATING INFOPACKET")
-    # if e_stopped.lower() == "false":
-    #   self.emergency_stopped = False
-    # elif e_stopped.lower() == "true":
-    #   self.emergency_stopped = True    
-    # else:
-    #   print("Error converting e_stopped to boolean in class InfoPacket")
-    
+      
   def __str__(self):
     return "Current State: " + str(self.state) + ", Forward Distance: " + str(self.front_distance) + ", Right Distance: " + str(self.right_distance) + ", Total Left Encoder Movement: " + str(self.left_encoder_counts) + ", Total Right Encoder Movement: " + str(self.right_encoder_counts) + ", Rotation Angle: " + str(self.rotation)
-
 
 class WheelInfo():
         ENCODER_COUNTS_PER_REVOLUTION = 20
@@ -59,7 +52,6 @@ class State():
   all_states_english = ['Stopped', 'Advancing', 'Reversing', 'Turning Left', 'Turning Right', 'Erroring']
 
 class Logger():
-
   #maybe use singleton here?
   created = False
   outfolder = None
@@ -120,3 +112,18 @@ class Colors:
   BLUE = (85, 154, 212)
   PINK = (197, 134, 192)
   RED = (255, 0, 0)
+
+class Rectifier:
+  def __init__(self, start_angle, start_l_encoder, start_r_encoder):
+    self.start_angle = start_angle
+    self.start_left_encoder = start_l_encoder
+    self.start_right_encoder = start_r_encoder
+    
+  def offset_angle(self, given_angle):
+    return self.start_angle - given_angle
+  
+  def offset_r_encoder(self, given_r_encoder):
+    return self.start_right_encoder - given_r_encoder
+  
+  def offset_l_encoder(self, given_l_encoder):
+    return self.start_left_encoder - given_l_encoder
