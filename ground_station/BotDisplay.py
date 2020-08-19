@@ -73,6 +73,7 @@ def main():
     draw_text(str(robot.dataPackets[-1].left_encoder_counts), .15, top_bar_y, text_color=Colors.PINK)
     draw_text(str(robot.dataPackets[-1].right_distance), .1, top_bar_y, text_color=Colors.PINK)
     draw_text(str(robot.dataPackets[-1].front_distance), .05, top_bar_y, text_color=Colors.PINK)
+    draw_text(str(robot.communicator.connected), .4, top_bar_y, text_color=Colors.PINK)
     # draw_text(current_action, .01, top_bar_y, basis_point='midleft', text_color=Colors.PINK)
     
     #Draw interactive elements
@@ -109,7 +110,7 @@ def main():
     # if int(round(time.time() * 1000)) - previous_time >= 0:
     #   previous_time = int(round(time.time() * 1000))
     #   wall_map.add_obstacle_point(random.randint(-50, 50), random.randint(-50, 50))
-      
+
     
     wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height, robot = robot)
     # robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
@@ -190,7 +191,7 @@ def draw_compass(x, y, angle = 90.0):
   half_image = COMPASS.get_size()[0] / 2
   screen.blit(COMPASS, (x, y)) #Draws the compass image
   #logger.log("x, y, angle:", x, y, angle)
-  pygame.draw.line(screen, Colors.GREEN, (x+half_image, y+half_image), (x+half_image + (65*math.cos(math.radians(-(angle+90)))), y+half_image + (65*math.sin(math.radians(-(angle+90))))), width=2)
+  pygame.draw.line(screen, Colors.BLUE, (x+half_image, y+half_image), (x+half_image + (65*math.cos(math.radians(-(angle+90)))), y+half_image + (65*math.sin(math.radians(-(angle+90))))), width=8)
 
 def quitProgram(): #Quits Pygame and Python
   global robot

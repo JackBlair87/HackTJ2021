@@ -11,6 +11,7 @@ class Communicator:
     self.bluetooth = None
     self.enabled = enabled
     self.connected = False
+    self.time_packet = []
     self.data_stream = ""
     
     self.logger = Logger("Communicator")
@@ -25,11 +26,11 @@ class Communicator:
     if self.enabled:
       self.bluetooth = serial.Serial(self.port, self.baud, timeout=0) #Start communications with the bluetooth unit
       self.bluetooth.flushInput() #This gives the bluetooth a little kick
-      self.connected = True
+      self.connected = False
     
 #Timestamp 12321, State -1 to 4, Distance Sensor Front Double, Distance Sensor Right Double, Left Encoder Value Int, Right Encoder Value Int, Total Angle Double
   def recieve_info(self, old_state = 0):
-    if not (self.enabled and self.connected):
+    if not (self.enabled):
       return None
     
     input_data = self.bluetooth.readline().decode()
@@ -61,20 +62,26 @@ class Communicator:
     newdata = []
     for element in data:
       newdata.append(element.strip())
-    
+    self.time_packet.append(time.time() * 1000)
     # print(newdata)
     # self.logger.logDataPacket(newdata)
     self.connected = True
+    
     return InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5])
       
   def transmit_info(self, state = 0):
+    self.connection_check(5000)
     if self.enabled and self.connected:
       self.previousState = state
       self.bluetooth.write(str.encode(str(state))) #These need to be bytes not unicode, plus a number
     
   def deactivate_bluetooth(self):
-    if self.enabled and self.connected:
+    if self.enabled:
       self.bluetooth.close()
+      
+  def connection_check(self, benchmark):
+    if time.time() * 1000 - self.time_packet[-1] > benchmark:
+      self.connected = False
     
 #Ideal Use
 #c = Communicator()
