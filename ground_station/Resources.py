@@ -8,7 +8,7 @@ import time
 # from sklearn.linear_model import LinearRegression
 
 class InfoPacket:
-
+  
   def __init__(self, state = 0, f_distance = 0, r_distance = 0, l_encoderCounts = 0, r_encoderCounts = 0, angle = 0):
     self.logger = Logger("InfoPacket")
     try:

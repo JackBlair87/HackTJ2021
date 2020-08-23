@@ -23,8 +23,10 @@ clock = pygame.time.Clock()
 
 ROBOT = pygame.image.load('./ground_station/assets/Robot.png')
 COMPASS = pygame.image.load('./ground_station/assets/Compass.png')
-mediumFont = pygame.font.Font("./ground_station/assets/OpenSans-Regular.ttf", 28)
-largeFont = pygame.font.Font("./ground_station/assets/OpenSans-Regular.ttf", 40)
+buttonFont = pygame.font.Font("./ground_station/assets/OpenSans-Regular.ttf", 25)
+buttonFont.set_bold(True)
+textFont = pygame.font.Font("./ground_station/assets/OpenSans-Regular.ttf", 35)
+textFont.set_bold(True)
 
 #information about the robot and location
 mode = Mode.manual
@@ -58,10 +60,15 @@ def main():
     mode_button_height = .1
     mode_button_y_diff = mode_button_height+.01
     mode_button_x = .89
-    create_button_from_text("Stop", mode_button_x, .1 + mode_button_y_diff * 0, .1, mode_button_height, mediumFont, text_color=Colors.BLACK, background_color=Colors.DBLUE)
-    create_button_from_text("Explore", mode_button_x, .1 + mode_button_y_diff * 1, .1, mode_button_height, mediumFont, text_color=Colors.BLACK, background_color=Colors.DBLUE)
-    create_button_from_text("Sweep", mode_button_x, .1 + mode_button_y_diff * 2, .1, mode_button_height, mediumFont, text_color=Colors.BLACK, background_color=Colors.DBLUE)
-    create_button_from_text("Manual", mode_button_x, .1 + mode_button_y_diff * 3, .1, mode_button_height, mediumFont, text_color=Colors.BLACK, background_color=Colors.DBLUE)
+    create_button_from_text("Stop", mode_button_x, .1 + mode_button_y_diff * 0, .1, mode_button_height, buttonFont, text_color=Colors.BLACK, background_color=Colors.DBLUE)
+    create_button_from_text("Explore", mode_button_x, .1 + mode_button_y_diff * 1, .1, mode_button_height, buttonFont, text_color=Colors.BLACK, background_color=Colors.DBLUE)
+    create_button_from_text("Sweep", mode_button_x, .1 + mode_button_y_diff * 2, .1, mode_button_height, buttonFont, text_color=Colors.BLACK, background_color=Colors.DBLUE)
+    create_button_from_text("Manual", mode_button_x, .1 + mode_button_y_diff * 3, .1, mode_button_height, buttonFont, text_color=Colors.BLACK, background_color=Colors.DBLUE)
+    
+    if robot.communicator.connected:
+      create_button_from_text("Disconnect", screen_width * 0.01 + .01, 0.01, .1, top_bar_y * 2 - .02, buttonFont, text_color=Colors.BLACK, background_color=Colors.RED)
+    else:
+      create_button_from_text("Reconnect", screen_width * 0.01 + .01, 0.01, .1, top_bar_y * 2 - .02, buttonFont, text_color=Colors.BLACK, background_color=Colors.GREEN)
     
     mode_label = draw_text("Mode: " + Mode.all_modes_english[mode], .91, top_bar_y, text_color=Colors.PINK)
     draw_text("State: " + State.all_states_english[robot.state], .75, top_bar_y, text_color=Colors.PINK)
@@ -69,16 +76,16 @@ def main():
     robot_x = round(robot.location[0], 2)
     robot_y = round(robot.location[1], 2)
     draw_text(str((robot_x, robot_y)), .4, top_bar_y, text_color=Colors.PINK)
-    draw_text(str(robot.dataPackets[-1].right_encoder_counts), .25, top_bar_y, text_color=Colors.PINK)
-    draw_text(str(robot.dataPackets[-1].left_encoder_counts), .15, top_bar_y, text_color=Colors.PINK)
-    draw_text(str(robot.dataPackets[-1].right_distance), .1, top_bar_y, text_color=Colors.PINK)
-    draw_text(str(robot.dataPackets[-1].front_distance), .05, top_bar_y, text_color=Colors.PINK)
-    draw_text(str(robot.communicator.connected), .4, top_bar_y, text_color=Colors.PINK)
+    draw_text(str(robot.dataPackets[-1].right_encoder_counts), .27, top_bar_y, text_color=Colors.GREEN)
+    draw_text(str(robot.dataPackets[-1].left_encoder_counts), .21, top_bar_y, text_color=Colors.GREEN)
+    draw_text(str(robot.dataPackets[-1].right_distance), .12, top_bar_y, text_color=Colors.PINK)
+    draw_text(str(robot.dataPackets[-1].front_distance), .03, top_bar_y, text_color=Colors.PINK)
     # draw_text(current_action, .01, top_bar_y, basis_point='midleft', text_color=Colors.PINK)
     
     #Draw interactive elements
     #x_max is .85, y_min is .1
     change_mode_from_button()
+    reconnect_on_press()
 
     if mode == Mode.manual:
       robot.change_state(state_from_key_press())
@@ -99,7 +106,7 @@ def main():
     # x = 5 * math.cos(angle)
     # y = 5 * math.sin(angle)
     # wall_map.add_obstacle_point(x, y)
-    # wall_map.add_obstacle_point(0, 0)
+    wall_map.add_obstacle_point(0, 0)
     # wall_map.add_obstacle_point(10, 10)
     # wall_map.add_obstacle_point(-10, -10)
     # wall_map.add_obstacle_point(0, 10)
@@ -111,7 +118,6 @@ def main():
     #   previous_time = int(round(time.time() * 1000))
     #   wall_map.add_obstacle_point(random.randint(-50, 50), random.randint(-50, 50))
 
-    
     wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height, robot = robot)
     # robot.draw_robot(screen=screen, x_min=0 * screen_width, x_max=1 * screen_width, y_min=0 * screen_height, y_max=1 * screen_height)
     # wall_map.draw_map(screen=screen, x_min=0 * screen_width, x_max=(mode_button_x - .01) * screen_width, y_min=(top_bar_y * 2 + .01) * screen_height, y_max=1 * screen_height)
@@ -129,7 +135,7 @@ def create_button_from_text(text, x, y, width, height, font_object, text_color=C
   and 1 represent a button that will fill up the screen (same width and height as the screen)
   """
   new_button = pygame.Rect((screen_width * x), (screen_height * y), screen_width * width, screen_height * height)
-  playX = mediumFont.render(text, True, text_color, background_color)
+  playX = font_object.render(text, True, text_color, background_color)
   playXRect = playX.get_rect()
   playXRect.center = new_button.center
   pygame.draw.rect(screen, background_color, new_button)
@@ -150,7 +156,7 @@ def get_button_pressed():
       if button.collidepoint(mouse):
         return button, text
       
-def draw_text(text, x, y, font_object=mediumFont, text_color=Colors.WHITE, basis_point='center', background_color=Colors.BLACK):
+def draw_text(text, x, y, font_object=textFont, text_color=Colors.WHITE, basis_point='center', background_color=Colors.BLACK):
   title = font_object.render(text, True, text_color)
   titleRect = title.get_rect()
   if basis_point == 'center':
@@ -204,10 +210,22 @@ def quitProgram(): #Quits Pygame and Python
 def change_mode_from_button():
   global all_buttons, mode
   temp = get_button_pressed()
-  if temp is not None: #if a button was pressed, continue with this section
+  if temp is not None and temp[1] is not 'Reconnect': #if a button was pressed, continue with this section
     pressed_button = temp[0]
     button_text = temp[1]
     mode = Mode.all_modes.index(button_text)
-    logger.log("Mode changed to: " + Mode.all_modes[mode])
-    
+    # logger.log("Mode changed to: " + Mode.all_modes[mode])
+
+def reconnect_on_press():
+  global all_buttons, mode, robot, logger
+  temp = get_button_pressed()
+  if temp is not None: #if a button was pressed, continue with this section
+    pressed_button = temp[0]
+    button_text = temp[1]
+    if button_text == 'Reconnect':
+      robot.communicator.deactivate_bluetooth()
+      robot.communicator.initiate_bluetooth()
+    elif button_text == 'Disconnect':
+      robot.communicator.deactivate_bluetooth()
+
 main()

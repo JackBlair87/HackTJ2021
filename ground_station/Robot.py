@@ -13,11 +13,11 @@ class Robot:
         self.size = self.image.get_size()
         self.left_encoder_counts = 0
         self.right_encoder_counts = 0
-        self.location = (x - self.size[0]/2, y - self.size[1]/2)
+        self.location = (x, y)
         #^separate things above here into just the draw_robot method
         self.angle = angle
         self.dataPackets = [InfoPacket(angle=90), InfoPacket(angle=90)] #angles here should be changed to 0?
-        self.communicator = Communicator(enabled = True)
+        self.communicator = Communicator(enabled = False)
         self.communicator.initiate_bluetooth()
         self.state = State.stop
         self.communicator.transmit_info(self.state)
@@ -40,22 +40,19 @@ class Robot:
         self.communicator.transmit_info(State.stop)
         self.communicator.deactivate_bluetooth()
 
-    # def draw_robot(self, screen, x_min, x_max, y_min, y_max):
-    #     #parameters are given as actual dimensions, not from 0 to 1
-    #     width = x_max - x_min
-    #     height = y_max - y_min
-    #     screen.blit(pygame.transform.rotate(self.image, self.angle), (self.location[0] + (width/2) + x_min, self.location[1] + (height/2) + y_min))
-        
     def _update_location(self):
         if self.rectifier is None and len(self.dataPackets) >= 3: # when we get the first new data, initialize
             last_packet = self.dataPackets[-1]
             self.rectifier = Rectifier(start_angle=last_packet.rotation, start_l_encoder=last_packet.left_encoder_counts, start_r_encoder=last_packet.right_encoder_counts)
         
-
+        self.logger.log('rectifier logs:')
         last_packet = self.dataPackets[-1]
+        self.logger.log(f'last packet: {last_packet}')
         last_packet.rotation = self.rectifier.offset_angle(last_packet.rotation)
         last_packet.left_encoder_counts = self.rectifier.offset_l_encoder(last_packet.left_encoder_counts)
         last_packet.right_encoder_counts = self.rectifier.offset_r_encoder(last_packet.right_encoder_counts)
+
+        self.logger.log(last_packet.rotation, last_packet.left_encoder_counts, last_packet.right_encoder_counts)
 
         delta_x, delta_y, angle = self._calculate_delta_location_change()
         self.logger.log("delta_x, delta_y, delta_angle:", delta_x, delta_y, angle)
@@ -113,8 +110,6 @@ class Robot:
             else:
                 return ()
         
-    
-
     def get_state_from_encoder(self, r, l):
         difference = r-l
         if math.abs(difference) < 2:

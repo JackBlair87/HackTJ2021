@@ -132,7 +132,10 @@ class WallMap:
 
   def draw_map(self, screen, x_min, x_max, y_min, y_max, robot):
                             # 0,   0,   1560, 1123
-    #parameters are given as actual dimensions, not from 0 to 1
+    #parameters are given as actual pixel dimensions, not from 0 to 1
+
+    print('x_max:', x_max)
+    print('y_max:', y_max)
     screen_width = x_max - x_min
     screen_height = y_max - y_min
 
@@ -148,51 +151,63 @@ class WallMap:
     map_ratio = map_height / map_width
     screen_ratio = screen_height / screen_width
 
-    if x_scale > y_scale: # the map is taller than the screen, relatively
-      x_scale = y_scale
-    else:
+    if map_ratio > screen_ratio: # the map is taller than the screen, relatively
       y_scale = x_scale
+    else:
+      x_scale = y_scale
     
-    map_mid_x = self.x_min + map_width / 2
-    map_mid_y = self.y_min + map_height / 2
+    # map_mid_x = self.x_min + map_width / 2
+    # map_mid_y = self.y_min + map_height / 2
 
-    map_mid_x += x_add_num
-    map_mid_x *= x_scale
+    # map_mid_x += x_add_num
+    # map_mid_x *= x_scale
 
-    map_mid_y += y_add_num
-    map_mid_y *= y_scale
+    # map_mid_y += y_add_num
+    # map_mid_y *= y_scale
 
-    screen_mid_x = x_min + screen_width / 2
-    screen_mid_y = y_min + screen_height / 2
+    # screen_mid_x = x_min + screen_width / 2
+    # screen_mid_y = y_min + screen_height / 2
 
-    x_screen_adjustment = screen_mid_x - map_mid_x
-    y_screen_adjustment = screen_mid_y - map_mid_y
+    x_screen_adjustment = 0
+    y_screen_adjustment = 0
 
-    robot_x = (robot.location[0] + x_add_num) * x_scale + x_screen_adjustment
-    robot_y = (robot.location[1] + y_add_num) * y_scale + y_screen_adjustment
+    # x_screen_adjustment = screen_mid_x - map_mid_x
+    # y_screen_adjustment = screen_mid_y - map_mid_y
 
-    if robot_x > self.x_max - 10:
-      self.x_max = robot_x + 10
-    if robot_x < self.x_min + 10:
-      self.x_min = robot_x - 10
+    # robot_x = (robot.location[0] - robot.size[0]/2 + x_add_num) * x_scale + x_screen_adjustment
+    # robot_y = (robot.location[1] - robot.size[1]/2 + y_add_num) * y_scale + y_screen_adjustment
+
+    # if robot_x > self.x_max - 10:
+    #   self.x_max = robot_x + 10
+    # if robot_x < self.x_min + 10:
+    #   self.x_min = robot_x - 10
     
-    if robot_y > self.y_max - 10:
-      self.y_max = robot_y + 10
-    if robot_y < self.y_min + 10:
-      self.y_min = robot_y - 10
+    # if robot_y > self.y_max - 10:
+    #   self.y_max = robot_y + 10
+    # if robot_y < self.y_min + 10:
+    #   self.y_min = robot_y - 10
       
-    screen.blit(pygame.transform.rotate(robot.image, robot.angle), (robot_x, robot_y))
-
+    # screen.blit(pygame.transform.rotate(robot.image, robot.angle), (robot_x, robot_y))
     for wall in self.walls:
       wall.draw_wall(screen=screen, y_max=y_max, x_add_num=x_add_num, x_scale=x_scale, x_screen_adjustment=x_screen_adjustment, y_add_num=y_add_num, y_scale=y_scale, y_screen_adjustment=y_screen_adjustment)
       for x, y in wall.points:
+        self.logger.log('x 0:', x)
         x += x_add_num
+        self.logger.log('x 1:', x)
         x *= x_scale
+        self.logger.log('x 2:', x)
         x += x_screen_adjustment
+        self.logger.log('x 3:', x)
 
+        self.logger.log('y 0:', y)
         y += y_add_num
+        self.logger.log('y 1:', y)
         y *= y_scale
+        self.logger.log('y 2:', y)
         y += y_screen_adjustment
+        self.logger.log('y 3:', y)
+
+        print('y_max', y_max)
 
         center = (x, y_max - y) #correct the order (x, y) to (r, c)
         pygame.draw.circle(surface=screen, color=Colors.BLUE, center=center, radius=5)

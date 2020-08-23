@@ -2,7 +2,6 @@ import serial
 import time
 import sys
 from Resources import InfoPacket, Logger
-import threading
 
 class Communicator:
   def __init__(self, port = "/dev/tty.HC-05-DevB", baud = 9600, enabled = True):
@@ -11,16 +10,16 @@ class Communicator:
     self.bluetooth = None
     self.enabled = enabled
     self.connected = False
-    self.time_packet = []
+    self.time_packet = [time.time()]
     self.data_stream = ""
     
     self.logger = Logger("Communicator")
     if self.enabled:
-        try:
-          self.initiate_bluetooth()
-        except:
-          self.logger.log("Communicator: Bluetooth Not Connected")
-          self.logger.log(sys.exc_info())
+      try:
+        self.initiate_bluetooth()
+      except:
+        self.logger.log("Communicator: Bluetooth Not Connected")
+        self.logger.log(sys.exc_info())
           
   def initiate_bluetooth(self):
     if self.enabled:
@@ -33,7 +32,12 @@ class Communicator:
     if not (self.enabled):
       return None
     
-    input_data = self.bluetooth.readline().decode()
+    try:
+      input_data = self.bluetooth.readline().decode()
+    except:
+      print('bluetooth is not connected, error in receive_info method')
+      self.logger.log(sys.exc_info())
+      return None
     #self.logger.logDataPacket('input_data:', input_data)
     if(input_data == None or input_data.strip() == ""):
       return None
@@ -70,18 +74,26 @@ class Communicator:
     return InfoPacket(newdata[0], newdata[1], newdata[2], newdata[3], newdata[4], newdata[5])
       
   def transmit_info(self, state = 0):
-    self.connection_check(5000)
-    if self.enabled and self.connected:
+    self.connection_check(500)
+    if self.enabled:
       self.previousState = state
-      self.bluetooth.write(str.encode(str(state))) #These need to be bytes not unicode, plus a number
-    
+      try:
+        self.bluetooth.write(str.encode(str(state))) #These need to be bytes not unicode, plus a number
+      except:
+        print('error transmitting info, bluetooth was disconnected from transmit_info method')
+        self.logger.log(sys.exc_info())
+        
   def deactivate_bluetooth(self):
     if self.enabled:
       self.bluetooth.close()
       
   def connection_check(self, benchmark):
-    if time.time() * 1000 - self.time_packet[-1] > benchmark:
-      self.connected = False
+    if self.enabled:
+      if len(self.time_packet) == 0:
+        self.connected = False
+      
+      if (time.time() * 1000) - self.time_packet[-1] > benchmark:
+        self.connected = False
     
 #Ideal Use
 #c = Communicator()
